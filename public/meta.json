@@ -1,0 +1,70 @@
+{
+  "name": "client-dev",
+  "plugins": [
+    {
+      "name": "TailwindCSS",
+      "description": "A utility-first CSS framework packed with classes like flex, pt-4, text-center and rotate-90 that can be composed to build any design, directly in your markup.",
+      "url": "https://tailwindcss.com/docs"
+    },
+    {
+      "name": "SASS/SCSS",
+      "description": "Sass is a stylesheet language that’s compiled to CSS. It allows you to use variables, nested rules, mixins, functions, and more, all with a fully CSS-compatible syntax.",
+      "url": "https://sass-lang.com/documentation"
+    },
+    {
+      "name": "Axios",
+      "description": "Promise based HTTP client for the browser and node.js.",
+      "url": "https://github.com/axios/axios"
+    },
+    {
+      "name": "Storybook",
+      "description": "Storybook is an open source tool for developing UI components in isolation for React, Vue, Angular, and more. It makes building stunning UIs organized and efficient.",
+      "url": "https://storybook.js.org/docs/react/get-started/introduction"
+    },
+    {
+      "name": "Environment Variables",
+      "description": "Use environment variables in your next.js project for server side, client or both.",
+      "url": "https://github.com/vercel/next.js/tree/canary/examples/environment-variables"
+    },
+    {
+      "name": "Bundle Analyzer",
+      "description": "Use webpack-bundle-analyzer in your Next.js project. Visualize size of webpack output files with an interactive zoomable treemap.",
+      "url": "https://github.com/vercel/next.js/tree/canary/packages/next-bundle-analyzer"
+    },
+    {
+      "name": "Apollo GraphQL",
+      "description": "Apollo Client is a comprehensive state management library for JavaScript that enables you to manage both local and remote data with GraphQL. Use it to fetch, cache, and modify application data, all while automatically updating your UI.",
+      "url": "https://www.apollographql.com/docs/react/"
+    },
+    {
+      "name": "MobX",
+      "description": "MobX is unopinionated and allows you to manage your application state outside of any UI framework.",
+      "url": "https://mobx.js.org/README.html"
+    },
+    {
+      "name": "MobX State Tree",
+      "description": "MobX-State-Tree (also known as MST) is a state container system built on MobX, a functional reactive state library.",
+      "url": "https://mobx-state-tree.js.org/intro/welcome"
+    },
+    {
+      "name": "next-i18next",
+      "description": "next-i18next is a plugin for Next.js projects that allows you to get translations up and running quickly and easily, while fully supporting SSR, multiple namespaces with codesplitting, etc.",
+      "url": "https://github.com/isaachinman/next-i18next"
+    },
+    {
+      "name": "Prettier",
+      "description": "An opinionated code formatter; Supports many languages; Integrates with most editors.",
+      "url": "https://prettier.io/docs/en/index.html"
+    },
+    {
+      "name": "Enzyme",
+      "description": "Enzyme is a JavaScript Testing utility for React that makes it easier to test your React Components' output. You can also manipulate, traverse, and in some ways simulate runtime given the output.",
+      "url": "https://enzymejs.github.io/enzyme/"
+    },
+    {
+      "name": "Cypress",
+      "description": "Fast, easy and reliable testing for anything that runs in a browser.",
+      "url": "https://docs.cypress.io/guides/overview/why-cypress.html"
+    }
+  ]
+}

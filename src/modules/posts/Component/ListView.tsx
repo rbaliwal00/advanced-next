@@ -1,4 +1,4 @@
-// import React from "react";
+import React from "react";
 
 const Component = (props) => {
   const { loadingPosts, posts = {} } = props;

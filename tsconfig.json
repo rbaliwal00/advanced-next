@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -15,24 +19,71 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@components": ["src/components"],
-      "@public/*": ["public/*"],
-      "@public": ["public"],
-      "@styles/*": ["src/styles/*"],
-      "@styles": ["src/styles"],
-      "@services/*": ["src/services/*"],
-      "@services": ["src/services"],
-      "@graphqlTypes/*": ["__generated__/*"],
-      "@graphqlTypes": ["__generated__"],
-      "@mobx/*": ["src/mobx/*"],
-      "@mobx": ["src/mobx"],
-      "@i18n": ["./i18n"],
-      "@test/*": ["test/*"],
-      "@test": ["test"]
-    }
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@components": [
+        "src/components"
+      ],
+      "@public/*": [
+        "public/*"
+      ],
+      "@public": [
+        "public"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@styles": [
+        "src/styles"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@services": [
+        "src/services"
+      ],
+      "@graphqlTypes/*": [
+        "__generated__/*"
+      ],
+      "@graphqlTypes": [
+        "__generated__"
+      ],
+      "@mobx/*": [
+        "src/mobx/*"
+      ],
+      "@mobx": [
+        "src/mobx"
+      ],
+      "@i18n": [
+        "./i18n"
+      ],
+      "@test/*": [
+        "test/*"
+      ],
+      "@test": [
+        "test"
+      ],
+      "@modules/*": [
+        "src/modules/*"
+      ],
+      "@modules": [
+        "src/modules"
+      ],
+      "@posts/*": [
+        "src/modules/posts/*"
+      ],
+      "@posts": [
+        "src/modules/posts/"
+      ]
+    },
+    "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
   "exclude": [
     "node_modules",
     "__generated__/globalTypes.ts",

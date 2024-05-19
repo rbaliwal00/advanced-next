@@ -1,0 +1,12 @@
+mutation createPost($object: posts_insert_input = {}) {
+  post: insert_posts_one(
+    object: $object
+    on_conflict: { constraint: posts_pkey, update_columns: id }
+  ) {
+    id
+    title
+    sub_title
+    banner
+    category
+  }
+}

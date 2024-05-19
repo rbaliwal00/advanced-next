@@ -1,2 +1,2 @@
-import { Update } from "@posts";
+import { Update } from "@modules/posts";
 export default Update;

@@ -22,7 +22,9 @@
     "@apollo/client": "^3.3.7",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.18",
     "@mui/material": "^5.15.18",
+    "@mui/x-date-pickers": "^7.5.0",
     "@next/bundle-analyzer": "^10.0.5",
     "axios": "^0.21.1",
     "formik": "^2.4.6",
@@ -39,7 +41,8 @@
     "prettier": "^2.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "sass": "^1.32.5"
+    "sass": "^1.32.5",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

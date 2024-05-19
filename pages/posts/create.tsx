@@ -1,2 +1,2 @@
-import { Create } from "@posts";
+import { Create } from "@modules/posts";
 export default Create;

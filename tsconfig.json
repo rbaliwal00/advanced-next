@@ -74,7 +74,13 @@
         "src/modules/posts/*"
       ],
       "@posts": [
-        "src/modules/posts/"
+        "src/modules/posts"
+      ],
+      "@common/*": [
+        "src/modules/common/*"
+      ],
+      "@common": [
+        "src/modules/common/"
       ]
     },
     "incremental": true

@@ -1,20 +1,23 @@
 import React from "react";
-import {
-  // withHookForPosts,
-  withStateAndActionsForPosts,
-} from "../resolvers";
+import { withStateAndActionsForPosts } from "../resolvers";
 import { compose } from "@modules/common";
 
 import Component from "../components/ListView";
-import { withPosts } from "../operations";
+import { withDeletePost, withPosts } from "../operations";
 
 const Container = (props) => {
-  console.log("🚀 ~ Container ~ props:", props);
-  return <Component {...props} />;
+  const { deletePost, refetchPosts } = props;
+
+  const handleDelete = (id) => {
+    deletePost(id);
+    refetchPosts();
+  };
+
+  return <Component {...props} onDelete={handleDelete} />;
 };
 
 export default compose(
   withStateAndActionsForPosts,
   withPosts,
-  // withHookForPosts,
+  withDeletePost,
 )(Container);

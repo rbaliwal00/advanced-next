@@ -15,13 +15,18 @@ const withPosts = (Component: FunctionComponent) =>
       };
     },
     props: ({ data }) => {
-      const { loading: loadingPosts, error, posts, refetch } = data as any;
+      const {
+        loading: loadingPosts,
+        error,
+        posts,
+        refetch: refetchPosts,
+      } = data as any;
 
       if (error) throw new Error(error.message);
       return {
         loadingPosts,
         posts,
-        refetch,
+        refetchPosts,
       };
     },
   })(Component);

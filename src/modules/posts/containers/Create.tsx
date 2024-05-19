@@ -6,9 +6,15 @@ import Component from "../components/CreateView";
 import { withCreatePost } from "../operations";
 
 const Container = (props) => {
-  const { createPost } = props;
+  const {
+    createPost,
+    router: { push },
+  } = props;
 
-  const onSubmit = async (values) => createPost(values);
+  const onSubmit = async (values) => {
+    await createPost(values);
+    push("/posts");
+  };
   return <Component {...props} onSubmit={onSubmit} />;
 };
 

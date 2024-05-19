@@ -6,7 +6,9 @@ import * as Yup from "yup";
 import { FieldAdapter } from "@common";
 
 const Forms = (props) => {
-  const { formik, handleSubmit } = props;
+  const { post, ...formik } = props;
+  const { handleSubmit, isSubmitting } = props;
+
   return (
     <Form onSubmit={handleSubmit}>
       <Box
@@ -51,6 +53,7 @@ const Forms = (props) => {
                   ? "444px"
                   : "100%",
             }}
+            disabled={isSubmitting}
           >
             Save
           </Button>
@@ -76,11 +79,14 @@ const PostFormWithFormik = withFormik({
     return formProps;
   },
 
-  async handleSubmit(param, { props: { onSubmit, resetForm } }) {
+  async handleSubmit(param, { props: { onSubmit, resetForm }, setSubmitting }) {
+    setSubmitting(true);
     const values = param.values || param;
     const refresh = param.refresh;
-    // console.log(values);
+
+    // console.log("🚀 ~ handleSubmit ~ values:", values)
     await onSubmit(values, refresh);
+    setSubmitting(false);
   },
 
   validationSchema: (props) =>

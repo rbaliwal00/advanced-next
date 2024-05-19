@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Button } from "@components";
+import Input from "@components/form/input";
 
 export const Main: React.FC = () => {
   return (
@@ -31,6 +32,7 @@ export const Main: React.FC = () => {
           <Button>Docs</Button>
         </a>
       </div>
+      <Input placeholder="Your email" label={"Sample"} />
       <div
         style={{
           textAlign: "left",

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Button } from "@components";
-import Input from "@components/form/input";
+import Input from "@components/form/Input";
 
 export const Main: React.FC = () => {
   return (

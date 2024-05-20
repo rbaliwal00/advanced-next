@@ -5,4 +5,4 @@ export { Footer } from "./footer";
 export { Header } from "./header";
 export { Logo } from "./logo";
 export { Main } from "./main";
-export { default as Input } from "./form/input"; // Fix: Changed the import statement to match the file name.
+export { default as Input } from "./form/Input"; // Fix: Changed the import statement to match the file name.

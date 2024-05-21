@@ -1,0 +1,55 @@
+.topbar_container {
+  background-color: #113b73;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 5rem;
+  box-shadow: rgba(0, 35, 81, 0.03) 0px 4px 15px;
+}
+
+.topbar_back_button {
+  float: left;
+  display: flex;
+}
+
+.clearfix {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.topbar_logo {
+  float: right;
+}
+
+.topbar_label {
+  font-size: 1.44rem;
+}
+
+.topbar_label_button {
+  margin-left: 1rem;
+}
+
+.topbar_progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .topbar_label {
+    font-size: 1.2rem;
+  }
+
+  .topbar_label_button {
+    margin-left: 0.7rem;
+  }
+
+  .topbar_progress {
+    padding: 1rem 1rem;
+  }
+}

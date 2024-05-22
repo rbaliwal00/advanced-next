@@ -24,7 +24,7 @@ export type ButtonProps = {
   danger?: boolean;
   loading?: boolean | { delay: number };
   shape?: "default" | "round";
-  color?: "primary" | "secondary";
+  color?: "primary" | "secondary" | string;
 
   platform?: string;
 };

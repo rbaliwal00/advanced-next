@@ -11,8 +11,9 @@ import {
   mumbai,
 } from "@public/assets/icons";
 import Image from "next/image";
+import OTPInput from "./OtpInput";
 
-const MobileVerification = () => {
+const Otp = () => {
   const desktopNavbarProps = {
     logo: PrimaryLogo,
     primary: true,
@@ -75,22 +76,18 @@ const MobileVerification = () => {
           <div className="text-center pt-2">
             <Image src={PrimaryLogo} alt="" />
           </div>
-          <h3 className="text-[33.18px] text-center">Welcome!</h3>
-          <h4 className="text-center text-[22px]">Enter Mobile Number</h4>
-          <div className="mb-14">
-            <label className="mb-[10px] block text-[16px] text-base font-[600] text-dark dark:text-white">
-              Mobile Number
-            </label>
-            <input
-              type="text"
-              placeholder="Type Mobile Number"
-              className="w-full text-black rounded-md border border-stroke dark:border-dark-3 py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2 dark:disabled:bg-dark-4 dark:disabled:border-dark-4"
-            />
+          <h4 className="text-center text-[22px]">Verify OTP</h4>
+          <p className="text-[#C1C1C1] text-center mb-2 text-sm">
+            Enter the 4 digit code sent to 9414098765
+          </p>
+          <div className="flex justify-center mb-10">
+            <OTPInput />
           </div>
           <div className="mb-4 text-center">
             <Image src={HorecahAdsBanner} alt="" />
           </div>
-          <Button color="#113B73" backgroundColor="white" text="Get OTP" />
+          <Button color="#113B73" backgroundColor="white" text="Verify" />
+          <Button color="white" backgroundColor="#113B73" text="Back" />
           <p className="text-center font-[400] text-[10px] mt-6">
             By continuing agree to Horecah
           </p>
@@ -117,27 +114,24 @@ const MobileVerification = () => {
               <div className="border-l-2 h-[60vh] mt-12"></div>
               <div className="w-1/2 flex justify-center">
                 <div className="p-6">
-                  <h3 className="text-[24px] md:text-[33.18px] font-[600] ">
-                    Enter Mobile Number
+                  <h3 className="text-[24px] md:text-[33.18px] font-[600] text-center">
+                    Verify OTP
                   </h3>
-                  <p className="text-center font-[400] text-[13.33px] mb-20">
-                    We Will send you a Confirmation Code
+                  <p className="text-center font-[400] text-[13.33px] mb-12">
+                    Enter the 4 digit code sent to 9090909090
                   </p>
-                  <div className="mb-20">
-                    <label className="mb-[10px] block text-[16px] text-base font-[600] text-dark dark:text-white">
-                      Mobile Number
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Type Mobile Number"
-                      className="w-full text-black rounded-md border border-stroke dark:border-dark-3 py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2 dark:disabled:bg-dark-4 dark:disabled:border-dark-4"
-                    />
+                  <div className="flex justify-center">
+                    <OTPInput />
                   </div>
+                  <p className="mb-10 text-[12px] text-end">
+                    Resend OTP in 10 secs
+                  </p>
                   <Button
                     color="#113B73"
                     backgroundColor="white"
-                    text="Get OTP"
+                    text="Verify"
                   />
+                  <Button color="white" backgroundColor="#113B73" text="Back" />
                   <p className="text-center font-[400] text-[10px] mt-6">
                     By continuing agree to Horecah
                   </p>
@@ -174,4 +168,4 @@ const MobileVerification = () => {
   );
 };
 
-export default MobileVerification;
+export default Otp;

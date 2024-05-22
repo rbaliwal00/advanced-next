@@ -52,6 +52,15 @@
   margin: auto;
 }
 
+.cities {
+  width: 100vw;
+  padding: 2rem 0;
+  margin-left: 6rem;
+}
+.cities img {
+  padding: 0 0.8rem;
+}
+
 @media only screen and (max-width: 596px) {
   .gst_container {
     width: 80%;

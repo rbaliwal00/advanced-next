@@ -13,6 +13,7 @@ import {
 
 import styles from "./index.module.css";
 import Button from "@components/button";
+import { useMediaQuery } from "@mui/material";
 
 const desktopNavbarProps = {
   logo: SecondaryLogo,
@@ -129,6 +130,14 @@ const uploadDocProps = {
 };
 
 const PreferenceFormExp = ({ platform }: any) => {
+  const matches = useMediaQuery("(max-width:600px)");
+
+  if (matches) {
+    platform = "mobile";
+  } else {
+    platform = "web";
+  }
+
   return (
     <div className={styles.preference_form_exp}>
       {platform === "web" && (

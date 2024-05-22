@@ -1,30 +1,9 @@
-import Button from "@components/button";
-import { DesktopNavbar } from "@components/desktop-navbar";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import { Box, IconButton } from "@mui/material";
+import { Box } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
 
-import { Back, Payment, PrimaryLogo } from "@public/assets/icons";
-import {
-  Ads,
-  AdsActive,
-  Chat,
-  ChatActive,
-  Dash,
-  DashActive,
-  Home,
-  HomeActive,
-} from "@public/assets/icons/MobileNavbarIcons";
-import PreferenceFormExp from "./PreferenceFormExp";
-import GstPancard from "./GSTPancard";
+import { PrimaryLogo } from "@public/assets/icons";
+import ExperienceSelection from "./ExperienceSelection";
+import Otp from "./Otp";
 import PreferenceFormFresher from "./PreferenceFormFresher";
 
 const Component = (props) => {
@@ -99,10 +78,15 @@ const Component = (props) => {
   }
 
   return (
-    <div>
+    <div className="">
       {/* <GstPancard platform="mobile" /> */}
       {/* <PreferenceFormExp platform="web" /> */}
-      <PreferenceFormFresher platform="web" />
+      <PreferenceFormFresher />
+      {/* <MobileVerification /> */}
+      {/* <MobileNumberForm /> */}
+      {/* <MobileVerification /> */}
+      {/* <Otp /> */}
+      {/* <ExperienceSelection /> */}
     </div>
   );
 };

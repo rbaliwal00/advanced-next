@@ -21,3 +21,15 @@ export * as Pancard from "./pancard.svg";
 
 export * as PrimaryLogo from "./logo.svg";
 export * as SecondaryLogo from "./logo-secondary.svg";
+export * as HorecahAdsBanner from "./HorecahAdBanner.svg";
+export * as DelhiCityIcon from "./Delhi.svg";
+export * as BangaloreCityIcon from "./Bangalore.svg";
+
+export * as delhi from "./cities/delhi.png";
+export * as mumbai from "./cities/mumbai.png";
+export * as bangalore from "./cities/banglore.png";
+export * as kolkata from "./cities/kolkata.png";
+export * as hydrabad from "./cities/Hydrabad.png";
+
+export * as Fresher from "./fresher.png";
+export * as Experienced from "./experienced.png";

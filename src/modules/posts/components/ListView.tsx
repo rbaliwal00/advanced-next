@@ -24,6 +24,7 @@ import { back } from "nock";
 import UploadDoc from "@components/upload-doc";
 import UploadCard from "@components/upload-card";
 import RoundButton from "@components/round-button";
+import PreferenceFormFresher from "@modules/users/components/PreferenceFormFresher";
 
 const Component = (props) => {
   const { loadingPosts, posts = {}, onDelete } = props;
@@ -81,11 +82,12 @@ const Component = (props) => {
       {/* <RadioCard {...radioCardProps1} /> */}
       {/* <Topbar {...webTopbarProps} /> */}
       {/* <UploadDoc {...uploadDocProps} /> */}
-      {/* <UploadCard
+      <UploadCard
         description="Description"
         logo={Gst}
         buttonText="Upload GST"
-      /> */}
+      />
+      {/* <PreferenceFormFresher platform="web" /> */}
       <RoundButton label="Label" icon={EyeIcon} />
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

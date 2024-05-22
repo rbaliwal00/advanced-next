@@ -14,6 +14,7 @@ import RadioCard from "@components/radio-card";
 import UploadDoc from "@components/upload-doc";
 import Button from "@components/button";
 import { DesktopNavbar } from "@components/desktop-navbar";
+import { useMediaQuery } from "@mui/material";
 
 const desktopNavbarProps = {
   logo: SecondaryLogo,
@@ -149,6 +150,13 @@ const uploadDocProps = {
 
 const PreferenceFormFresher = ({ platform, ...props }: any) => {
   // const { router } = props;
+  const matches = useMediaQuery("(max-width:600px)");
+
+  if (matches) {
+    platform = "mobile";
+  } else {
+    platform = "web";
+  }
 
   return (
     <div className={styles.preference_form_exp}>

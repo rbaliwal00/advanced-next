@@ -1,0 +1,80 @@
+.profile_layout_bottom {
+  position: fixed;
+  bottom: 0;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0.2rem 0.2rem 2rem rgba(243, 244, 246, 1);
+  width: 100%;
+}
+
+.profile_layout_bottom_button {
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+}
+
+.preference_form_exp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.exp_margin_top {
+  margin-top: 2.5rem;
+}
+
+.exp_info_container {
+  position: relative;
+}
+
+.exp_info {
+  position: absolute;
+  color: white;
+  right: 1rem;
+  top: 1rem;
+}
+
+.content {
+  display: grid;
+  width: 100%;
+  justify-content: center;
+}
+
+.content_center {
+  padding: 1.875rem 2.1875rem;
+  box-shadow: rgba(0, 0, 0, 0.03) 0px 4px 25px;
+}
+
+.gst_container {
+  width: 50%;
+  margin: auto;
+}
+
+.cities {
+  width: 100vw;
+  padding: 2rem 0;
+  margin-left: 6rem;
+}
+.cities img {
+  padding: 0 0.8rem;
+}
+
+@media only screen and (max-width: 596px) {
+  .gst_container {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .gst_container {
+    width: 100%;
+    margin: auto;
+  }
+  .exp_info {
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+}

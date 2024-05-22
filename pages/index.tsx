@@ -1,13 +1,14 @@
 import React from "react";
 
 import { Cards, Container, Footer, Header, Main } from "@components";
-import Button from "@components/button";
+import Form from "@components/form";
 
 const Home: React.FC = () => {
   return (
-    <div>
-      <Button />
-    </div>
+    <Container>
+      <Header />      
+      <Form />
+    </Container>
   );
 };
 

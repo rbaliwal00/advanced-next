@@ -6,11 +6,12 @@ import { action } from '@storybook/addon-actions';
 // import { DesktopNavbar } from './DesktopNavbar';
 import Image from 'next/image';
 import successLogo from './assets/webImages/kycSucess.png'
-import { LogoutIcon, horecaHLogo, kycSucess, rejectLogo } from '@public/assests';
+import { LogoutIcon, horeca, kycSucess, rejectLogo } from '@public/assests';
 
 import './index.module.css'
 import Topbar from '@components/top-bar';
 import styles from './index.module.css'
+import { DesktopNavbar } from '@components/desktop-navbar';
 
 
 
@@ -70,14 +71,14 @@ const topBar = {
     backgroundColor: "#113B73",
     color: "white",
     button: LogoutIcon,
-    logo: horecaHLogo,
+    logo: horeca,
     progress: '30%',
 }
 const KYCSucess = () => {
     return (
         <div className={styles.kyc}>
             <div className={styles.desktopNav}>
-                {/* <DesktopNavbar {...desktopNavbarProps} /> */}
+                <DesktopNavbar />
             </div>
             <div className={styles.topBar}>
                 <Topbar {...topBar} />
@@ -85,7 +86,7 @@ const KYCSucess = () => {
             <h1>Verification</h1>
             <div className={styles['kyc-info']}>
                 <Image src={kycSucess} alt='no img' />
-                <h3>Your KYC has been accepted</h3>
+                <h3 className='py-7 text-3xl'>Your KYC has been accepted</h3>
                 <h2>Welcome To <br />
                     <span className={styles.h}>H</span>
                     <span className={styles.o}>o</span>

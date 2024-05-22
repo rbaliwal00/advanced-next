@@ -40,6 +40,9 @@
     .desktopNav{
         display: none;
     }
+    .kyc h1{
+        visibility: hidden;
+    }
 }
 @media (min-width: 900px) {
     .topBar{

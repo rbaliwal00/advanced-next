@@ -32,7 +32,7 @@ const Topbar = ({label,logo, button, logoHeight, color, backgroundColor, progres
                     <Image 
                         src={logo} alt=''
                         className=''
-                        height={logoHeight ?? 30}
+                        height={400}
                     />
                 </div>}
                 {/* <div className={`${styles['topbar-progress']}`}>

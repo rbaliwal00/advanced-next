@@ -1,6 +1,9 @@
 .bgPrimary{
     background-color: #002351;
     color: white;
+    padding: 2.5rem 0;  
+    /* height: 90vh; */
+    /* overflow-y: hidden; */
 }
 .register {
     text-align: center;
@@ -39,6 +42,9 @@
       }
       .navbar {
         display: none;
+      }
+      .select-user{
+        margin-left: 1.3rem;
       }
 
 }

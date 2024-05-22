@@ -13,13 +13,14 @@
 }
 
 .kyc-info-wel img {
-    width: 20rem;
-    height: 20rem;
+    width: 250px;
+    height: 250 px;
 }
 
 .kyc-info-wel h2 {
     font-weight: 600;
     opacity: 0.7;
+    font-size: 36px;
 }
 
 .kyc-info-wel .h {
@@ -60,12 +61,20 @@
     .kyc-info-wel h2 {
         opacity: 1;
     }
+    .kyc-info-wel img {
+        width: 366px;
+        height: 366px;
+    }
 }
 
 @media (max-width: 300px) {
     .kyc-info-wel h2 {
         font-size: 22px;
         line-height: 20px;
+    }
+    .kyc-info-wel img {
+        width: 366px;
+        height: 366px;
     }
 }
 

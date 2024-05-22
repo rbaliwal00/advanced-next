@@ -1,12 +1,12 @@
 .topbar-container{
     background-color: #113B73;
-    width: 96%;
+    width: 100%;
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    height: 2.7rem;
+    height: 5rem;
     box-shadow: rgba(0, 35, 81, 0.03) 0px 4px 15px;
 }
 

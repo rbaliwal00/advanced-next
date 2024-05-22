@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-// import h_animation from '@public/assests/'
-import horecLogo from './assets/webImages/horecah wt 1.png'
+import ani_img from '@public/assests/h_animation.gif'
 import styles from './index.module.css'
 import { horeca } from '@public/assests';
 
@@ -64,10 +63,10 @@ const WelcomePage = () => {
                 {/* <DesktopNavbar {...desktopNavbarProps} /> */}
             </div>
             <div className={styles['logo-wel']}>
-               <Image src={horeca} alt='no img' />
+               <Image src={horeca} alt='no img' width={200} height={100}/>
             </div>
             <div className={styles['kyc-info-wel']}>
-                <Image src={''} alt='no img' />
+                <Image src={ani_img} alt='no img' />
                 <h2>Welcome To&nbsp;
                     <span className={styles.h}>H</span>
                     <span className={styles.o}>o</span>

@@ -18,7 +18,7 @@
 }
 .kyc-info h4 {
     width: 30%;
-    margin: auto;
+    margin: 1.5rem auto;
     font-weight: 600;
     font-size: 20px;
     line-height: 38px;
@@ -62,6 +62,9 @@
     }
     .kyc h1{
         visibility: hidden;
+    }
+    .kyc-info h4 {
+        width: 65%;
     }
 }
 @media (min-width: 900px) {

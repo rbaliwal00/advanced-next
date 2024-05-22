@@ -34,7 +34,7 @@ const RoleSelection = (data: Slide[]) => {
           <Image src={horeca} alt="no img" width={200} height={100} />
           <h1 className={styles.heading}>Register to</h1>
         </div>
-        <div className=" grid grid-rows-[6fr_3fr] justify-items-center h-[100vh]">
+        <div className=" grid grid-rows-[3fr_3fr] justify-items-center h-[100vh]">
           <div
             className={`grid grid-cols-[1fr_1fr] gap-2 self-center w-full ${styles["reg-main"]} `}
           >

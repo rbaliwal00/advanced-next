@@ -8,7 +8,7 @@ import horecahWT from './assets/webImages/horecah wt 1.png'
 import back from './assets/webImages/backIcons.png'
 import { action } from '@storybook/addon-actions';
 import Topbar from '@components/top-bar';
-import { LogoutIcon, horecaHLogo, kycSucess, kycVerificationLogo, rejectLogo } from '@public/assests';
+import { LogoutIcon, horeca, kycSucess, kycVerificationLogo, rejectLogo } from '@public/assests';
 
 // const desktopNavbarProps = {
 //     logo: horecahWT,
@@ -66,7 +66,7 @@ const topBar = {
     backgroundColor: "#113B73",
     color: "white",
     button: LogoutIcon,
-    logo: horecaHLogo,
+    logo: horeca,
     progress: '30%',
 }
 

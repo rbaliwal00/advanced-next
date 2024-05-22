@@ -1,0 +1,76 @@
+.kyc {
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+}
+
+.kyc-info-wel {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.kyc-info-wel img {
+    width: 20rem;
+    height: 20rem;
+}
+
+.kyc-info-wel h2 {
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+.kyc-info-wel .h {
+    color: rgb(39, 148, 84);
+}
+
+.kyc-info-wel .o {
+    color: red;
+}
+
+.kyc-info-wel .e {
+    color: orange;
+}
+
+.kyc-info-wel .c {
+    color: rgb(172, 57, 4);
+}
+
+.logo-wel {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .desktopNav {
+        display: none;
+    }
+    .logo-wel {
+        display: block;
+        width: 142px;
+        height: 49.39px;
+        margin: auto;
+        padding: 2rem 0;
+    }
+    .kyc {
+        background: #113B73;
+        color: white;
+    }
+    .kyc-info-wel h2 {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 300px) {
+    .kyc-info-wel h2 {
+        font-size: 22px;
+        line-height: 20px;
+    }
+}
+
+/* @media (max-width: 500px) {
+    .logo-wel {
+        display: block;
+    }
+} */

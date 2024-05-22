@@ -46,3 +46,26 @@
   padding: 1.875rem 2.1875rem;
   box-shadow: rgba(0, 0, 0, 0.03) 0px 4px 25px;
 }
+
+.gst_container {
+  width: 50%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 596px) {
+  .gst_container {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .gst_container {
+    width: 100%;
+    margin: auto;
+  }
+  .exp_info {
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+}

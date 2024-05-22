@@ -26,7 +26,7 @@ export const DesktopNavbar = ({
   platform,
   ...props
 }: HeaderProps) => {
-  const mode = primary ? "header--primary" : "header--secondary";
+  const mode = primary ? styles.header__primary : styles.header__secondary;
 
   return (
     <header

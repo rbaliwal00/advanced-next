@@ -1,4 +1,5 @@
 import Button from "@components/button";
+import { DesktopNavbar } from "@components/desktop-navbar";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { Box, IconButton } from "@mui/material";
@@ -22,10 +23,72 @@ import {
   Home,
   HomeActive,
 } from "@public/assets/icons/MobileNavbarIcons";
+import PreferenceFormExp from "./PreferenceFormExp";
+import GstPancard from "./GSTPancard";
+import PreferenceFormFresher from "./PreferenceFormFresher";
 
 const Component = (props) => {
   const { loadingPosts, posts = {}, onDelete } = props;
   const { nodes = [] } = posts;
+
+  const desktopNavbarProps = {
+    logo: PrimaryLogo,
+    primary: true,
+    rightNavItems: [
+      {
+        id: 1,
+        type: "link",
+        title: "Hire",
+        path: "/hire",
+      },
+      {
+        id: 2,
+        type: "link",
+        title: "Become Supplier",
+        path: "/supplier",
+      },
+      {
+        id: 3,
+        type: "link",
+        title: "Job / Internship",
+        path: "/job",
+      },
+      {
+        id: 4,
+        type: "link",
+        title: "Job / Internship",
+        path: "/job",
+      },
+    ],
+    leftNavItems: [
+      {
+        id: 1,
+        type: "dropdown",
+        title: "Jobs",
+        path: "jobs",
+        links: [
+          {
+            id: 1,
+            type: "link",
+            title: "Search Jobs",
+            path: "/search-jobs",
+          },
+          {
+            id: 2,
+            type: "link",
+            path: "/manage-jobs",
+            title: "Manage Jobs",
+          },
+        ],
+      },
+      {
+        id: 2,
+        type: "link",
+        title: "Learning",
+        path: "/learning",
+      },
+    ],
+  };
 
   if (loadingPosts) {
     return (
@@ -36,69 +99,10 @@ const Component = (props) => {
   }
 
   return (
-    <div style={{ padding: "24px" }}>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Id</TableCell>
-              <TableCell>Banner</TableCell>
-              <TableCell>Title</TableCell>
-              <TableCell>Sub title</TableCell>
-              <TableCell>Category</TableCell>
-              <TableCell align="right">Actions</TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {nodes.map((node) => (
-              <TableRow
-                key={node.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="node">
-                  {node.id}
-                </TableCell>
-
-                <TableCell component="th" scope="node">
-                  {node.banner}
-                </TableCell>
-
-                <TableCell component="th" scope="node">
-                  {node.title}
-                </TableCell>
-
-                <TableCell component="th" scope="node">
-                  {node.sub_title}
-                </TableCell>
-
-                <TableCell component="th" scope="node">
-                  {node.category}
-                </TableCell>
-
-                <TableCell align="right">
-                  <IconButton
-                    aria-label="edit"
-                    color={"primary"}
-                    href={`/posts/update/${node.id}`}
-                  >
-                    <EditIcon />
-                  </IconButton>
-
-                  <IconButton
-                    aria-label="delete"
-                    color={"error"}
-                    onClick={() => onDelete(node.id)}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <Button text="LAVELLLL" />
+    <div>
+      {/* <GstPancard platform="mobile" /> */}
+      {/* <PreferenceFormExp platform="web" /> */}
+      <PreferenceFormFresher platform="web" />
     </div>
   );
 };

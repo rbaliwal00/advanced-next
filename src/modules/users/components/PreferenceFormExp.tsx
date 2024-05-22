@@ -141,7 +141,7 @@ const PreferenceFormExp = ({ platform }: any) => {
           {platform === "web" && <Topbar {...webTopbarProps} />}
           {platform === "mobile" && <Topbar {...mobileTopbarProps} />}
           <div
-            className={`${styles.exp_margin__top} ${styles.exp_info_container}`}
+            className={`${styles.exp_margin_top} ${styles.exp_info_container}`}
           >
             <InfoOutlinedIcon
               className={styles.exp_info}

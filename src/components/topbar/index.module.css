@@ -25,7 +25,7 @@
 }
 
 .topbar_label {
-  font-size: 1.44rem;
+  font-size: 1.2rem;
 }
 
 .topbar_label_button {
@@ -42,7 +42,7 @@
 
 @media only screen and (max-width: 576px) {
   .topbar_label {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .topbar_label_button {

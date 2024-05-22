@@ -90,8 +90,8 @@ const GstPancard = ({ platform }: any) => {
           <DesktopNavbar {...desktopNavbarProps} />
         </div>
       )}
-      <div className={styles.content}>
-        <div className={`${styles.content_center} w-7/12 m-auto`}>
+      <div className={styles.gst_container}>
+        <div className={`${styles.content_center}`}>
           {platform === "web" && <Topbar {...webTopbarProps} />}
           {platform === "mobile" && <Topbar {...mobileTopbarProps} />}
           <div className="mt-10">
@@ -105,7 +105,7 @@ const GstPancard = ({ platform }: any) => {
             <UploadCard
               description="Description"
               logo={Pancard}
-              buttonText="Upload GST"
+              buttonText="Upload PAN"
             />
           </div>
           <div className="flex justify-between mt-10">

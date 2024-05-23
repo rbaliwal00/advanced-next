@@ -22,7 +22,7 @@ const withPosts = (Component: FunctionComponent) =>
         refetch: refetchPosts,
       } = data as any;
 
-      if (error) throw new Error(error.message);
+      // if (error) throw new Error(error.message);
       return {
         loadingPosts,
         posts,

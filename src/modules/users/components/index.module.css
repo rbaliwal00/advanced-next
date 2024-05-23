@@ -61,7 +61,7 @@
   padding: 0 0.8rem;
 }
 
-@media only screen and (max-width: 596px) {
+@media only screen and (max-width: 600px) {
   .gst_container {
     width: 80%;
     margin: auto;

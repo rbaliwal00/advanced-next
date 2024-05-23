@@ -24,6 +24,10 @@ const responsiveFontSize = {
   },
 };
 
+const filePropType = (typeof window !== 'undefined' && typeof File !== 'undefined')
+    ? PropTypes.instanceOf(File).isRequired
+    : PropTypes.any;
+
 class FieldAdapter extends Component {
   static propTypes = {
     formik: PropTypes.object.isRequired,
@@ -46,7 +50,7 @@ class FieldAdapter extends Component {
       PropTypes.string,
       PropTypes.object, // For date or complex objects
       PropTypes.array, // for multiSelect
-      PropTypes.instanceOf(File), // For file inputs
+      filePropType
     ]),
   };
 

@@ -1,57 +1,15 @@
-import { ReactNode, useEffect, useState } from 'react';
-import {  useMediaQuery } from '@mui/material';
-import JobVisitingCard from '../visitingCard/JobVisitingCard';
+import HireVisitingCard from '@components/visitingCard/HireVisitingCard';
+import JobVisitingCard from '@components/visitingCard/JobVisitingCard';
+import { Download, Edit } from '@mui/icons-material';
+import { useMediaQuery } from '@mui/material';
+import { Back, EyeIcon, Gst, OrangeShare, Pan, PrimaryLogo, SecondaryLogo } from '@public/assets/icons';
 import Image from 'next/image';
-import HireVisitingCard from '../visitingCard/HireVisitingCard';
+import Button from '../button';
 import { DesktopNavbar } from '../desktop-navbar';
 import RoundButton from '../round-button';
 import Topbar from '../topbar';
-import Button from '../button';
-import { Download, Edit } from '@mui/icons-material';
-import { SecondaryLogo, Back, PrimaryLogo, EyeIcon, OrangeShare, Pan, Gst } from '@public/assets/icons';
 
-
-
-
-export interface BottomSheetProps {
-  label: string;
-  buttonTitle: string;
-  buttonFunction?: () => void;
-  closeOnBackdropClick: boolean;
-  children?: ReactNode
-}
-
-const HireVisitingCardPage = ({children,...props}:BottomSheetProps) => {
-
-  const [isOpen, setOpen] = useState(false);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
-  const handleClose = () => {
-    console.log('handle speed =>',)
-    setOpen(false);
-  };
-
-  const handleButtonFunction = () => {
-    
-    return !props.buttonFunction ? handleClose() : props.buttonFunction()
-  };
-
-  const handleBackDropClick = () => {
-    return !!props.closeOnBackdropClick ? handleClose() : null;
-  }
+const HireVisitingCardPage = () => {
 
   const leftNavitems =  [
     {
@@ -107,19 +65,6 @@ const HireVisitingCardPage = ({children,...props}:BottomSheetProps) => {
     leftNavItems: leftNavitems,
     rightNavItems: rightNavItems,
     logo: SecondaryLogo
-  }
-
-  const supplierVisitingData = {
-    address:"Anywhere St., Any City, ST 12345",
-    brandName:"Brand Name",
-    companyName:"Company Name",
-    contactPersonName:"Contact Person Name",
-    email:"ceo@email.com",
-    imageURL:"https://d27jswm5an3efw.cloudfront.net/app/uploads/2019/08/image-url-3.jpg",
-    mobileNumber:"+91 9900653064",
-    natureOfBusiness:"Nature of Business",
-    themeColor:"blue",
-    website:"www.horecah.com"
   }
 
   const jobData = {

@@ -1,67 +1,17 @@
-import { ReactNode, useEffect, useState } from 'react';
-// import Button from './Button';
-import {  useMediaQuery } from '@mui/material';
-// import { DesktopNavbar } from './DesktopNavbar';
-
-// import { Back, Download, Edit, EyeIcon, GST, OrangeShare, Pan, PrimaryLogo, SecondaryLogo } from './assets/icons';
-import JobVisitingCard from '../visitingCard/JobVisitingCard';
-
-import Image from 'next/image';
-
-
+import JobVisitingCard from '@components/visitingCard/JobVisitingCard';
 import { Download, Edit, Share } from '@mui/icons-material';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import company from './assets/company.png';
-// import { SecondaryLogo, Back, PrimaryLogo, EyeIcon, Download, Edit, EyeIcon, GST, OrangeShare, Pan  } from '@public/assets/icons';
+import { useMediaQuery } from '@mui/material';
+import { Back, EyeIcon, Gst, OrangeShare, Pan, PrimaryLogo, SecondaryLogo } from '@public/assets/icons';
+import Image from 'next/image';
+import Button from '../button';
 import { DesktopNavbar } from '../desktop-navbar';
 import RoundButton from '../round-button';
 import Topbar from '../topbar';
-import { SecondaryLogo, Back, PrimaryLogo, EyeIcon, OrangeShare, Pan, Gst } from '@public/assets/icons';
-import Button from '../button';
+import company from './assets/company.png';
 
 
-
-
-
-export interface BottomSheetProps {
-  label: string;
-  buttonTitle: string;
-  buttonFunction?: () => void;
-  closeOnBackdropClick: boolean;
-  children?: ReactNode
-}
-
-const ExperiencedVisitingCardPage = ({children,...props}:BottomSheetProps) => {
-
-  const [isOpen, setOpen] = useState(false);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
-  const handleClose = () => {
-    console.log('handle speed =>',)
-    setOpen(false);
-  };
-
-  const handleButtonFunction = () => {
-    
-    return !props.buttonFunction ? handleClose() : props.buttonFunction()
-  };
-
-  const handleBackDropClick = () => {
-    return !!props.closeOnBackdropClick ? handleClose() : null;
-  }
+const ExperiencedVisitingCardPage = () => {
 
   const leftNavitems =  [
     {

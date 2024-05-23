@@ -1,0 +1,82 @@
+.kyc {
+    font-family: 'Poppins', sans-serif;
+}
+.kyc-info {
+    
+    text-align: center;
+    
+}
+.kyc-info img {
+    width: 12rem;
+    height: 12rem;   
+}
+.kyc-info h4{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 38px;
+    opacity: 0.7;
+}
+.kyc-info h4 {
+    width: 30%;
+    margin: 1.5rem auto;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 38px;
+    opacity: 0.7;
+}
+.kyc-info .h{
+    color: rgb(39, 148, 84);
+}
+.kyc-info .o{
+    color: red;
+}
+.kyc-info .e {
+    color: orange;
+}
+.kyc-info .c {
+    color: rgb(172, 57, 4);
+}
+.kyc-info button {
+    border: none;
+    border-bottom: 2px solid #FE8B4C;
+    cursor: pointer;
+    background: transparent;
+    color: #FE8B4C;
+    font-weight: 600;
+    font-size: 24px;
+   
+}
+.kyc h1 {
+    box-shadow: 2px 2px 3px rgb(212, 211, 211);
+    width: 80%;
+    margin: 2rem auto;
+    border-radius: 0.4rem;
+    opacity: 0.7;
+    font-size: 1.5rem;
+    padding: 0.4rem;
+}
+
+@media (max-width: 900px) {
+    .desktopNav{
+        display: none;
+    }
+    .kyc h1{
+        visibility: hidden;
+    }
+    .kyc-info h4 {
+        width: 65%;
+    }
+}
+@media (min-width: 900px) {
+    .topBar{
+        display: none;
+    }
+}
+@media (max-width: 300px) {
+    .kyc-info h2 {
+        /* font-weight: 600; */
+    font-size: 30px;
+    line-height: 30px;
+    /* opacity: 0.7; */
+    }
+}

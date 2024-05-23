@@ -11,6 +11,9 @@ import {
   mumbai,
 } from "@public/assets/icons";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { addBanner } from "@public/assests";
 
 const MobileVerification = () => {
   const desktopNavbarProps = {
@@ -100,17 +103,41 @@ const MobileVerification = () => {
         </div>
       ) : (
         <div>
-          <div className="bg-[#113B73] text-white h-[100vh]">
+          <div className="bg-[#002351] text-white h-[100vh]">
             <DesktopNavbar {...desktopNavbarProps} />
             <div className="flex gap-4 ">
               <div className="w-1/2 flex justify-center">
                 <div className="mb-10 p-6 ">
+                  <div className="text-start pl-7">
                   <h5 className="text-[23.04px]">Why join Horecah</h5>
                   <p>2000+ Student cvs to select</p>
                   <p>500+ Hotel to Apply</p>
                   <p>100+ Suppliers ready for service</p>
                   <div className="mt-10">
-                    <Image src={HorecahAdsBanner} alt="" />
+                  </div>
+                  <Swiper
+                  pagination={{ type: "bullets", clickable: true }}
+                  autoplay={{ delay: 2000 }}
+                  loop
+                  modules={[Navigation, Pagination, Autoplay]}
+                  className="center"
+                  style={{
+                    textAlign: "center",
+                    margin: "auto",
+                    width: "400px",
+                  }}
+                >
+                  {[1, 2, 3].map((el: number) => (
+                    <SwiperSlide key={el}>
+                      <Image
+                        src={addBanner}
+                        width={700}
+                        height={300}
+                        alt="image"
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
                   </div>
                 </div>
               </div>

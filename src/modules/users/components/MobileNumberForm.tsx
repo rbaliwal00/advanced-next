@@ -10,7 +10,7 @@ const MobileNumberForm = ({
   onClick,
 }: any) => {
   return (
-    <div className="bg-[#113B73] text-white">
+    <div className="bg-[#002351] text-white">
       <h3 className="text-[33.18px] font-[600]">Enter Mobile Number</h3>
       <p className="text-center font-[400] text-[13.33px] mb-20">
         We Will send you a Confirmation Code

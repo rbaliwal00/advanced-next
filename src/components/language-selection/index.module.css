@@ -1,7 +1,7 @@
 .main-page {
     min-width: 100%;
     height: 100%;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     overflow: hidden;
     background-color: #113B73;
 }
@@ -37,6 +37,9 @@
 .cities img{
     padding: 0 0.8rem;
 }
+/* .navbar {
+    display: block;
+} */
 @media (max-width: 1000px) {
     .languages-grid {
         grid-template-columns: repeat(3, 1fr); 
@@ -49,6 +52,7 @@
     .languages-grid {
         grid-template-columns: repeat(2, 1fr); 
     }
+    
 }
 @media (max-width: 300px) {
     .languages-grid {
@@ -69,8 +73,6 @@
         display: none;
         /* visibility: hidden; */
     }
-    /* .languages-grid {
-        grid-template-columns: 1fr; 
-    } */
+   
 
 }

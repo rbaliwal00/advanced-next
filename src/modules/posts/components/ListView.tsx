@@ -5,8 +5,6 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-// import Paper from "@mui/material/Paper";
-// import { Box, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -39,6 +37,9 @@ import UploadDoc from "@components/upload-doc";
 import UploadCard from "@components/upload-card";
 import RoundButton from "@components/round-button";
 import PreferenceFormFresher from "@modules/users/components/PreferenceFormFresher";
+import Experience from "@components/cv/Experience";
+import Otp from "@modules/users/components/Otp";
+import MobileVerification from "@modules/users/components/MobileVerification";
 
 const Component = (props: any) => {
   const { loadingPosts, posts = {}, onDelete } = props;
@@ -179,7 +180,7 @@ const Component = (props: any) => {
     <>
       {/* <TabButton {...tabButtonpProps}/> */}
 
-    {/* <KYCReject  contact={contactFun}/> 
+    {/* <KYCReject  contact={contactFun}/>  */}
 
     {/* <CV {...cvProps}/> */}
 
@@ -195,9 +196,13 @@ const Component = (props: any) => {
 
     {/* <Popup {...popupProps}/> */}
 
-    <WelcomePage/>
+    {/* <WelcomePage/> */}
 
-    {/* <RoleSelection /> */}
+    <RoleSelection />
+    {/* <PreferenceFormFresher /> */}
+
+    {/* <Otp /> */}
+    <MobileVerification />
     </>
   );
 };

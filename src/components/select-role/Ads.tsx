@@ -7,23 +7,12 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { addBanner } from "@public/assests";
 import styles from './index.module.css'
 
-interface Slide {
-  id: number;
-  title: string;
-  tagline: string;
-  image: string;
-}
-
-// interface DemoSliderProps {
-//   data: Slide[];
-// }
-
-const Ads = (data: Slide[]) => {
+const Ads = () => {
   return (
     <div className={`grid gap-8 justify-center border-r-[3px] border-r-white border-solid ${styles['side-bar']}`}>
-      <div className={`text-center `}>
+      <div className={`text-start pl-7`}>
         <h1 className="text-3xl font-bold py-6">Why join Horecah</h1>
-        <ul className="leading-[1.8rem] text-xl">
+        <ul className="leading-[1.8rem] text-xl ">
           <li>2000+ Student cvs to select</li>
           <li>500+ Hotel to Apply</li>
           <li>100+ Suppliers ready for service</li>
@@ -39,7 +28,9 @@ const Ads = (data: Slide[]) => {
       >
         {[1, 2, 3].map((el: number) => (
           <SwiperSlide key={el}>
+            {/* <div className={styles.bannerImage}> */}
             <Image src={addBanner} width={800} height={400} alt="image" />
+            {/* </div> */}
           </SwiperSlide>
         ))}
       </Swiper>

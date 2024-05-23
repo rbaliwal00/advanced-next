@@ -1,12 +1,13 @@
+
 .topbar-container{
-    background-color: #113B73;
+    background-color: #002351;
     width: 100%;
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    height: 5rem;
+    height: 4rem;
     box-shadow: rgba(0, 35, 81, 0.03) 0px 4px 15px;
 }
 
@@ -27,6 +28,7 @@
 
 .topbar-label{
     font-size: 1.44rem;
+    font-weight: bold;
 }
 
 .topbar-label-button{

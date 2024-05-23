@@ -24,10 +24,50 @@ import LanguageSelection from "@components/language-selection";
 import Popup from "@components/popup";
 import WelcomePage from "@components/welcome-page";
 import RoleSelection from "@components/select-role";
+import Button from "@components/button";
+import RadioCard from "@components/radio-card";
+import {
+  EyeIcon,
+  Gst,
+  OneDayJob,
+  PrimaryLogo,
+  SecondaryLogo,
+} from "@public/assets/icons";
+import Topbar from "@components/topbar";
+import { back } from "nock";
+import UploadDoc from "@components/upload-doc";
+import UploadCard from "@components/upload-card";
+import RoundButton from "@components/round-button";
+import PreferenceFormFresher from "@modules/users/components/PreferenceFormFresher";
 
 const Component = (props: any) => {
   const { loadingPosts, posts = {}, onDelete } = props;
   const { nodes = [] } = posts;
+
+  // const radioCardProps1 = {
+  //   label: "Do you want one day job ?",
+
+  //   buttons: [
+  //     {
+  //       id: "1",
+  //       label: "Yes",
+  //     },
+  //     {
+  //       id: "2",
+  //       label: "No",
+  //     },
+  //   ],
+  //   icon: OneDayJob,
+  // };
+
+  // const webTopbarProps = {
+  //   label: "Last Step",
+  //   backgroundColor: "white",
+  //   color: "#374151",
+  //   progress: "30%",
+  //   borderRadius: 12,
+  //   logo: SecondaryLogo,
+  // };
 
   if (loadingPosts) {
     return (
@@ -139,7 +179,7 @@ const Component = (props: any) => {
     <>
       {/* <TabButton {...tabButtonpProps}/> */}
 
-    {/* <KYCReject  contact={contactFun}/> */}
+    {/* <KYCReject  contact={contactFun}/> 
 
     {/* <CV {...cvProps}/> */}
 
@@ -158,70 +198,7 @@ const Component = (props: any) => {
     <WelcomePage/>
 
     {/* <RoleSelection /> */}
-
-
-      {/* <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Id</TableCell>
-              <TableCell>Banner</TableCell>
-              <TableCell>Title</TableCell>
-              <TableCell>Sub title</TableCell>
-              <TableCell>Category</TableCell>
-              <TableCell align="right">Actions</TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {nodes.map((node) => (
-              <TableRow
-                key={node.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="node">
-                  {node.id}
-                </TableCell>
-
-                <TableCell component="th" scope="node">
-                  {node.banner}
-                </TableCell>
-
-                <TableCell component="th" scope="node">
-                  {node.title}
-                </TableCell>
-
-                <TableCell component="th" scope="node">
-                  {node.sub_title}
-                </TableCell>
-
-                <TableCell component="th" scope="node">
-                  {node.category}
-                </TableCell>
-
-                <TableCell align="right">
-                  <IconButton
-                    aria-label="edit"
-                    color={"primary"}
-                    href={`/posts/update/${node.id}`}
-                  >
-                    <EditIcon />
-                  </IconButton>
-
-                  <IconButton
-                    aria-label="delete"
-                    color={"error"}
-                    onClick={() => onDelete(node.id)}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer> */}
-      </>
+    </>
   );
 };
 

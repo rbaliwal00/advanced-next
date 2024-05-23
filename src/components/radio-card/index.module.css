@@ -1,0 +1,103 @@
+.radio_card {
+  background-color: #113b73;
+  border-radius: 1.2rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.1;
+  height: 5.2rem;
+  box-shadow: rgba(0, 35, 81, 0.15) 0px 5px 25px;
+  padding: 3rem 0rem;
+  /* font-family: 'Poppins'; */
+}
+
+.radio_card_content {
+  padding: 2rem 2rem;
+}
+
+.radio_card_inputs {
+  display: flex;
+  justify-content: start;
+  gap: 3rem;
+  align-items: center;
+}
+
+.radio_card_input {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+}
+
+.radio_card_heading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.radio_card_icon {
+  margin-right: 2.5rem;
+}
+
+.btn_label {
+  font-size: 1rem;
+}
+
+.radio_card_inputs input[type="radio"] {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid #fff; /* Border color for unchecked state */
+  border-radius: 50%; /* Make the input a circle */
+  margin-right: 0.7rem;
+}
+
+/* Styling for the radio buttons when checked */
+.radio_card_inputs input[type="radio"]:checked {
+  border: 4px solid #fff; /* Background color when checked */
+  /* background-color: #fff; */
+}
+
+/* Hide the default radio button */
+.radio_card_inputs input[type="radio"]::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: transparent; /* Make the inside transparent */
+}
+
+@media only screen and (max-width: 576px) {
+  .radio_card {
+    font-size: 1rem;
+    padding: 1rem 0rem;
+  }
+
+  .radio_card_content {
+    padding: 1rem 1rem;
+  }
+
+  .radio_card_inputs {
+    gap: 1rem;
+  }
+
+  .radio_card_heading {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .radio_card_icon {
+    margin-right: 0.5rem;
+  }
+
+  .btn_label {
+    font-size: 0.8rem;
+  }
+
+  .radio_card_inputs input[type="radio"] {
+    margin-right: 0.3rem;
+  }
+}

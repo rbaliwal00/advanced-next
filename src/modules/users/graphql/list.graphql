@@ -1,0 +1,20 @@
+query Posts($limit: Int, $id: Int_comparison_exp) {
+  posts: posts_aggregate(
+    limit: $limit
+    order_by: { id: desc }
+    where: { id: $id }
+  ) {
+    aggregate {
+      count
+    }
+    nodes {
+      id
+      banner
+      category
+      sub_title
+      title
+      updated_at
+      created_at
+    }
+  }
+}

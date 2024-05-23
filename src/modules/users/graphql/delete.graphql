@@ -1,0 +1,5 @@
+mutation deletePost($id: Int!) {
+  post: delete_posts_by_pk(id: $id) {
+    id
+  }
+}

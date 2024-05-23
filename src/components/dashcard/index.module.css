@@ -1,0 +1,104 @@
+.dash_card {
+  border: 1px solid #efefef;
+  border-radius: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 1rem 1rem 1rem 1rem;
+  height: 10rem;
+  width: 15.4rem;
+  position: relative;
+  display: flex;
+  text-decoration: none;
+}
+
+.dash_card_last_updated {
+  color: #c1c1c1;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+}
+
+.dash_card_last_updated_date {
+  letter-spacing: 1px;
+}
+
+.dash_card_content {
+  position: absolute;
+  bottom: 10px;
+}
+
+.dash_card_title {
+  color: #484848;
+  font-weight: 600;
+  font-size: 1.3rem;
+  max-width: 10rem;
+}
+
+.dash_card_image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6rem;
+  transform: translate(10%, -30%);
+}
+
+.dash_card_progress {
+  background-color: #efefef;
+}
+
+.dash_card_progress > div {
+  background-color: #fe8b4c;
+  height: 0.2rem;
+}
+
+.dash_card_progress_percentage {
+  color: #fe8b4c;
+  font-size: 1rem;
+}
+
+.dash_card_content {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.stats {
+  color: #efefef;
+  font-weight: 400;
+}
+
+.count {
+  font-size: 2rem;
+}
+
+.count1 {
+  font-size: 4rem;
+}
+
+@media only screen and (max-width: 400px) {
+  .dash_card {
+    font-size: 0.8rem;
+  }
+
+  .dash_card_image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4rem;
+    transform: translate(10%, -30%);
+  }
+
+  .dash_card_title {
+    color: #484848;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .count {
+    font-size: 1.8rem;
+  }
+
+  .dash_card_last_updated {
+    color: #c1c1c1;
+    font-weight: 400;
+    font-size: 0.6rem;
+  }
+}

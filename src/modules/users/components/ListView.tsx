@@ -8,6 +8,7 @@ import PreferenceFormFresher from "./PreferenceFormFresher";
 import SupplierThemeSelection from "@components/themeSelection/SupplierThemeSelection";
 import PreferenceFormExp from "./PreferenceFormExp";
 import SupplierVisitingCardPage from "@components/visitingCardPage/SupplierVisitingCardPage";
+import GstPancard from "./GSTPancard";
 
 const Component = (props) => {
   const { loadingPosts, posts = {}, onDelete } = props;
@@ -83,7 +84,7 @@ const Component = (props) => {
   return (
     <div className="">
       {/* <GstPancard platform="mobile" /> */}
-      <PreferenceFormExp platform="web" />
+      <PreferenceFormExp onClick={props.handleClick} />
       {/* <PreferenceFormFresher /> */}
       {/* <SupplierThemeSelection label={""} buttonTitle={""} closeOnBackdropClick={false} /> */}
       {/* <SupplierVisitingCardPage /> */}

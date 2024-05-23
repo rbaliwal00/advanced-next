@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./index.module.css";
+import { Box, LinearProgress } from "@mui/material";
 
 export type TopbarProps = {
   label?: string;
@@ -15,6 +16,17 @@ export type TopbarProps = {
   borderRadius?: number;
 };
 
+const ProgressBar = (progress: string = "") => {
+  return (
+    <LinearProgress
+      variant="determinate"
+      value={30}
+      style={{ background: "#E5E7EB" }}
+      sx={{ "& .MuiLinearProgress-bar": { backgroundColor: "#FE8B4C" } }}
+    />
+  );
+};
+
 const Topbar = ({
   label,
   logo,
@@ -27,36 +39,37 @@ const Topbar = ({
   borderRadius,
   platform,
 }: TopbarProps) => {
-  return (
-    <header
-      className={`${styles.topbar_container} ${styles.clearfix}`}
-      style={{ backgroundColor, color, borderRadius }}
-    >
-      <div className={styles.topbar_back_button}>
-        {button && <Image src={button} alt="" className="" onClick={onBack} />}
-        <div
-          className={`${styles.topbar_label} ${
-            button && styles.topbar_label_button
-          }`}
-        >
-          {label}
-        </div>
-      </div>
-      {logo && (
-        <div className={styles.topbar_logo}>
-          <Image src={logo} alt="" className="" height={logoHeight ?? 30} />
-        </div>
-      )}
-      <div className={styles.topbar_progress}>
-        <div className="bg-stroke dark:bg-dark-3 relative h-1.5 w-full rounded-2xl">
+  if (platform === "mobile") {
+    return ProgressBar(progress);
+  } else {
+    return (
+      <Box
+        className={`${styles.topbar_container} ${styles.clearfix}`}
+        style={{ backgroundColor, color, borderRadius }}
+      >
+        <div className={styles.topbar_back_button}>
+          {button && (
+            <Image src={button} alt="" className="" onClick={onBack} />
+          )}
           <div
-            className="bg-[#FE8B4C] absolute top-0 left-0 h-full rounded-2xl"
-            style={{ width: progress }}
-          ></div>
+            className={`${styles.topbar_label} ${
+              button && styles.topbar_label_button
+            }`}
+          >
+            {label}
+          </div>
         </div>
-      </div>
-    </header>
-  );
+        {logo && (
+          <div className={styles.topbar_logo}>
+            <Image src={logo} alt="" className="" height={logoHeight ?? 30} />
+          </div>
+        )}
+        <Box className={`${styles.topbar_progress}`}>
+          {ProgressBar(progress)}
+        </Box>
+      </Box>
+    );
+  }
 };
 
 export default Topbar;

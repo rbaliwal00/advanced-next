@@ -3,14 +3,16 @@ import { platform } from "@modules/common/util";
 import { Logo } from "@components";
 import { DesktopNavbar } from "@components/desktop-navbar";
 import Topbar from "@components/topbar";
-import { SecondaryLogo } from "@public/assets/icons";
+import { Back, PrimaryLogo, SecondaryLogo } from "@public/assets/icons";
 import { Box, useMediaQuery } from "@mui/material";
+import { back } from "nock";
 
 export const Header: React.FC = () => {
   const isDeviceMobile = useMediaQuery("600px");
 
   const desktopNavbarProps = {
     logo: SecondaryLogo,
+    button: Back,
     // rightNavItems: [
     //   {
     //     id: 1,
@@ -61,24 +63,20 @@ export const Header: React.FC = () => {
     // ],
   };
 
+  const mobileTopbarProps = {
+    label: "Last Step",
+    type: "primary",
+    color: "white",
+    button: Back,
+    logo: PrimaryLogo,
+    progress: "30%",
+    platform: "mobile",
+    borderRadius: 0,
+  };
+
   return (
     <div className="text-center bg-gray-800">
-      <Box
-        display={{
-          xs: "block",
-          sm: "none",
-        }}
-      >
-        <Topbar />
-      </Box>
-      <Box
-        display={{
-          xs: "none",
-          sm: "block",
-        }}
-      >
-        <DesktopNavbar {...desktopNavbarProps} />
-      </Box>
+      <DesktopNavbar {...desktopNavbarProps} />
     </div>
   );
 };

@@ -10,7 +10,9 @@
     padding-top: 1rem;
 }
 .heading{
+  text-align: center;
     font-size: 1.875rem;
+    font-weight: 700;
 }
 .reg-main {
     /* display: flex; */

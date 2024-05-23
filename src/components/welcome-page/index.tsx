@@ -60,14 +60,14 @@ const WelcomePage = () => {
   return (
     <div className={styles.kyc}>
             <div className={styles.desktopNav}>
-                {/* <DesktopNavbar {...desktopNavbarProps} /> */}
+                {/* <DesktopNavbar /> */}
             </div>
             <div className={styles['logo-wel']}>
                <Image src={horeca} alt='no img' width={200} height={100}/>
             </div>
             <div className={styles['kyc-info-wel']}>
-                <Image src={ani_img} alt='no img' />
-                <h2>Welcome To&nbsp;
+                <Image src={ani_img} alt='no img' width={500} height={300}/>
+                <h2 className='py-14'>Welcome to&nbsp;
                     <span className={styles.h}>H</span>
                     <span className={styles.o}>o</span>
                     <span className={styles.o}>r</span>

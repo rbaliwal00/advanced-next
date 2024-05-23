@@ -60,11 +60,13 @@
     }
     .kyc-info-wel h2 {
         opacity: 1;
+        font-size: 22px;
+        padding: 0 1rem;
     }
-    .kyc-info-wel img {
+    /* .kyc-info-wel img {
         width: 366px;
         height: 366px;
-    }
+    } */
 }
 
 @media (max-width: 300px) {

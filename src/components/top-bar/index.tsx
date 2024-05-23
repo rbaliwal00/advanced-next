@@ -24,7 +24,7 @@ const Topbar = ({label,logo, button, logoHeight, color, backgroundColor, progres
                     {button && <Image 
                             src={button} alt=''
                             className=''
-                            onClick={onBack}
+                            onClick={()=> alert('verification')}
                         />}
                     <div className={`${styles['topbar-label']} ${button && styles['topbar-label-button']}`}>Verification</div>
                 </div>

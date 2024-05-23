@@ -32,7 +32,7 @@ const RoleSelection = (data: Slide[]) => {
       <div className={styles.bgPrimary}>
         <div className={` ${styles.register}`}>
           <Image src={horeca} alt="no img" width={200} height={100} />
-          <h1 className={styles.heading}>Register to</h1>
+          
         </div>
         <div className=" grid grid-rows-[3fr_3fr] justify-items-center h-[100vh]">
           <div
@@ -58,8 +58,8 @@ const RoleSelection = (data: Slide[]) => {
                     <SwiperSlide key={el}>
                       <Image
                         src={addBanner}
-                        width={800}
-                        height={200}
+                        width={700}
+                        height={300}
                         alt="image"
                       />
                     </SwiperSlide>

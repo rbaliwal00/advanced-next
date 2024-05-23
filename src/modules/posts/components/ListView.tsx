@@ -151,11 +151,11 @@ const Component = (props: any) => {
 
     {/* <LanguageCardList languageData={LanguageData}/> */}
 
-    <LanguageSelection languageData={LanguageData}/>
+    {/* <LanguageSelection languageData={LanguageData}/> */}
 
     {/* <Popup {...popupProps}/> */}
 
-    {/* <WelcomePage/> */}
+    <WelcomePage/>
 
     {/* <RoleSelection /> */}
 

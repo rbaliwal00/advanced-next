@@ -5,6 +5,7 @@ import { PrimaryLogo } from "@public/assets/icons";
 import ExperienceSelection from "./ExperienceSelection";
 import Otp from "./Otp";
 import PreferenceFormFresher from "./PreferenceFormFresher";
+import SupplierThemeSelection from "@components/themeSelection/SupplierThemeSelection";
 
 const Component = (props) => {
   const { loadingPosts, posts = {}, onDelete } = props;
@@ -81,7 +82,8 @@ const Component = (props) => {
     <div className="">
       {/* <GstPancard platform="mobile" /> */}
       {/* <PreferenceFormExp platform="web" /> */}
-      <PreferenceFormFresher />
+      {/* <PreferenceFormFresher /> */}
+      <SupplierThemeSelection label={""} buttonTitle={""} closeOnBackdropClick={false} />
       {/* <MobileVerification /> */}
       {/* <MobileNumberForm /> */}
       {/* <MobileVerification /> */}

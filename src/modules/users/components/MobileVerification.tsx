@@ -10,19 +10,15 @@ import {
   kolkata,
   mumbai,
 } from "@public/assets/icons";
-import { useRouter } from "next/router";
 
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { addBanner } from "@public/assests";
 import Link from "next/link";
+import OtpRegistrationFlow from "@components/form/MobileOtpFlow";
 
 const MobileVerification = (props) => {
-  const {
-    router: { push },
-  } = props;
-
   const desktopNavbarProps = {
     logo: PrimaryLogo,
     primary: true,
@@ -82,7 +78,8 @@ const MobileVerification = (props) => {
     <div>
       {matches ? (
         <div className="h-[100vh] bg-[rgb(17,59,115)] text-white p-4">
-          <div className="text-center pt-2">
+          <OtpRegistrationFlow />
+          {/* <div className="text-center pt-2">
             <Image src={PrimaryLogo} alt="" />
           </div>
           <h3 className="text-[33.18px] text-center">Welcome!</h3>
@@ -106,12 +103,11 @@ const MobileVerification = (props) => {
           </p>
           <p className="text-center font-[600] text-[13.33px]">
             Terms of use & Privacy Policy
-          </p>
+          </p> */}
         </div>
       ) : (
         <div>
           <div className="bg-[#002351] text-white h-[100vh]">
-            <DesktopNavbar {...desktopNavbarProps} />
             <div className="flex gap-4 py-4">
               <div className="w-1/2 flex justify-center">
                 <div className="mb-10 p-6 ">
@@ -125,8 +121,14 @@ const MobileVerification = (props) => {
                       <li>100+ Suppliers ready for service</li>
                     </ul>
                   </div>
-                  <div className="mt-10">
-                    <Swiper
+                  <div className="">
+                    <Image
+                      src={addBanner}
+                      width={400}
+                      height={300}
+                      alt="image"
+                    />
+                    {/* <Swiper
                       pagination={{ type: "bullets", clickable: true }}
                       autoplay={{ delay: 2000 }}
                       loop
@@ -148,12 +150,12 @@ const MobileVerification = (props) => {
                           />
                         </SwiperSlide>
                       ))}
-                    </Swiper>
+                    </Swiper> */}
                   </div>
                 </div>
               </div>
               <div className="border-l-2 h-[60vh] mt-12"></div>
-              <div className="w-1/2 flex justify-center">
+              {/* <div className="w-1/2 flex justify-center">
                 <div className="p-6">
                   <h3 className="text-[24px] md:text-[33.18px] font-[600] ">
                     Enter Mobile Number
@@ -181,12 +183,11 @@ const MobileVerification = (props) => {
                     By continuing agree to Horecah
                   </p>
                   <div className="text-center font-[600] text-[15.33px]">
-                  {/* <Link href='' > */}
-                  {/* <p >Terms of use & Privacy Policy</p> */}
-                  {/* </Link> */}
+        
                   </div>
                 </div>
-              </div>
+              </div> */}
+              <OtpRegistrationFlow />
             </div>
             <div className="text-center">
               <p className="mb-2">Cities we are in</p>

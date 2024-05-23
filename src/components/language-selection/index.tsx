@@ -106,7 +106,7 @@ const LanguageSelection = ({
       <div className={styles["language-list"]}>
         <div className={styles["list-image"]}>
           {/* <Image src={PrimaryLogo} alt='no image' width={200} height={100}/> */}
-          <Topbar {...topBar} />
+          {/* <Topbar {...topBar} /> */}
         </div>
         <h1 className={styles.heading}>Choose Language</h1>
         <div className={styles["languages-grid"]}>

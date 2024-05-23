@@ -61,29 +61,31 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
             <Field name="otp">
               {({ field }) => (
                 <Box>
-                  <OtpInput
-                    {...field}
-                    value={field.value}
-                    onChange={(otp) => setFieldValue("otp", otp)}
-                    numInputs={4}
-                    separator={<span>-</span>}
-                    shouldAutoFocus
-                    isInputNum
-                    renderInput={(props) => <input {...props} />}
-                    inputStyle={{
-                      width: "45px",
-                      height: "45px",
-                      margin: "0 5px",
-                      fontSize: "20px",
-                      borderRadius: "5px",
-                      color: "black",
-                      border: "1px solid rgba(0,0,0,0.3)",
-                      border:
-                        touched.otp && errors.otp
-                          ? "1px solid red"
-                          : "1px solid rgba(0,0,0,0.3)",
-                    }}
-                  />
+                  <div className="flex justify-center">
+                    <OtpInput
+                      {...field}
+                      value={field.value}
+                      onChange={(otp) => setFieldValue("otp", otp)}
+                      numInputs={4}
+                      separator={<span>-</span>}
+                      shouldAutoFocus
+                      isInputNum
+                      renderInput={(props) => <input {...props} />}
+                      inputStyle={{
+                        width: "45px",
+                        height: "45px",
+                        margin: "0 5px",
+                        fontSize: "20px",
+                        borderRadius: "5px",
+                        color: "black",
+                        border: "1px solid rgba(0,0,0,0.3)",
+                        border:
+                          touched.otp && errors.otp
+                            ? "1px solid red"
+                            : "1px solid rgba(0,0,0,0.3)",
+                      }}
+                    />
+                  </div>
                   {touched.otp && errors.otp && (
                     <FormHelperText
                       sx={{ color: "error.main", textAlign: "right" }}
@@ -91,14 +93,6 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                       {errors.otp}
                     </FormHelperText>
                   )}
-                  <Box
-                    display={{
-                      xs: "block",
-                      sm: "none",
-                    }}
-                  >
-                    <Image src={addBanner} />
-                  </Box>
                   <Button
                     disabled={timeLeft > 0}
                     onClick={() => console.log("check for callback")}
@@ -113,6 +107,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                         textAlign: "right", // Ensures text is right-aligned
                         fontSize: "10px", // Sets font size
                         display: "flex", // Uses flexbox for internal alignment
+                        marginBottom: "30px",
                         color: "white",
                         alignItems: "center", // Centers items vertically within the flex container
                       }}
@@ -120,6 +115,14 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                       Resend OTP in {timeLeft} sec
                     </Typography>
                   </Button>
+                  <Box
+                    display={{
+                      xs: "block",
+                      sm: "none",
+                    }}
+                  >
+                    <Image src={addBanner} />
+                  </Box>
                 </Box>
               )}
             </Field>
@@ -134,7 +137,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                 width: "100%",
                 alignSelf: "center",
                 height: "48px",
-                mt: "96px",
+                mt: "80px",
                 mb: "16px",
                 background: "white",
                 color: "#113B73",

@@ -87,6 +87,7 @@ const MobileNumberForm = ({
               xs: "block",
               sm: "none",
             }}
+            sx={{ marginBottom: "30px" }}
           >
             <Image src={addBanner} />
           </Box>

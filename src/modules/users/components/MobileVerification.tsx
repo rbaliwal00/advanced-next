@@ -15,7 +15,9 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 
 const MobileVerification = (props) => {
-  const router = useRouter();
+  const {
+    router: { push },
+  } = props;
 
   const desktopNavbarProps = {
     logo: PrimaryLogo,

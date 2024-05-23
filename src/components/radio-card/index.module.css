@@ -70,7 +70,7 @@
   background-color: transparent; /* Make the inside transparent */
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 600px) {
   .radio_card {
     font-size: 1rem;
     padding: 1rem 0rem;

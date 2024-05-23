@@ -160,14 +160,14 @@ const PreferenceFormFresher = ({ platform, ...props }: any) => {
 
   return (
     <div className={styles.preference_form_exp}>
-      {platform === "web" && (
+      {/* {platform === "web" && (
         <div className="mb-10">
           <DesktopNavbar {...desktopNavbarProps} />
         </div>
-      )}
+      )} */}
       <div className={styles.content}>
         {platform === "web" && <Topbar {...webTopbarProps} />}
-        {platform === "mobile" && <Topbar {...mobileTopbarProps} />}
+        {/* {platform === "mobile" && <Topbar {...mobileTopbarProps} />} */}
         <div
           className={`${styles.exp_margin_top} ${styles.exp_info_container}`}
         >

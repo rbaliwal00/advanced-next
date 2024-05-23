@@ -6,10 +6,8 @@ import ExperienceSelection from "./ExperienceSelection";
 import Otp from "./Otp";
 import PreferenceFormFresher from "./PreferenceFormFresher";
 import SupplierThemeSelection from "@components/themeSelection/SupplierThemeSelection";
+import PreferenceFormExp from "./PreferenceFormExp";
 import SupplierVisitingCardPage from "@components/visitingCardPage/SupplierVisitingCardPage";
-import HireVisitingCardPage from "@components/visitingCardPage/HireVisitingCardPage";
-import ExperiencedVisitingCardPage from "@components/visitingCardPage/ExperiencedVisitingCardPage";
-import HireThemeSelection from "@components/themeSelection/HireThemeSelection";
 
 const Component = (props) => {
   const { loadingPosts, posts = {}, onDelete } = props;
@@ -85,10 +83,10 @@ const Component = (props) => {
   return (
     <div className="">
       {/* <GstPancard platform="mobile" /> */}
-      {/* <PreferenceFormExp platform="web" /> */}
+      <PreferenceFormExp platform="web" />
       {/* <PreferenceFormFresher /> */}
-      {/* <ExperienceSelection /> */}
-      <SupplierVisitingCardPage />
+      {/* <SupplierThemeSelection label={""} buttonTitle={""} closeOnBackdropClick={false} /> */}
+      {/* <SupplierVisitingCardPage /> */}
       {/* <MobileVerification /> */}
       {/* <MobileNumberForm /> */}
       {/* <MobileVerification /> */}

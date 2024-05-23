@@ -1,8 +1,6 @@
 import React from "react";
-import RoleCardList from "./RoleCardList";
+// import RoleCardList from "./RoleCardList";
 import {
-  Experienced,
-  Fresher,
   PrimaryLogo,
   bangalore,
   delhi,
@@ -11,7 +9,11 @@ import {
   mumbai,
 } from "@public/assets/icons";
 import { DesktopNavbar } from "@components/desktop-navbar";
+import Experienced from '@public/assets/experienced.png'
+import Fresher from '@public/assets/fresher.png'
 import Image from "next/image";
+// import RoleCardList from "./RoleCardList";
+import RoleCardList from "@components/roleCardList/RoleCardList";
 
 const ExperienceSelection = () => {
   const ROLES: any = [

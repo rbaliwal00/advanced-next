@@ -1,14 +1,12 @@
-import { useMediaQuery } from '@mui/material';
-import { ReactNode, useEffect, useState } from 'react';
-import Button from '../button';
 import JobVisitingCard from '@components/visitingCard/JobVisitingCard';
 import SupplierVisitingCard from '@components/visitingCard/SupplierVisitingCard';
-import { Download, Edit } from '@mui/icons-material';
-import { Back, EyeIcon, Gst, OrangeShare, Pan, PrimaryLogo, SecondaryLogo } from '@public/assets/icons';
+import { useMediaQuery } from '@mui/material';
+import { Back, Download, Edit, EyeIcon, Gst, OrangeShare, Pan, PrimaryLogo, SecondaryLogo } from '@public/assets/icons';
 import Image from 'next/image';
+import Button from '../button';
 import { DesktopNavbar } from '../desktop-navbar';
 import RoundButton from '../round-button';
-import Topbar from '../topbar';
+import Topbar from '../topbar';   
 
 const SupplierVisitingCardPage = () => {
 
@@ -120,24 +118,17 @@ const SupplierVisitingCardPage = () => {
       <div className={`grid ${!isMobile && 'grid-cols-[max-content_max-content]'} gap-4`}>
 
         <div className={`${isMobile && 'w-full'}`}>
-          <div className={`h-[22rem] ${isMobile ? 'w-full':'w-[40rem]'}`}>
+          <div className={`h-[22rem] ${isMobile ? 'w-[90vw]':'w-[40rem]'}`}>
             <SupplierVisitingCard {...supplierVisitingData} />
           </div>
          
         </div>
-        <div className={` flex gap-4 ${isMobile ? 'justify-center w-[32rem]':'flex-col w-max'} `}>
+        <div className={` flex gap-4 ${isMobile ? 'justify-center ':'flex-col w-max'} `}>
               <RoundButton
               backgroundColor="white"
           border="1px solid #F3F4F6"
           color="black"
           icon={EyeIcon}
-              onClick={() => {}}
-            />
-              <RoundButton
-              backgroundColor="white"
-          border="1px solid #F3F4F6"
-          color="black"
-          icon={OrangeShare}
               onClick={() => {}}
             />
               <RoundButton
@@ -152,16 +143,25 @@ const SupplierVisitingCardPage = () => {
           border="1px solid #F3F4F6"
           color="black"
           icon={Edit}
-
+    
+              onClick={() => {}}
+            />
+              <RoundButton
+              backgroundColor="white"
+          border="1px solid #F3F4F6"
+          color="black"
+          icon={OrangeShare}
               onClick={() => {}}
             />
         </div>
       </div>
-      <div className={`${isMobile ? 'w-full':'w-[40rem]'} grid gap-4 justify-items-center`}>
-        <div className={`grid ${isMobile ? 'w-[70%]':'w-max' } gap-4`}>
+      <div className={`${isMobile ? 'w-[90vw]':'w-[40rem]'} grid gap-4 justify-items-center`}>
+        <div className={`grid text-[#C1C1C1] ${isMobile ? '':'w-max' } gap-4`}>
           <div className='flex w-full gap-4 justify-center border items-center p-2 rounded-[9px] border-solid border-[#EFEFEF]'>
-            <Image src={Gst} alt='' height={30}/>
-            <p>GST</p>
+            <div className='flex pr-4 items-center'>
+              <Image src={Gst} alt='' height={30}/>
+              <p>GST</p>
+            </div>
             <p>{'gst document'}</p>
             <RoundButton
               backgroundColor="white"

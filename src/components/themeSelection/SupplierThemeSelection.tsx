@@ -116,14 +116,14 @@ const SupplierThemeSelection = () => {
               </div>
             </div>
         </div>
-        <div>
+        <div className='grid'>
           <Carousel
           data={supplierDatas}
           color={color}
         />
           <div className="grid gap-4 items-center justify-items-center justify-self-center mt-2 text-center">
             <h2 className='text-base font-semibold'>Choose Color</h2>
-            <div className="grid grid-flow-col gap-4 pb-4">
+            <div className="grid grid-flow-col gap-4 pb-4 w-full justify-between">
               <div
                 className={`bg-[yellow] cursor-pointer
                               shadow-[0px_4px_4px_0px_#00000040] w-[20px] h-[20px] rounded-[50%]

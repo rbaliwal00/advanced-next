@@ -18,6 +18,7 @@ import { EffectCoverflow, Pagination } from "swiper/modules";
 import JobVisitingCard from "../visitingCard/JobVisitingCard";
 import HireVisitingCard from "../visitingCard/HireVisitingCard";
 import SupplierVisitingCard from "../visitingCard/SupplierVisitingCard";
+import { useMediaQuery } from "@mui/material";
 
 interface DemoSliderProps {
   data: any[];
@@ -27,10 +28,12 @@ interface DemoSliderProps {
 
 const Carousel: React.FC<DemoSliderProps> = ({ data,  color }) => {
 
+  const isMobile = useMediaQuery('(max-width:640px)');
+
   return (
     <section className="w-full grid justify-center">
       <div className=" ">
-        <ul className="h-full ">
+        <ul className={`h-full ${isMobile && 'w-[100vw]'}`}>
           <Swiper
             effect={"coverflow"}
             grabCursor={true}
@@ -48,7 +51,7 @@ const Carousel: React.FC<DemoSliderProps> = ({ data,  color }) => {
             }}
             pagination={true}
             modules={[EffectCoverflow, Pagination]}
-            className={`${styles.mySwiper} ${styles.swiper}`}
+            className={`${styles.mySwiper} ${styles.swiper} `}
           >
             <style jsx>{`
               .mySwiper .swiper-pagination-bullet-active {
@@ -58,11 +61,11 @@ const Carousel: React.FC<DemoSliderProps> = ({ data,  color }) => {
             {data.map((userData: any) => (
               <SwiperSlide
                 key={userData.id}
-                className={`${styles.swiper_slide} tranding-slide`}
+                className={`${styles.swiper_slide} tranding-slide `}
               >
                 {({ isActive }) => (
                   <div
-                    className=""
+                    className={``}
                     onMouseMove={() =>
                       data.map((d) => {
                         console.log("hey carousel data=>", userData.theme);

@@ -1,7 +1,8 @@
 import React from 'react';
 // import { RoleProps } from '@constants';
-import RoleCard from './RoleCard';
+// import RoleCard from './RoleCard';
 import { RoleProps } from '@modules/users/components/RoleCardList';
+import RoleCard from '@components/role-card';
 
 interface RoleCardListProps {
   roles: RoleProps[],
@@ -14,7 +15,7 @@ interface RoleCardListProps {
 const RoleCardList = ({...props}:RoleCardListProps) => {
   return (
     <div
-      className={`grid gap-4 ${props.platform === 'mobile' ? '':'grid-flow-col'}`}
+      className={`grid gap-4 ${props.platform === 'mobile' ? '':'grid-cols-[1fr_min-content_1fr] w-min'}`}
       >
        {props.roles.map((role, index) => (
       <React.Fragment key={role.id}>

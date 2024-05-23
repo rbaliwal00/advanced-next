@@ -86,19 +86,8 @@ const HireVisitingCardPage = () => {
 
 
   return (
-   <div className='h-screen w-screen'>
-    {isMobile ?
-        <Topbar
-      backgroundColor="#113B73"
-      button={Back}
-      color="white"
-      label="Label"
-      logo={PrimaryLogo}
-      onBack={() => {}}
-      platform=""
-      progress="30%"
-    />:
-    <DesktopNavbar {...desktopNavbarData} />}
+   <div className=''>
+
 
     <div className={`grid ${!isMobile && 'grid-cols-[7fr_7fr]'} gap-4 p-4`}>
       <div className='grid gap-4 grid-rows-[max-content_max-content] pt-16'>

@@ -18,6 +18,9 @@
     /* display: flex; */
     /* flex-direction: column; */
   }
+  .bannerImage{
+    /* padding-right: 5rem; */
+  }
 
   .mobile-banner{
     display: none;
@@ -46,7 +49,12 @@
         display: none;
       }
       .select-user{
-        margin-left: 1.3rem;
+        margin-left: 1rem;
+      }
+      .heading{
+        text-align: center;
+          font-size: 2.5rem;
+          font-weight: 700;
       }
 
 }

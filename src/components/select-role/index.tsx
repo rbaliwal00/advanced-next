@@ -2,37 +2,85 @@ import React from "react";
 import Cities from "./cities";
 import Register from "./Register";
 import { DesktopNavbar } from "@components/desktop-navbar";
-import { horeca } from "@public/assests";
 import styles from "./index.module.css";
 import Image from "next/image";
 import "swiper/swiper-bundle.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { addBanner } from "@public/assests";
+import { LogoutIcon, PrimaryLogo, addBanner } from "@public/assests";
 import Ads from "./Ads";
+import Topbar from "@components/top-bar";
 
-interface Slide {
-  id: number;
-  title: string;
-  tagline: string;
-  image: string;
+const desktopNavbarProps = {
+  logo: PrimaryLogo,
+  primary: true,
+  rightNavItems: [
+    {
+      id: 1,
+      type: "link",
+      title: "Hire",
+      path: "/hire",
+    },
+    {
+      id: 2,
+      type: "link",
+      title: "Become Supplier",
+      path: "/supplier",
+    },
+    {
+      id: 3,
+      type: "link",
+      title: "Job / Internship",
+      path: "/job",
+    },
+  ],
+  leftNavItems: [
+    {
+      id: 1,
+      type: "dropdown",
+      title: "Jobs",
+      path: "jobs",
+      links: [
+        {
+          id: 1,
+          type: "link",
+          title: "Search Jobs",
+          path: "/search-jobs",
+        },
+        {
+          id: 2,
+          type: "link",
+          title: "Manage Jobs",
+          path: "/manage-jobs",
+        },
+      ],
+    },
+    {
+      id: 2,
+      type: "link",
+      title: "Learning",
+      path: "/learning",
+    },
+  ],
+};
+const topBar = {
+  label: "Label",
+  backgroundColor: "#113B73",
+  color: "white",
+  button: LogoutIcon,
+  logo: PrimaryLogo,
+  progress: '30%',
 }
-
-//   interface DemoSliderProps {
-//     data: Slide[];
-//   }
-
-const RoleSelection = (data: Slide[]) => {
+const RoleSelection = () => {
   return (
     <div>
       <div className={styles.navbar}>
-        <DesktopNavbar />
+        <DesktopNavbar {...desktopNavbarProps}/>
       </div>
       <div className={styles.bgPrimary}>
         <div className={` ${styles.register}`}>
-          <Image src={horeca} alt="no img" width={200} height={100} />
-          
+          <Topbar {...topBar}/>
         </div>
         <div className=" grid grid-rows-[3fr_3fr] justify-items-center h-[100vh]">
           <div

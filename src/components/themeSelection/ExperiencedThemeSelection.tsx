@@ -10,37 +10,11 @@ import { SecondaryLogo, Back, PrimaryLogo } from '@public/assets/icons';
 import { DesktopNavbar } from '../desktop-navbar';
 import Topbar from '../topbar';
 
+const ExperiencedThemeSelection = () => {
 
-
-
-
-export interface BottomSheetProps {
-  label: string;
-  buttonTitle: string;
-  buttonFunction?: () => void;
-  closeOnBackdropClick: boolean;
-  children?: ReactNode
-}
-
-const ExperiencedThemeSelection = ({children,...props}:BottomSheetProps) => {
-
-  const [isOpen, setOpen] = useState(false);
   const [color, setColor] = useState('red');
 
 
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
 
   const leftNavitems =  [
     {

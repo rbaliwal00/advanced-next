@@ -1,17 +1,14 @@
 import { useMediaQuery } from '@mui/material';
 import { ReactNode, useEffect, useState } from 'react';
 import Button from '../button';
-
-// import { Back, Download, Edit, EyeIcon, GST as Gst, OrangeShare, Pan, PrimaryLogo, SecondaryLogo } from './assets/icons';
-import JobVisitingCard from '../visitingCard/JobVisitingCard';
-import SupplierVisitingCard from '../visitingCard/SupplierVisitingCard';
-
+import JobVisitingCard from '@components/visitingCard/JobVisitingCard';
+import SupplierVisitingCard from '@components/visitingCard/SupplierVisitingCard';
+import { Download, Edit } from '@mui/icons-material';
+import { Back, EyeIcon, Gst, OrangeShare, Pan, PrimaryLogo, SecondaryLogo } from '@public/assets/icons';
 import Image from 'next/image';
 import { DesktopNavbar } from '../desktop-navbar';
 import RoundButton from '../round-button';
 import Topbar from '../topbar';
-import { Download, Edit } from '@mui/icons-material';
-import { SecondaryLogo, Back, PrimaryLogo, EyeIcon, OrangeShare, Gst, Pan } from '@public/assets/icons';
 
 
 

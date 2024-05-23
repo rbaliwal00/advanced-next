@@ -3,7 +3,7 @@ import {  Form } from 'formik';
 import { Box, Button, formControlLabelClasses } from '@mui/material';
 import MaterialUIFieldAdapter from './MaterialUIFieldAdapter'; 
 import PropTypes from 'prop-types';
-import { nextBtnText, renderBackButton } from './utilities';
+import { nextBtn, renderBackButton } from './utilities';
 
 
 
@@ -49,14 +49,7 @@ const StatusForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             ]}
                         />
                         <Box display="flex" justifyContent="space-between" width="100%" fullWidth>
-                    <Button type="submit" color="primary" variant="contained" sx={{
-                            width: {
-                                xs: '100%',
-                                sm: '79%'
-                            } 
-                        }}>
-                                {nextBtnText(isLastStep)}
-                            </Button>
+                            {nextBtn(isLastStep)}
                             {renderBackButton(onBack, step)}
                         </Box>
                     </Box>

@@ -62,6 +62,7 @@ const Carousel: React.FC<DemoSliderProps> = ({ data,  color }) => {
               <SwiperSlide
                 key={userData.id}
                 className={`${styles.swiper_slide} tranding-slide `}
+                style={{width:( isMobile ? '100%':'30%')}}
               >
                 {({ isActive }) => (
                   <div

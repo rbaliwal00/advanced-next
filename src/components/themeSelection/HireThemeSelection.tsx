@@ -88,19 +88,8 @@ const HireThemeSelection = () => {
 
 
   return (
-   <div className='h-screen w-screen'>
-    {isMobile ?
-        <Topbar
-      backgroundColor="#113B73"
-      button={Back}
-      color="white"
-      label="Label"
-      logo={PrimaryLogo}
-      onBack={() => {}}
-      platform=""
-      progress="30%"
-    />:
-    <DesktopNavbar {...desktopNavbarData} />}
+   <div >
+
 
       <div className='grid justify-items-center'>
         <div className={`w-[70%] ${isMobile && 'invisible'}`}>

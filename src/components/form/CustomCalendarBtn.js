@@ -16,7 +16,7 @@ const CustomDatePicker = ({ value, onChange, placeholder, label }) => {
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
             <Box>
-                {label && <Typography>{label}</Typography>}
+                {label && <Typography color={'#9CA3AF'}>{label}</Typography>}
                 <DatePicker
                     value={value ? moment(value, 'DD/MM/YYYY') : null}
                     sx={{ width: '100%'}}
@@ -26,12 +26,21 @@ const CustomDatePicker = ({ value, onChange, placeholder, label }) => {
                         <TextField
                             {...params}
                             placeholder={placeholder}
+                            sx={[{
+                                width: "100%", borderRadius: '6px', maxHeight: '48px', borderWidth: 1, borderColor: '#F3F4F6',
+                                '& .MuiInputBase-input': {
+                                    color: '#4B5563', // Changes the text color
+                                },
+                                '& .MuiInputBase-input::placeholder': {
+                                    color: '#D1D5DB', // Changes the placeholder color
+                                }
+                            }]}
                             InputProps={{
                                 ...params.InputProps,
                                 endAdornment: (
                                     <>
                                         {params.InputProps.endAdornment}
-                                        <EventNoteIcon color="action" style={{ marginRight: 8 }} />
+                                        <EventNoteIcon color="#6B7280" style={{ marginRight: 8 }} />
                                     </>
                                 ),
                             }}

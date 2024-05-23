@@ -69,11 +69,18 @@ class MaterialUIFieldAdapter extends Component {
             case 'email':
                 return (
                     <Box alignSelf={'center'} sx={{ mb: '24px',}}>
-                        {label && <Typography style={responsiveFontSize} textAlign={'left'}>{label}</Typography>}
+                        {label && <Typography style={responsiveFontSize} textAlign={'left'} color={'#9CA3AF'}>{label}</Typography>}
                         <TextField
                             type={type}
                             fullWidth
-                            sx={[{ width: "100%", borderRadius: '10px', maxHeight: '48px', }]}
+                            sx={[{ width: "100%", borderRadius: '6px', maxHeight: '48px', borderWidth: 1, borderColor: '#F3F4F6', 
+                                '& .MuiInputBase-input': {
+                                    color: '#4B5563', // Changes the text color
+                                },
+                                '& .MuiInputBase-input::placeholder': {
+                                    color: '#D1D5DB', // Changes the placeholder color
+                                }
+                             }]}
                             name={name}
                             value={value || ''}
                             InputLabelProps={{ shrink: false }}
@@ -93,7 +100,14 @@ class MaterialUIFieldAdapter extends Component {
                             multiline
                             maxRows={5}
                             fullWidth
-                            sx={{ minWidth: '328px', borderRadius: '10px', maxHeight: '120px' }}
+                            sx={{ minWidth: '328px', borderRadius: '6px', maxHeight: '120px',
+                                '& .MuiInputBase-input': {
+                                    color: '#4B5563', // Changes the text color
+                                },
+                                '& .MuiInputBase-input::placeholder': {
+                                    color: '#D1D5DB', // Changes the placeholder color
+                                }
+                             }}
                             name={name}
                             value={value || ''}
                             placeholder={placeholder}
@@ -131,10 +145,43 @@ class MaterialUIFieldAdapter extends Component {
             case 'select':
                 return (
                     <Box alignSelf={'center'} sx={{ mb: '24px'}}>
-                        {label && <Typography style={responsiveFontSize} textAlign={'left'}>{label}</Typography>}
+                        {label && <Typography style={responsiveFontSize} textAlign={'left'} color={'#9CA3AF'}>{label}</Typography>}
                         <Select
                             fullWidth
-                            sx={{ borderRadius: '4px', maxHeight: '48px', }}
+                            sx={{
+                                borderRadius: '6px',
+                                maxHeight: '48px',
+                                border: '1px solid #D1D5DB', // Adding border to match screenshot
+                                '& .MuiSelect-select': {
+                                    color: '#4B5563', // Changes color based on if value is selected
+                                },
+                                '& .MuiInputBase-root': {
+                                    color: '#D1D5DB', // Placeholder and input text color
+                                    '&.Mui-focused': {
+                                        color: '#113B73', // Color when the select is focused
+                                        borderColor: '#113B73', // Border color when focused
+                                    }
+                                },
+                                '& .MuiInputLabel-root': {
+                                    color: '#9CA3AF', // Label color
+                                    '&.Mui-focused': {
+                                        color: '#113B73', // Color when the select is focused
+                                    }
+                                },
+                                '& .MuiMenuItem-root': {
+                                    '&.Mui-selected': {
+                                        backgroundColor: '#113B73', // Background color for selected item
+                                        color: '#fff', // Text color for selected item
+                                        '&:hover': {
+                                            backgroundColor: '#174291', // Darker on hover
+                                        }
+                                    },
+                                    '&:hover': {
+                                        backgroundColor: '#e0e0e0', // Background color on hover for items
+                                        color: '#113B73', // Text color change on hover
+                                    }
+                                }
+                            }}
                             name={name}
                             value={value || ''}
                             onChange={this.handleChange}
@@ -155,11 +202,11 @@ class MaterialUIFieldAdapter extends Component {
             case 'multiselect':
                 return (
                     <Box alignSelf={'center'} fullWidth sx={{ mb: '24px' }}>
-                        {label && <Typography style={responsiveFontSize} textAlign={'left'}>{label}</Typography>}
+                        {label && <Typography style={responsiveFontSize} textAlign={'left'} color={'#9CA3AF'}>{label}</Typography>}
                         <Select
                             multiple
                             fullWidth
-                            sx={{ borderRadius: '4px', maxHeight: '48px', overflow: 'auto' }}
+                            sx={{ borderRadius: '6px', maxHeight: '48px', overflow: 'auto' }}
                             name={name}
                             value={formik.values[name] || []}  // Ensure the value is an array for multiple selections
                             onChange={this.handleChange}
@@ -199,7 +246,7 @@ class MaterialUIFieldAdapter extends Component {
             case 'radio':
                 return (
                     <Box alignSelf={'center'} fullWidth sx={{ mb: '24px', }}>
-                        {label && <Typography style={responsiveFontSize} textAlign={'left'}>{label}</Typography>}
+                        {label && <Typography style={responsiveFontSize} textAlign={'left'} color={'#9CA3AF'}>{label}</Typography>}
                         <RadioGroup
                             name={name}
                             sx={{ width: "100%", justifyContent: 'space-between'}}
@@ -213,6 +260,17 @@ class MaterialUIFieldAdapter extends Component {
                                     key={option.value}
                                     value={option.value}
                                     control={<Radio />}
+                                    sx={{
+                                        '& .MuiTypography-root': {  // This targets the label Typography component
+                                            color: value === option.value ? '#113B73' : '#D1D5DB', // Conditional coloring
+                                        },
+                                        '& .MuiRadio-root': {
+                                            color: '#D1D5DB', // Default unchecked color for the radio button
+                                            '&.Mui-checked': {
+                                                color: '#113B73', // Checked color for the radio button
+                                            }
+                                        }
+                                    }}
                                     label={option.label}
                                 />
                             ))}

@@ -81,7 +81,7 @@ const FresherForm = () => {
 
 
     return (
-      <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => alert(`end of fresher flow ${JSON.stringify(values)}`)}/>
+      <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => console.log(`end of fresher flow ${JSON.stringify(values)}`)}/>
     );
 };
 

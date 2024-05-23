@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Box, Avatar } from '@mui/material';
+import { Button, Box, Avatar, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import PropTypes from 'prop-types';
 
@@ -55,7 +55,7 @@ function ImageUploadButton({ onFileSelect, label }) {
                             marginBottom: '8px'
                         }}
                     >
-                        <AddIcon />
+                            <AddIcon color={'#6B7280'} />
                     </Button>
                 )}
             </label>
@@ -63,11 +63,10 @@ function ImageUploadButton({ onFileSelect, label }) {
                 sx={{
                     fontSize: '14px',
                     fontWeight: 'bold',
-                    color: '#666',
                     mb: '28px'
                 }}
             >
-                {label || 'Upload Image'}
+                <Typography color={'#6B7280'}>{label || 'Upload Image'}</Typography>
             </Box>
         </Box>
     );

@@ -6,6 +6,7 @@ import ExperienceSelection from "./ExperienceSelection";
 import Otp from "./Otp";
 import PreferenceFormFresher from "./PreferenceFormFresher";
 import SupplierThemeSelection from "@components/themeSelection/SupplierThemeSelection";
+import PreferenceFormExp from "./PreferenceFormExp";
 import SupplierVisitingCardPage from "@components/visitingCardPage/SupplierVisitingCardPage";
 
 const Component = (props) => {
@@ -82,9 +83,10 @@ const Component = (props) => {
   return (
     <div className="">
       {/* <GstPancard platform="mobile" /> */}
-      {/* <PreferenceFormExp platform="web" /> */}
+      <PreferenceFormExp platform="web" />
       {/* <PreferenceFormFresher /> */}
-      <SupplierVisitingCardPage />
+      {/* <SupplierThemeSelection label={""} buttonTitle={""} closeOnBackdropClick={false} /> */}
+      {/* <SupplierVisitingCardPage /> */}
       {/* <MobileVerification /> */}
       {/* <MobileNumberForm /> */}
       {/* <MobileVerification /> */}

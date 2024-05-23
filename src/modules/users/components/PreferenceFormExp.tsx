@@ -140,15 +140,15 @@ const PreferenceFormExp = ({ platform }: any) => {
 
   return (
     <div className={styles.preference_form_exp}>
-      {platform === "web" && (
+      {/* {platform === "web" && (
         <div className="mb-10">
           <DesktopNavbar {...desktopNavbarProps} />
         </div>
-      )}
+      )} */}
       <div className={styles.content}>
         <div className={styles.content_center}>
           {platform === "web" && <Topbar {...webTopbarProps} />}
-          {platform === "mobile" && <Topbar {...mobileTopbarProps} />}
+          {/* {platform === "mobile" && <Topbar {...mobileTopbarProps} />} */}
           <div
             className={`${styles.exp_margin_top} ${styles.exp_info_container}`}
           >
@@ -165,12 +165,14 @@ const PreferenceFormExp = ({ platform }: any) => {
             <UploadDoc {...uploadDocProps} />
           </div>
           <div className={`flex justify-between ${styles.exp_margin_top}`}>
-            <div className="w-[73%]">
+            <div className={matches ? `w-[100%]` : `w-[73%]`}>
               <Button text="Confirm" />
             </div>
-            <div className="w-[25%]">
-              <Button text="Back" kind="secondary" />
-            </div>
+            {!matches && (
+              <div className="w-[25%]">
+                <Button text="Back" kind="secondary" />
+              </div>
+            )}
           </div>
         </div>
       </div>

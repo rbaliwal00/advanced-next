@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "./carousel.module.css";
+import styles from "./carousel.module.css";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -48,7 +48,7 @@ const Carousel: React.FC<DemoSliderProps> = ({ data,  color }) => {
             }}
             pagination={true}
             modules={[EffectCoverflow, Pagination]}
-            className="mySwiper"
+            className={`${styles.mySwiper} ${styles.swiper}`}
           >
             <style jsx>{`
               .mySwiper .swiper-pagination-bullet-active {
@@ -58,7 +58,7 @@ const Carousel: React.FC<DemoSliderProps> = ({ data,  color }) => {
             {data.map((userData: any) => (
               <SwiperSlide
                 key={userData.id}
-                className="swiper-slide tranding-slide"
+                className={`${styles.swiper_slide} tranding-slide`}
               >
                 {({ isActive }) => (
                   <div

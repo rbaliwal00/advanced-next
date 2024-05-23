@@ -9,12 +9,7 @@ import { DesktopNavbar } from '../desktop-navbar';
 import RoundButton from '../round-button';
 import Topbar from '../topbar';
 
-
-
-
 const HireVisitingCardPage = () => {
-
-
 
   const leftNavitems =  [
     {
@@ -70,19 +65,6 @@ const HireVisitingCardPage = () => {
     leftNavItems: leftNavitems,
     rightNavItems: rightNavItems,
     logo: SecondaryLogo
-  }
-
-  const supplierVisitingData = {
-    address:"Anywhere St., Any City, ST 12345",
-    brandName:"Brand Name",
-    companyName:"Company Name",
-    contactPersonName:"Contact Person Name",
-    email:"ceo@email.com",
-    imageURL:"https://d27jswm5an3efw.cloudfront.net/app/uploads/2019/08/image-url-3.jpg",
-    mobileNumber:"+91 9900653064",
-    natureOfBusiness:"Nature of Business",
-    themeColor:"blue",
-    website:"www.horecah.com"
   }
 
   const jobData = {

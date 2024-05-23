@@ -14,7 +14,7 @@ import RadioCard from "@components/radio-card";
 import UploadDoc from "@components/upload-doc";
 import Button from "@components/button";
 import { DesktopNavbar } from "@components/desktop-navbar";
-import { useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 
 const desktopNavbarProps = {
   logo: SecondaryLogo,
@@ -159,15 +159,31 @@ const PreferenceFormFresher = ({ platform, ...props }: any) => {
   }
 
   return (
-    <div className={styles.preference_form_exp}>
-      {/* {platform === "web" && (
-        <div className="mb-10">
-          <DesktopNavbar {...desktopNavbarProps} />
-        </div>
-      )} */}
-      <div className={styles.content}>
-        {platform === "web" && <Topbar {...webTopbarProps} />}
-        {/* {platform === "mobile" && <Topbar {...mobileTopbarProps} />} */}
+    <Box
+      sx={{
+        maxWidth: {
+          xs: "100%", // If viewport width is below 600px, maxWidth is 100%
+          sm: "608px", // If viewport width is above 600px, maxWidth is 608px
+        },
+        m: "auto",
+        mt: "32px",
+        px: {
+          xs: "16px",
+          sm: "35px",
+        },
+        py: {
+          xs: "16px",
+          sm: "30px",
+        },
+        boxShadow: {
+          xs: "none",
+          sm: "0px 4px 25px 0px rgba(0, 0, 0, 0.05)",
+        },
+        borderRadius: 2,
+        bgcolor: "background.paper",
+      }}
+    >
+      <div className={`${matches ? "px-6" : ""}`}>
         <div
           className={`${styles.exp_margin_top} ${styles.exp_info_container}`}
         >
@@ -195,7 +211,7 @@ const PreferenceFormFresher = ({ platform, ...props }: any) => {
           </div>
         </div>
       </div>
-    </div>
+    </Box>
   );
 };
 

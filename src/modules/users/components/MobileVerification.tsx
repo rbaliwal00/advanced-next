@@ -18,10 +18,10 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { addBanner } from "@public/assests";
 import Link from "next/link";
 
-const MobileVerification = (props) => {
-  const {
-    router: { push },
-  } = props;
+const MobileVerification = (props: any) => {
+  // const {
+  //   router: { push },
+  // } = props;
 
   const desktopNavbarProps = {
     logo: PrimaryLogo,
@@ -81,14 +81,15 @@ const MobileVerification = (props) => {
   return (
     <div>
       {matches ? (
-        <div className="h-[100vh] bg-[rgb(17,59,115)] text-white p-4">
+        <div className="h-[100vh] bg-[rgb(17,59,115)] text-white p-5">
           <div className="text-center pt-2">
             <Image src={PrimaryLogo} alt="" />
           </div>
-          <h3 className="text-[33.18px] text-center">Welcome!</h3>
-          <h4 className="text-center text-[22px]">Enter Mobile Number</h4>
-          <div className="mb-14">
-            <label className="mb-[10px] block text-[16px] text-base font-[600] text-dark dark:text-white">
+          <h3 className="text-[33.18px] text-center font-semibold">Welcome!</h3>
+          <h4 className="text-center text-[27px] font-semibold">Enter Mobile Number</h4>
+          <p className="text-center text-[13px] ">We Will send you a Confirmation Code</p>
+          <div className="mb-11 mt-3">
+            <label className="mb-[8px] block text-[16px] text-base font-[600] text-dark dark:text-white">
               Mobile Number
             </label>
             <input
@@ -97,8 +98,25 @@ const MobileVerification = (props) => {
               className="w-full text-black rounded-md border border-stroke dark:border-dark-3 py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2 dark:disabled:bg-dark-4 dark:disabled:border-dark-4"
             />
           </div>
-          <div className="mb-4 text-center">
-            <Image src={HorecahAdsBanner} alt="" />
+          <div className="mb-9 text-center">
+            <Swiper
+              pagination={{ type: "bullets", clickable: true }}
+              autoplay={{ delay: 2000 }}
+              loop
+              modules={[Navigation, Pagination, Autoplay]}
+              className="center"
+              style={{
+                textAlign: "center",
+                margin: "auto",
+                width: "400px",
+              }}
+            >
+              {[1, 2, 3, 4 ,5].map((el: number) => (
+                <SwiperSlide key={el}>
+                  <Image src={addBanner} width={900} height={500} alt="image" />
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
           <Button color="#113B73" backgroundColor="white" text="Get OTP" />
           <p className="text-center font-[400] text-[10px] mt-6">
@@ -175,15 +193,17 @@ const MobileVerification = (props) => {
                     color="#113B73"
                     backgroundColor="white"
                     text="Get OTP"
-                    onClick={() => router.push("verify")}
+                    // onClick={() => Router.push("verify")}
                   />
                   <p className="text-center font-[400] text-[12px] mt-5">
                     By continuing agree to Horecah
                   </p>
                   <div className="text-center font-[600] text-[15.33px]">
-                  {/* <Link href='' > */}
-                  {/* <p >Terms of use & Privacy Policy</p> */}
-                  {/* </Link> */}
+                    <Link href="">
+                      <p className="inline-block border-b-2 border-white">
+                        Terms of use & Privacy Policy
+                      </p>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -15,7 +15,10 @@ const AddressForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             sm: '608px'  // If viewport width is above 600px, maxWidth is 608px
                         },
                         m: 'auto',
-                        mt: '32px',
+                        mt: {
+                            xs: '8px',
+                            sm: '32px',
+                        },
                         px: {
                             xs: '16px',
                             sm: '35px'

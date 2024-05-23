@@ -13,6 +13,10 @@ import {
 import { useRouter } from "next/router";
 
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { addBanner } from "@public/assests";
+import Link from "next/link";
 
 const MobileVerification = (props) => {
   const {
@@ -106,17 +110,45 @@ const MobileVerification = (props) => {
         </div>
       ) : (
         <div>
-          <div className="bg-[#113B73] text-white h-[100vh]">
+          <div className="bg-[#002351] text-white h-[100vh]">
             <DesktopNavbar {...desktopNavbarProps} />
-            <div className="flex gap-4 ">
+            <div className="flex gap-4 py-4">
               <div className="w-1/2 flex justify-center">
                 <div className="mb-10 p-6 ">
-                  <h5 className="text-[23.04px]">Why join Horecah</h5>
-                  <p>2000+ Student cvs to select</p>
-                  <p>500+ Hotel to Apply</p>
-                  <p>100+ Suppliers ready for service</p>
+                  <div className={`text-start pl-7`}>
+                    <h1 className="text-3xl font-bold py-6">
+                      Why join Horecah
+                    </h1>
+                    <ul className="leading-[1.8rem] text-xl ">
+                      <li>2000+ Student cvs to select</li>
+                      <li>500+ Hotel to Apply</li>
+                      <li>100+ Suppliers ready for service</li>
+                    </ul>
+                  </div>
                   <div className="mt-10">
-                    <Image src={HorecahAdsBanner} alt="" />
+                    <Swiper
+                      pagination={{ type: "bullets", clickable: true }}
+                      autoplay={{ delay: 2000 }}
+                      loop
+                      modules={[Navigation, Pagination, Autoplay]}
+                      className="center"
+                      style={{
+                        textAlign: "center",
+                        margin: "auto",
+                        width: "400px",
+                      }}
+                    >
+                      {[1, 2, 3].map((el: number) => (
+                        <SwiperSlide key={el}>
+                          <Image
+                            src={addBanner}
+                            width={800}
+                            height={400}
+                            alt="image"
+                          />
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
                   </div>
                 </div>
               </div>
@@ -129,7 +161,7 @@ const MobileVerification = (props) => {
                   <p className="text-center font-[400] text-[13.33px] mb-20">
                     We Will send you a Confirmation Code
                   </p>
-                  <div className="mb-20">
+                  <div className="mb-14">
                     <label className="mb-[10px] block text-[16px] text-base font-[600] text-dark dark:text-white">
                       Mobile Number
                     </label>
@@ -145,12 +177,14 @@ const MobileVerification = (props) => {
                     text="Get OTP"
                     onClick={() => router.push("verify")}
                   />
-                  <p className="text-center font-[400] text-[10px] mt-6">
+                  <p className="text-center font-[400] text-[12px] mt-5">
                     By continuing agree to Horecah
                   </p>
-                  <p className="text-center font-[600] text-[13.33px]">
-                    Terms of use & Privacy Policy
-                  </p>
+                  <div className="text-center font-[600] text-[15.33px]">
+                  {/* <Link href='' > */}
+                  {/* <p >Terms of use & Privacy Policy</p> */}
+                  {/* </Link> */}
+                  </div>
                 </div>
               </div>
             </div>

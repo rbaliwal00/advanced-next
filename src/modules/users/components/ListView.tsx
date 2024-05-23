@@ -83,10 +83,10 @@ const Component = (props) => {
   return (
     <div className="">
       {/* <GstPancard platform="mobile" /> */}
-      <PreferenceFormExp platform="web" />
+      {/* <PreferenceFormExp platform="web" /> */}
       {/* <PreferenceFormFresher /> */}
       {/* <SupplierThemeSelection label={""} buttonTitle={""} closeOnBackdropClick={false} /> */}
-      {/* <SupplierVisitingCardPage /> */}
+      <SupplierVisitingCardPage />
       {/* <MobileVerification /> */}
       {/* <MobileNumberForm /> */}
       {/* <MobileVerification /> */}

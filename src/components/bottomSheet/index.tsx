@@ -1,8 +1,10 @@
 import { Sheet } from 'react-modal-sheet';
 import { ReactNode, useEffect, useState } from 'react';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
-import Button from './Button';
+// import Button from './Button';
 import { useMediaQuery } from '@mui/material';
+import Button from '@components/button';
+// import Button from './button';
 
 
 export interface BottomSheetProps {

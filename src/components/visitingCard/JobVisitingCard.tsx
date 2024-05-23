@@ -67,7 +67,7 @@ const JobVisitingCard = ({...props}: JobVisitingCardProps) => {
             }}
             className={`  text-white relative `}
           >
-            <div className="grid justify-center h-full grid-cols-[1fr_1fr] h-[78%] items-center ">
+            <div className="grid justify-center h-full grid-cols-[1fr_1fr]  items-center ">
                 <div className=' grid  text-end text-[100%]  left-[9%] h-full pt-[10%] '>
                   <div className="">
                     <h1 className="text-[100%] font-extrabold">{props.name}</h1>

@@ -1,44 +1,13 @@
 import { useMediaQuery } from '@mui/material';
-import { ReactNode, useEffect, useState } from 'react';
-
-
-
+import { useState } from 'react';
+import { Back, PrimaryLogo, SecondaryLogo } from '@public/assets/icons';
 import Carousel from '../carousel';
-import { SecondaryLogo, Back, PrimaryLogo } from '@public/assets/icons';
 import { DesktopNavbar } from '../desktop-navbar';
 import Topbar from '../topbar';
 
+const HireThemeSelection = () => {
 
-
-
-
-export interface BottomSheetProps {
-  label: string;
-  buttonTitle: string;
-  buttonFunction?: () => void;
-  closeOnBackdropClick: boolean;
-  children?: ReactNode
-}
-
-const HireThemeSelection = ({children,...props}:BottomSheetProps) => {
-
-  const [isOpen, setOpen] = useState(false);
   const [color, setColor] = useState('red');
-
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
 
   const leftNavitems =  [
     {
@@ -143,16 +112,16 @@ const HireThemeSelection = ({children,...props}:BottomSheetProps) => {
               </div>
             </div>
         </div>
-        <div>
+        <div className='grid'>
           <Carousel
           data={supplierDatas}
           color={color}
         />
           <div className="grid gap-4 items-center justify-items-center justify-self-center mt-2 text-center">
             <h2 className='text-base font-semibold'>Choose Color</h2>
-            <div className="grid grid-flow-col gap-4 pb-4">
+            <div className="grid grid-flow-col gap-4 pb-4 w-full justify-between">
               <div
-                className={`bg-yellow cursor-pointer
+                className={`bg-[yellow] cursor-pointer
                               shadow-[0px_4px_4px_0px_#00000040] w-[20px] h-[20px] rounded-[50%]
                               ${
                                 color === "yellow"
@@ -164,7 +133,7 @@ const HireThemeSelection = ({children,...props}:BottomSheetProps) => {
                 {" "}
               </div>
               <div
-                className={`bg-blue cursor-pointer
+                className={`bg-[blue] cursor-pointer
                               shadow-[0px_4px_4px_0px_#00000040] w-[20px] h-[20px] rounded-[50%]
                               ${
                                 color === "blue"
@@ -176,7 +145,7 @@ const HireThemeSelection = ({children,...props}:BottomSheetProps) => {
                 {" "}
               </div>
               <div
-                className={`bg-green cursor-pointer
+                className={`bg-[green] cursor-pointer
                               shadow-[0px_4px_4px_0px_#00000040] w-[20px] h-[20px] rounded-[50%]
                               ${
                                 color === "green"
@@ -188,7 +157,7 @@ const HireThemeSelection = ({children,...props}:BottomSheetProps) => {
                 {" "}
               </div>
               <div
-                className={`bg-red cursor-pointer
+                className={`bg-[red] cursor-pointer
                               shadow-[0px_4px_4px_0px_#00000040] w-[20px] h-[20px] rounded-[50%]
                               ${
                                 color === "red"

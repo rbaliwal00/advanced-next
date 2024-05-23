@@ -10,13 +10,19 @@ import {
   kolkata,
   mumbai,
 } from "@public/assets/icons";
+import { useRouter } from "next/router";
+
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { addBanner } from "@public/assests";
 import Link from "next/link";
 
-const MobileVerification = () => {
+const MobileVerification = (props) => {
+  const {
+    router: { push },
+  } = props;
+
   const desktopNavbarProps = {
     logo: PrimaryLogo,
     primary: true,
@@ -169,6 +175,7 @@ const MobileVerification = () => {
                     color="#113B73"
                     backgroundColor="white"
                     text="Get OTP"
+                    onClick={() => router.push("verify")}
                   />
                   <p className="text-center font-[400] text-[12px] mt-5">
                     By continuing agree to Horecah

@@ -36,6 +36,7 @@ export * as Experienced from "./experienced.png";
 
 export * as Edit from './Group.svg'
 export * as OrangeShare from './material-symbols_share.svg'
-export * as Download from './donwload.svg'
+export * as Download from './download.svg'
 export * as Pan from './pan.svg'
 
+export * as Company from './company.png'

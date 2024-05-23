@@ -1,67 +1,16 @@
-import { ReactNode, useEffect, useState } from 'react';
-// import Button from './Button';
-import {  useMediaQuery } from '@mui/material';
-// import { DesktopNavbar } from './DesktopNavbar';
-
-// import { Back, Download, Edit, EyeIcon, GST, OrangeShare, Pan, PrimaryLogo, SecondaryLogo } from './assets/icons';
-import JobVisitingCard from '../visitingCard/JobVisitingCard';
-
-import Image from 'next/image';
-
-
-import { Download, Edit, Share } from '@mui/icons-material';
+import JobVisitingCard from '@components/visitingCard/JobVisitingCard';
+import {  Share } from '@mui/icons-material';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
-import company from './assets/company.png';
-// import { SecondaryLogo, Back, PrimaryLogo, EyeIcon, Download, Edit, EyeIcon, GST, OrangeShare, Pan  } from '@public/assets/icons';
+import { useMediaQuery } from '@mui/material';
+import { Back, EyeIcon, Gst, OrangeShare, Pan, PrimaryLogo, SecondaryLogo, Company, Download, Edit } from '@public/assets/icons';
+import Image from 'next/image';
+import Button from '../button';
 import { DesktopNavbar } from '../desktop-navbar';
 import RoundButton from '../round-button';
 import Topbar from '../topbar';
-import { SecondaryLogo, Back, PrimaryLogo, EyeIcon, OrangeShare, Pan, Gst } from '@public/assets/icons';
-import Button from '../button';
 
 
-
-
-
-export interface BottomSheetProps {
-  label: string;
-  buttonTitle: string;
-  buttonFunction?: () => void;
-  closeOnBackdropClick: boolean;
-  children?: ReactNode
-}
-
-const ExperiencedVisitingCardPage = ({children,...props}:BottomSheetProps) => {
-
-  const [isOpen, setOpen] = useState(false);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
-  const handleClose = () => {
-    console.log('handle speed =>',)
-    setOpen(false);
-  };
-
-  const handleButtonFunction = () => {
-    
-    return !props.buttonFunction ? handleClose() : props.buttonFunction()
-  };
-
-  const handleBackDropClick = () => {
-    return !!props.closeOnBackdropClick ? handleClose() : null;
-  }
+const ExperiencedVisitingCardPage = () => {
 
   const leftNavitems =  [
     {
@@ -160,25 +109,18 @@ const ExperiencedVisitingCardPage = ({children,...props}:BottomSheetProps) => {
       <div className={`grid ${!isMobile && 'grid-cols-[max-content_max-content]'} gap-4`}>
 
         <div className={`${isMobile && 'w-full'}`}>
-          <div className={`h-[22rem] ${isMobile ? 'w-full':'w-[40rem]'}`}>
+          <div className={`h-[22rem] ${isMobile ? 'w-[90vw]':'w-[40rem]'}`}>
             {/* <SupplierVisitingCard {...supplierVisitingData} /> */}
             <JobVisitingCard {...jobData} />
           </div>
          
         </div>
-        <div className={` flex gap-4 ${isMobile ? 'justify-center w-[32rem]':'flex-col w-max'} `}>
+        <div className={` flex gap-4 ${isMobile ? 'justify-center ':'flex-col w-max'} `}>
               <RoundButton
               backgroundColor="white"
           border="1px solid #F3F4F6"
           color="black"
           icon={EyeIcon}
-              onClick={() => {}}
-            />
-              <RoundButton
-              backgroundColor="white"
-          border="1px solid #F3F4F6"
-          color="black"
-          icon={OrangeShare}
               onClick={() => {}}
             />
               <RoundButton
@@ -193,16 +135,25 @@ const ExperiencedVisitingCardPage = ({children,...props}:BottomSheetProps) => {
           border="1px solid #F3F4F6"
           color="black"
           icon={Edit}
-
+    
+              onClick={() => {}}
+            />
+              <RoundButton
+              backgroundColor="white"
+          border="1px solid #F3F4F6"
+          color="black"
+          icon={OrangeShare}
               onClick={() => {}}
             />
         </div>
       </div>
-      <div className={`${isMobile ? 'w-full':'w-[40rem]'} grid gap-4 justify-items-center`}>
-        <div className={`grid ${isMobile ? 'w-[70%]':'w-max' } gap-4`}>
+      <div className={`${isMobile ? 'w-[90vw]':'w-[40rem]'} grid gap-4 justify-items-center`}>
+        <div className={`grid text-[#C1C1C1] ${isMobile ? '':'w-max' } gap-4`}>
           <div className='flex w-full gap-4 justify-center border items-center p-2 rounded-[9px] border-solid border-[#EFEFEF]'>
-            <Image src={Gst} alt='' height={30}/>
-            <p>GST</p>
+            <div className='flex pr-4 items-center'>
+              <Image src={Gst} alt='' height={30}/>
+              <p>GST</p>
+            </div>
             <p>{'gst document'}</p>
             <RoundButton
               backgroundColor="white"
@@ -240,7 +191,7 @@ const ExperiencedVisitingCardPage = ({children,...props}:BottomSheetProps) => {
             jobDatas.map((data)=> 
               <div className='flex gap-2 mb-4 rounded-md drop-shadow-md justify-between p-4'>
             <div className='flex'>
-                <Image src={company} style={{ width: 'auto', height: 'auto' }} alt="image" />
+                <Image src={Company} style={{ width: 'auto', height: 'auto' }} alt="image" />
                 <div className='px-4 '>
                     <h2 className='text-lg'>Executive Chef</h2>
                     <p className='opacity-50 text-xs'>Indian Bier House</p>

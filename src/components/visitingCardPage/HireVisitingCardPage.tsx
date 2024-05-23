@@ -1,57 +1,14 @@
-import { ReactNode, useEffect, useState } from 'react';
-import {  useMediaQuery } from '@mui/material';
-import JobVisitingCard from '../visitingCard/JobVisitingCard';
+import HireVisitingCard from '@components/visitingCard/HireVisitingCard';
+import JobVisitingCard from '@components/visitingCard/JobVisitingCard';
+import { useMediaQuery } from '@mui/material';
+import { Back, EyeIcon, Gst, OrangeShare, Pan, PrimaryLogo, SecondaryLogo, Download, Edit } from '@public/assets/icons';
 import Image from 'next/image';
-import HireVisitingCard from '../visitingCard/HireVisitingCard';
+import Button from '../button';
 import { DesktopNavbar } from '../desktop-navbar';
 import RoundButton from '../round-button';
 import Topbar from '../topbar';
-import Button from '../button';
-import { Download, Edit } from '@mui/icons-material';
-import { SecondaryLogo, Back, PrimaryLogo, EyeIcon, OrangeShare, Pan, Gst } from '@public/assets/icons';
 
-
-
-
-export interface BottomSheetProps {
-  label: string;
-  buttonTitle: string;
-  buttonFunction?: () => void;
-  closeOnBackdropClick: boolean;
-  children?: ReactNode
-}
-
-const HireVisitingCardPage = ({children,...props}:BottomSheetProps) => {
-
-  const [isOpen, setOpen] = useState(false);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
-  const handleClose = () => {
-    console.log('handle speed =>',)
-    setOpen(false);
-  };
-
-  const handleButtonFunction = () => {
-    
-    return !props.buttonFunction ? handleClose() : props.buttonFunction()
-  };
-
-  const handleBackDropClick = () => {
-    return !!props.closeOnBackdropClick ? handleClose() : null;
-  }
+const HireVisitingCardPage = () => {
 
   const leftNavitems =  [
     {
@@ -109,19 +66,6 @@ const HireVisitingCardPage = ({children,...props}:BottomSheetProps) => {
     logo: SecondaryLogo
   }
 
-  const supplierVisitingData = {
-    address:"Anywhere St., Any City, ST 12345",
-    brandName:"Brand Name",
-    companyName:"Company Name",
-    contactPersonName:"Contact Person Name",
-    email:"ceo@email.com",
-    imageURL:"https://d27jswm5an3efw.cloudfront.net/app/uploads/2019/08/image-url-3.jpg",
-    mobileNumber:"+91 9900653064",
-    natureOfBusiness:"Nature of Business",
-    themeColor:"blue",
-    website:"www.horecah.com"
-  }
-
   const jobData = {
     currentLocation: "current Locaion",
     department: "Japanese cuisine",
@@ -161,7 +105,7 @@ const HireVisitingCardPage = ({children,...props}:BottomSheetProps) => {
       <div className={`grid ${!isMobile && 'grid-cols-[max-content_max-content]'} gap-4`}>
 
         <div className={`${isMobile && 'w-full'}`}>
-          <div className={`h-[22rem] ${isMobile ? 'w-full':'w-[40rem]'}`}>
+          <div className={`h-[22rem] ${isMobile ? 'w-[90vw]':'w-[40rem]'}`}>
           <HireVisitingCard
             address="Anywhere St., Any City, ST 12345"
             brandName="Brand Name"
@@ -177,19 +121,12 @@ const HireVisitingCardPage = ({children,...props}:BottomSheetProps) => {
           </div>
          
         </div>
-        <div className={` flex gap-4 ${isMobile ? 'justify-center w-[32rem]':'flex-col w-max'} `}>
+        <div className={` flex gap-4 ${isMobile ? 'justify-center':'flex-col w-max'} `}>
               <RoundButton
               backgroundColor="white"
           border="1px solid #F3F4F6"
           color="black"
           icon={EyeIcon}
-              onClick={() => {}}
-            />
-              <RoundButton
-              backgroundColor="white"
-          border="1px solid #F3F4F6"
-          color="black"
-          icon={OrangeShare}
               onClick={() => {}}
             />
               <RoundButton
@@ -207,13 +144,22 @@ const HireVisitingCardPage = ({children,...props}:BottomSheetProps) => {
 
               onClick={() => {}}
             />
+              <RoundButton
+              backgroundColor="white"
+          border="1px solid #F3F4F6"
+          color="black"
+          icon={OrangeShare}
+              onClick={() => {}}
+            />
         </div>
       </div>
-      <div className={`${isMobile ? 'w-full':'w-[40rem]'} grid gap-4 justify-items-center`}>
-        <div className={`grid ${isMobile ? 'w-[70%]':'w-max' } gap-4`}>
+      <div className={`${isMobile ? 'w-[90vw]':'w-[40rem]'} grid gap-4 justify-items-center`}>
+        <div className={`grid text-[#C1C1C1] ${isMobile ? '':'w-max' } gap-4`}>
           <div className='flex w-full gap-4 justify-center border items-center p-2 rounded-[9px] border-solid border-[#EFEFEF]'>
-            <Image src={Gst} alt='' height={30}/>
-            <p>GST</p>
+            <div className='flex pr-4 items-center'>
+              <Image src={Gst} alt='' height={30}/>
+              <p>GST</p>
+            </div>
             <p>{'gst document'}</p>
             <RoundButton
               backgroundColor="white"

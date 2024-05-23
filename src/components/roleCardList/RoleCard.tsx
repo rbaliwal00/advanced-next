@@ -14,7 +14,7 @@ const RoleCard = ({backgroundColor='#002351',hoverColor='#FE8B4C',...props}:Role
                 width={100} 
                 height={100} 
                 alt={'role image'} 
-                className={`cursor-pointer h-full w-48`}
+                className={`cursor-pointer h-full w-[12rem]`}
                 />
         </div>
         <style jsx>{`

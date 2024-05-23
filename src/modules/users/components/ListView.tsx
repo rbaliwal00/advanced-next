@@ -6,7 +6,8 @@ import ExperienceSelection from "./ExperienceSelection";
 import Otp from "./Otp";
 import PreferenceFormFresher from "./PreferenceFormFresher";
 import SupplierThemeSelection from "@components/themeSelection/SupplierThemeSelection";
-import LanguageCardList from "@components/languagecard-list";
+import PreferenceFormExp from "./PreferenceFormExp";
+import SupplierVisitingCardPage from "@components/visitingCardPage/SupplierVisitingCardPage";
 
 const Component = (props) => {
   const { loadingPosts, posts = {}, onDelete } = props;
@@ -140,10 +141,10 @@ const Component = (props) => {
   return (
     <div className="">
       {/* <GstPancard platform="mobile" /> */}
-      {/* <PreferenceFormExp platform="web" /> */}
+      <PreferenceFormExp platform="web" />
       {/* <PreferenceFormFresher /> */}
       {/* <SupplierThemeSelection label={""} buttonTitle={""} closeOnBackdropClick={false} /> */}
-      {/* <LanguageCardList  languageData={LanguageData}/> */}
+      {/* <SupplierVisitingCardPage /> */}
       {/* <MobileVerification /> */}
       {/* <MobileNumberForm /> */}
       {/* <MobileVerification /> */}

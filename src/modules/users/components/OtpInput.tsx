@@ -205,12 +205,12 @@ const grey = {
 
 const InputElement = styled("input")(
   ({ theme }) => `
-  width: 40px;
+  width: 60px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
-  padding: 8px 0px;
+  padding: 16px 0px;
   border-radius: 8px;
   text-align: center;
   color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};

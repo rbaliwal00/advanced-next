@@ -41,10 +41,6 @@ const HireVisitingCard = ({...props}: HireVisitingCardProps) => {
       default:
           return undefined;
     }
-
-    // if(props.themeColor === 'red'){
-
-    // }
   },[props.themeColor])
 
 

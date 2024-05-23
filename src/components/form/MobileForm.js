@@ -47,7 +47,7 @@ const MobileNumberForm = ({
     }}
   >
     {() => (
-      <Form>
+      <Form style={{}}>
         <Box
           sx={{
             maxWidth: 400,
@@ -55,15 +55,16 @@ const MobileNumberForm = ({
             px: "16px",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
+
             textAlign: "center",
           }}
         >
           <Typography
             sx={{
               fontSize: {
-                xs: "24px",
-                sm: "33.18px",
+                xs: "18px",
+                sm: "20px",
+                md: "33.18px",
               },
             }}
           >
@@ -72,32 +73,15 @@ const MobileNumberForm = ({
           <Typography className="text-center font-[400] text-[13.33px] mb-20">
             {subHeader || "We will send you a Confirmation Code"}
           </Typography>
-          <Box sx={{ marginBottom: "40px" }}>
+          <Box sx={{ marginY: "40px" }}>
             <MaterialUIFieldAdapter
               name="mobileNumber"
               type="text"
               label="Mobile Number"
               placeholder="Type Mobile Number"
-              style={{ backgroundColor: "white" }}
+              style={{ backgroundColor: "white", marginBottom: "30px" }}
             />
           </Box>
-          {/* <Button
-            color="#113B73"
-            backgroundColor="white"
-            text="Get OTP"
-            onClick={() => router.push("verify")}
-            type="submit"
-            variant="contained"
-            sx={{
-              width: "100%",
-              alignSelf: "center",
-              height: "48px",
-              mt: "64px",
-              mb: "16px",
-            }}
-          >
-            {btnText || "Get OTP"}
-          </Button> */}
           <Box
             display={{
               xs: "block",

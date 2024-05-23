@@ -102,7 +102,7 @@ const LanguageSelection = ({
   };
 
   return (
-    <div className={styles["main-page"]}>
+    <div className={styles["main-page"]} style={{ height: "100vh" }}>
       <div className={styles["language-list"]}>
         <div className={styles["list-image"]}>
           {/* <Image src={PrimaryLogo} alt='no image' width={200} height={100}/> */}

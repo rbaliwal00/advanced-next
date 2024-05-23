@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import OtpInput from "react-otp-input";
 import * as Yup from "yup";
-import { Box, Button, Typography, FormHelperText } from "@mui/material";
+import { Box, Typography, Button, FormHelperText } from "@mui/material";
 import { createTimer } from "./utilities";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -33,19 +33,19 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
         margin: "auto",
         padding: 2,
         textAlign: "center",
-        boxShadow: 3,
-        borderRadius: 2,
-        bgcolor: "background.paper",
         display: "flex", // Use Flexbox for alignment
         flexDirection: "column", // Stack children vertically
         alignItems: "center", // Center-align children horizontally
         justifyContent: "center",
       }}
     >
-      <h2>Verify OTP</h2>
-      <Typography variant="body2" sx={{ mb: 2 }}>
+      <h4 className="text-center text-[33.18px]">Verify OTP</h4>
+      <p className="text-[#C1C1C1] text-center mb-2 text-sm text-[16px] mb-4">
+        Enter the 4 digit code sent to 9414098765
+      </p>
+      {/* <Typography variant="body2" sx={{ mb: 2 }}>
         {subHeader || "We will send you a Confirmation Code"}
-      </Typography>
+      </Typography> */}
       <Formik
         initialValues={{ otp: "" }}
         validationSchema={validationSchema}
@@ -76,6 +76,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                       margin: "0 5px",
                       fontSize: "20px",
                       borderRadius: "5px",
+                      color: "black",
                       border: "1px solid rgba(0,0,0,0.3)",
                       border:
                         touched.otp && errors.otp
@@ -112,6 +113,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                         textAlign: "right", // Ensures text is right-aligned
                         fontSize: "10px", // Sets font size
                         display: "flex", // Uses flexbox for internal alignment
+                        color: "white",
                         alignItems: "center", // Centers items vertically within the flex container
                       }}
                     >
@@ -121,6 +123,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                 </Box>
               )}
             </Field>
+            <Button />
             <Button
               onClick={callBack}
               type="submit"
@@ -133,6 +136,11 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                 height: "48px",
                 mt: "96px",
                 mb: "16px",
+                background: "white",
+                color: "#113B73",
+                ":hover": {
+                  background: "white",
+                },
               }}
             >
               Verify
@@ -140,7 +148,9 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
           </Form>
         )}
       </Formik>
-      <Button onClick={onBack}>Back</Button>
+      <Button onClick={onBack} sx={{ color: "white" }}>
+        Back
+      </Button>
     </Box>
   );
 };

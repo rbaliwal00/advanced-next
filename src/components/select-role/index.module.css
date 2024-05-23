@@ -1,0 +1,52 @@
+.bgPrimary{
+    background-color: #002351;
+    color: white;
+    padding: 2.5rem 0;  
+    /* height: 90vh; */
+    /* overflow-y: hidden; */
+}
+.register {
+    text-align: center;
+    padding-top: 1rem;
+}
+.heading{
+  text-align: center;
+    font-size: 1.875rem;
+    font-weight: 700;
+}
+.reg-main {
+    /* display: flex; */
+    /* flex-direction: column; */
+  }
+
+  .mobile-banner{
+    display: none;
+  }
+
+  .register {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .register {
+        display: block;
+    }
+    .reg-main{
+        display: flex;
+        flex-direction: column;
+    }
+    .side-bar{
+        display: none;
+    }
+    .mobile-banner{
+        margin: 1rem 0 0 -2.9rem ;
+        display: block;
+      }
+      .navbar {
+        display: none;
+      }
+      .select-user{
+        margin-left: 1.3rem;
+      }
+
+}

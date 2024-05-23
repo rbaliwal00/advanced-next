@@ -1,4 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
+import { Header } from "@components/header";
 import { RootStoreProvider } from "@mobx";
 import { initializeApollo } from "@services/graphql";
 import "@styles/global.scss";
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <ApolloProvider client={apolloClient}>
       <RootStoreProvider>
+        <Header />
         <Component {...pageProps} router={router} />
       </RootStoreProvider>
     </ApolloProvider>

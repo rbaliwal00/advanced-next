@@ -5,7 +5,7 @@ import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';  // Adjust import
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { Persist } from 'formik-persist';
-import { nextBtnText, renderBackButton } from './utilities';
+import { nextBtn, renderBackButton } from './utilities';
 
 
 const BusinessForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
@@ -17,7 +17,10 @@ const BusinessForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             sm: '608px'  // If viewport width is above 600px, maxWidth is 608px
                         },
                         m: 'auto',
-                        mt: '32px',
+                        mt: {
+                            xs: '8px',
+                            sm: '32px',
+                        },
                         px: {
                             xs: '16px',
                             sm: '35px'
@@ -73,14 +76,7 @@ const BusinessForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             options={[{ value: '1-10', label: '1-10' }, { value: '11-50', label: '11-50' }]}
                         />
                         <Box display="flex" justifyContent="space-between" width="100%" fullWidth>
-                    <Button type="submit" color="primary" variant="contained" sx={{
-                            width: {
-                                xs: '100%',
-                                sm: '79%'
-                            } 
-                        }}>
-                               {nextBtnText(isLastStep)}
-                            </Button>
+                            {nextBtn(isLastStep)}
                             {renderBackButton(onBack, step)}
                         </Box>
                         

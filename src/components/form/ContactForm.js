@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';
 import { Box, Button } from '@mui/material';
 import PropTypes from 'prop-types';
-import { nextBtnText, renderBackButton } from './utilities';
+import { nextBtn, renderBackButton } from './utilities';
 
 const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 
@@ -16,7 +16,10 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             sm: '608px'  // If viewport width is above 600px, maxWidth is 608px
                         },
                         m: 'auto',
-                        mt: '32px',
+                        mt: {
+                            xs: '8px',
+                            sm: '32px',
+                        },
                         px: {
                             xs: '16px',
                             sm: '35px'
@@ -61,14 +64,7 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             placeholder="Type"
                         />
                         <Box display="flex" justifyContent="space-between" width="100%" fullWidth>
-                    <Button type="submit" color="primary" variant="contained" sx={{
-                            width: {
-                                xs: '100%',
-                                sm: '79%'
-                            } 
-                        }}>
-                                {nextBtnText(isLastStep)}
-                            </Button>
+                            {nextBtn(isLastStep)}
                             {renderBackButton(onBack, step)}
                         </Box>
                     </Box>

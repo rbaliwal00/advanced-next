@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 const eighteenYearsAgo = new Date();
 eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
@@ -13,21 +13,37 @@ export const validateFile = (file, maxSize) => {
 
 export const phoneRegExp = /^(\+\d{1,3}[- ]?)?\d{10}$/;
 
-export const nextBtnText = (isLast) => {
-    if(isLast) return 'Confirm'
-    else return 'Next'
+export const nextBtn = (isLast) => {
+    const text = isLast ? 'Confirm' : 'Next';
+
+    return (
+        <Button type="submit" variant="contained" sx={{
+            borderRadius: '8px', maxHeight: '48px', py: '10px', width: {
+                xs: '100%',
+                sm: '79%'
+            }, 
+            backgroundColor: '#113B73',
+            textTransform: 'none'
+         }} 
+        >
+            <Typography fontSize={'16px'} fontWeight={'600'} color={'#fff'}>{text}</Typography>
+        </Button>
+    )
 }
 
 export const renderBackButton = ( onBack, step ) => {
     if (step > 0){
         return (
-            <Button type="button" color="secondary" variant="contained" sx={{
+            <Button type="button" variant="outlined" sx={{
                 width: { sm: '19%' }, // Applies width starting from the sm breakpoint
+                textTransform: 'none',
                 display: {
                     xs: 'none', // Hides the button on extra small screens (below 600px)
                     sm: 'block' // Displays the button on screens 600px and wider
-                } }} onClick={onBack}>
-                Back
+                },
+                borderRadius: '8px', maxHeight: '48px', py: '10px', backgroundColor: '#fff', borderWidth: 1, borderColor: '#113B73'
+                }} onClick={onBack}>
+                <Typography fontSize={'16px'} fontWeight={'600'} color={'#113B73'}>Back</Typography>
             </Button> 
         )
     }else return <></>

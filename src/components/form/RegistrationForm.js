@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form } from 'formik';
 import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';
-import { Button, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import PropTypes from 'prop-types';
-import { nextBtnText, renderBackButton } from './utilities';
+import { nextBtn, renderBackButton, ne } from './utilities';
 
 const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 
@@ -15,7 +15,10 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                     sm: '608px'  // If viewport width is above 600px, maxWidth is 608px
                 },
                 m: 'auto',
-                mt: '32px',
+                mt: {
+                    xs: '8px',
+                    sm:'32px',
+                },
                 px: {
                     xs: '16px',
                     sm: '35px'
@@ -97,12 +100,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                     </Box>
                 )}
                 <Box display="flex" justifyContent="space-between" width="100%">
-                    <Button type="submit" color="primary" variant="contained" sx={{ width: {
-                        xs: '100%',
-                        sm: '79%'
-                    } }} >
-                        {nextBtnText(isLastStep)}
-                    </Button>
+                    {nextBtn(isLastStep)}
                     {renderBackButton({ onBack, step })}
                 </Box>
             </Box>

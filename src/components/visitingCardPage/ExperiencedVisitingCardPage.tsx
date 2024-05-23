@@ -90,19 +90,8 @@ const ExperiencedVisitingCardPage = () => {
 
 
   return (
-   <div className='h-screen w-screen'>
-    {isMobile ?
-        <Topbar
-          backgroundColor="#113B73"
-          button={Back}
-          color="white"
-          label="Label"
-          logo={PrimaryLogo}
-          onBack={() => {}}
-          platform=""
-          progress="30%"
-        />:
-        <DesktopNavbar {...desktopNavbarData} />}
+   <div >
+  
 
     <div className={`grid ${!isMobile && 'grid-cols-[7fr_7fr]'} gap-4 p-4`}>
       <div className='grid gap-4 grid-rows-[max-content_max-content] pt-16'>
@@ -134,7 +123,7 @@ const ExperiencedVisitingCardPage = () => {
               backgroundColor="white"
           border="1px solid #F3F4F6"
           color="black"
-          icon={Edit}
+          icon={Edit} 
     
               onClick={() => {}}
             />

@@ -57,7 +57,6 @@ const MobileNumberForm = ({
             flexDirection: "column",
             justifyContent: "center",
             textAlign: "center",
-            backgroundColor: "red",
           }}
         >
           <Typography

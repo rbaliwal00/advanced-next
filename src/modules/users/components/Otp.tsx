@@ -1,6 +1,7 @@
 import Button from "@components/button";
 import { DesktopNavbar } from "@components/desktop-navbar";
 import { useMediaQuery } from "@mui/material";
+import { useRouter } from "next/router";
 import {
   HorecahAdsBanner,
   PrimaryLogo,
@@ -68,7 +69,7 @@ const Otp = () => {
   };
 
   const matches = useMediaQuery("(max-width:600px)");
-
+  const router = useRouter();
   return (
     <div>
       {matches ? (
@@ -123,7 +124,7 @@ const Otp = () => {
                   <div className="flex justify-center">
                     <OTPInput />
                   </div>
-                  <p className="mb-10 text-[12px] text-end">
+                  <p className="mb-10 text-[12px] text-end mt-2">
                     Resend OTP in 10 secs
                   </p>
                   <Button
@@ -131,7 +132,12 @@ const Otp = () => {
                     backgroundColor="white"
                     text="Verify"
                   />
-                  <Button color="white" backgroundColor="#113B73" text="Back" />
+                  <Button
+                    color="white"
+                    backgroundColor="#113B73"
+                    text="Back"
+                    onClick={() => router.back()}
+                  />
                   <p className="text-center font-[400] text-[10px] mt-6">
                     By continuing agree to Horecah
                   </p>

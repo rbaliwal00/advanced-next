@@ -10,9 +10,13 @@ import {
   kolkata,
   mumbai,
 } from "@public/assets/icons";
+import { useRouter } from "next/router";
+
 import Image from "next/image";
 
-const MobileVerification = () => {
+const MobileVerification = (props) => {
+  const router = useRouter();
+
   const desktopNavbarProps = {
     logo: PrimaryLogo,
     primary: true,
@@ -137,6 +141,7 @@ const MobileVerification = () => {
                     color="#113B73"
                     backgroundColor="white"
                     text="Get OTP"
+                    onClick={() => router.push("verify")}
                   />
                   <p className="text-center font-[400] text-[10px] mt-6">
                     By continuing agree to Horecah

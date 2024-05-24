@@ -11,9 +11,6 @@ import styles from "./carousel.module.css";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-
-// import required modules
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import JobVisitingCard from "../visitingCard/JobVisitingCard";
 import HireVisitingCard from "../visitingCard/HireVisitingCard";
@@ -32,7 +29,7 @@ const Carousel: React.FC<DemoSliderProps> = ({ data, color }) => {
   return (
     <section className="w-full grid justify-center">
       <div className=" ">
-        <ul className={`h-full ${isMobile && "w-[100vw]"}`}>
+        <ul className={`h-full sm:w-[100vw] `}>
           <Swiper
             effect={"coverflow"}
             grabCursor={true}

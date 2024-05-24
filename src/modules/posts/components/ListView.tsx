@@ -40,6 +40,7 @@ import PreferenceFormFresher from "@modules/users/components/PreferenceFormFresh
 import Experience from "@components/cv/Experience";
 import Otp from "@modules/users/components/Otp";
 import MobileVerification from "@modules/users/components/MobileVerification";
+import { face } from "@public/assests";
 
 const Component = (props: any) => {
   const { loadingPosts, posts = {}, onDelete } = props;
@@ -98,7 +99,7 @@ const Component = (props: any) => {
     experience: experience,
     name: 'Poonam Singh',
     designation: 'Director',
-    // image: `https://img.freepik.com/free-photo/portrait-young-beautiful-woman-with-smoky-eyes-makeup-pretty-young-adult-girl-posing-studio-closeup-attractive-female-face_186202-4439.jpg`,
+    image: face,
     about: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum amet possimus minima nesciunt quod facilis adipisci eum ipsa officiis commodi sunt autem odio repudiandae atque tempore illo nisi, dolore incidunt.',
     portfolio: 'www.portfolio.com',
     newsletter: 'www.newsletter.com',
@@ -180,7 +181,7 @@ const Component = (props: any) => {
     <>
       {/* <TabButton {...tabButtonpProps}/> */}
 
-    {/* <KYCReject  contact={contactFun}/>  */}
+    <KYCReject  contact={contactFun}/> 
 
     {/* <CV {...cvProps}/> */}
 
@@ -192,7 +193,7 @@ const Component = (props: any) => {
 
     {/* <LanguageCardList languageData={LanguageData}/> */}
 
-    <LanguageSelection languageData={LanguageData}/>
+    {/* <LanguageSelection languageData={LanguageData}/> */}
 
     {/* <Popup {...popupProps}/> */}
 

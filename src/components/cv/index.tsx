@@ -39,7 +39,7 @@ type Props = {
   backgroundColor?: string,
   name: string,
   designation: string,
-  // image: string,
+  image: string,
   about: string,
   portfolio: string,
   newsletter: string,
@@ -52,7 +52,7 @@ type Props = {
   address: string
 }
 
-const CV = ({ skills, educations, languages, awards, references, experience, name, designation, about, portfolio, newsletter, phone, whatsApp, email, instagram, facebook, linkedin, address, backgroundColor }: Props) => {
+const CV = ({ skills, educations, languages,image, awards, references, experience, name, designation, about, portfolio, newsletter, phone, whatsApp, email, instagram, facebook, linkedin, address, backgroundColor }: Props) => {
   return (
     <div>
       <div className={styles.main}>
@@ -62,7 +62,7 @@ const CV = ({ skills, educations, languages, awards, references, experience, nam
           educations={educations} 
           skills={skills} 
           languages={languages}
-          // image={image}
+          image={image}
           phone={phone}
           whatsApp={whatsApp}
           email={email}

@@ -13,7 +13,7 @@ const Education = ({skills, educations, image, phone, whatsApp, email, instagram
   return (
     <div className={styles.cvCreate}>
     <div className={styles.education}>
-      <Image src={face} alt='no img' width={200} height={200} className={styles.img}/>
+      <Image src={image} alt='no img' width={200} height={200} className={styles.img}/>
       <div className= {styles['user-info']}>
         <p><PhoneIcon/> &nbsp; {phone}</p>
         <p><WhatsAppIcon/> &nbsp; {whatsApp}</p>

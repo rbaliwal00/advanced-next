@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 // import { RoleProps } from '@constants';
 import RoleCard from './RoleCard';
 import { RoleProps } from '@modules/users/components/RoleCardList';
@@ -11,6 +11,8 @@ interface RoleCardListProps {
   hoverColor:string
 }
 
+const RoleCardList = ({ ...props }: RoleCardListProps) => {
+  const isMobile = useMediaQuery("(max-width:690px)");
 
 const RoleCardList = ({...props}:RoleCardListProps) => {
   const isMobile = useMediaQuery('(max-width:690px)');
@@ -27,7 +29,7 @@ const RoleCardList = ({...props}:RoleCardListProps) => {
       </React.Fragment>
     ))}
     </div>
-  )
-}
+  );
+};
 
-export default RoleCardList
+export default RoleCardList;

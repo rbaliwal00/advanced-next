@@ -1,8 +1,13 @@
-import React from 'react';
-import Image from 'next/image';
-import { RoleProps } from '@modules/users/components/RoleCardList';
+import React from "react";
+import Image from "next/image";
+import { RoleProps } from "@modules/users/components/RoleCardList";
+import { Box } from "@mui/material";
 
-const RoleCard = ({backgroundColor='#002351',hoverColor='#FE8B4C',...props}:RoleProps) => {
+const RoleCard = ({
+  backgroundColor = "#002351",
+  hoverColor = "#FE8B4C",
+  ...props
+}: RoleProps) => {
   return (
     <div 
         className={`main grid justify-items-center  w-[17rem] h-[17rem] grid-rows-[9fr_2fr] rounded-2xl shadow-[0px_5px_20px_0px_#00000066]`}
@@ -22,16 +27,21 @@ const RoleCard = ({backgroundColor='#002351',hoverColor='#FE8B4C',...props}:Role
         .speed:hover {
           background-color: ${hoverColor};
         }
-        .main{
-            background-color: ${backgroundColor};
+        .main {
+          background-color: ${backgroundColor};
+        }
+        .strongstay:img {
+          width: 10%;
         }
         .strongstay:img{
           width: 10%;
         }
       `}</style>
-        <h1 className='text-[white]  rounded-b-2xl cursor-pointer shadow-[0px_-5px_20px_0px_rgba(11,11,11,0.4)] w-full text-center text-xl font-semibold content-evenly'>{props.title}</h1>
-    </div>
-  )
-}
+      <h1 className="text-[white]  rounded-b-2xl cursor-pointer shadow-[0px_-5px_20px_0px_rgba(11,11,11,0.4)] w-full text-center text-xl font-semibold content-evenly">
+        {props.title}
+      </h1>
+    </Box>
+  );
+};
 
-export default RoleCard
+export default RoleCard;

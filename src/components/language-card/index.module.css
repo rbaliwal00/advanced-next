@@ -1,29 +1,29 @@
-.card{
-    background: #002351;
-    color: white;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 130px;
-    height: 110px;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
+.card {
+  background: #002351;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 110px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
 }
 
-.card:hover{
-    background-color: #FE8B4C;
-    color: white;
+.card:hover {
+  background-color: #fe8b4c;
+  color: white;
 }
 
-.card h1{
-    /* margin-bottom: 0; */
-    font-size: 32px;
-    opacity: 1;
+.card h1 {
+  /* margin-bottom: 0; */
+  font-size: 32px;
+  opacity: 1;
 }
-.card p{
-    font-weight: 400;
-    font-size: 16px;
-    margin-top: 4px;
+.card p {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 4px;
 }

@@ -58,6 +58,12 @@
     .languages-grid {
         grid-template-columns: 1fr; 
     }
+    .languages-grid{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media (max-width: 700px) {

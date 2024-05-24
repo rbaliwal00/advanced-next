@@ -3,6 +3,8 @@ import { banglore, delhi, hydrabad, kolkata, mumbai } from "@public/assests";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
+import { Box } from "@mui/material";
+import Cities from "@components/cities/cities";
 
 type LanguageCardProps = {
   id: number;
@@ -44,24 +46,6 @@ const LanguageSelection = ({
                 />
               ))}
           </div>
-        </div>
-        <div className={styles.cities}>
-          <p>Cities we are in</p>
-          <h1>
-            <Image src={delhi} alt="no img" />
-          </h1>
-          <h1>
-            <Image src={mumbai} alt="no img" />
-          </h1>
-          <h1>
-            <Image src={banglore} alt="no img" />
-          </h1>
-          <h1>
-            <Image src={kolkata} alt="no img" />
-          </h1>
-          <h1>
-            <Image src={hydrabad} alt="no img" />
-          </h1>
         </div>
         <Box
           sx={{

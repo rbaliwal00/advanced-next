@@ -91,6 +91,7 @@ const LanguageSelection = ({ languageData, hoverColor, backgroundColor }: Props)
                 <div className={styles['list-image']}>
                     {/* <Topbar {...topBar}/> */}
                 </div>
+                <div className={styles['main-languages']}>
                 <h1 className={styles.heading}>Choose Language</h1>
                 <div className={styles['languages-grid']}>
                     {
@@ -99,13 +100,14 @@ const LanguageSelection = ({ languageData, hoverColor, backgroundColor }: Props)
                         ))
                     }
                 </div>
+                </div>
                 <div className={styles.cities}>
                     <p>Cities we are in</p>
-                    <Image src={delhi} alt='no img'/>
-                    <Image src={mumbai} alt='no img'/>
-                    <Image src={banglore} alt='no img'/>
-                    <Image src={kolkata} alt='no img'/>
-                    <Image src={hydrabad} alt='no img'/>
+                    <h1><Image src={delhi} alt='no img' /></h1>
+                    <h1><Image src={mumbai} alt='no img'/></h1>
+                    <h1><Image src={banglore} alt='no img'/></h1>
+                    <h1><Image src={kolkata} alt='no img'/></h1>
+                    <h1><Image src={hydrabad} alt='no img'/></h1>
                 </div>
             </div>
         </div>

@@ -86,8 +86,12 @@ const MobileVerification = (props: any) => {
             <Image src={PrimaryLogo} alt="" />
           </div>
           <h3 className="text-[33.18px] text-center font-semibold">Welcome!</h3>
-          <h4 className="text-center text-[27px] font-semibold">Enter Mobile Number</h4>
-          <p className="text-center text-[13px] ">We Will send you a Confirmation Code</p>
+          <h4 className="text-center text-[27px] font-semibold">
+            Enter Mobile Number
+          </h4>
+          <p className="text-center text-[13px] ">
+            We Will send you a Confirmation Code
+          </p>
           <div className="mb-11 mt-3">
             <label className="mb-[8px] block text-[16px] text-base font-[600] text-dark dark:text-white">
               Mobile Number
@@ -98,8 +102,10 @@ const MobileVerification = (props: any) => {
               className="w-full text-black rounded-md border border-stroke dark:border-dark-3 py-[10px] px-5 text-dark-6 outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-gray-2 disabled:border-gray-2 dark:disabled:bg-dark-4 dark:disabled:border-dark-4"
             />
           </div>
-          <div className="mb-9 text-center">
+          <div className={`mb-9 text-center`}>
             <Swiper
+              slidesPerView={1}
+              spaceBetween={0}
               pagination={{ type: "bullets", clickable: true }}
               autoplay={{ delay: 2000 }}
               loop
@@ -111,9 +117,11 @@ const MobileVerification = (props: any) => {
                 width: "400px",
               }}
             >
-              {[1, 2, 3, 4 ,5].map((el: number) => (
+              {[1, 2, 3].map((el: number) => (
                 <SwiperSlide key={el}>
-                  <Image src={addBanner} width={900} height={500} alt="image" />
+                  {/* <div className={styles.bannerImage}> */}
+                  <Image src={addBanner} width={800} height={400} alt="image" />
+                  {/* </div> */}
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -145,6 +153,8 @@ const MobileVerification = (props: any) => {
                   </div>
                   <div className="mt-10">
                     <Swiper
+                      slidesPerView={1}
+                      spaceBetween={0}
                       pagination={{ type: "bullets", clickable: true }}
                       autoplay={{ delay: 2000 }}
                       loop
@@ -158,12 +168,14 @@ const MobileVerification = (props: any) => {
                     >
                       {[1, 2, 3].map((el: number) => (
                         <SwiperSlide key={el}>
+                          {/* <div className={styles.bannerImage}> */}
                           <Image
                             src={addBanner}
                             width={800}
                             height={400}
                             alt="image"
                           />
+                          {/* </div> */}
                         </SwiperSlide>
                       ))}
                     </Swiper>

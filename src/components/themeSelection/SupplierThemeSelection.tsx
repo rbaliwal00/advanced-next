@@ -29,7 +29,7 @@ const SupplierThemeSelection = () => {
 
 
 
-  const supplierDatas = [supplierData,supplierData,supplierData,supplierData,supplierData,supplierData,supplierData];
+  const supplierDatas = [supplierData,supplierData,supplierData,supplierData,supplierData];
 
 
   return (

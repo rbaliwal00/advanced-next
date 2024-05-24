@@ -5,7 +5,7 @@ import { RoleProps } from "@modules/users/components/RoleCardList";
 // import RoleCard from '@components/role-card';
 import { useMediaQuery } from "@mui/material";
 
-interface RoleCardListProps {
+export interface RoleCardListProps {
   roles: RoleProps[];
   backgroundColor: string;
   hoverColor: string;

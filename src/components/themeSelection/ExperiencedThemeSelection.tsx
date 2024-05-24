@@ -21,7 +21,7 @@ const ExperiencedThemeSelection = () => {
     type: 'job'
   }
 
-  const jobDatas = [jobData, jobData, jobData, jobData, jobData, jobData, jobData];
+  const jobDatas = [jobData, jobData, jobData,jobData,jobData];
 
   return (
       <div className='grid justify-items-center'>
@@ -34,7 +34,7 @@ const ExperiencedThemeSelection = () => {
             <h2 className='text-base font-semibold'>Choose Color</h2>
             <div className="grid grid-flow-col gap-4 pb-4 w-full justify-between">
               <div
-                className={`bg-yellow cursor-pointer
+                className={`bg-[yellow] cursor-pointer
                               shadow-[0px_4px_4px_0px_#00000040] w-[20px] h-[20px] rounded-[50%]
                               ${color === "yellow"
                     ? "border-2 border-solid border-[#484848]"
@@ -45,7 +45,7 @@ const ExperiencedThemeSelection = () => {
                 {" "}
               </div>
               <div
-                className={`bg-blue cursor-pointer
+                className={`bg-[blue] cursor-pointer
                               shadow-[0px_4px_4px_0px_#00000040] w-[20px] h-[20px] rounded-[50%]
                               ${color === "blue"
                     ? "border-2 border-solid border-[#484848]"
@@ -56,7 +56,7 @@ const ExperiencedThemeSelection = () => {
                 {" "}
               </div>
               <div
-                className={`bg-green cursor-pointer
+                className={`bg-[green] cursor-pointer
                               shadow-[0px_4px_4px_0px_#00000040] w-[20px] h-[20px] rounded-[50%]
                               ${color === "green"
                     ? "border-2 border-solid border-[#484848]"
@@ -67,7 +67,7 @@ const ExperiencedThemeSelection = () => {
                 {" "}
               </div>
               <div
-                className={`bg-red cursor-pointer
+                className={`bg-[red] cursor-pointer
                               shadow-[0px_4px_4px_0px_#00000040] w-[20px] h-[20px] rounded-[50%]
                               ${color === "red"
                     ? "border-2 border-solid border-[#484848]"

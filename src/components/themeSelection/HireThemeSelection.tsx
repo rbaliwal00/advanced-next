@@ -20,7 +20,7 @@ const HireThemeSelection = () => {
     type: 'hire'
   }
 
-  const supplierDatas = [supplierData,supplierData,supplierData,supplierData,supplierData,supplierData,supplierData];
+  const supplierDatas = [supplierData,supplierData,supplierData,supplierData,supplierData];
 
   return (
    <div >

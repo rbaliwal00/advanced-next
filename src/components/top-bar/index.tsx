@@ -28,7 +28,7 @@ const Topbar = ({
   platform,
 }: TopbarProps) => {
   return (
-    <div className={styles.topbar}>
+    <div className={`bg-${backgroundColor} ${styles.topbar}`}>
       <header
         className={styles["topbar-container"]}
         style={{ backgroundColor, color, borderRadius }}

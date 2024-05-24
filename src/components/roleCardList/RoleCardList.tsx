@@ -3,19 +3,22 @@ import React from 'react';
 // import RoleCard from './RoleCard';
 import { RoleProps } from '@modules/users/components/RoleCardList';
 import RoleCard from '@components/role-card';
+import { useMediaQuery } from '@mui/material';
 
 interface RoleCardListProps {
   roles: RoleProps[],
-  platform: 'desktop' | 'mobile',
   backgroundColor:string,
   hoverColor:string
 }
 
 
 const RoleCardList = ({...props}:RoleCardListProps) => {
+  const isMobile = useMediaQuery('(max-width:640px)');
+
+
   return (
     <div
-      className={`grid gap-4 ${props.platform === 'mobile' ? '':'grid-cols-[1fr_min-content_1fr] w-min'}`}
+      className={`grid gap-4 ${isMobile ? '':'grid-cols-[1fr_min-content_1fr] w-min'}`}
       >
        {props.roles.map((role, index) => (
       <React.Fragment key={role.id}>

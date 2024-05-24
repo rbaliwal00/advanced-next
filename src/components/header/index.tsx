@@ -11,8 +11,9 @@ export const Header: React.FC = () => {
   const isDeviceMobile = useMediaQuery("600px");
 
   const desktopNavbarProps = {
-    logo: SecondaryLogo,
+    logo: PrimaryLogo,
     button: Back,
+    primary: true,
     // rightNavItems: [
     //   {
     //     id: 1,

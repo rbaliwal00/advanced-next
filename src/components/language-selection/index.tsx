@@ -1,76 +1,85 @@
-import React from 'react';
-import horecaLogo from './assets/webImages/horecah wt 1.png'
-import Image from 'next/image';;
-import styles from './index.module.css'
-import { banglore, delhi, PrimaryLogo, hydrabad, kolkata, mumbai, LogoutIcon } from '@public/assests';
-import LanguageCard from '@components/language-card';
-import { DesktopNavbar } from '@components/desktop-navbar';
-import Topbar from '@components/top-bar';
+import React from "react";
+import horecaLogo from "./assets/webImages/horecah wt 1.png";
+import Image from "next/image";
+import styles from "./index.module.css";
+import {
+  banglore,
+  delhi,
+  PrimaryLogo,
+  hydrabad,
+  kolkata,
+  mumbai,
+  LogoutIcon,
+} from "@public/assests";
+import LanguageCard from "@components/language-card";
+import { DesktopNavbar } from "@components/desktop-navbar";
+import Topbar from "@components/top-bar";
+import { useRouter } from "next/router";
 
 const desktopNavbarProps = {
-    logo: PrimaryLogo,
-    primary: true,
-    rightNavItems: [
-      {
-        id: 1,
-        type: "link",
-        title: "Hire",
-        path: "/hire",
-      },
-      {
-        id: 2,
-        type: "link",
-        title: "Become Supplier",
-        path: "/supplier",
-      },
-      {
-        id: 3,
-        type: "link",
-        title: "Job / Internship",
-        path: "/job",
-      },
-    ],
-    leftNavItems: [
-      {
-        id: 1,
-        type: "dropdown",
-        title: "Jobs",
-        path: "jobs",
-        links: [
-          {
-            id: 1,
-            type: "link",
-            title: "Search Jobs",
-            path: "/search-jobs",
-          },
-          {
-            id: 2,
-            type: "link",
-            title: "Manage Jobs",
-            path: "/manage-jobs",
-          },
-        ],
-      },
-      {
-        id: 2,
-        type: "link",
-        title: "Learning",
-        path: "/learning",
-      },
-    ],
-  };
+  logo: PrimaryLogo,
+  primary: true,
+  rightNavItems: [
+    {
+      id: 1,
+      type: "link",
+      title: "Hire",
+      path: "/hire",
+    },
+    {
+      id: 2,
+      type: "link",
+      title: "Become Supplier",
+      path: "/supplier",
+    },
+    {
+      id: 3,
+      type: "link",
+      title: "Job / Internship",
+      path: "/job",
+    },
+  ],
+  leftNavItems: [
+    {
+      id: 1,
+      type: "dropdown",
+      title: "Jobs",
+      path: "jobs",
+      links: [
+        {
+          id: 1,
+          type: "link",
+          title: "Search Jobs",
+          path: "/search-jobs",
+        },
+        {
+          id: 2,
+          type: "link",
+          title: "Manage Jobs",
+          path: "/manage-jobs",
+        },
+      ],
+    },
+    {
+      id: 2,
+      type: "link",
+      title: "Learning",
+      path: "/learning",
+    },
+  ],
+};
 
 type LanguageCardProps = {
-    id: number,
-    banner: string,
-    title: string,
-}
+  id: number;
+  banner: string;
+  title: string;
+};
 
 type Props = {
-    languageData: LanguageCardProps[],
-    hoverColor?: string,
-    backgroundColor?: string
-}
+  languageData: LanguageCardProps[];
+  hoverColor?: string;
+  backgroundColor?: string;
+};
 
 const topBar = {
   label: "Label",
@@ -78,11 +87,19 @@ const topBar = {
   color: "white",
   button: LogoutIcon,
   logo: PrimaryLogo,
-  progress: '30%',
-}
+  progress: "30%",
+};
 
-const LanguageSelection = ({ languageData, hoverColor, backgroundColor }: Props) => {
+const LanguageSelection = ({
+  languageData,
+  hoverColor,
+  backgroundColor,
+}: Props) => {
+  const router = useRouter();
 
+  const handleLangauageSelect = (language: string) => {
+    router.push("/users/login/mobile-otp");
+  };
 
     return (
         <div className={styles['main-page']}>
@@ -111,7 +128,9 @@ const LanguageSelection = ({ languageData, hoverColor, backgroundColor }: Props)
                 </div>
             </div>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default LanguageSelection;

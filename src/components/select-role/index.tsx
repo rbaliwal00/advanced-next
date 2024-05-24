@@ -70,18 +70,12 @@ const topBar = {
   color: "white",
   button: LogoutIcon,
   logo: PrimaryLogo,
-  progress: '30%',
-}
+  progress: "30%",
+};
 const RoleSelection = () => {
   return (
     <div>
-      <div className={styles.navbar}>
-        <DesktopNavbar {...desktopNavbarProps}/>
-      </div>
       <div className={styles.bgPrimary}>
-        <div className={` ${styles.register}`}>
-          <Topbar {...topBar}/>
-        </div>
         <div className=" grid grid-rows-[3fr_3fr] justify-items-center h-[100vh]">
           <div
             className={`grid grid-cols-[1fr_1fr] gap-2 self-center w-full ${styles["reg-main"]} `}

@@ -13,7 +13,7 @@ interface RoleCardListProps {
 
 
 const RoleCardList = ({...props}:RoleCardListProps) => {
-  const isMobile = useMediaQuery('(max-width:640px)');
+  const isMobile = useMediaQuery('(max-width:690px)');
 
 
   return (

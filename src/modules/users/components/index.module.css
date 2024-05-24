@@ -45,6 +45,7 @@
 .content_center {
   padding: 1.875rem 2.1875rem;
   box-shadow: rgba(0, 0, 0, 0.03) 0px 4px 25px;
+  max-width: 608px;
 }
 
 .gst_container {
@@ -66,6 +67,15 @@
     width: 80%;
     margin: auto;
   }
+  .exp_info {
+    right: 0.4rem;
+    top: 0.3rem;
+  }
+
+  .content_center {
+    padding: 16px 16px;
+    box-shadow: rgba(0, 0, 0, 0.03) 0px 4px 25px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -74,7 +84,7 @@
     margin: auto;
   }
   .exp_info {
-    right: 0.5rem;
-    top: 0.5rem;
+    right: 0.2rem;
+    top: 0.2rem;
   }
 }

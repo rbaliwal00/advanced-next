@@ -12,6 +12,7 @@ import {
 import React from "react";
 
 import styles from "./index.module.css";
+import { Box } from "@mui/material";
 
 const GstPancard = ({ platform }: any) => {
   const desktopNavbarProps = {
@@ -84,41 +85,53 @@ const GstPancard = ({ platform }: any) => {
   };
 
   return (
-    <div>
-      {platform === "web" && (
-        <div className="mb-10">
-          <DesktopNavbar {...desktopNavbarProps} />
+    <Box
+      sx={{
+        maxWidth: {
+          xs: "100%", // If viewport width is below 600px, maxWidth is 100%
+          sm: "608px", // If viewport width is above 600px, maxWidth is 608px
+        },
+        m: "auto",
+        mt: "32px",
+        px: {
+          xs: "16px",
+          sm: "35px",
+        },
+        py: {
+          xs: "16px",
+          sm: "30px",
+        },
+        boxShadow: {
+          xs: "none",
+          sm: "0px 4px 25px 0px rgba(0, 0, 0, 0.05)",
+        },
+        borderRadius: 2,
+        bgcolor: "background.paper",
+      }}
+    >
+      <div className="mt-10">
+        <UploadCard
+          description="Description"
+          logo={Gst}
+          buttonText="Upload GST"
+        />
+      </div>
+      <div className="mt-10">
+        <UploadCard
+          description="Description"
+          logo={Pancard}
+          buttonText="Upload PAN"
+        />
+      </div>
+      <div className="flex justify-between mt-10">
+        <div className="w-[73%]">
+          <Button text="Next" />
         </div>
-      )}
-      <div className={styles.gst_container}>
-        <div className={`${styles.content_center}`}>
-          {platform === "web" && <Topbar {...webTopbarProps} />}
-          {platform === "mobile" && <Topbar {...mobileTopbarProps} />}
-          <div className="mt-10">
-            <UploadCard
-              description="Description"
-              logo={Gst}
-              buttonText="Upload GST"
-            />
-          </div>
-          <div className="mt-10">
-            <UploadCard
-              description="Description"
-              logo={Pancard}
-              buttonText="Upload PAN"
-            />
-          </div>
-          <div className="flex justify-between mt-10">
-            <div className="w-[73%]">
-              <Button text="Next" />
-            </div>
-            <div className="w-[25%]">
-              <Button text="Back" kind="secondary" />
-            </div>
-          </div>
+        <div className="w-[25%]">
+          <Button text="Back" kind="secondary" />
         </div>
       </div>
-    </div>
+    </Box>
   );
 };
 

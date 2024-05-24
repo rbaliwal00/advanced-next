@@ -9,7 +9,7 @@ const Container = (props) => {
   const { deletePost, refetchPosts, router } = props;
 
   const onLinkClick = (link: string) => {
-    router.push(link);
+    router.push("/users/login/otp");
   };
 
   const handleDelete = (id) => {
@@ -18,7 +18,7 @@ const Container = (props) => {
   };
 
   return (
-    <Component {...props} onLinkClick={onLinkClick} onDelete={handleDelete} />
+    <Component {...props} handleClick={onLinkClick} onDelete={handleDelete} />
   );
 };
 

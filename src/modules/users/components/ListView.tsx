@@ -8,6 +8,7 @@ import PreferenceFormFresher from "./PreferenceFormFresher";
 import SupplierThemeSelection from "@components/themeSelection/SupplierThemeSelection";
 import PreferenceFormExp from "./PreferenceFormExp";
 import SupplierVisitingCardPage from "@components/visitingCardPage/SupplierVisitingCardPage";
+import GstPancard from "./GSTPancard";
 
 const Component = (props) => {
   const { loadingPosts, posts = {}, onDelete } = props;
@@ -72,63 +73,63 @@ const Component = (props) => {
     ],
   };
 
-  const LanguageData =  [
+  const LanguageData = [
     {
       id: 1,
-      banner: 'A',
-      title: 'English'
+      banner: "A",
+      title: "English",
     },
     {
       id: 2,
-      banner: 'अ',
-      title: 'हिंदी',
+      banner: "अ",
+      title: "हिंदी",
     },
     {
       id: 3,
-      banner: 'ಅ',
-      title: 'ಕನ್ನಡ',
+      banner: "ಅ",
+      title: "ಕನ್ನಡ",
     },
     {
       id: 4,
-      banner: 'অ',
-      title: 'বাংলা',
+      banner: "অ",
+      title: "বাংলা",
     },
     {
       id: 5,
-      banner: 'அ',
-      title: 'தமிழ்',
+      banner: "அ",
+      title: "தமிழ்",
     },
     {
       id: 6,
-      banner: 'आ',
-      title: 'मराठी',
+      banner: "आ",
+      title: "मराठी",
     },
     {
       id: 7,
-      banner: 'O',
-      title: 'Odia​',
+      banner: "O",
+      title: "Odia​",
     },
     {
       id: 8,
-      banner: 'అ',
-      title: 'టేళూఙూ',
+      banner: "అ",
+      title: "టేళూఙూ",
     },
     {
       id: 9,
-      banner: 'अ',
-      title: 'नेपाली',
+      banner: "अ",
+      title: "नेपाली",
     },
     {
       id: 10,
-      banner: 'અ',
-      title: 'ગુજરતિ',
+      banner: "અ",
+      title: "ગુજરતિ",
     },
     {
       id: 11,
-      banner: 'അ',
-      title: 'മലയലമ്',
+      banner: "അ",
+      title: "മലയലമ്",
     },
-  ]
+  ];
 
   if (loadingPosts) {
     return (
@@ -141,6 +142,7 @@ const Component = (props) => {
   return (
     <div className="">
       {/* <GstPancard platform="mobile" /> */}
+      <PreferenceFormExp onClick={props.handleClick} />
       {/* <PreferenceFormExp platform="web" /> */}
       {/* <PreferenceFormFresher /> */}
       {/* <SupplierThemeSelection label={""} buttonTitle={""} closeOnBackdropClick={false} /> */}

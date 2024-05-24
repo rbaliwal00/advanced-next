@@ -26,14 +26,13 @@ interface DemoSliderProps {
   color: string;
 }
 
-const Carousel: React.FC<DemoSliderProps> = ({ data,  color }) => {
-
-  const isMobile = useMediaQuery('(max-width:640px)');
+const Carousel: React.FC<DemoSliderProps> = ({ data, color }) => {
+  const isMobile = useMediaQuery("(max-width:640px)");
 
   return (
     <section className="w-full grid justify-center">
       <div className=" ">
-        <ul className={`h-full ${isMobile && 'w-[100vw]'}`}>
+        <ul className={`h-full ${isMobile && "w-[100vw]"}`}>
           <Swiper
             effect={"coverflow"}
             grabCursor={true}
@@ -62,7 +61,7 @@ const Carousel: React.FC<DemoSliderProps> = ({ data,  color }) => {
               <SwiperSlide
                 key={userData.id}
                 className={`${styles.swiper_slide} tranding-slide `}
-                style={{width:( isMobile ? '100%':'30%')}}
+                style={{ width: isMobile ? "100%" : "30%" }}
               >
                 {({ isActive }) => (
                   <div
@@ -75,12 +74,12 @@ const Carousel: React.FC<DemoSliderProps> = ({ data,  color }) => {
                         }
                       })
                     }
-                  >           
-                    {userData.type === 'job' ? (
+                  >
+                    {userData.type === "job" ? (
                       <JobVisitingCard {...userData} />
-                    ) : userData.type === 'hire' ? (
+                    ) : userData.type === "hire" ? (
                       <HireVisitingCard {...userData} />
-                    ) : userData.type === 'supplier' ? (
+                    ) : userData.type === "supplier" ? (
                       <SupplierVisitingCard {...userData} />
                     ) : null}
                   </div>
@@ -89,9 +88,7 @@ const Carousel: React.FC<DemoSliderProps> = ({ data,  color }) => {
             ))}
           </Swiper>
         </ul>
-  
       </div>
- 
     </section>
   );
 };

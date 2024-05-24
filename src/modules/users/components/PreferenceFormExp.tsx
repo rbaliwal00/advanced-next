@@ -13,7 +13,8 @@ import {
 
 import styles from "./index.module.css";
 import Button from "@components/button";
-import { useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
+import { platform } from "os";
 
 const desktopNavbarProps = {
   logo: SecondaryLogo,
@@ -129,54 +130,62 @@ const uploadDocProps = {
   ],
 };
 
-const PreferenceFormExp = ({ platform }: any) => {
+const PreferenceFormExp = ({ platform, onClick }: any) => {
   const matches = useMediaQuery("(max-width:600px)");
-
   if (matches) {
     platform = "mobile";
   } else {
     platform = "web";
   }
-
   return (
-    <div className={styles.preference_form_exp}>
-      {/* {platform === "web" && (
-        <div className="mb-10">
-          <DesktopNavbar {...desktopNavbarProps} />
-        </div>
-      )} */}
-      <div className={styles.content}>
-        <div className={styles.content_center}>
-          {platform === "web" && <Topbar {...webTopbarProps} />}
-          {/* {platform === "mobile" && <Topbar {...mobileTopbarProps} />} */}
-          <div
-            className={`${styles.exp_margin_top} ${styles.exp_info_container}`}
-          >
-            <InfoOutlinedIcon
-              className={styles.exp_info}
-              onClick={() => console.log("info")}
-            />
-            <RadioCard {...radioCardProps1} />
-          </div>
-          <div className={styles.exp_margin_top}>
-            <RadioCard {...radioCardProps2} />
-          </div>
-          <div className={styles.exp_margin_top}>
-            <UploadDoc {...uploadDocProps} />
-          </div>
-          <div className={`flex justify-between ${styles.exp_margin_top}`}>
-            <div className={matches ? `w-[100%]` : `w-[73%]`}>
-              <Button text="Confirm" />
-            </div>
-            {!matches && (
-              <div className="w-[25%]">
-                <Button text="Back" kind="secondary" />
-              </div>
-            )}
-          </div>
-        </div>
+    <Box
+      sx={{
+        maxWidth: {
+          xs: "100%", // If viewport width is below 600px, maxWidth is 100%
+          sm: "608px", // If viewport width is above 600px, maxWidth is 608px
+        },
+        m: "auto",
+        mt: "32px",
+        px: {
+          xs: "16px",
+          sm: "35px",
+        },
+        py: {
+          xs: "16px",
+          sm: "30px",
+        },
+        boxShadow: {
+          xs: "none",
+          sm: "0px 4px 25px 0px rgba(0, 0, 0, 0.05)",
+        },
+        borderRadius: 2,
+        bgcolor: "background.paper",
+      }}
+    >
+      <div className={`${styles.exp_info_container}`}>
+        <InfoOutlinedIcon
+          className={styles.exp_info}
+          onClick={() => console.log("info")}
+        />
+        <RadioCard {...radioCardProps1} />
       </div>
-    </div>
+      <div className={styles.exp_margin_top}>
+        <RadioCard {...radioCardProps2} />
+      </div>
+      <div className={styles.exp_margin_top}>
+        <UploadDoc {...uploadDocProps} />
+      </div>
+      <div className={`flex justify-between ${styles.exp_margin_top}`}>
+        <div className={matches ? `w-[100%]` : `w-[73%]`}>
+          <Button text="Confirm" />
+        </div>
+        {!matches && (
+          <div className="w-[25%]">
+            <Button text="Back" kind="secondary" onClick={onClick} />
+          </div>
+        )}
+      </div>
+    </Box>
   );
 };
 

@@ -5,10 +5,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 130px;
     height: 110px;
     cursor: pointer;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .card:hover{
@@ -17,7 +18,7 @@
 }
 
 .card h1{
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
     font-size: 32px;
     opacity: 1;
 }

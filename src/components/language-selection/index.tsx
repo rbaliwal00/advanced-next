@@ -101,33 +101,32 @@ const LanguageSelection = ({
     router.push("/users/login/mobile-otp");
   };
 
-  return (
-    <div className={styles["main-page"]} style={{ height: "100vh" }}>
-      <div className={styles["language-list"]}>
-        <div className={styles["list-image"]}>
-          {/* <Image src={PrimaryLogo} alt='no image' width={200} height={100}/> */}
-          {/* <Topbar {...topBar} /> */}
-        </div>
-        <h1 className={styles.heading}>Choose Language</h1>
-        <div className={styles["languages-grid"]}>
-          {languageData &&
-            languageData?.map((language: any) => (
-              <LanguageCard
-                banner={language.banner}
-                title={language.title}
-                backgroundColor={backgroundColor}
-                hoverColor={hoverColor}
-                onClick={() => handleLangauageSelect(language.title)}
-              />
-            ))}
-        </div>
-        <div className={styles.cities}>
-          <p>Cities we are in</p>
-          <Image src={delhi} alt="no img" />
-          <Image src={mumbai} alt="no img" />
-          <Image src={banglore} alt="no img" />
-          <Image src={kolkata} alt="no img" />
-          <Image src={hydrabad} alt="no img" />
+    return (
+        <div className={styles['main-page']}>
+            {/* <div className='navbar'><DesktopNavbar {...desktopNavbarProps}/></div> */}
+            <div className={styles['language-list']}>
+                <div className={styles['list-image']}>
+                    {/* <Topbar {...topBar}/> */}
+                </div>
+                <div className={styles['main-languages']}>
+                <h1 className={styles.heading}>Choose Language</h1>
+                <div className={styles['languages-grid']}>
+                    {
+                        languageData && languageData?.map((language: any) => (
+                            <LanguageCard banner={language.banner} title={language.title} backgroundColor={backgroundColor} hoverColor={hoverColor} />
+                        ))
+                    }
+                </div>
+                </div>
+                <div className={styles.cities}>
+                    <p>Cities we are in</p>
+                    <h1><Image src={delhi} alt='no img' /></h1>
+                    <h1><Image src={mumbai} alt='no img'/></h1>
+                    <h1><Image src={banglore} alt='no img'/></h1>
+                    <h1><Image src={kolkata} alt='no img'/></h1>
+                    <h1><Image src={hydrabad} alt='no img'/></h1>
+                </div>
+            </div>
         </div>
       </div>
     </div>

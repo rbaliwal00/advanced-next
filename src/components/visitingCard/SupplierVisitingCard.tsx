@@ -52,7 +52,7 @@ const SupplierVisitingCard = ({...props}: SupplierVisitingCardProps) => {
   return (
         <div 
           // style={{height:'70vh',width:'73vw'}}
-          className="h-full"
+          className="h-full w-[100vw]"
           >
           <div
             style={{

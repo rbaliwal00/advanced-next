@@ -1,8 +1,8 @@
 import React from 'react';
 // import { RoleProps } from '@constants';
-// import RoleCard from './RoleCard';
+import RoleCard from './RoleCard';
 import { RoleProps } from '@modules/users/components/RoleCardList';
-import RoleCard from '@components/role-card';
+// import RoleCard from '@components/role-card';
 import { useMediaQuery } from '@mui/material';
 
 interface RoleCardListProps {

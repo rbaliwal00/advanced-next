@@ -1,73 +1,14 @@
-import React from "react";
-import horecaLogo from "./assets/webImages/horecah wt 1.png";
-import Image from "next/image";
-import styles from "./index.module.css";
+import LanguageCard from "@components/language-card";
 import {
   banglore,
   delhi,
-  PrimaryLogo,
   hydrabad,
   kolkata,
-  mumbai,
-  LogoutIcon,
+  mumbai
 } from "@public/assests";
-import LanguageCard from "@components/language-card";
-import { DesktopNavbar } from "@components/desktop-navbar";
-import Topbar from "@components/top-bar";
+import Image from "next/image";
 import { useRouter } from "next/router";
-
-const desktopNavbarProps = {
-  logo: PrimaryLogo,
-  primary: true,
-  rightNavItems: [
-    {
-      id: 1,
-      type: "link",
-      title: "Hire",
-      path: "/hire",
-    },
-    {
-      id: 2,
-      type: "link",
-      title: "Become Supplier",
-      path: "/supplier",
-    },
-    {
-      id: 3,
-      type: "link",
-      title: "Job / Internship",
-      path: "/job",
-    },
-  ],
-  leftNavItems: [
-    {
-      id: 1,
-      type: "dropdown",
-      title: "Jobs",
-      path: "jobs",
-      links: [
-        {
-          id: 1,
-          type: "link",
-          title: "Search Jobs",
-          path: "/search-jobs",
-        },
-        {
-          id: 2,
-          type: "link",
-          title: "Manage Jobs",
-          path: "/manage-jobs",
-        },
-      ],
-    },
-    {
-      id: 2,
-      type: "link",
-      title: "Learning",
-      path: "/learning",
-    },
-  ],
-};
+import styles from "./index.module.css";
 
 type LanguageCardProps = {
   id: number;
@@ -81,15 +22,6 @@ type Props = {
   backgroundColor?: string;
 };
 
-const topBar = {
-  label: "Label",
-  backgroundColor: "#113B73",
-  color: "white",
-  button: LogoutIcon,
-  logo: PrimaryLogo,
-  progress: "30%",
-};
-
 const LanguageSelection = ({
   languageData,
   hoverColor,
@@ -101,32 +33,26 @@ const LanguageSelection = ({
     router.push("/users/login/mobile-otp");
   };
 
-    return (
-        <div className={styles['main-page']}>
-            {/* <div className='navbar'><DesktopNavbar {...desktopNavbarProps}/></div> */}
-            <div className={styles['language-list']}>
-                <div className={styles['list-image']}>
-                    {/* <Topbar {...topBar}/> */}
-                </div>
-                <div className={styles['main-languages']}>
-                <h1 className={styles.heading}>Choose Language</h1>
-                <div className={styles['languages-grid']}>
-                    {
-                        languageData && languageData?.map((language: any) => (
-                            <LanguageCard banner={language.banner} title={language.title} backgroundColor={backgroundColor} hoverColor={hoverColor} />
-                        ))
-                    }
-                </div>
-                </div>
-                <div className={styles.cities}>
-                    <p>Cities we are in</p>
-                    <h1><Image src={delhi} alt='no img' /></h1>
-                    <h1><Image src={mumbai} alt='no img'/></h1>
-                    <h1><Image src={banglore} alt='no img'/></h1>
-                    <h1><Image src={kolkata} alt='no img'/></h1>
-                    <h1><Image src={hydrabad} alt='no img'/></h1>
-                </div>
-            </div>
+  return (
+    <div className={styles['main-page']}>
+      <div className={styles['language-list']}>
+        <div className={styles['main-languages']}>
+          <h1 className={styles.heading}>Choose Language</h1>
+          <div className={styles['languages-grid']}>
+            {
+              languageData && languageData?.map((language: any) => (
+                <LanguageCard banner={language.banner} title={language.title} backgroundColor={backgroundColor} hoverColor={hoverColor} onClick={() => handleLangauageSelect(language.title)} />
+              ))
+            }
+          </div>
+        </div>
+        <div className={styles.cities}>
+          <p>Cities we are in</p>
+          <h1><Image src={delhi} alt='no img' /></h1>
+          <h1><Image src={mumbai} alt='no img' /></h1>
+          <h1><Image src={banglore} alt='no img' /></h1>
+          <h1><Image src={kolkata} alt='no img' /></h1>
+          <h1><Image src={hydrabad} alt='no img' /></h1>
         </div>
       </div>
     </div>

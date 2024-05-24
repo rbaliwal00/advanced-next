@@ -91,8 +91,7 @@ const ExperienceSelection = () => {
 
   return (
     <div className="bg-[#113B73] h-[100vh]">
-      <DesktopNavbar {...desktopNavbarProps} />
-      <div className="mt-20 grid justify-center">
+      <div className="pt-20 px-4 grid justify-center">
         <RoleCardList {...roleCardProps} />
       </div>
       <div className="text-center mt-20 text-white">

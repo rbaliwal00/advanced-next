@@ -53,6 +53,7 @@ type Props = {
 }
 
 const CV = ({ skills, educations, languages,image, awards, references, experience, name, designation, about, portfolio, newsletter, phone, whatsApp, email, instagram, facebook, linkedin, address, backgroundColor }: Props) => {
+  
   return (
     <div>
       <div className={styles.main}>

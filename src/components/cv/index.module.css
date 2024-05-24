@@ -166,10 +166,10 @@
     height: 90%;
     width: 100%;
 }
-.next-page-main::before{
+/* .next-page-main::before{
     content: '';
     position: absolute;
     background: url('./assets/webImages/backGround.png') no-repeat center center/cover;
     height: 127vh;
     width: 97%;
-}
+} */

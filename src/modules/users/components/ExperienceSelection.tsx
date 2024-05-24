@@ -1,8 +1,10 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import Cities from "@components/cities/cities";
-import RoleCardList, { RoleCardListProps } from "@components/roleCardList/RoleCardList";
+import RoleCardList, {
+  RoleCardListProps,
+} from "@components/roleCardList/RoleCardList";
 import { Box } from "@mui/material";
 import Experienced from "@public/assets/experienced.png";
 import Fresher from "@public/assets/fresher.png";
@@ -13,7 +15,7 @@ const ExperienceSelection = () => {
 
   // Define handleRoute inside useEffect to ensure it's only available on the client side
   useEffect(() => {
-    const handleRoute = (exp:string) => () => {
+    const handleRoute = (exp: string) => () => {
       router.push(`/users/job-seeker/theme?exp=${exp}`);
     };
 
@@ -23,13 +25,13 @@ const ExperienceSelection = () => {
         id: 1,
         banner: Fresher,
         title: "Fresher",
-        onClick: handleRoute('fresher'),
+        onClick: handleRoute("fresher"),
       },
       {
         id: 2,
         banner: Experienced,
         title: "Experienced",
-        onClick: handleRoute('experienced'),
+        onClick: handleRoute("experienced"),
       },
     ];
 
@@ -49,8 +51,8 @@ const ExperienceSelection = () => {
   }
 
   return (
-    <div className="bg-[#113B73] h-[100vh]">
-      <div className="pt-20 px-4 grid justify-center">
+    <div className="bg-[#113B73]">
+      <div className="pt-20 px-4 grid justify-center mb-0 sm:mb-10">
         <RoleCardList {...roleCardProps} />
       </div>
       <Box

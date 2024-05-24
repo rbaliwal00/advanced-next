@@ -82,9 +82,9 @@ const SupplierVisitingCard = ({...props}: SupplierVisitingCardProps) => {
                   <p className=' left-[57.7%] top-[70%]'>{props.natureOfBusiness}</p>
                 </div>
                </div>
-                <div className=' grid  '>
+                <div className=' grid mobile:text-[75%]  '>
                   <div>
-                    <h1 className="text-[1.3rem] font-extrabold">{props.companyName}</h1>
+                    <h1 className="text-[1.3rem] mobile:text-[140%] font-extrabold">{props.companyName}</h1>
                     <p>{props.natureOfBusiness}</p>
                   </div>
                   <h3 className="pl-[14%]">{props.contactPersonName}</h3>

@@ -20,7 +20,7 @@ const RoleCard = ({
       className={`main grid justify-items-center  w-[17rem] h-[17rem] grid-rows-[9fr_2fr] rounded-2xl shadow-[0px_5px_20px_0px_#00000066]`}
       onClick={props.onClick}
     >
-      <div className="speed content-end w-full h-full grid justify-items-center rounded-t-2xl">
+      <div className="speed pt-8 img:w-[2rem] w-full h-full grid justify-items-center rounded-t-2xl">
         <Image
           src={props.banner}
           width={100}

@@ -10,6 +10,7 @@ module.exports = {
       'xl': '1280px',
       '2xl': '1536px',
       'mobile':{'max': '400px'},
+      'smobile':{'max': '540px'},
     }
   },
   variants: {

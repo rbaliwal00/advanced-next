@@ -52,7 +52,7 @@ const SupplierVisitingCard = ({...props}: SupplierVisitingCardProps) => {
   return (
         <div 
           // style={{height:'70vh',width:'73vw'}}
-          className="h-full w-[100vw]"
+          className="h-full "
           >
           <div
             style={{
@@ -71,15 +71,15 @@ const SupplierVisitingCard = ({...props}: SupplierVisitingCardProps) => {
                <div className="grid justify-items-center items-center">
                 <img
                   style={{borderColor:props.themeColor}}
-                  className=" h-[80%] w-[68%]  rounded-[50%]  border-solid left-[52.7%] top-[29%]"
+                  className="relative h-[80%] w-[68%]    rounded-[50%]  border-solid left-[-3.3%] top-[8%]"
                   src={props.imageURL}
                   alt="hello image"
                   width={500}
                   height={500}
                 />
-                <div>
-                  <p className=' left-[57.7%] top-[70%]'>{props.brandName}</p>
-                  <p className=' left-[57.7%] top-[70%]'>{props.natureOfBusiness}</p>
+                <div className="relative left-[-3.3%%] top-[-17%] text-center mobile:text-[75%]">
+                  <p className=' '>{props.brandName}</p>
+                  <p className=' '>{props.natureOfBusiness}</p>
                 </div>
                </div>
                 <div className=' grid mobile:text-[75%]  '>

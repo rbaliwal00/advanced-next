@@ -21,6 +21,8 @@ interface HireVisitingCardProps {
 
 const HireVisitingCard = ({...props}: HireVisitingCardProps) => {
 
+
+
   const [bgImage, setBgImage] = useState<any>();
 
   useEffect(()=>{
@@ -60,7 +62,7 @@ const HireVisitingCard = ({...props}: HireVisitingCardProps) => {
             }}
             className={` text-white relative `}
           >
-           <div className='grid gap-12 h-full grid-rows-[50%_50%] '>
+           <div className='grid gap-12 h-full grid-rows-[50%_50%] smobile:text-[75%]'>
             <div className=''>
               <h1 className="text-[120%] font-extrabold">{props.companyName}</h1>
               <h3>{props.contactPersonName}</h3>

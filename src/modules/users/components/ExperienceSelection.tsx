@@ -1,19 +1,8 @@
-import React from "react";
-// import RoleCardList from "./RoleCardList";
-import {
-  PrimaryLogo,
-  bangalore,
-  delhi,
-  hydrabad,
-  kolkata,
-  mumbai,
-} from "@public/assets/icons";
-import { DesktopNavbar } from "@components/desktop-navbar";
-import Experienced from '@public/assets/experienced.png'
-import Fresher from '@public/assets/fresher.png'
-import Image from "next/image";
-// import RoleCardList from "./RoleCardList";
+import Cities from "@components/cities/cities";
 import RoleCardList from "@components/roleCardList/RoleCardList";
+import { Box, Typography } from "@mui/material";
+import Experienced from "@public/assets/experienced.png";
+import Fresher from "@public/assets/fresher.png";
 
 const ExperienceSelection = () => {
   const ROLES: any = [
@@ -21,11 +10,13 @@ const ExperienceSelection = () => {
       id: 1,
       banner: Fresher,
       title: "Fresher",
+      onClick: () => console.log("fresher"),
     },
     {
       id: 2,
       banner: Experienced,
       title: "Experienced",
+      onClick: () => console.log("exprienced"),
     },
   ];
 
@@ -36,84 +27,27 @@ const ExperienceSelection = () => {
     hoverColor: "#FE8B4C",
   };
 
-  const desktopNavbarProps = {
-    logo: PrimaryLogo,
-    primary: true,
-    rightNavItems: [
-      {
-        id: 1,
-        type: "link",
-        title: "Hire",
-        path: "/hire",
-      },
-      {
-        id: 2,
-        type: "link",
-        title: "Become Supplier",
-        path: "/supplier",
-      },
-      {
-        id: 3,
-        type: "link",
-        title: "Job / Internship",
-        path: "/job",
-      },
-    ],
-    leftNavItems: [
-      {
-        id: 1,
-        type: "dropdown",
-        title: "Jobs",
-        path: "jobs",
-        links: [
-          {
-            id: 1,
-            type: "link",
-            title: "Search Jobs",
-            path: "/search-jobs",
-          },
-          {
-            id: 2,
-            type: "link",
-            title: "Manage Jobs",
-            path: "/manage-jobs",
-          },
-        ],
-      },
-      {
-        id: 2,
-        type: "link",
-        title: "Learning",
-        path: "/learning",
-      },
-    ],
-  };
+  const selectedExperience = () => {};
 
   return (
     <div className="bg-[#113B73] h-[100vh]">
       <div className="pt-20 px-4 grid justify-center">
         <RoleCardList {...roleCardProps} />
       </div>
-      <div className="text-center mt-20 text-white">
-        <p className="mb-2">Cities we are in</p>
-        <div className="flex justify-center gap-4">
-          <div>
-            <Image src={delhi} alt="no img" />
-          </div>
-          <div>
-            <Image src={mumbai} alt="no img" />
-          </div>
-          <div>
-            <Image src={bangalore} alt="no img" />
-          </div>
-          <div>
-            <Image src={kolkata} alt="no img" />
-          </div>
-          <div>
-            <Image src={hydrabad} alt="no img" />
-          </div>
-        </div>
-      </div>
+      <Box
+        sx={{
+          width: {
+            xs: "100%",
+            sm: "100%",
+            md: "75%",
+          },
+          color: "white",
+          margin: "auto",
+          paddingBottom: "50px",
+        }}
+      >
+        <Cities />
+      </Box>
     </div>
   );
 };

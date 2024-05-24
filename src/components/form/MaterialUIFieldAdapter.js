@@ -103,6 +103,7 @@ class MaterialUIFieldAdapter extends Component {
               fullWidth
               sx={[
                 {
+                  background: "white",
                   width: "100%",
                   borderRadius: "6px",
                   maxHeight: "48px",

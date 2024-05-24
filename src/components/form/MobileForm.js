@@ -41,7 +41,7 @@ const MobileNumberForm = ({
     validationSchema={validationSchema}
     onSubmit={(values, { setSubmitting, resetForm }) => {
       callback();
-      alert(`OTP sent`);
+      // alert(`OTP sent`);
       setSubmitting(false);
       resetForm();
     }}
@@ -55,17 +55,27 @@ const MobileNumberForm = ({
             px: "16px",
             display: "flex",
             flexDirection: "column",
-
             textAlign: "center",
           }}
         >
           <Typography
             sx={{
+              fontSize: "33.33px",
+            }}
+            display={{
+              xs: "block",
+              sm: "none",
+            }}
+          >
+            Welcome!
+          </Typography>
+          <Typography
+            sx={{
               fontSize: {
-                xs: "18px",
-                sm: "20px",
-                md: "33.18px",
+                xs: "27.65px",
+                sm: "33.18px",
               },
+              mt: 1,
             }}
           >
             {header || "Enter Mobile Number"}
@@ -73,13 +83,13 @@ const MobileNumberForm = ({
           <Typography className="text-center font-[400] text-[13.33px] mb-20">
             {subHeader || "We will send you a Confirmation Code"}
           </Typography>
-          <Box sx={{ marginY: "40px" }}>
+          <Box sx={{ marginY: "20px" }}>
             <MaterialUIFieldAdapter
               name="mobileNumber"
               type="text"
               label="Mobile Number"
               placeholder="Type Mobile Number"
-              style={{ backgroundColor: "white", marginBottom: "30px" }}
+              // style={{ backgroundColor: "white" }}
             />
           </Box>
           <Box

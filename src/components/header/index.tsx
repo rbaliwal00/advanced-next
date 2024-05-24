@@ -6,6 +6,7 @@ import Topbar from "@components/topbar";
 import { Back, PrimaryLogo, SecondaryLogo } from "@public/assets/icons";
 import { Box, useMediaQuery } from "@mui/material";
 import { back } from "nock";
+import { useRouter } from "next/router";
 
 export const Header: React.FC = () => {
   const isDeviceMobile = useMediaQuery("600px");
@@ -14,70 +15,13 @@ export const Header: React.FC = () => {
     logo: PrimaryLogo,
     button: Back,
     primary: true,
-    // rightNavItems: [
-    //   {
-    //     id: 1,
-    //     type: "link",
-    //     title: "Hire",
-    //     path: "/hire",
-    //   },
-    //   {
-    //     id: 2,
-    //     type: "link",
-    //     title: "Become Supplier",
-    //     path: "/supplier",
-    //   },
-    //   {
-    //     id: 3,
-    //     type: "link",
-    //     title: "Job / Internship",
-    //     path: "/job",
-    //   },
-    // ],
-    // leftNavItems: [
-    //   {
-    //     id: 1,
-    //     type: "dropdown",
-    //     title: "Jobs",
-    //     path: "jobs",
-    //     links: [
-    //       {
-    //         id: 1,
-    //         type: "link",
-    //         title: "Search Jobs",
-    //         path: "/search-jobs",
-    //       },
-    //       {
-    //         id: 2,
-    //         type: "link",
-    //         title: "Manage Jobs",
-    //         path: "/manage-jobs",
-    //       },
-    //     ],
-    //   },
-    //   {
-    //     id: 2,
-    //     type: "link",
-    //     title: "Learning",
-    //     path: "/learning",
-    //   },
-    // ],
   };
 
-  const mobileTopbarProps = {
-    label: "Last Step",
-    type: "primary",
-    color: "white",
-    button: Back,
-    logo: PrimaryLogo,
-    progress: "30%",
-    platform: "mobile",
-    borderRadius: 0,
-  };
+  const router = useRouter();
 
   return (
     <div className="text-center bg-gray-800">
-      <DesktopNavbar {...desktopNavbarProps} />
+      <DesktopNavbar {...desktopNavbarProps} onBack={() => router.back()} />
     </div>
   );
 };

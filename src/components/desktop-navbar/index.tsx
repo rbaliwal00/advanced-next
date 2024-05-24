@@ -36,20 +36,12 @@ export const DesktopNavbar = ({
   ...props
 }: HeaderProps) => {
   const mode = primary ? styles.header__primary : styles.header__secondary;
-  const mobileTopbarProps = {
-    label: "Last Step",
-    type: "primary",
-    color: "white",
-    button: Back,
-    logo: SecondaryLogo,
-    progress: "30%",
-    borderRadius: 0,
-  };
+
   return (
     <header>
       <div className="sm:hidden">
         <Box
-          className={`${styles.topbar_container} ${styles.clearfix}`}
+          className={`${styles.topbar_container} ${styles.clearfix} flex justify-between`}
           style={{ backgroundColor, color }}
         >
           <div className={styles.topbar_back_button}>

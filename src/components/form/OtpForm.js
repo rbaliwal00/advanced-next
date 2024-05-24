@@ -29,7 +29,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
   return (
     <Box
       sx={{
-        width: 400,
+        maxWidth: 400,
         margin: "auto",
         padding: 2,
         textAlign: "center",
@@ -50,8 +50,11 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
         initialValues={{ otp: "" }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
+          if (values.otp >= 1000 && values.otp <= 9999) {
+            callBack();
+          }
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
         }}
@@ -61,7 +64,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
             <Field name="otp">
               {({ field }) => (
                 <Box>
-                  <div className="flex justify-center">
+                  <div className="grid justify-center">
                     <OtpInput
                       {...field}
                       value={field.value}
@@ -85,6 +88,28 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                             : "1px solid rgba(0,0,0,0.3)",
                       }}
                     />
+                    <Button
+                      disabled={timeLeft > 0}
+                      onClick={() => console.log("check for callback")}
+                      sx={{
+                        textTransform: "none", // Prevent uppercase
+                        width: "100%", // Ensure the button occupies the required width
+                        justifyContent: "flex-end", // Aligns content to the right within the button
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          textAlign: "right", // Ensures text is right-aligned
+                          fontSize: "10px", // Sets font size
+                          display: "flex", // Uses flexbox for internal alignment
+                          marginBottom: "30px",
+                          color: "white",
+                          alignItems: "center", // Centers items vertically within the flex container
+                        }}
+                      >
+                        Resend OTP in {timeLeft} sec
+                      </Typography>
+                    </Button>
                   </div>
                   {touched.otp && errors.otp && (
                     <FormHelperText
@@ -93,51 +118,31 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                       {errors.otp}
                     </FormHelperText>
                   )}
-                  <Button
-                    disabled={timeLeft > 0}
-                    onClick={() => console.log("check for callback")}
-                    sx={{
-                      textTransform: "none", // Prevent uppercase
-                      width: "100%", // Ensure the button occupies the required width
-                      justifyContent: "flex-end", // Aligns content to the right within the button
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        textAlign: "right", // Ensures text is right-aligned
-                        fontSize: "10px", // Sets font size
-                        display: "flex", // Uses flexbox for internal alignment
-                        marginBottom: "30px",
-                        color: "white",
-                        alignItems: "center", // Centers items vertically within the flex container
-                      }}
-                    >
-                      Resend OTP in {timeLeft} sec
-                    </Typography>
-                  </Button>
                   <Box
                     display={{
                       xs: "block",
                       sm: "none",
                     }}
+                    sx={{ marginTop: "20px" }}
                   >
                     <Image src={addBanner} />
                   </Box>
                 </Box>
               )}
             </Field>
-            <Button />
             <Button
-              onClick={callBack}
               type="submit"
               color="primary"
               variant="contained"
               disabled={isSubmitting}
               sx={{
-                width: "100%",
+                width: {
+                  xs: "100%",
+                  sm: "280px",
+                },
                 alignSelf: "center",
                 height: "48px",
-                mt: "80px",
+                mt: "40px",
                 mb: "16px",
                 background: "white",
                 color: "#113B73",

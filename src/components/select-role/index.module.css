@@ -1,73 +1,94 @@
-.bgPrimary{
-    background-color: #002351;
-    color: white;
-    padding: 2.5rem 0;  
-    /* height: 90vh; */
-    /* overflow-y: hidden; */
+.bgPrimary {
+  background-color: #002351;
+  color: white;
+  padding: 2.5rem 0;
 }
 .register {
-    text-align: center;
-    padding-top: 1rem;
-}
-.heading{
   text-align: center;
-    font-size: 1.875rem;
-    font-weight: 700;
+  padding-top: 1rem;
+}
+.heading {
+  text-align: center;
+  font-size: 1.875rem;
+  font-weight: 700;
 }
 .reg-main {
-    /* display: flex; */
-    /* flex-direction: column; */
-  }
-  .bannerImage{
-    /* padding-right: 5rem; */
-  }
-
-  .mobile-banner{
-    display: none;
-  }
-
-  .register {
-    display: none;
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+.bannerImage {
+  /* padding-right: 5rem; */
 }
 
-@media(max-width: 780px){
-  .reg-main{
+.mobile-banner {
+  display: none;
+}
+
+.register {
+  display: none;
+}
+
+@media (max-width: 780px) {
+  .reg-main {
     display: flex;
     flex-direction: column;
-}
-.mobile-banner{
-  margin: 2rem 0 0 -2.9rem ;
-  display: block;
-}
-/* .mobile-banner img {
+  }
+  .mobile-banner {
+    margin: 2rem 0 0 -2.9rem;
+    display: block;
+  }
+  /* .mobile-banner img {
   width: 1000px;
   width: 800px;
 } */
-.side-bar{
-  display: none;
-}
-.heading{
-  text-align: center;
+  .side-bar {
+    display: none;
+  }
+  .heading {
+    text-align: center;
     font-size: 2.5rem;
     font-weight: 700;
-}
-/* .bannerImage {
+  }
+  /* .bannerImage {
   width: 100%; 
   height: auto;
 } */
 }
 
 @media (max-width: 600px) {
-    .register {
-        display: block;
-    }
-    
-    
-    
-      
-      .select-user{
-        margin-left: 1rem;
-      }
-      
+  .register {
+    display: block;
+  }
 
+  .select-user {
+    margin-left: 1rem;
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  .register {
+    display: block;
+  }
+  .reg-main {
+    display: flex;
+    flex-direction: column;
+  }
+  .side-bar {
+    display: none;
+  }
+  .mobile-banner {
+    margin: 1rem 0 0 -2.9rem;
+    display: block;
+  }
+  .navbar {
+    display: none;
+  }
+  .select-user {
+    margin-left: 1rem;
+  }
+  .heading {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
 }

@@ -1,120 +1,74 @@
-import React from "react";
-// import RoleCardList from "./RoleCardList";
-import {
-  PrimaryLogo,
-  bangalore,
-  delhi,
-  hydrabad,
-  kolkata,
-  mumbai,
-} from "@public/assets/icons";
-import { DesktopNavbar } from "@components/desktop-navbar";
-import Experienced from '@public/assets/experienced.png'
-import Fresher from '@public/assets/fresher.png'
-import Image from "next/image";
-// import RoleCardList from "./RoleCardList";
-import RoleCardList from "@components/roleCardList/RoleCardList";
+"use client";
+
+import { useEffect, useState } from "react";
+import Cities from "@components/cities/cities";
+import RoleCardList, {
+  RoleCardListProps,
+} from "@components/roleCardList/RoleCardList";
+import { Box } from "@mui/material";
+import Experienced from "@public/assets/experienced.png";
+import Fresher from "@public/assets/fresher.png";
+import { useRouter } from "next/router";
 
 const ExperienceSelection = () => {
-  const ROLES: any = [
-    {
-      id: 1,
-      banner: Fresher,
-      title: "Fresher",
-    },
-    {
-      id: 2,
-      banner: Experienced,
-      title: "Experienced",
-    },
-  ];
+  const router = useRouter();
 
-  const roleCardProps = {
-    roles: ROLES,
-    platform: "desktop",
-    backgroundColor: "#002351",
-    hoverColor: "#FE8B4C",
-  };
+  // Define handleRoute inside useEffect to ensure it's only available on the client side
+  useEffect(() => {
+    const handleRoute = (exp: string) => () => {
+      router.push(`/users/job-seeker/theme?exp=${exp}`);
+    };
 
-  const desktopNavbarProps = {
-    logo: PrimaryLogo,
-    primary: true,
-    rightNavItems: [
+    // ROLES array needs to be defined inside useEffect if it uses handleRoute
+    const ROLES = [
       {
         id: 1,
-        type: "link",
-        title: "Hire",
-        path: "/hire",
+        banner: Fresher,
+        title: "Fresher",
+        onClick: handleRoute("fresher"),
       },
       {
         id: 2,
-        type: "link",
-        title: "Become Supplier",
-        path: "/supplier",
+        banner: Experienced,
+        title: "Experienced",
+        onClick: handleRoute("experienced"),
       },
-      {
-        id: 3,
-        type: "link",
-        title: "Job / Internship",
-        path: "/job",
-      },
-    ],
-    leftNavItems: [
-      {
-        id: 1,
-        type: "dropdown",
-        title: "Jobs",
-        path: "jobs",
-        links: [
-          {
-            id: 1,
-            type: "link",
-            title: "Search Jobs",
-            path: "/search-jobs",
-          },
-          {
-            id: 2,
-            type: "link",
-            title: "Manage Jobs",
-            path: "/manage-jobs",
-          },
-        ],
-      },
-      {
-        id: 2,
-        type: "link",
-        title: "Learning",
-        path: "/learning",
-      },
-    ],
-  };
+    ];
+
+    // Now you can set up roleCardProps
+    setRoleCardProps({
+      roles: ROLES,
+      backgroundColor: "#002351",
+      hoverColor: "#FE8B4C",
+    });
+  }, [router]);
+
+  const [roleCardProps, setRoleCardProps] = useState<RoleCardListProps>(null);
+
+  if (!roleCardProps) {
+    // You can show a loading state here if necessary
+    return null;
+  }
 
   return (
-    <div className="bg-[#113B73] h-[100vh]">
-      <DesktopNavbar {...desktopNavbarProps} />
-      <div className="mt-20 grid justify-center">
+    <div className="bg-[#113B73]">
+      <div className="pt-20 px-4 grid justify-center mb-0 sm:mb-10">
         <RoleCardList {...roleCardProps} />
       </div>
-      <div className="text-center mt-20 text-white">
-        <p className="mb-2">Cities we are in</p>
-        <div className="flex justify-center gap-4">
-          <div>
-            <Image src={delhi} alt="no img" />
-          </div>
-          <div>
-            <Image src={mumbai} alt="no img" />
-          </div>
-          <div>
-            <Image src={bangalore} alt="no img" />
-          </div>
-          <div>
-            <Image src={kolkata} alt="no img" />
-          </div>
-          <div>
-            <Image src={hydrabad} alt="no img" />
-          </div>
-        </div>
-      </div>
+      <Box
+        sx={{
+          width: {
+            xs: "100%",
+            sm: "100%",
+            md: "75%",
+          },
+          color: "white",
+          margin: "auto",
+          paddingBottom: "50px",
+        }}
+      >
+        <Cities />
+      </Box>
     </div>
   );
 };

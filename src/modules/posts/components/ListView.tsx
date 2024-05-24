@@ -13,7 +13,6 @@ import TabButton from "@components/tab-button";
 import KYCReject from "@components/kyc-reject";
 import { log } from "console";
 import { awards, educations, experience, languages, references, skills } from "@components/cv/create-cv";
-import CV from "@components/cv";
 import KYCSucess from "@components/kyc-sucess";
 import KYCVerification from "@components/kyc-verification";
 import LanguageCard from "@components/language-card";
@@ -40,6 +39,9 @@ import PreferenceFormFresher from "@modules/users/components/PreferenceFormFresh
 import Experience from "@components/cv/Experience";
 import Otp from "@modules/users/components/Otp";
 import MobileVerification from "@modules/users/components/MobileVerification";
+import { face } from "@public/assests";
+import CV from "@components/cv";
+import Toast from "@components/toast";
 
 const Component = (props: any) => {
   const { loadingPosts, posts = {}, onDelete } = props;
@@ -98,7 +100,7 @@ const Component = (props: any) => {
     experience: experience,
     name: 'Poonam Singh',
     designation: 'Director',
-    // image: `https://img.freepik.com/free-photo/portrait-young-beautiful-woman-with-smoky-eyes-makeup-pretty-young-adult-girl-posing-studio-closeup-attractive-female-face_186202-4439.jpg`,
+    image: `${face}`,
     about: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum amet possimus minima nesciunt quod facilis adipisci eum ipsa officiis commodi sunt autem odio repudiandae atque tempore illo nisi, dolore incidunt.',
     portfolio: 'www.portfolio.com',
     newsletter: 'www.newsletter.com',
@@ -198,11 +200,13 @@ const Component = (props: any) => {
 
     {/* <WelcomePage/> */}
 
-    <RoleSelection />
+    {/* <RoleSelection /> */}
     {/* <PreferenceFormFresher /> */}
 
     {/* <Otp /> */}
-    <MobileVerification />
+    {/* <MobileVerification /> */}
+
+    <Toast text = 'Toast msg for error, warning' type='error'/>
     </>
   );
 };

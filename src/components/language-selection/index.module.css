@@ -1,78 +1,84 @@
 .main-page {
-    min-width: 100%;
-    height: 100%;
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
-    background-color: #113B73;
+  min-width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  background-color: #113b73;
 }
-.heading{
-    font-weight: 700;
-    font-size: 32px;
-    padding: 1rem 0;
+.heading {
+  font-weight: 700;
+  font-size: 32px;
+  padding: 1rem 0;
+  text-align: left;
 }
 .language-list {
-    color: white;
-    padding: 1.5rem;
-    text-align: center;
+  color: white;
+  padding: 1.5rem;
+}
+.main-languages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
- .languages-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-    width: 296px;
-    max-height: 787px;
-    margin: auto;
-} 
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  /* width: 296px; */
+  max-height: 787px;
+  margin: auto;
+}
 
 .list-image {
-    display: none;
+  display: none;
 }
 
 .cities {
-    width: 100vw;
-    padding: 2rem 0;
-    margin-left: 6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.cities img{
-    padding: 0 0.8rem;
+
+.cities p {
+  width: 100%;
+  text-align: center;
+  margin: 2rem 0;
 }
-/* .navbar {
-    display: block;
-} */
+
+.cities h1 {
+  margin-right: 20px;
+}
+
 @media (max-width: 1000px) {
-    .languages-grid {
-        grid-template-columns: repeat(3, 1fr); 
-    }
-    .cities{
-        display: none;
-    }
+  .languages-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .cities {
+    display: none;
+  }
 }
 @media (max-width: 900px) {
-    .languages-grid {
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    
+  .languages-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (max-width: 300px) {
-    .languages-grid {
-        grid-template-columns: 1fr; 
-    }
+  .languages-grid {
+    grid-template-columns: 1fr;
+  }
+  .main-languages .heading {
+    font-weight: 700;
+    font-size: 25px;
+  }
 }
 
 @media (max-width: 700px) {
-    
-    .list-image {
-        display: 'flex';
-        flex-direction: column;
-        align-items: center;
-        display: block;
-        
-    }
-    .navbar {
-        display: none;
-        /* visibility: hidden; */
-    }
-   
-
+  .list-image {
+    display: "flex";
+    flex-direction: column;
+    align-items: center;
+    display: block;
+  }
 }

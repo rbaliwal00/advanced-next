@@ -13,6 +13,7 @@ import {
 } from "@public/assets/icons";
 import Image from "next/image";
 import OTPInput from "./OtpInput";
+import { addBanner } from "@public/assests";
 
 const Otp = () => {
   const desktopNavbarProps = {
@@ -84,8 +85,8 @@ const Otp = () => {
           <div className="flex justify-center mb-10">
             <OTPInput />
           </div>
-          <div className="mb-4 text-center">
-            <Image src={HorecahAdsBanner} alt="" />
+          <div className="">
+            <Image src={addBanner} width={400} height={300} alt="image" />
           </div>
           <Button color="#113B73" backgroundColor="white" text="Verify" />
           <Button color="white" backgroundColor="#113B73" text="Back" />

@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   return (
     <Container>
       <Header />
-      <SupplierThemeSelection />
+      <Form />
     </Container>
   );
 };

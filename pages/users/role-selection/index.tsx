@@ -1,10 +1,10 @@
-import Otp from "@modules/users/components/Otp";
+import RoleSelection from "@components/select-role";
 import React from "react";
 
 const index = () => {
   return (
     <div>
-      <Otp />
+      <RoleSelection />
     </div>
   );
 };

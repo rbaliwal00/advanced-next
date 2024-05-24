@@ -13,62 +13,6 @@ const SupplierThemeSelection = () => {
 
   const [color, setColor] = useState('red');
 
-  const leftNavitems =  [
-    {
-      id: 1,
-      links: [
-        {
-          id: 1,
-          path: '/search-jobs',
-          title: 'Search Jobs',
-          type: 'link'
-        },
-        {
-          id: 2,
-          path: '/manage-jobs',
-          title: 'Manage Jobs',
-          type: 'link'
-        }
-      ],
-      path: 'jobs',
-      title: 'Jobs',
-      type: 'dropdown'
-    },
-    {
-      id: 2,
-      path: '/learning',
-      title: 'Learning',
-      type: 'link'
-    }
-  ];
-
-  const rightNavItems = [
-    {
-      id: 1,
-      path: '/hire',
-      title: 'Hire',
-      type: 'link'
-    },
-    {
-      id: 2,
-      path: '/supplier',
-      title: 'Become Supplier',
-      type: 'link'
-    },
-    {
-      id: 3,
-      path: '/job',
-      title: 'Job / Internship',
-      type: 'link'
-    }
-  ]
-
-  const desktopNavbarData = {
-    leftNavItems: leftNavitems,
-    rightNavItems: rightNavItems,
-    logo: SecondaryLogo
-  }
-
   const supplierData = {
     address:"Anywhere St., Any City, ST 12345",
     brandName:"Brand Name",
@@ -85,24 +29,11 @@ const SupplierThemeSelection = () => {
 
 
 
-  const supplierDatas = [supplierData,supplierData,supplierData,supplierData,supplierData,supplierData,supplierData];
-
-  const isMobile = useMediaQuery('(max-width:640px)');
-
+  const supplierDatas = [supplierData,supplierData,supplierData,supplierData,supplierData];
 
 
   return (
-   <div>
       <div className='grid justify-items-center'>
-        <div className={`w-[70%] ${isMobile && 'invisible'}`}>
-            <h3 className='text-2xl font-semibold pl-8 pt-8'>Theme</h3> 
-            <div className=' w-full px-8 py-4 left-0 bottom-0'>
-              <div className='bg-stroke dark:bg-dark-3 relative h-1.5 w-full rounded-2xl'>
-                  <div className='bg-[#FE8B4C] absolute top-0 left-0 h-full rounded-2xl' 
-                  style={{width: '30%'}}></div>
-              </div>
-            </div>
-        </div>
         <div className='grid'>
           <Carousel
           data={supplierDatas}
@@ -168,8 +99,6 @@ const SupplierThemeSelection = () => {
       </div>
         </div>
       </div>
-    
-   </div>
   );
 };
 

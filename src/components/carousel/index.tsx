@@ -11,9 +11,6 @@ import styles from "./carousel.module.css";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-
-// import required modules
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import JobVisitingCard from "../visitingCard/JobVisitingCard";
 import HireVisitingCard from "../visitingCard/HireVisitingCard";
@@ -32,25 +29,28 @@ const Carousel: React.FC<DemoSliderProps> = ({ data, color }) => {
   return (
     <section className="w-full grid justify-center">
       <div className=" ">
-        <ul className={`h-full ${isMobile && "w-[100vw]"}`}>
+        <ul className={`h-full  `}>
           <Swiper
             effect={"coverflow"}
             grabCursor={true}
             centeredSlides={true}
             loop={true}
             slidesPerView={"auto"}
+            // spaceBetween={isMobile ? 20 : 40} 
+            spaceBetween={isMobile ?0: 60}
+            
             // onActiveIndexChange={newIndex=> console.log('the index',newIndex)}
 
             coverflowEffect={{
               slideShadows: false,
-              rotate: 0,
+              // rotate: 0,
               stretch: 0,
               depth: 100,
-              modifier: 2.5,
+              modifier: 0,
             }}
             pagination={true}
-            modules={[EffectCoverflow, Pagination]}
-            className={`${styles.mySwiper} ${styles.swiper} `}
+            modules={[EffectCoverflow]}
+            className={`${styles.mySwiper} ${styles.swiper} w-[100vw]`}
           >
             <style jsx>{`
               .mySwiper .swiper-pagination-bullet-active {
@@ -62,6 +62,7 @@ const Carousel: React.FC<DemoSliderProps> = ({ data, color }) => {
                 key={userData.id}
                 className={`${styles.swiper_slide} tranding-slide `}
                 style={{ width: isMobile ? "100%" : "30%" }}
+                
               >
                 {({ isActive }) => (
                   <div

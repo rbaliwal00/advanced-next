@@ -131,3 +131,54 @@ export const supplierContactValidationSchema = Yup.object({
         .url('Enter a valid URL')
         .notRequired() // Makes it optional
 });
+
+export const preferenceValidationSchema = Yup.object().shape({
+    city: Yup.string()
+        .required('City is required'),
+    oneDayJob: Yup.boolean()
+        .required('Please specify if you want a one-day job'),
+    internship: Yup.boolean()
+        .required('Please specify if you want an internship'),
+    partTimeJob: Yup.boolean()
+        .required('Please specify if you want a part-time job'),
+    idType: Yup.string()
+        .oneOf(['Aadhar', 'Passport'], 'ID type must be either Aadhar or Passport')
+        .required('ID type is required'),
+    serialNo: Yup.string()
+        .when('idType', {
+            is: 'Aadhar',
+            then: Yup.string()
+                .matches(/^\d{12}$/, 'Aadhar serial number must be 12 digits')
+                .required('Serial number is required'),
+            otherwise: Yup.string()
+                .matches(/^[A-Z0-9]{8,12}$/, 'Passport serial number must be between 8 and 12 characters')
+                .required('Serial number is required')
+        }),
+    idImage: Yup.mixed()
+        .required('ID image is required')
+        .test('fileSize', 'File size is too large', value => {
+            return value && value.size <= 2000000; // 2MB
+        })
+        .test('fileType', 'Unsupported file format', value => {
+            return value && ['image/jpeg', 'image/png'].includes(value.type);
+        })
+});
+
+export const gstPanValidationSchema = Yup.object().shape({
+    gstFile: Yup.mixed().test(
+        'gst-or-pan-required',
+        'Either GST or PAN file must be attached',
+        function (value) {
+            const { panFile } = this.parent;
+            return value || panFile; // GST file should be present if PAN file is not, or vice versa
+        }
+    ),
+    panFile: Yup.mixed().test(
+        'gst-or-pan-required',
+        'Either GST or PAN file must be attached',
+        function (value) {
+            const { gstFile } = this.parent;
+            return value || gstFile; // PAN file should be present if GST file is not, or vice versa
+        }
+    ),
+});

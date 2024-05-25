@@ -31,7 +31,10 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                     xs: 'none',
                     sm: '0px 4px 25px 0px rgba(0, 0, 0, 0.05)'
                 },
-                borderRadius: 2,
+                borderRadius: {
+                    xs: '0px',
+                    sm: '12px'
+                },
                 bgcolor: 'background.paper',
             }}>
                 <MaterialUIFieldAdapter

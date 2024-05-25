@@ -9,12 +9,17 @@ import {
   Typography,
   MenuItem,
   Select,
+  Card,
+  CardContent
 } from "@mui/material";
 import CustomDatePicker from "./CustomCalendarBtn";
 import { connect, getIn } from "formik";
 import moment from "moment";
 import ImageUploadButton from "./ImgUploadBtn";
 import { Radio, RadioGroup } from "@mui/material";
+import GstInputComponent from "./UploadCard";
+import Image from "next/image";
+
 
 const responsiveFontSize = {
   fontSize: "14px",
@@ -54,6 +59,8 @@ class MaterialUIFieldAdapter extends Component {
       filePropType, // For file inputs
     ]),
     style: PropTypes.object,
+    radioImg: PropTypes.string,
+    docType: PropTypes.string
   };
 
   static defaultProps = {
@@ -76,7 +83,7 @@ class MaterialUIFieldAdapter extends Component {
   };
 
   renderComponent = () => {
-    const { type, name, label, formik, placeholder, options, rowRadio, style } =
+    const { type, name, label, formik, placeholder, options, rowRadio, style, radioImg, docType } =
       this.props;
     const { values, errors, touched } = formik;
     const value = getIn(values, name);
@@ -369,6 +376,53 @@ class MaterialUIFieldAdapter extends Component {
                 formik.setFieldValue(name, file);
               }}
               label={label}
+            />
+            {touch && error && <Typography color="error">{error}</Typography>}
+          </Box>
+        );
+
+      case 'radioCard':
+        return (
+          <Card variant="outlined" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: '16px', mb: '8px', background: '#113B73', borderRadius: '10px', maxHeight: {
+            xs: '80px',
+            sm: '88px'
+          }}}>
+            <CardContent sx={{ flexGrow: 1, p: '0px' }}>
+              <Typography variant="subtitle1" color={'#fff'}>{label}</Typography>
+              <RadioGroup
+                row
+                name={name}
+                value={value || ''}
+                onChange={this.handleChange}
+                sx={{ justifyContent: 'space-between', maxWidth: '67%' }}
+              >
+                {options.map(option => (
+                  <FormControlLabel
+                    key={option.value}
+                    value={option.value}
+                    control={<Radio sx={{ color: '#fff', '&.Mui-checked': { color: '#fff' } }} />}
+                    label={<Typography sx={{ color: '#fff' }}>{option.label}</Typography>}
+                    sx={{ mr: 2 }}
+                  />
+                ))}
+              </RadioGroup>
+            </CardContent>
+            <Box sx={{ ml: 2, maxWidth: '72px', maxHeight: '72px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end'}}>
+              {/* Placeholder for image or icon */}
+              <Image src={radioImg} alt="icon" style={{ width: '100%', maxHeight: '64px' }} />
+            </Box>
+          </Card>
+        );
+      
+      case 'documentFile':
+        return (
+          <Box alignSelf={"center"} fullWidth sx={{ mb: "24px" }}>
+            <GstInputComponent
+              onFileSelect={(file) => {
+                // Update the Formik state with the file object
+                formik.setFieldValue(name, file);
+              }}
+              docType={docType}
             />
             {touch && error && <Typography color="error">{error}</Typography>}
           </Box>

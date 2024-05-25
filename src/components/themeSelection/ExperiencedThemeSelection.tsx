@@ -1,6 +1,7 @@
 import { useMediaQuery } from '@mui/material';
 import { useState } from 'react';
 import Carousel from '../carousel';
+import JobStaticVisitingCard from '@components/visitingCard/JobstaticVisitingCard';
 
 const ExperiencedThemeSelection = () => {
 
@@ -18,7 +19,8 @@ const ExperiencedThemeSelection = () => {
     preferredLocationOne: "Preferred Location 1",
     preferredLocationTwo: "Preferred Location 2",
     themeColor: color,
-    type: 'job'
+    type: 'job',
+    experienceType:'fresher'
   }
 
   const jobDatas = [jobData, jobData, jobData,jobData,jobData];
@@ -26,10 +28,11 @@ const ExperiencedThemeSelection = () => {
   return (
       <div className='grid justify-items-center'>
         <div className='grid'>
-          <Carousel
+          {/* <Carousel
             data={jobDatas}
             color={color}
-          />
+          /> */}
+          <JobStaticVisitingCard {...jobData} />
           <div className="grid gap-4 items-center justify-items-center justify-self-center mt-2 text-center">
             <h2 className='text-base font-semibold'>Choose Color</h2>
             <div className="grid grid-flow-col gap-4 pb-4 w-full justify-between">

@@ -1,23 +1,26 @@
 import { useMediaQuery } from '@mui/material';
 import { useState } from 'react';
 import Carousel from '../carousel';
+import HireStaticVisitingCard from '@components/visitingCard/HirestaticVisitingCard';
 
 const HireThemeSelection = () => {
 
   const [color, setColor] = useState('red');
 
   const supplierData = {
-    address:"Anywhere St., Any City, ST 12345",
-    brandName:"Brand Name",
-    companyName:"Company Name",
-    contactPersonName:"Contact Person Name",
-    email:"ceo@email.com",
-    imageURL:"https://d27jswm5an3efw.cloudfront.net/app/uploads/2019/08/image-url-3.jpg",
-    mobileNumber:"+91 9900653064",
-    natureOfBusiness:"Nature of Business",
-    themeColor:color,
-    website:"www.horecah.com",
-    type: 'hire'
+    companyName: 'company number',
+    contactPersonName: 'Person name',
+    natureOfBusiness: 'Hotel, Bar',
+    themeColor: 'red',
+    mobileNumber: '1234567890',
+    email: 'someemail@gmail.com',
+    website: 'speed@gmail.com',
+    address: 'Block No., City',
+    imageURL: 'https://as1.ftcdn.net/v2/jpg/02/43/12/34/1000_F_243123463_zTooub557xEWABDLk0jJklDyLSGl2jrr.jpg',
+    brandName: 'Brand Name',
+    numberofEmployees: '1-10',
+    state: 'State',
+    pincode: 123456
   }
 
   const supplierDatas = [supplierData,supplierData,supplierData,supplierData,supplierData];
@@ -26,10 +29,11 @@ const HireThemeSelection = () => {
    <div >
       <div className='grid justify-items-center'>
         <div className='grid'>
-          <Carousel
+          {/* <Carousel
           data={supplierDatas}
           color={color}
-        />
+        /> */}
+        <HireStaticVisitingCard {...supplierData}/>
           <div className="grid gap-4 items-center justify-items-center justify-self-center mt-2 text-center">
             <h2 className='text-base font-semibold'>Choose Color</h2>
             <div className="grid grid-flow-col gap-4 pb-4 w-full justify-between">

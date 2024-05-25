@@ -1,6 +1,5 @@
 .card {
-  background: #002351;
-  color: white;
+  color: #113b73;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -10,6 +9,7 @@
   height: 110px;
   cursor: pointer;
   font-family: "Poppins", sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .card:hover {

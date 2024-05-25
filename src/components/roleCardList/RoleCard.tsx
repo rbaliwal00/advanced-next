@@ -37,7 +37,7 @@ const RoleCard = ({
           width: 10%;
         }
       `}</style>
-      <h1 className="text-[white]  rounded-b-2xl cursor-pointer shadow-[0px_-5px_20px_0px_rgba(11,11,11,0.4)] w-full text-center text-xl font-semibold content-evenly">
+      <h1 className="text-[#113B73]  rounded-b-2xl cursor-pointer shadow-[0px_-5px_20px_0px_rgba(11,11,11,0.4)] w-full text-center text-xl font-semibold content-evenly">
         {props.title}
       </h1>
     </Box>

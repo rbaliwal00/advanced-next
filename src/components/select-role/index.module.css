@@ -1,5 +1,4 @@
 .bgPrimary {
-  background-color: #002351;
   color: white;
   padding: 2.5rem 0;
 }
@@ -11,6 +10,7 @@
   text-align: center;
   font-size: 1.875rem;
   font-weight: 700;
+  margin-bottom: 30px;
 }
 .reg-main {
   /* display: flex; */
@@ -59,13 +59,9 @@
   .register {
     display: block;
   }
-
-  .select-user {
-    margin-left: 1rem;
-  }
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 600px) {
   .register {
     display: block;
   }
@@ -82,9 +78,6 @@
   }
   .navbar {
     display: none;
-  }
-  .select-user {
-    margin-left: 1rem;
   }
   .heading {
     text-align: center;

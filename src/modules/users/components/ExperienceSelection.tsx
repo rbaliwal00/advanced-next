@@ -13,13 +13,11 @@ import { useRouter } from "next/router";
 const ExperienceSelection = () => {
   const router = useRouter();
 
-  // Define handleRoute inside useEffect to ensure it's only available on the client side
   useEffect(() => {
     const handleRoute = (exp: string) => () => {
       router.push(`/users/job-seeker/theme?exp=${exp}`);
     };
 
-    // ROLES array needs to be defined inside useEffect if it uses handleRoute
     const ROLES = [
       {
         id: 1,
@@ -35,7 +33,6 @@ const ExperienceSelection = () => {
       },
     ];
 
-    // Now you can set up roleCardProps
     setRoleCardProps({
       roles: ROLES,
       backgroundColor: "#002351",
@@ -46,13 +43,15 @@ const ExperienceSelection = () => {
   const [roleCardProps, setRoleCardProps] = useState<RoleCardListProps>(null);
 
   if (!roleCardProps) {
-    // You can show a loading state here if necessary
     return null;
   }
 
   return (
-    <div className="bg-[#113B73]">
-      <div className="pt-20 px-4 grid justify-center mb-0 sm:mb-10">
+    <div className="text-[#4B5563] min-h-[calc(100vh-64px)]">
+      <div className="p-10 px-4 grid justify-center mb-0 sm:mb-10">
+        <h2 className="text-center mb-12 text-[30px] sm:text-[33.18px] font-[600]">
+          Select Experience
+        </h2>
         <RoleCardList {...roleCardProps} />
       </div>
       <Box
@@ -65,6 +64,10 @@ const ExperienceSelection = () => {
           color: "white",
           margin: "auto",
           paddingBottom: "50px",
+          marginTop: {
+            xs: "30px",
+            sm: "60px",
+          },
         }}
       >
         <Cities />

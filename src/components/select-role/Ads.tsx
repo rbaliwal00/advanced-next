@@ -1,15 +1,17 @@
-
 import Image from "next/image";
 import "swiper/swiper-bundle.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { addBanner } from "@public/assests";
-import styles from './index.module.css'
+import styles from "./index.module.css";
+import AdsSwiper from "@components/ads-swiper";
 
 const Ads = () => {
   return (
-    <div className={`grid gap-8 justify-center border-r-[3px] border-r-white border-solid ${styles['side-bar']}`}>
+    <div
+      className={`grid gap-8 justify-center border-r-[3px] border-r-white border-solid ${styles["side-bar"]}`}
+    >
       <div className={`text-start pl-7`}>
         <h1 className="text-3xl font-bold py-6">Why join Horecah</h1>
         <ul className="leading-[1.8rem] text-xl ">
@@ -18,22 +20,7 @@ const Ads = () => {
           <li>100+ Suppliers ready for service</li>
         </ul>
       </div>
-      <Swiper
-        pagination={{ type: "bullets", clickable: true }}
-        autoplay={{ delay: 2000 }}
-        loop
-        modules={[Navigation, Pagination, Autoplay]}
-        className="center"
-        style={{ textAlign: "center", margin: "auto", width: "400px" }}
-      >
-        {[1, 2, 3].map((el: number) => (
-          <SwiperSlide key={el}>
-            {/* <div className={styles.bannerImage}> */}
-            <Image src={addBanner} width={800} height={400} alt="image" />
-            {/* </div> */}
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <AdsSwiper width={400} />
     </div>
   );
 };

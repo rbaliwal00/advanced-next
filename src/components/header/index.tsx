@@ -12,9 +12,8 @@ export const Header: React.FC = () => {
   const isDeviceMobile = useMediaQuery("600px");
 
   const desktopNavbarProps = {
-    logo: PrimaryLogo,
+    logo: SecondaryLogo,
     button: Back,
-    primary: true,
   };
 
   const router = useRouter();

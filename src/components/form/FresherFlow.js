@@ -2,7 +2,9 @@ import React from 'react';
 import RegistrationForm from './RegistrationForm';
 import EducationForm from './EducationForm';
 import MultiStepForm from './StepFormContainer';
+import PreferenceForm from './PreferenceForm'
 import * as Yup from 'yup';
+import preferenceValidationSchema from './validationSchemas'
 import eighteenYearsAgo, { validateFile } from './utilities';
 
 // Initial values for Formik
@@ -76,6 +78,20 @@ const FresherForm = () => {
       },
       validationSchema: educationValidationSchema,
       key: 'education'
+    },
+    {
+      Component: PreferenceForm,
+      initialValues: {
+        workCity: '',
+        oneDayJob: false,
+        internship: false,
+        partTimeJob: false,
+        idType: '',
+        idNumber: ''
+      },
+      validationSchema: preferenceValidationSchema,
+      key: 'preference',
+      type: 'fresher'
     }
   ];
 

@@ -4,7 +4,8 @@ import BusinessForm from './BusinessForm'
 import AddressForm from './AddressForm';
 import ContactForm from './ContactForm';
 import MultiStepForm from './StepFormContainer';
-import { businessValidationSchema, addressValidationSchema, contactValidationSchema  } from './validationSchemas';
+import GstPanCardForm from './GstPanCardForm'
+import { businessValidationSchema, addressValidationSchema, contactValidationSchema, gstPanValidationSchema  } from './validationSchemas';
 
 // Initial values for Formik
 const formConfigs = [
@@ -20,6 +21,15 @@ const formConfigs = [
         },
         validationSchema: businessValidationSchema,
         key: 'business',   
+    },
+    {
+        Component: GstPanCardForm,
+        initialValues: {
+            gstFile: '',
+            panFile: ''
+        },
+        validationSchema: gstPanValidationSchema,
+        key: 'GstPan'
     },
     {
         Component: AddressForm,

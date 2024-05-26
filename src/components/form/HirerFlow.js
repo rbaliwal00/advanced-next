@@ -29,7 +29,7 @@ const formConfigs = [
             panFile: ''
         },
         validationSchema: gstPanValidationSchema,
-        key: 'GstPan'
+        key: 'Gst/Pan'
     },
     {
         Component: AddressForm,

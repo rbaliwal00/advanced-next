@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 import BusinessForm from './BusinessForm'
 import AddressForm from './AddressForm';
 import ContactForm from './SupplierContactForm';
+import GstPanCardForm from './GstPanCardForm'
 import { businessValidationSchema, addressValidationSchema, supplierContactValidationSchema } from './validationSchemas';
 import MultiStepForm from './StepFormContainer';
 // Initial values for Formik
@@ -19,6 +20,15 @@ const formConfigs = [
         },
         validationSchema: businessValidationSchema,
         key: 'business',
+    },
+    {
+        Component: GstPanCardForm,
+        initialValues: {
+            gstFile: '',
+            panFile: ''
+        },
+        validationSchema: gstPanValidationSchema,
+        key: 'Gst/Pan'
     },
     {
         Component: AddressForm,

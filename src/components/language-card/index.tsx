@@ -40,7 +40,7 @@ const LanguageCard = ({
       onClick={onClick}
     >
       <h1>{banner}</h1>
-      <p>{title}</p>
+      <p style={{ fontSize: "19.2px", fontWeight: "400" }}>{title}</p>
     </div>
   );
 };

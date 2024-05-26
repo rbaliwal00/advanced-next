@@ -16,7 +16,7 @@ const RoleCardList = ({ ...props }: RoleCardListProps) => {
 
   return (
     <div
-      className={`grid gap-4 ${
+      className={`grid gap-10 ${
         isMobile ? "" : "grid-cols-[1fr_min-content_1fr] w-min"
       }`}
     >
@@ -27,9 +27,6 @@ const RoleCardList = ({ ...props }: RoleCardListProps) => {
             backgroundColor={props.backgroundColor}
             hoverColor={props.hoverColor}
           />
-          {index !== props.roles.length - 1 && (
-            <div className="w-0.5 bg-[white] relative top-[-12%] h-[128%] mx-8 " />
-          )}
         </React.Fragment>
       ))}
     </div>

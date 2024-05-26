@@ -12,13 +12,13 @@ const Cities = () => {
   ];
   return (
     <div className="w-full">
-      <p className="text-center m-4 pt-6">Cities we are in</p>
       <Box
         display={{
           xs: "none",
           sm: "block",
         }}
       >
+        <p className="text-center m-4 pt-6 text-[#4B5563]">Cities we are in</p>
         <div className="flex justify-between">
           {cities.map((city, i) => (
             <div key={i}>
@@ -27,7 +27,7 @@ const Cities = () => {
           ))}
         </div>
       </Box>
-      <Box
+      {/* <Box
         display={{
           xs: "block",
           sm: "none",
@@ -49,7 +49,7 @@ const Cities = () => {
             />
           ))}
         </div>
-      </Box>
+      </Box> */}
     </div>
   );
 };

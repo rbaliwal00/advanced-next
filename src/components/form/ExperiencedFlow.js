@@ -3,8 +3,9 @@ import MultiStepForm from './StepFormContainer';
 import RegistrationForm from './RegistrationForm';
 import StatusForm from './StatusForm';
 import WorkExperienceForm from './ExperienceForm';
+import PreferenceForm from './PreferenceForm'
 
-import { statusValidationSchema, workExperienceValidationSchema, registrationValidationSchema } from './validationSchemas';
+import { statusValidationSchema, workExperienceValidationSchema, registrationValidationSchema, preferenceValidationSchema } from './validationSchemas';
 
 const formConfigs = [
     {
@@ -41,6 +42,19 @@ const formConfigs = [
         },
         validationSchema: workExperienceValidationSchema,
         key: 'workExperience' 
+    },
+    {
+        Component: PreferenceForm,
+        initialValues: {
+            workCity: '',
+            oneDayJob: false,
+            internship: false,
+            partTimeJob: false,
+            idType: '',
+            idNumber: ''
+        },
+        validationSchema: preferenceValidationSchema,
+        key: 'preference',
     }
 ];
 

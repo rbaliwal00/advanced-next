@@ -9,45 +9,26 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Ads from "./Ads";
 import Cities from "@components/cities/cities";
 import { Box } from "@mui/material";
+import AdsSwiper from "@components/ads-swiper";
 
 const RoleSelection = () => {
   return (
     <div>
-      <div className={`${styles.bgPrimary}`}>
-        <div className="grid mb-6">
+      <div className={`text-[#4B5563] min-h-[calc(100vh-64px)]`}>
+        <div className="grid pt-10 mb-6">
           <div
             className={`grid grid-cols-[1fr_1fr] gap-2 self-center w-full ${styles["reg-main"]} `}
           >
             <Ads />
             <div className=" pl-4 justify-self-center self-center">
-              <Register />
+              <div className="mb-6 sm:mb-0">
+                <Register />
+              </div>
               <div
                 className={styles["mobile-banner"]}
-                style={{ marginTop: "40px", marginBottom: "20px" }}
+                style={{ margin: "auto" }}
               >
-                <Swiper
-                  pagination={{ type: "bullets", clickable: true }}
-                  autoplay={{ delay: 2000 }}
-                  loop
-                  modules={[Navigation, Pagination, Autoplay]}
-                  className="center"
-                  style={{
-                    textAlign: "center",
-                    margin: "auto",
-                    width: "400px",
-                  }}
-                >
-                  {[1, 2, 3].map((el: number) => (
-                    <SwiperSlide key={el}>
-                      <Image
-                        src={addBanner}
-                        width={700}
-                        height={300}
-                        alt="image"
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+                <AdsSwiper width={280} />
               </div>
             </div>
           </div>
@@ -60,6 +41,10 @@ const RoleSelection = () => {
               md: "75%",
             },
             margin: "auto",
+            marginTop: {
+              xs: "30px",
+              sm: "60px",
+            },
           }}
         >
           <Cities />

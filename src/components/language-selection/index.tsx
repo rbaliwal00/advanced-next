@@ -30,10 +30,12 @@ const LanguageSelection = ({
   };
 
   return (
-    <div className={styles["main-page"]}>
-      <div className={styles["language-list"]}>
-        <div className={styles["main-languages"]}>
-          <h1 className={styles.heading}>Choose Language</h1>
+    <div className={`${styles["main-page"]} min-h-[calc(100vh-64px)]`}>
+      <div className={`${styles["language-list"]} `}>
+        <div className={`${styles["main-languages"]}`}>
+          <h1 className={`${styles.heading} text-[#4B5563]`}>
+            Choose Language
+          </h1>
           <div className={styles["languages-grid"]}>
             {languageData &&
               languageData?.map((language: any) => (
@@ -55,6 +57,7 @@ const LanguageSelection = ({
               md: "75%",
             },
             margin: "auto",
+            marginTop: "80px",
           }}
         >
           <Cities />

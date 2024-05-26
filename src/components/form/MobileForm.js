@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import Button from "@components/button";
 import { addBanner } from "@public/assests";
 import Image from "next/image";
+import AdsSwiper from "@components/ads-swiper";
 
 // Validation schema
 const validationSchema = Yup.object({
@@ -93,15 +94,26 @@ const MobileNumberForm = ({
             />
           </Box>
           <Box
-            display={{
-              xs: "block",
-              sm: "none",
+            className="mb-4"
+            sx={{
+              display: {
+                xs: "block",
+                sm: "none",
+              },
             }}
-            sx={{ marginBottom: "30px" }}
           >
-            <Image src={addBanner} />
+            <AdsSwiper width={280} />
           </Box>
-          <Button color="#113B73" backgroundColor="white" text="Get OTP" />
+          <Button
+            color="white"
+            backgroundColor="#113B73"
+            text="Get OTP"
+            sx={{
+              ":hover": {
+                background: "#0A2C5A",
+              },
+            }}
+          />
           <Typography
             variant="caption"
             display="block"

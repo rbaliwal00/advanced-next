@@ -7,6 +7,7 @@ import { createTimer } from "./utilities";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { addBanner } from "@public/assests";
+import AdsSwiper from "@components/ads-swiper";
 
 const validationSchema = Yup.object({
   otp: Yup.string()
@@ -16,12 +17,12 @@ const validationSchema = Yup.object({
 });
 
 const VerifyOTP = ({ subHeader, onBack, callBack }) => {
-  const [timeLeft, setTimeLeft] = useState(10);
+  const [timeLeft, setTimeLeft] = useState(30);
 
   const router = useRouter();
 
   useEffect(() => {
-    const timer = createTimer(10, (val) => setTimeLeft(val));
+    const timer = createTimer(30, (val) => setTimeLeft(val));
 
     return () => timer.stop(); // Cleanup function to stop the timer on unmount
   }, []);
@@ -39,7 +40,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
         justifyContent: "center",
       }}
     >
-      <h4 className="text-center text-[33.18px]">Verify OTP</h4>
+      <h4 className="text-center text-[33.18px] mt-10">Verify OTP</h4>
       <p className="text-[#C1C1C1] text-center mb-2 text-sm text-[16px] mb-4">
         Enter the 4 digit code sent to 9414098765
       </p>
@@ -103,7 +104,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                           fontSize: "10px", // Sets font size
                           display: "flex", // Uses flexbox for internal alignment
                           marginBottom: "30px",
-                          color: "white",
+                          color: "#8899A8",
                           alignItems: "center", // Centers items vertically within the flex container
                         }}
                       >
@@ -119,13 +120,14 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                     </FormHelperText>
                   )}
                   <Box
-                    display={{
-                      xs: "block",
-                      sm: "none",
+                    sx={{
+                      display: {
+                        xs: "block",
+                        sm: "none",
+                      },
                     }}
-                    sx={{ marginTop: "20px" }}
                   >
-                    <Image src={addBanner} />
+                    <AdsSwiper width={280} />
                   </Box>
                 </Box>
               )}
@@ -138,16 +140,16 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
               sx={{
                 width: {
                   xs: "100%",
-                  sm: "280px",
+                  sm: "282px",
                 },
                 alignSelf: "center",
                 height: "48px",
-                mt: "40px",
+                mt: "60px",
                 mb: "16px",
-                background: "white",
-                color: "#113B73",
+                background: "#113B73",
+                color: "white",
                 ":hover": {
-                  background: "white",
+                  background: "#0A2C5A",
                 },
               }}
             >
@@ -156,7 +158,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
           </Form>
         )}
       </Formik>
-      <Button onClick={onBack} sx={{ color: "white" }}>
+      <Button onClick={onBack} sx={{ color: "#113B73" }}>
         Back
       </Button>
     </Box>

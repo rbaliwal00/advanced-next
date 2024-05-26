@@ -1,18 +1,16 @@
-import React from "react";
+import type { ReactElement } from "react";
 
-import { Cards, Container, Footer, Header, Main } from "@components";
-import Form from "@components/form";
-import PreferenceFormExp from "@modules/users/components/PreferenceFormExp";
-import PreferenceFormFresher from "@modules/users/components/PreferenceFormFresher";
-import SupplierThemeSelection from "@components/themeSelection/SupplierThemeSelection";
+import type { NextPageWithLayout } from "./_app";
+import Layout from "./layout";
+import LanguageSelection from "@components/language-selection";
+import { LanguageData } from "@modules/common/util";
 
-const Home: React.FC = () => {
-  return (
-    <Container>
-      <Header />
-      <Form />
-    </Container>
-  );
+const Page: NextPageWithLayout = () => {
+  return <LanguageSelection languageData={LanguageData} />;
 };
 
-export default Home;
+Page.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
+
+export default Page;

@@ -69,7 +69,7 @@ const renderCard = (type, formDetails) => {
                                     Preferred Location
                                 </Typography>
                                 <Typography style={styles.valueTxt}>
-                                    Location 1
+                                    {preferredLocation}
                                     <br />
                                     Location 2
                                     <br />
@@ -188,7 +188,7 @@ const renderCard = (type, formDetails) => {
         )
 }
 
-const themeCard = ({type, formDetails}) => {
+const ThemeCard = ({type, formDetails}) => {
    return (
        <Container sx={{ maxWidth: { xs: '328px', sm: '560px' }, minWidth: { xs: '320px', sm: '400px'}, p: 0}}>
             {renderCard(type, formDetails)}
@@ -196,9 +196,9 @@ const themeCard = ({type, formDetails}) => {
    )
 }
 
-themeCard.proptypes = {
+ThemeCard.proptypes = {
     type: PropTypes.string,
     formDetails: PropTypes.object
 }
 
-export default themeCard;
+export default ThemeCard;

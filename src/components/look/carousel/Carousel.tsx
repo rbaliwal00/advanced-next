@@ -5,6 +5,7 @@ import { FullWidthBgImage } from "./FullWidthBgImage";
 import { ArrowCircleRight, ArrowCircleLeft } from "@mui/icons-material";
 import { useResponsive } from "./useResponsive";
 import { useRef } from "react";
+import ThemeCard from '../../form/Themecard'
 
 interface SliderData {
   image: string;
@@ -20,6 +21,17 @@ interface SliderProps {
   autoplay: boolean;
   autoplaySpeed: number;
   centerMode:boolean;
+}
+
+const formDetails = {
+  name: 'kikhae',
+  position: 'Architect',
+  department: 'IT',
+  currentLocation: 'Blr',
+  number: '8830285891',
+  email: 'beingTmk@gmail.com',
+  preferredLocation: 'hyd',
+  experience: 'Experienced'
 }
 
 const Carousel: React.FC<SliderProps> = ({
@@ -68,13 +80,7 @@ const Carousel: React.FC<SliderProps> = ({
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <FullWidthBgImage
-                    image={item.image}
-                    text={item.title}
-                    label={label}
-                    borderRadius={"10px"}
-                    height={"300px"}
-                  />
+                  <ThemeCard type={'job'} formDetails={formDetails}/>
                 </a>
               ))}
           </Slider>

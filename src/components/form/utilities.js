@@ -101,3 +101,6 @@ export const styles = {
         bgcolor: 'background.paper',
     }
 }
+
+export const CvVideoImg = require('../../../public/assets/cvVideo.png');
+export const CvFormImg = require('../../../public/assets/cvForm.png');

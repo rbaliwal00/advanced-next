@@ -40,7 +40,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                 <MaterialUIFieldAdapter
                     {...formikProps}
                     type="file"
-                    name="image"
+                    name="profile.data.imageUrl"
                     label="Upload Image"
                 />
                 <Box fullWidth sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
@@ -48,7 +48,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                         <MaterialUIFieldAdapter
                             {...formikProps}
                             type="text"
-                            name="firstName"
+                            name="profile.data.firstName"
                             label="First Name"
                             placeholder="Type"
                         />
@@ -57,9 +57,10 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                         <MaterialUIFieldAdapter
                             {...formikProps}
                             type="text"
-                            name="lastName"
+                            name="profile.data.lastName"
                             label="Last Name"
                             placeholder="Type"
+                            value={formikProps?.profile?.lastName || ""}
                         />
                     </Box>
                 </Box>
@@ -76,7 +77,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                     <MaterialUIFieldAdapter
                         {...formikProps}
                         type="radio"
-                        name="gender"
+                        name="profile.data.gender"
                         label="Gender"
                         options={[{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }, { value: 'others', label: 'Others' }]}
                     />
@@ -85,7 +86,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                     <MaterialUIFieldAdapter
                         {...formikProps}
                         type='date'
-                        name='dateOfBirth'
+                        name='profile.data.dob'
                         label='Date of Birth'
                         placeholder='DD/MM/YYYY'
                     />

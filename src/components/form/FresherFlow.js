@@ -5,51 +5,54 @@ import MultiStepForm from './StepFormContainer';
 import PreferenceForm from './PreferenceForm'
 import * as Yup from 'yup';
 import preferenceValidationSchema from './validationSchemas'
+import PropTypes from 'prop-types';
 import eighteenYearsAgo, { validateFile } from './utilities';
 
 // Initial values for Formik
-const FresherForm = () => {
-  const registrationValidationSchema = Yup.object({
-    image: Yup.mixed()
-      .test("fileSize", "The file is too large", (value) => validateFile(value, 1))  // Assuming a max size of 5MB
-      .test("fileType", "Unsupported file format", (value) => validateFile(value, 1)),
-    firstName: Yup.string()
-      .required('First Name is required')
-      .min(2, 'First Name must be at least 2 characters long'),
-    lastName: Yup.string()
-      .required('Last Name is required')
-      .min(2, 'Last Name must be at least 2 characters long'),
-    email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
-    gender: Yup.string()
-      .oneOf(['male', 'female', 'others'], 'Invalid gender')
-      .required('Gender is required'),
-    dateOfBirth: Yup.date()
-      .required('Date of birth is required')
-      .max(eighteenYearsAgo, 'You must be at least 18 years old'),
-    currentCity: Yup.string().when('type', {
-      is: 'fresher',
-      then: Yup.string().required('Current city is required'),
+const FresherForm = ({}) => {
+  const registrationValidationSchema = Yup.object().shape({
+    profile: Yup.object().shape({
+      data: Yup.object().shape({
+        imageUrl: Yup.mixed()
+          .test('fileSize', 'The file is too large', (value) => validateFile(value, 1)) // Assuming a max size of 5MB
+          .test('fileType', 'Unsupported file format', (value) => validateFile(value, 1)),
+        firstName: Yup.string()
+          .required('First Name is required')
+          .min(2, 'First Name must be at least 2 characters long'),
+        lastName: Yup.string()
+          .required('Last Name is required')
+          .min(2, 'Last Name must be at least 2 characters long'),
+        gender: Yup.string()
+          .oneOf(['male', 'female', 'others'], 'Invalid gender')
+          .required('Gender is required'),
+        dob: Yup.date()
+          .required('Date of birth is required')
+          .max(eighteenYearsAgo, 'You must be at least 18 years old'),
+      }),
+      email: Yup.string()
+        .email('Invalid email address')
+        .required('Email is required'),
     }),
   });
 
-  const educationValidationSchema = Yup.object({
-    levelOfEducation: Yup.string()
-      .required('Level of education is required'),
-    nameOfInstitution: Yup.string()
-      .required('Name of institution is required')
-      .min(2, 'Name must be at least 2 characters'),
-    cityOfInstitution: Yup.string()
-      .required('City of institution is required'),
-    fieldOfStudy: Yup.string()
-      .required('Field of study is required'),
-    passoutYear: Yup.date()
-      .max(new Date(), 'Passout year cannot be in the future')
-      .required('Passout year is required')
-      .typeError('Invalid date format')
-  });
-
+  const educationValidationSchema = Yup.object().shape({
+    profile: Yup.object().shape({
+      data: Yup.object().shape({
+        education: Yup.object().shape({
+          data: Yup.object().shape({
+            institutionName: Yup.string().required('Institution Name is required'),
+            institutionCity: Yup.string().required('City of Institution is required'),
+            level: Yup.string().required('Level of education is required'),
+            studyField: Yup.string().required('Field of study is required'),
+            passoutYear: Yup.date()
+              .max(new Date(), 'Passout year cannot be in the future')
+              .required('Passout year is required')
+              .typeError('Invalid date format'),
+          })
+        })
+      }),
+    }),
+  })
   // Define form configurations with specific props
   const formConfigs = [
     {
@@ -97,8 +100,12 @@ const FresherForm = () => {
 
 
     return (
-      <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => console.log(`end of fresher flow ${JSON.stringify(values)}`)}/>
+      <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => console.log("check all values here", values)}/>
     );
 };
+
+FresherForm.proptypes = {
+  onSubmit: PropTypes.func
+}
 
 export default FresherForm;

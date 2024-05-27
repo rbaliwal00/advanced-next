@@ -39,35 +39,35 @@ const EducationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
             }}>
                 <MaterialUIFieldAdapter
                     type="select"
-                    name="levelOfEducation"
+                    name="profile.data.education.data.level"
                     label="Level of Education"
                     options={[{ value: 'Bachelors', label: 'Bachelors' }, { value: 'Masters', label: 'Masters' }]}
                     {...formikProps}
                 />
                 <MaterialUIFieldAdapter
                     type="text"
-                    name="nameOfInstitution"
+                    name="profile.data.education.data.institutionName"
                     label="Name of Institution"
                     placeholder="Type"
                     {...formikProps}
                 />
                 <MaterialUIFieldAdapter
                     type="select"
-                    name="cityOfInstitution"
+                    name="profile.data.education.data.institutionCity"
                     label="City of Institution"
                     options={[{ value: 'New York', label: 'New York' }, { value: 'Los Angeles', label: 'Los Angeles' }]}
                     {...formikProps}
                 />
                 <MaterialUIFieldAdapter
                     type="text"
-                    name="fieldOfStudy"
+                    name="profile.data.education.data.studyField"
                     label="Field of Study"
                     placeholder="Type"
                     {...formikProps}
                 />
                 <MaterialUIFieldAdapter
                     type="date"
-                    name="passoutYear"
+                    name="profile.data.education.data.passoutYear"
                     label="Passout Year"
                     {...formikProps}
                 />

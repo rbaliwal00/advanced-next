@@ -1,12 +1,5 @@
-mutation createPost($object: posts_insert_input = {}) {
-  post: insert_posts_one(
-    object: $object
-    on_conflict: { constraint: posts_pkey, update_columns: id }
-  ) {
+mutation InserUser($object: user_auth_insert_input!) {
+  insert_user_auth_one(object: $object) {
     id
-    title
-    sub_title
-    banner
-    category
   }
 }

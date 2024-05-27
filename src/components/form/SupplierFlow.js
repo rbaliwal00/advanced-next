@@ -4,7 +4,7 @@ import BusinessForm from './BusinessForm'
 import AddressForm from './AddressForm';
 import ContactForm from './SupplierContactForm';
 import GstPanCardForm from './GstPanCardForm'
-import { businessValidationSchema, addressValidationSchema, supplierContactValidationSchema } from './validationSchemas';
+import { businessValidationSchema, addressValidationSchema, supplierContactValidationSchema, gstPanValidationSchema } from './validationSchemas';
 import MultiStepForm from './StepFormContainer';
 // Initial values for Formik
 const formConfigs = [
@@ -61,7 +61,7 @@ const formConfigs = [
 const SupplierForm = () => {
 
     return (
-        <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => alert(`end of fresher flow ${JSON.stringify(values)}`)} />
+        <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => alert(`end of supplier flow ${JSON.stringify(values)}`)} />
     )
 };
 

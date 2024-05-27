@@ -56,14 +56,14 @@ const PreferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                     options={[{ value: true, label: 'Yes' }, { value: false, label: 'No' }]}
                 />
 
-                <MaterialUIFieldAdapter
+                {type === 'fresher' && <MaterialUIFieldAdapter
                     {...formikProps}
                     type="radioCard"
                     name="internship"
                     label="Do you want internship ?"
                     radioImg={GraduateIcon}
                     options={[{ value: true, label: 'Yes' }, { value: false, label: 'No' }]}
-                />
+                />}
 
                 <MaterialUIFieldAdapter
                     {...formikProps}

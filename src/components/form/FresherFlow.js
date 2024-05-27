@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import eighteenYearsAgo, { validateFile } from './utilities';
 
 // Initial values for Formik
-const FresherForm = ({onSubmit}) => {
+const FresherForm = ({}) => {
   const registrationValidationSchema = Yup.object().shape({
     profile: Yup.object().shape({
       data: Yup.object().shape({
@@ -100,7 +100,7 @@ const FresherForm = ({onSubmit}) => {
 
 
     return (
-      <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => onSubmit(values)}/>
+      <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => console.log("check all values here", values)}/>
     );
 };
 

@@ -62,7 +62,7 @@ const RecruiterForm = () => {
 
     return (
         <Box sx={{ flex: 1 }}>
-            <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => alert(`end of fresher flow ${JSON.stringify(values)}`)} />
+            <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => alert(`end of recruiter flow ${JSON.stringify(values)}`)} />
         </Box>
     );
 };

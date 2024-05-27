@@ -20,8 +20,7 @@ const formConfigs = [
             currentCity: '',
         },
         validationSchema: registrationValidationSchema,
-        key: 'registration',
-        type: 'fresher' // Example specific prop for RegistrationForm,       
+        key: 'registration',    
     },
     {
         Component: StatusForm,
@@ -55,6 +54,7 @@ const formConfigs = [
         },
         validationSchema: preferenceValidationSchema,
         key: 'preference',
+        type: 'experienced'
     }
 ];
 
@@ -63,7 +63,7 @@ const ExperiencedForm = () => {
     
 
     return (
-        <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => alert(`end of fresher flow ${JSON.stringify(values)}`)} />
+        <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => alert(`end of experienced flow ${JSON.stringify(values)}`)} />
     );
 };
 

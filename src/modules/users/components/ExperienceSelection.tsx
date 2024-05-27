@@ -15,7 +15,7 @@ const ExperienceSelection = () => {
 
   useEffect(() => {
     const handleRoute = (exp: string) => () => {
-      router.push(`/users/job-seeker/theme?exp=${exp}`);
+      router.push(`/users/${exp}`);
     };
 
     const ROLES = [

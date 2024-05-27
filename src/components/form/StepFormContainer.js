@@ -14,13 +14,14 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal }) => {
     const progress = Math.floor(((step+1)/formConfigs.length)*100)
 
     const handleNext = async (values, actions) => {
+        console.log("handleNext", values);
         const newFormData = { ...formData, ...values };
         setFormData(newFormData)
 
         if (!isLastStep) {
             const errors = await actions.validateForm();
             if (Object.keys(errors).length === 0) {
-                setStep(step + 1);
+                 setStep(step + 1);
             } else {
                 const touched = {};
                 Object.keys(errors).forEach(key => {
@@ -45,12 +46,14 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal }) => {
             <Formik
                 key={step}
                 initialValues={currentConfig.initialValues}
-                validationSchema={currentConfig.validationSchema}
+                // validationSchema={currentConfig.validationSchema}
                 onSubmit={handleNext}
             >
-                    {formikProps => (                
+                    {formikProps =>  {
+                        console.log("formikProps", formikProps);
+                        return (                
                             <CurrentForm {...formikProps} type={currentConfig.type} onBack={handleBack} isLastStep={isLastStep} step={step} />
-                    )}
+                    )}}
             </Formik>
         </Box>
     );

@@ -4,7 +4,7 @@ import EducationForm from './EducationForm';
 import MultiStepForm from './StepFormContainer';
 import PreferenceForm from './PreferenceForm'
 import * as Yup from 'yup';
-import preferenceValidationSchema from './validationSchemas'
+import {preferenceValidationSchema} from './validationSchemas'
 import PropTypes from 'prop-types';
 import eighteenYearsAgo, { validateFile } from './utilities';
 

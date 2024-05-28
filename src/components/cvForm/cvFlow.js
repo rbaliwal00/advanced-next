@@ -1,0 +1,85 @@
+import React, { useState } from 'react';
+import { Box } from '@mui/material';
+// import BusinessForm from './BusinessForm'
+// import AddressForm from './AddressForm';
+// import ContactForm from './ContactForm';
+import MultiStepForm from '../form/StepFormContainer';
+import EducationForm from './educationForm';
+import ExperienceForm from './experienceForm';
+import ReferenceForm from './referenceForm';
+import AwardForm from './awardForm';
+import BioForm from './bioForm';
+// import GstPanCardForm from './GstPanCardForm'
+// import { businessValidationSchema, addressValidationSchema, contactValidationSchema, gstPanValidationSchema  } from './validationSchemas';
+
+// Initial values for Formik
+const formConfigs = [
+    {
+        Component: EducationForm,
+        initialValues: {
+            institutionName: '',
+            educationType: '',
+            cgpa: '',
+            fromDate: '',
+            toDate: '',
+        },
+        key: 'education',   
+    },
+    {
+        Component: ExperienceForm,
+        initialValues: {
+            jobType: '',
+            brandName: '',
+            department: '',
+            position: '',
+            city: '',
+            monthlySalary: '',
+            fromDate: '',
+            toDate: '',
+        },
+        key: 'experience'
+    },
+    {
+        Component: ReferenceForm,
+        initialValues: {
+            referalName:'',
+            referalContactNumber:'',
+            referalEmail:'',
+            referalDepartment:'',
+            referalPosition:'',
+        },
+        key: 'reference'
+    },
+    {
+        Component: AwardForm,
+        initialValues: {
+            awardName:'',
+            brandName:'',
+            department:'',
+            position:'',
+        },
+        key: 'awards'
+    },
+    {
+        Component: BioForm,
+        initialValues: {
+            awardName:'',
+            brandName:'',
+            department:'',
+            position:'',
+        },
+        key: 'bio'
+    }
+];
+
+const CVForm = () => {
+   
+
+    return (
+        <Box sx={{ flex: 1 }}>
+            <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => alert(`end of recruiter flow ${JSON.stringify(values)}`)} />
+        </Box>
+    );
+};
+
+export default CVForm;

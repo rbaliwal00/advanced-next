@@ -38,6 +38,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
         flexDirection: "column", // Stack children vertically
         alignItems: "center", // Center-align children horizontally
         justifyContent: "center",
+        width: "100%"
       }}
     >
       <h4 className="text-center text-[33.18px] mt-10">Verify OTP</h4>
@@ -94,7 +95,6 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                       onClick={() => console.log("check for callback")}
                       sx={{
                         textTransform: "none", // Prevent uppercase
-                        width: "100%", // Ensure the button occupies the required width
                         justifyContent: "flex-end", // Aligns content to the right within the button
                       }}
                     >

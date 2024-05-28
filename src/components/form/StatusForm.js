@@ -41,7 +41,7 @@ const StatusForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
             }}>
                         <MaterialUIFieldAdapter
                             {...formikProps}
-                            name="brandName"
+                            name="profile.data.experience.data.brand_name"
                             type="text"
                             label="Brand Name"
                             placeholder="Type"
@@ -58,7 +58,7 @@ const StatusForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                         />
                         <MaterialUIFieldAdapter
                             {...formikProps}
-                            name="monthlySalary"
+                            name="profile.data.experience.data.montly_salary"
                             type="select"
                             label="Monthly Salary"
                             options={[

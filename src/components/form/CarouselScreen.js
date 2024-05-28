@@ -6,40 +6,95 @@ import EditIcon from '@mui/icons-material/Edit';
 import ShareIcon from '@mui/icons-material/Share';
 import PropTypes from 'prop-types';
 import { nextBtn, renderBackButton } from './utilities';
+import { Carousel } from "@components/look";
+import { Form, Field } from 'formik';
 
 
-const VisitingCardComponent = ({ }) => {
+
+
+const CarouselProps = {
+    // data: [{
+    //         image: 'https://picsum.photos/id/237/200/300',
+    //         title: 'theme1'
+    //     }, 
+    //     {
+    //         image: 'https://picsum.photos/id/237/200/300',
+    //         title: 'theme2'
+    //     },
+    //     {
+    //         image: 'https://picsum.photos/id/237/200/300',
+    //         title: 'theme3'
+    //     },
+    // ],
+    label: 'check carousel',
+    heading: 'Theme Selection',
+    subheading: 'select a card',
+    // slideNum: 3,
+    autoplay: false,
+    autoplaySpeed: 3,
+    // centerMode: true
+}
+
+const CarouselComponent = ({ field, form, setFieldValue, name }) => {
+    const handleFieldValue = (item) => {
+        setFieldValue(name, item)
+    }
+
+    console.log("carouselcomponent", field.data);
+    const CarouselProps = {
+        data: [{
+                image: 'https://picsum.photos/id/237/200/300',
+                title: 'theme1'
+            }, 
+            {
+                image: 'https://picsum.photos/id/237/200/300',
+                title: 'theme2'
+            },
+            {
+                image: 'https://picsum.photos/id/237/200/300',
+                title: 'theme3'
+            },
+        ],
+        label: 'check carousel',
+        heading: 'Theme Selection',
+        subheading: 'select a card',
+        slideNum: 3,
+        autoplay: false,
+        autoplaySpeed: 3,
+        // centerMode: true
+    }
+    return <Carousel {...field}  {...CarouselProps} handleClickItem={(item) => handleFieldValue(item)}/>
+}
+
+const VisitingCardComponent = ({type, isLastStep, ... formikProps }) => {
+    const fieldName = type === 'fresher' || 'experienced' ? 'profile.data.vc_theme' : 'organization_auth_map.data.organization.data.vc_theme'
+
     return (
-        <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '20px' }}>
-
-            <Box style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-                <IconButton aria-label="view" style={{ margin: '0 10px' }}>
-                    <VisibilityIcon />
-                </IconButton>
-                <IconButton aria-label="download" style={{ margin: '0 10px' }}>
-                    <DownloadIcon />
-                </IconButton>
-                <IconButton aria-label="edit" style={{ margin: '0 10px' }}>
-                    <EditIcon />
-                </IconButton>
-                <IconButton aria-label="share" style={{ margin: '0 10px' }}>
-                    <ShareIcon />
-                </IconButton>
+        <Form {...formikProps}>
+            <Box >    
+                <Field
+                    name={fieldName}
+                    component={(fieldProps) => (
+                        <CarouselComponent
+                            {...fieldProps}
+                            setFieldValue={formikProps.setFieldValue}
+                            name={fieldName}
+                        />
+                    )}
+                />
+                <Box display="flex" justifyContent="center" width="100%" fullWidth sx={{ mt: '32px', alignItems: 'center'}}>
+                    {nextBtn(isLastStep)}
+                </Box>
             </Box>
-
-            <Button variant="contained" color="primary" style={{ marginTop: '20px' }}>
-                Search for jobs
-            </Button>
-        </Container>
+        </Form>
     )
 }
 
 VisitingCardComponent.propTypes = {
     formikProps: PropTypes.object,
-    onBack: PropTypes.func.isRequired,
     type: PropTypes.string,
-    isLastStep: PropTypes.bool.isRequired,
-    step: PropTypes.number
+    isLastStep: PropTypes.bool,
+    step: PropTypes.number,
 }
 
 export default VisitingCardComponent;

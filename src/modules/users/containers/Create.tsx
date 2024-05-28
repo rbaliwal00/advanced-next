@@ -147,7 +147,7 @@ const Container = (props) => {
     await createUserProfile( object);
     // push("/posts");
   };
-  return <Component {...props} onSubmit={() => onSubmit(testObject)} />;
+  return <FresherForm {...props} onSubmit={onSubmit} />;
 };
 
 export default compose(withCreatePost)(Container);

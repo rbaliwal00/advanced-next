@@ -18,6 +18,14 @@ const styles = {
         },
         color: '#4B5563',
         fontWeight: '500',
+    },
+    nameTxt: {
+        fontSize: {
+            xs: '16px',
+            sm: '20px'
+        },
+        color: '#4B5563',
+        fontWeight: '500',
     }
 }
 
@@ -41,34 +49,34 @@ const renderCard = (type, formDetails) => {
                     <Grid container >
                         <Grid item xs={6} sm={6} style={{ textAlign: 'left' }}>
                             <Box>
-                                <Typography fontStyle={styles.label}>
+                                <Typography sx={styles.label}>
                                     Department
                                 </Typography>
-                                <Typography fontStyle={styles.valueTxt}>
+                                <Typography sx={styles.valueTxt}>
                                     {department}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
-                                <Typography fontStyle={styles.label}>
+                                <Typography sx={styles.label}>
                                     Position
                                 </Typography>
-                                <Typography fontStyle={styles.valueTxt}>
+                                <Typography sx={styles.valueTxt}>
                                     {position}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
-                                <Typography fontStyle={styles.label}>
+                                <Typography sx={styles.label}>
                                     Current Location
                                 </Typography>
-                                <Typography style={styles.valueTxt}>
+                                <Typography sx={styles.valueTxt}>
                                     {currentLocation}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
-                                <Typography style={styles.label}>
+                                <Typography sx={styles.label}>
                                     Preferred Location
                                 </Typography>
-                                <Typography style={styles.valueTxt}>
+                                <Typography sx={styles.valueTxt}>
                                     {preferredLocation}
                                     <br />
                                     Location 2
@@ -83,22 +91,22 @@ const renderCard = (type, formDetails) => {
                                 src={image} // Update with your avatar path
                                 style={{ width: 80, height: 80, marginLeft: 'auto', marginBottom: '10px' }}
                             />}
-                            <Typography style={styles.valueTxt} component="div">
+                            <Typography sx={styles.nameTxt} component="div">
                                 {name}
                             </Typography>
                             <Typography variant="subtitle1">
                                 {experience}
                             </Typography>
-                            <Typography style={styles.label}>
+                            <Typography sx={styles.label}>
                                 Contact No.
                             </Typography>
-                            <Typography style={styles.valueTxt} color="text.primary">
+                            <Typography sx={styles.valueTxt} color="text.primary">
                                 {number}
                             </Typography>
-                            <Typography style={styles.label}>
+                            <Typography sx={styles.label}>
                                 Email
                             </Typography>
-                            <Typography style={styles.valueTxt} color="text.primary">
+                            <Typography sx={styles.valueTxt} color="text.primary">
                                 {email}
                             </Typography>
                         </Grid>
@@ -115,40 +123,65 @@ const renderCard = (type, formDetails) => {
                     sm: '32px'
                 },
                 py: '16px',
-                boxShadow: '0px 4px 25px 0px rgba(0, 0, 0, 0.05)'
+                boxShadow: '0px 4px 25px 0px rgba(0, 0, 0, 0.05)',
             }}>
                 <CardContent>
                     <Grid container spacing={2}>
-                        <Grid item xs={6} sm={6} style={{ textAlign: 'right' }}>
+                        <Grid item xs={6} sm={6} style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                            <Avatar
+                                alt="Yanis Petros"
+                                src="/path/to/avatar.jpg" // Update with your avatar path
+                                style={{ width: 80, height: 80, marginLeft: 'auto', marginBottom: '10px' }}
+                            />
+                            <Typography sx={styles.nameTxt}>
+                                {name}
+                            </Typography>
+                            <Typography sx={styles.valueTxt}>
+                                {experience}
+                            </Typography>
+                            <Typography sx={styles.label} style={{ marginTop: '10px' }}>
+                                Contact No.
+                            </Typography>
+                            <Typography sx={styles.valueTxt}>
+                                {number}
+                            </Typography>
+                            <Typography sx={styles.label} style={{ marginTop: '10px' }}>
+                                Email
+                            </Typography>
+                            <Typography sx={styles.valueTxt}>
+                                {email}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6} sm={6} style={{ textAlign: 'left' }}>
                             <Box>
-                                <Typography variant="body2" color="text.secondary">
+                                <Typography sx={styles.label}>
                                     Department
                                 </Typography>
-                                <Typography variant="h6">
+                                <Typography sx={styles.valueTxt}>
                                     Department
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
-                                <Typography variant="body2" color="text.secondary">
+                                <Typography sx={styles.label}>
                                     Position
                                 </Typography>
-                                <Typography variant="h6">
+                                <Typography sx={styles.valueTxt}>
                                     Position
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
-                                <Typography variant="body2" color="text.secondary">
+                                <Typography sx={styles.label}>
                                     Current Location
                                 </Typography>
-                                <Typography variant="h6">
+                                <Typography sx={styles.valueTxt}>
                                     Current Location
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
-                                <Typography variant="body2" color="text.secondary">
+                                <Typography sx={styles.label}>
                                     Preferred Location
                                 </Typography>
-                                <Typography variant="h6">
+                                <Typography sx={styles.valueTxt}>
                                     Location 1
                                     <br />
                                     Location 2
@@ -156,31 +189,6 @@ const renderCard = (type, formDetails) => {
                                     Location 3
                                 </Typography>
                             </Box>
-                        </Grid>
-                        <Grid item xs={6} sm={6} style={{ textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                            <Avatar
-                                alt="Yanis Petros"
-                                src="/path/to/avatar.jpg" // Update with your avatar path
-                                style={{ width: 80, height: 80, marginLeft: 'auto', marginBottom: '10px' }}
-                            />
-                            <Typography variant="h6" component="div" style={{ fontWeight: 'bold' }}>
-                                Yanis Petros
-                            </Typography>
-                            <Typography variant="subtitle1">
-                                Fresher
-                            </Typography>
-                            <Typography variant="body2" style={{ marginTop: '10px' }}>
-                                Contact No.
-                            </Typography>
-                            <Typography variant="h6" color="text.primary">
-                                1234567890
-                            </Typography>
-                            <Typography variant="body2" style={{ marginTop: '10px' }}>
-                                Email
-                            </Typography>
-                            <Typography variant="h6" color="text.primary">
-                                someemail@gmail.com
-                            </Typography>
                         </Grid>
                     </Grid>
                 </CardContent>
@@ -190,7 +198,7 @@ const renderCard = (type, formDetails) => {
 
 const ThemeCard = ({type, formDetails}) => {
    return (
-       <Container sx={{ maxWidth: { xs: '328px', sm: '560px' }, minWidth: { xs: '320px', sm: '400px'}, p: 0}}>
+       <Container sx={{ maxWidth: { xs: '328px', sm: '560px' }, minWidth: { xs: '180px', sm: '300px'}, p: '4px', mt: '32px', width: '100%'}}>
             {renderCard(type, formDetails)}
         </Container>
    )

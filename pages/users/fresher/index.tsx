@@ -1,9 +1,10 @@
 import * as React from 'react';
-import FresherForm from '@components/form/FresherFlow';
+import FresherContainer from '@modules/users/containers/Create'
+
 
 const FresherParentForm = ()=>{
     return (
-        <FresherForm />
+        <FresherContainer />
     )
 }
 

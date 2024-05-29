@@ -46,14 +46,6 @@ const CarouselComponent = ({ field, form, setFieldValue, name }) => {
                 image: 'https://picsum.photos/id/237/200/300',
                 title: 'theme1'
             }, 
-            {
-                image: 'https://picsum.photos/id/237/200/300',
-                title: 'theme2'
-            },
-            {
-                image: 'https://picsum.photos/id/237/200/300',
-                title: 'theme3'
-            },
         ],
         label: 'check carousel',
         heading: 'Theme Selection',

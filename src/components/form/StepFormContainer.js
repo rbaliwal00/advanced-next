@@ -51,12 +51,16 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal }) => {
         }
     };
 
+    const getInitialValues = () => {
+        return deepMerge(currentConfig.initialValues, formData);
+    };
+
     return (
         <Box>
             <CustomProgressBar  progress={progress} label={(currentConfig.key)}/>
             <Formik
                 key={step}
-                initialValues={currentConfig.initialValues}
+                initialValues={getInitialValues()}
                 // validationSchema={currentConfig.validationSchema}
                 onSubmit={handleNext}
             >

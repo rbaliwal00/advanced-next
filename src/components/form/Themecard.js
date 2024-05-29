@@ -30,7 +30,11 @@ const styles = {
 }
 
 const renderCard = (type, formDetails) => {
-    const { department, name, position, experience, number, email, currentLocation, preferredLocation, image ='https://picsum.photos/200/300' } = formDetails
+    const { phone_number, email, profile} = formDetails;
+    const { education, experience,  preference, image_url ='https://picsum.photos/200/300', first_name, last_name } = profile.data;
+    const { brand_name, business_nature, company_name, no_of_employee, organization_location_map, contact} = organization_auth_map.data.organization.data
+    const { block_number, area, city } = organization_location_map.data.location.data;
+
 
     if (type === 'job')
         return (
@@ -53,7 +57,7 @@ const renderCard = (type, formDetails) => {
                                     Department
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {department}
+                                    {experience.data.department}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
@@ -61,7 +65,7 @@ const renderCard = (type, formDetails) => {
                                     Position
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {position}
+                                    {experience.data.position}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
@@ -92,16 +96,16 @@ const renderCard = (type, formDetails) => {
                                 style={{ width: 80, height: 80, marginLeft: 'auto', marginBottom: '10px' }}
                             />}
                             <Typography sx={styles.nameTxt} component="div">
-                                {name}
+                                {first_name + last_name}
                             </Typography>
                             <Typography variant="subtitle1">
-                                {experience}
+                                {experience.data.work_experience}
                             </Typography>
                             <Typography sx={styles.label}>
                                 Contact No.
                             </Typography>
                             <Typography sx={styles.valueTxt} color="text.primary">
-                                {number}
+                                {phone_number}
                             </Typography>
                             <Typography sx={styles.label}>
                                 Email
@@ -134,39 +138,39 @@ const renderCard = (type, formDetails) => {
                                 style={{ width: 80, height: 80, marginLeft: 'auto', marginBottom: '10px' }}
                             />
                             <Typography sx={styles.nameTxt}>
-                                {name}
+                                {brand_name}
                             </Typography>
                             <Typography sx={styles.valueTxt}>
-                                {experience}
+                                {company_name}
+                            </Typography>
+                            <Typography sx={styles.label} style={{ marginTop: '10px' }}>
+                                Contact Person
+                            </Typography>
+                            <Typography sx={styles.valueTxt}>
+                                {contact.data.name}
                             </Typography>
                             <Typography sx={styles.label} style={{ marginTop: '10px' }}>
                                 Contact No.
                             </Typography>
                             <Typography sx={styles.valueTxt}>
-                                {number}
-                            </Typography>
-                            <Typography sx={styles.label} style={{ marginTop: '10px' }}>
-                                Email
-                            </Typography>
-                            <Typography sx={styles.valueTxt}>
-                                {email}
+                                {contact.data.phone_number}
                             </Typography>
                         </Grid>
                         <Grid item xs={6} sm={6} style={{ textAlign: 'left' }}>
                             <Box>
                                 <Typography sx={styles.label}>
-                                    Department
+                                    Nature of Business
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    Department
+                                    {business_nature}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
                                 <Typography sx={styles.label}>
-                                    Position
+                                    Nunber of Employees
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    Position
+                                    {no_of_employee}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
@@ -174,19 +178,15 @@ const renderCard = (type, formDetails) => {
                                     Current Location
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    Current Location
+                                    {block_number + city + area}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
                                 <Typography sx={styles.label}>
-                                    Preferred Location
+                                    Email
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    Location 1
-                                    <br />
-                                    Location 2
-                                    <br />
-                                    Location 3
+                                    {contact.data.email}
                                 </Typography>
                             </Box>
                         </Grid>

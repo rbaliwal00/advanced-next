@@ -1,5 +1,5 @@
 import React from "react";
-import ExperiencedForm from '@components/form/ExperiencedFlow'
+import ExperiencedForm from '@modules/users/containers/CreateExperienced'
 
 const ExperiencedContainer = () => {
     return (

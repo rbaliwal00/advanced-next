@@ -13,7 +13,9 @@ const CustomProgressBar = ({progress, label}) => {
             paddingTop: {
                 xs: '0px',
                 sm: '10px'
-            }
+            },
+            boxShadow: 'none',
+            background: '#F9FAFB',
         }]}>
             <Typography sx={{ fontSize: '24px', fontWeight: '600', color: '#4B5563', textTransform: 'capitalize' }}>{label}</Typography>
             <LinearProgress

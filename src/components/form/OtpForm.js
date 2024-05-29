@@ -21,6 +21,9 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
 
   const router = useRouter();
 
+  const btnText = (timeLeft > 0) ? `Resend OTP in ${timeLeft} sec` : 'Resend OTP';
+  const btnTextColor = timeLeft > 0 ? "#8899A8" : '#113B73';
+
   useEffect(() => {
     const timer = createTimer(30, (val) => setTimeLeft(val));
 
@@ -38,6 +41,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
         flexDirection: "column", // Stack children vertically
         alignItems: "center", // Center-align children horizontally
         justifyContent: "center",
+        width: "100%"
       }}
     >
       <h4 className="text-center text-[33.18px] mt-10">Verify OTP</h4>
@@ -55,7 +59,6 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
             callBack();
           }
           setTimeout(() => {
-            // alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 400);
         }}
@@ -89,13 +92,15 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                             : "1px solid rgba(0,0,0,0.3)",
                       }}
                     />
-                    <Button
+                    <Box
                       disabled={timeLeft > 0}
-                      onClick={() => console.log("check for callback")}
+                      onClick={() => alert("OTP sent, check for callback")}
                       sx={{
                         textTransform: "none", // Prevent uppercase
-                        width: "100%", // Ensure the button occupies the required width
-                        justifyContent: "flex-end", // Aligns content to the right within the button
+                        display: 'flex',
+                        width: '100%',
+                        marginBottom: "30px",
+                        cursor: timeLeft > 0 ? 'not-allowed' : 'pointer',
                       }}
                     >
                       <Typography
@@ -103,14 +108,15 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                           textAlign: "right", // Ensures text is right-aligned
                           fontSize: "10px", // Sets font size
                           display: "flex", // Uses flexbox for internal alignment
-                          marginBottom: "30px",
-                          color: "#8899A8",
-                          alignItems: "center", // Centers items vertically within the flex container
+                          color: {btnTextColor},
+                          alignItems: "center",
+                          justifyContent: "flex-end",
+                          width: "100%",
                         }}
                       >
-                        Resend OTP in {timeLeft} sec
+                        {btnText}
                       </Typography>
-                    </Button>
+                    </Box>
                   </div>
                   {touched.otp && errors.otp && (
                     <FormHelperText

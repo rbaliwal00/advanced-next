@@ -5,7 +5,11 @@ body {
   font-family: "Poppins";
 }
 
-.slick-slide {
-  width:fit-content;
+.slick-prev:before{
+  display:none;
+}
+
+.slick-next:before {
+  display: none;
 }
 

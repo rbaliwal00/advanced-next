@@ -34,7 +34,7 @@ const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) 
                 <MaterialUIFieldAdapter
                     type="select"
                     options={[{ value: 'New York', label: 'New York' }, { value: 'Los Angeles', label: 'Los Angeles' }]}
-                    name="subCategory"
+                    name="profile.data.experience.data.sub_category"
                     label="Sub Category"
                     placeholder="Select"
                     {...formikProps}
@@ -77,7 +77,7 @@ const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) 
                             <MaterialUIFieldAdapter
                                 {...formikProps}
                                 type="select"
-                                name="workExperience"
+                                name="profile.data.experience.data.work_experience"
                                 label="Work Experience"
                                 options={experienceOptions}
                             />
@@ -85,7 +85,7 @@ const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) 
                         <MaterialUIFieldAdapter
                             {...formikProps}
                             type="select"
-                            name="department"
+                            name="profile.data.experience.data.department"
                             label="Department"
                             options={departmentOptions}
                         />
@@ -93,7 +93,7 @@ const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) 
                         <MaterialUIFieldAdapter
                             {...formikProps}
                             type="select"
-                            name="position"
+                            name="profile.data.experience.data.position"
                             label="Position"
                             options={positionOptions}
                         />

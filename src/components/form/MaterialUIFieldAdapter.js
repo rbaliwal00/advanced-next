@@ -22,10 +22,9 @@ import Image from "next/image";
 
 
 const responsiveFontSize = {
-  fontSize: "14px",
-  fontWeight: 600,
-  "@media (min-width:600px)": {
-    fontSize: "16px",
+  fontSize: {
+    xs: "14px",
+    sm: '16px'
   },
 };
 
@@ -98,9 +97,9 @@ class MaterialUIFieldAdapter extends Component {
           <Box alignSelf={"center"} sx={{ mb: "24px" }}>
             {label && (
               <Typography
-                style={responsiveFontSize}
                 textAlign={"left"}
                 color={"#9CA3AF"}
+                sx={[{ responsiveFontSize },{ mb: '8px'}]}
               >
                 {label}
               </Typography>
@@ -122,6 +121,7 @@ class MaterialUIFieldAdapter extends Component {
                   "& .MuiInputBase-input::placeholder": {
                     color: "#D1D5DB", // Changes the placeholder color
                   },
+                  background: '#fff'
                 },
                 { ...style },
               ]}
@@ -129,10 +129,14 @@ class MaterialUIFieldAdapter extends Component {
               value={value || ""}
               InputLabelProps={{ shrink: false }}
               placeholder={placeholder}
+              inputProps={{ maxlength: type === 'number' ? 10 : 100}}
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               error={touch && Boolean(error)}
               helperText={touch && error}
+              FormHelperTextProps={{
+                 textAlign: "left", // This style will align the helper text to the right
+              }}
             />
           </Box>
         );
@@ -140,7 +144,7 @@ class MaterialUIFieldAdapter extends Component {
         return (
           <Box alignSelf={"center"} fullWidth sx={{ mb: "24px" }}>
             {label && (
-              <Typography style={responsiveFontSize} textAlign={"left"}>
+              <Typography sx={responsiveFontSize} textAlign={"left"}>
                 {label}
               </Typography>
             )}
@@ -158,6 +162,7 @@ class MaterialUIFieldAdapter extends Component {
                 "& .MuiInputBase-input::placeholder": {
                   color: "#D1D5DB", // Changes the placeholder color
                 },
+                background: '#fff'
               }}
               name={name}
               value={value || ""}
@@ -169,7 +174,7 @@ class MaterialUIFieldAdapter extends Component {
               }}
               helperText={`${value.length}/50`}
               FormHelperTextProps={{
-                sx: { textAlign: "right" }, // This style will align the helper text to the right
+                xs: { textAlign: "right" }, // This style will align the helper text to the right
               }}
               error={touch && Boolean(error)}
             />
@@ -198,7 +203,7 @@ class MaterialUIFieldAdapter extends Component {
           <Box alignSelf={"center"} sx={{ mb: "24px" }}>
             {label && (
               <Typography
-                style={responsiveFontSize}
+                sx={responsiveFontSize}
                 textAlign={"left"}
                 color={"#9CA3AF"}
               >
@@ -263,7 +268,7 @@ class MaterialUIFieldAdapter extends Component {
           <Box alignSelf={"center"} fullWidth sx={{ mb: "24px" }}>
             {label && (
               <Typography
-                style={responsiveFontSize}
+                sx={responsiveFontSize}
                 textAlign={"left"}
                 color={"#9CA3AF"}
               >

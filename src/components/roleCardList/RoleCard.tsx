@@ -10,10 +10,11 @@ const RoleCard = ({
 }: RoleProps) => {
   return (
     <Box
-      className={`main grid justify-items-center  w-[17rem] h-[17rem] grid-rows-[9fr_2fr] rounded-2xl shadow-[0px_5px_20px_0px_#00000066]`}
+      className={`main grid justify-items-center  w-[17rem] h-[17rem] grid-rows-[9fr_2fr] rounded-2xl shadow-[0px_0.5px_15px_0px_#00000066]`}
       onClick={props.onClick}
+      sx={{ boxShadow: '0px 4px 15px 0px rgba(0, 0, 0, 0.05)',}}
     >
-      <div className="speed  w-full h-full grid justify-items-center rounded-t-2xl">
+      <div className="speed  w-full h-full grid justify-items-center rounded-t-2xl" style={{ background: '#F3F4F6'}}>
         <Image
           src={props.banner}
           // width={100}
@@ -37,7 +38,7 @@ const RoleCard = ({
           width: 10%;
         }
       `}</style>
-      <h1 className="text-[#113B73]  rounded-b-2xl cursor-pointer shadow-[0px_-5px_20px_0px_rgba(11,11,11,0.4)] w-full text-center text-xl font-semibold content-evenly">
+      <h1 className="text-[#113B73]  rounded-b-2xl cursor-pointer shadow-[0px_-5px_20px_0px_rgba(11,11,11,0.4)] w-full text-center text-xl font-semibold content-evenly" style={{  boxShadow: '0px 4px 15px 0px rgba(0, 0, 0, 0.05)'}}>
         {props.title}
       </h1>
     </Box>

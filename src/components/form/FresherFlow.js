@@ -6,7 +6,7 @@ import PreferenceForm from './PreferenceForm'
 import * as Yup from 'yup';
 import {preferenceValidationSchema} from './validationSchemas'
 import PropTypes from 'prop-types';
-import { registrationValidationSchema, educationValidationSchema, ThemeSelectionVaidationSchema } from './utilities';
+import { registrationValidationSchema, educationValidationSchema, ThemeSelectionVaidationSchema } from './validationSchemas';
 import VisitingCardComponent from './CarouselScreen'
 
 

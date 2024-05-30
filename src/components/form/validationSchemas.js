@@ -102,90 +102,151 @@ export const workExperienceValidationSchema = Yup.object().shape({
 });
 
 export const businessValidationSchema = Yup.object({
-    companyLogo: Yup.mixed()
-        .nullable()
-        .notRequired(), // Assuming this is a file upload field, and files are handled differently
+    organization_auth_map: Yup.object({
+        data: Yup.object({
+            organization: Yup.object({
+                data: Yup.object({
+                    image_url: Yup.mixed()
+                        .nullable()
+                        .notRequired(), // Assuming this is a file upload field, and files are handled differently
 
-    brandName: Yup.string()
-        .required('Brand Name is required')
-        .min(2, 'Brand Name must be at least 2 characters')
-        .max(100, 'Brand Name must not exceed 100 characters'),
+                    brand_name: Yup.string()
+                        .required('Brand Name is required')
+                        .min(2, 'Brand Name must be at least 2 characters')
+                        .max(100, 'Brand Name must not exceed 100 characters'),
 
-    companyName: Yup.string()
-        .required('Company Name is required')
-        .min(2, 'Company Name must be at least 2 characters')
-        .max(100, 'Company Name must not exceed 100 characters'),
+                    company_name: Yup.string()
+                        .required('Company Name is required')
+                        .min(2, 'Company Name must be at least 2 characters')
+                        .max(100, 'Company Name must not exceed 100 characters'),
 
-    gender: Yup.string()
-        .required('Please select a gender'),
+                    business_nature: Yup.array()
+                        .min(1, 'Please select at least one option')
+                        .required('This field is required'),
 
-    natureOfBusiness: Yup.array()
-        .min(1, 'Please select at least one option')
-        .required('This field is required'),
-
-    numberOfEmployees: Yup.string()
-        .required('Please select the number of employees')
-        .oneOf(['1-10', '11-50'], 'Invalid number of employees selection')
+                    no_of_employee: Yup.string()
+                        .required('Please select the number of employees')
+                        .oneOf(['1-10', '11-50'], 'Invalid number of employees selection')
+                })
+            })
+        })
+    })
 });
 
 export const addressValidationSchema = Yup.object({
-    useMap: Yup.boolean(),
-    pincode: Yup.string()
-        .required('Pincode is required')
-        .matches(/^\d{6}$/, 'Pincode must be exactly 6 digits'), // Adjust regex according to your country's postal code standards
-    city: Yup.string()
-        .required('City is required'),
-    state: Yup.string()
-        .required('State is required'),
-    houseNumber: Yup.string()
-        .required('House number is required')
-        .max(50, 'House number must not exceed 50 characters'),
-    area: Yup.string()
-        .max(100, 'Area description must not exceed 100 characters') // Optional field but with a length validation
+    organization_auth_map: Yup.object({
+        data: Yup.object({
+            organization: Yup.object({
+                data: Yup.object({
+                    organization_location_map: Yup.object({
+                        data: Yup.object({
+                            location: Yup.object({
+                                data: Yup.object({
+                                    area: Yup.string()
+                                        .max(100, 'Area description must not exceed 100 characters'),
+                                    block_number: Yup.string()
+                                        .required('Block number is required')
+                                        .max(50, 'Block number must not exceed 50 characters'),
+                                    city: Yup.string()
+                                        .required('City is required'),
+                                    geolocation: Yup.object({
+                                        data: Yup.object({
+                                            latitude: Yup.number()
+                                                .required('Latitude is required')
+                                                .typeError('Latitude must be a number'),
+                                            longitude: Yup.number()
+                                                .required('Longitude is required')
+                                                .typeError('Longitude must be a number'),
+                                            other: Yup.object()
+                                                .nullable(),
+                                            type: Yup.string()
+                                                .required('Type is required')
+                                        })
+                                    }),
+                                    pincode: Yup.string()
+                                        .required('Pincode is required')
+                                        .matches(/^\d{6}$/, 'Pincode must be exactly 6 digits'), // Adjust regex according to your country's postal code standards
+                                    state: Yup.string()
+                                        .required('State is required')
+                                })
+                            })
+                        })
+                    })
+                })
+            })
+        })
+    })
 });
 
 export const contactValidationSchema = Yup.object({
-    personName: Yup.string()
-        .required('Contact Person Name is required')
-        .min(2, 'Name must be at least 2 characters long')
-        .max(50, 'Name can be no longer than 50 characters'),
+    organization_auth_map: Yup.object({
+        data: Yup.object({
+            organization: Yup.object({
+                data: Yup.object({
+                    contact: Yup.object({
+                        data: Yup.object({
+                            name: Yup.string()
+                                .required('Contact Person Name is required')
+                                .min(2, 'Name must be at least 2 characters long')
+                                .max(50, 'Name can be no longer than 50 characters'),
 
-    contactNumber: Yup.string()
-        .required('Contact Number is required')
-        .matches(phoneRegExp, 'Invalid phone number'),
+                            phone_number: Yup.string()
+                                .required('Contact Number is required')
+                                .matches(phoneRegExp, 'Invalid phone number'),
 
-    email: Yup.string()
-        .required('Email is required')
-        .email('Invalid email address'),
+                            email: Yup.string()
+                                .required('Email is required')
+                                .email('Invalid email address'),
 
-    website: Yup.string()
-        .nullable()
-        .notRequired()
+                            website: Yup.string()
+                                .nullable()
+                                .notRequired()
+                        })
+                    })
+                })
+            })
+        })
+    })
+
 });
 
 export const supplierContactValidationSchema = Yup.object({
-    areaOfCoverage: Yup.string()
-        .required('Selecting an area of coverage is required'),
+    organization_auth_map: Yup.object({
+        data: Yup.object({
+            organization: Yup.object({
+                data: Yup.object({
+                    contact: Yup.object({
+                        data: Yup.object({
+                            name: Yup.string()
+                                .required('Contact Person Name is required')
+                                .min(2, 'Name must be at least 2 characters long')
+                                .max(50, 'Name can be no longer than 50 characters'),
 
-    scaleOfSupply: Yup.string()
-        .required('Selecting a scale of supply is required'),
+                            phone_number: Yup.string()
+                                .required('Contact Number is required')
+                                .matches(phoneRegExp, 'Invalid phone number'),
 
-    personName: Yup.string()
-        .required('Contact Person Name is required')
-        .min(2, 'Name must be at least 2 characters long')
-        .max(50, 'Name can be no longer than 50 characters'),
+                            email: Yup.string()
+                                .email('Invalid email address')
+                                .required('Email is required'),
 
-    contactNumber: Yup.string()
-        .required('Contact Number is required')
-        .matches(phoneRegExp, 'Invalid phone number'),
-
-    email: Yup.string()
-        .email('Invalid email address')
-        .required('Email is required'),
-
-    website: Yup.string()
-        .url('Enter a valid URL')
-        .notRequired() // Makes it optional
+                            website: Yup.string()
+                                .url('Enter a valid URL')
+                                .notRequired() // Makes it optional
+                        })
+                    }),
+                    suppliers: Yup.object({
+                        data: Yup.object({
+                            area: Yup.string()
+                                .required('Selecting an area of coverage is required'),
+                            scale: Yup.string()
+                                .required('Selecting a scale of supply is required')
+                        })
+                    })
+                })
+            })
+        })
+    })
 });
 
 export const preferenceValidationSchema = Yup.object().shape({
@@ -220,20 +281,33 @@ export const preferenceValidationSchema = Yup.object().shape({
 });
 
 export const gstPanValidationSchema = Yup.object().shape({
-    gstFile: Yup.mixed().test(
-        'gst-or-pan-required',
-        'Either GST or PAN file must be attached',
-        function (value) {
-            const { panFile } = this.parent;
-            return value || panFile; // GST file should be present if PAN file is not, or vice versa
-        }
-    ),
-    panFile: Yup.mixed().test(
-        'gst-or-pan-required',
-        'Either GST or PAN file must be attached',
-        function (value) {
-            const { gstFile } = this.parent;
-            return value || gstFile; // PAN file should be present if GST file is not, or vice versa
-        }
-    ),
+    organization_auth_map: Yup.object({
+        data: Yup.object({
+            organization: Yup.object({
+                data: Yup.object({
+                    gst_pan: Yup.object({
+                        data: Yup.object({
+                            gst: Yup.mixed().test(
+                                'gst-or-pan-required',
+                                'Either GST or PAN file must be attached',
+                                function (value) {
+                                    const { pan } = this.parent;
+                                    return value || pan; // GST file should be present if PAN file is not, or vice versa
+                                }
+                            ),
+                            pan: Yup.mixed().test(
+                                'gst-or-pan-required',
+                                'Either GST or PAN file must be attached',
+                                function (value) {
+                                    const { gst } = this.parent;
+                                    return value || gst; // PAN file should be present if GST file is not, or vice versa
+                                }
+                            ),
+                            status: Yup.string().nullable().notRequired() // Assuming status is a string and is optional
+                        })
+                    })
+                })
+            })
+        })
+    })
 });

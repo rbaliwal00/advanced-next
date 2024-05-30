@@ -39,8 +39,8 @@ const GstPanCardForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                 bgcolor: 'background.paper',
             }}>
                 
-                <MaterialUIFieldAdapter {...formikProps} name='gstFile' type={'documentFile'} docType={'gst'}/>
-                <MaterialUIFieldAdapter {...formikProps} name='panFile' type={'documentFile'} docType={'pan'} />
+                <MaterialUIFieldAdapter formik={formikProps} name='organization_auth_map.data.organization.data.gst_pan.data.gst' type={'documentFile'} docType={'gst'}/>
+                <MaterialUIFieldAdapter formik={formikProps} name='organization_auth_map.data.organization.data.gst_pan.data.pan' type={'documentFile'} docType={'pan'} />
                 <Box display="flex" justifyContent="space-between" width="100%" fullWidth>
                     {nextBtn(isLastStep)}
                     {renderBackButton(onBack, step)}

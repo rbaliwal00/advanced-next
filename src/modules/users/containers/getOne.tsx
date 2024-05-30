@@ -1,9 +1,7 @@
 import React from "react";
 
 import { compose } from "@common";
-
-// import Component from "../components/CreateView";
-// import FresherForm from "@components/form/FresherFlow";
+import ThemeCard from "@components/form/Themecard";
 import { withGetOne } from "../operations";
 
 
@@ -14,9 +12,9 @@ const Container = (props) => {
         loadingUserData
         // router: { push },
     } = props;
-    console.log(user, loadingUserData)
+    console.log("check  values herer----", user, loadingUserData)
 
-    return <div/>
+    return <ThemeCard type={'supplier'} formDetails={user} />
 };
 
 export default compose(withGetOne)(Container);

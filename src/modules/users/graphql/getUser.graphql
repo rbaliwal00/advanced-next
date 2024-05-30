@@ -1,5 +1,5 @@
-query MyQuery($id: uuid = "") {
-  user: user_auth_by_pk(id: $id) {
+query getUser($phone_number: String!) {
+  user_auth (where: {phone_number: {_eq: $phone_number}}) {
     id
     email
     phone_number

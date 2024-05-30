@@ -143,13 +143,13 @@ const renderCard = (type, formDetails) => {
                                 Contact Person
                             </Typography>
                             <Typography sx={styles.valueTxt}>
-                                {contact.data.name}
+                                {contact[0].name}
                             </Typography>
                             <Typography sx={styles.label} style={{ marginTop: '10px' }}>
                                 Contact No.
                             </Typography>
                             <Typography sx={styles.valueTxt}>
-                                {contact.data.phone_number}
+                                {contact[0].phone_number}
                             </Typography>
                         </Grid>
                         <Grid item xs={6} sm={6} style={{ textAlign: 'left' }}>
@@ -182,7 +182,7 @@ const renderCard = (type, formDetails) => {
                                     Email
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {contact.data.email}
+                                    {contact[0].email}
                                 </Typography>
                             </Box>
                         </Grid>

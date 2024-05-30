@@ -24,16 +24,16 @@ export const nextBtn = (isLast) => {
             }, 
             backgroundColor: '#113B73',
             textTransform: 'none',
-            maxWidth: '608px'
+            maxWidth: '608px',
+            boxShadow: 'none'
          }} 
         >
-            <Typography fontSize={'16px'} fontWeight={'600'} color={'#fff'}>{text}</Typography>
+            <Typography fontSize={'16px'} fontWeight={'600'} color={'#fff'} fontFamily={'Poppins'}>{text}</Typography>
         </Button>
     )
 }
 
 export const renderBackButton = ( onBack, step ) => {
-    console.log("check  bakc btn step ---", step);
     if (step > 0){
         return (
             <Button type="button" variant="outlined" sx={{

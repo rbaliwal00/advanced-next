@@ -7,21 +7,21 @@ import CREATE from "../graphql/create.graphql";
 const withCreate = (Component: FunctionComponent) =>
   graphql(CREATE, {
     props: ({ mutate }) => ({
-      createPost: async (object: Object) => {
+      createUserProfile: async (object: Object) => {
         try {
           const {
-            data: { post },
+            data: { insert_user_auth_one },
           } = await mutate({
             variables: { object },
             optimisticResponse: {
               __typename: "Mutation",
               createPost: {
                 object,
-                __typename: "INSERT_POSTS_ONE",
+                __typename: "InserUser",
               },
             },
           });
-          return post;
+          return insert_user_auth_one;
         } catch (e) {
           console.error(e);
         }

@@ -10,7 +10,7 @@ const withPosts = (Component: FunctionComponent) =>
       const { router } = props;
       return {
         variables: {
-          id: router.query?.id,
+          id: router?.query?.id || 24,
         },
       };
     },

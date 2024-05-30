@@ -39,37 +39,37 @@ const EducationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
             }}>
                 <MaterialUIFieldAdapter
                     type="select"
-                    name="levelOfEducation"
+                    name="profile.data.education.data.level"
                     label="Level of Education"
                     options={[{ value: 'Bachelors', label: 'Bachelors' }, { value: 'Masters', label: 'Masters' }]}
-                    {...formikProps}
+                    formik={formikProps}
                 />
                 <MaterialUIFieldAdapter
                     type="text"
-                    name="nameOfInstitution"
+                    name="profile.data.education.data.institution_name"
                     label="Name of Institution"
                     placeholder="Type"
-                    {...formikProps}
+                    formik={formikProps}
                 />
                 <MaterialUIFieldAdapter
                     type="select"
-                    name="cityOfInstitution"
+                    name="profile.data.education.data.institution_city"
                     label="City of Institution"
                     options={[{ value: 'New York', label: 'New York' }, { value: 'Los Angeles', label: 'Los Angeles' }]}
-                    {...formikProps}
+                    formik={formikProps}
                 />
                 <MaterialUIFieldAdapter
                     type="text"
-                    name="fieldOfStudy"
+                    name="profile.data.education.data.study_field"
                     label="Field of Study"
                     placeholder="Type"
-                    {...formikProps}
+                    fromik={formikProps}
                 />
                 <MaterialUIFieldAdapter
                     type="date"
-                    name="passoutYear"
+                    name="profile.data.education.data.passout_year"
                     label="Passout Year"
-                    {...formikProps}
+                    formik={formikProps}
                 />
                 <Box display="flex" justifyContent="space-between" width="100%">
                     {nextBtn(isLastStep)}

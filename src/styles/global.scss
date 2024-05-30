@@ -4,3 +4,12 @@ body {
   padding: 0;
   font-family: "Poppins";
 }
+
+.slick-prev:before{
+  display:none;
+}
+
+.slick-next:before {
+  display: none;
+}
+

@@ -5,6 +5,7 @@ import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';
 import PropTypes from 'prop-types';
 import { nextBtn, renderBackButton } from './utilities';
 import { OneDayJob, GraduateIcon } from "@public/assets/icons";
+import { partTimeImg } from './utilities';
 
 
 const PreferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
@@ -41,8 +42,8 @@ const PreferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 
                 <MaterialUIFieldAdapter
                     {...formikProps}
-                    type="multiselect"
-                    name="workCity"
+                    type="select"
+                    name="profile.data.preference.data.working_city"
                     label="City"
                     options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
                 />
@@ -50,27 +51,27 @@ const PreferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                 <MaterialUIFieldAdapter 
                     {...formikProps}
                     type="radioCard"
-                    name="oneDayJob"
+                    name="profile.data.preference.data.one_day_job"
                     label="Do you want one day job ?"
                     radioImg={OneDayJob}
                     options={[{ value: true, label: 'Yes' }, { value: false, label: 'No' }]}
                 />
 
-                <MaterialUIFieldAdapter
+                {formikProps.values.profile.data.sub_type === 'fresher' && <MaterialUIFieldAdapter
                     {...formikProps}
                     type="radioCard"
-                    name="internship"
+                    name="profile.data.preference.data.internship"
                     label="Do you want internship ?"
                     radioImg={GraduateIcon}
                     options={[{ value: true, label: 'Yes' }, { value: false, label: 'No' }]}
-                />
+                />}
 
                 <MaterialUIFieldAdapter
                     {...formikProps}
                     type="radioCard"
-                    name="partTimeJob"
+                    name="profile.data.preference.data.partime_job"
                     label="Do you want Part-Time job ?"
-                    radioImg={OneDayJob}
+                    radioImg={partTimeImg}
                     options={[{ value: true, label: 'Yes' }, { value: false, label: 'No' }]}
                 />
 
@@ -84,7 +85,7 @@ const PreferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                     />
                     <MaterialUIFieldAdapter 
                         {...formikProps}
-                        name="idNumber"
+                        name={formikProps.values.idType === 'aadhar' ? "profile.data.preference.data.aadhar" : 'profile.data.preference.data.passport'}
                         type="text"
                         placeholder={"serial no"}
                     />

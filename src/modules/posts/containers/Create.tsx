@@ -8,12 +8,13 @@ import { withCreatePost } from "../operations";
 const Container = (props) => {
   const {
     createPost,
-    router: { push },
+    router,
   } = props;
+  const push = router?.push;
 
   const onSubmit = async (values) => {
-    await createPost(values);
-    push("/posts");
+    // await createPost(values);
+    // push("/posts");
   };
   return <Component {...props} onSubmit={onSubmit} />;
 };

@@ -39,7 +39,7 @@ const LanguageCard = ({
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
     >
-      <h1>{banner}</h1>
+      <h1 style={{ fontWeight: "bold"}}>{banner}</h1>
       <p style={{ fontSize: "19.2px", fontWeight: "400" }}>{title}</p>
     </div>
   );

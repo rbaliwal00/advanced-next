@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import styles from "./index.module.css";
-import { Box, LinearProgress } from "@mui/material";
+import { Box, LinearProgress, useMediaQuery } from "@mui/material";
 
 export type TopbarProps = {
   label?: string;
@@ -39,11 +39,15 @@ const Topbar = ({
   borderRadius,
   platform,
 }: TopbarProps) => {
-  if (platform === "mobile") {
-    return ProgressBar(progress);
+
+  const mobile = useMediaQuery('(max-width:600px)');
+
+  if (mobile) {
+    return <Box>{ProgressBar(progress)}</Box>
   } else {
     return (
       <Box
+     
         className={`${styles.topbar_container} ${styles.clearfix}`}
         style={{ backgroundColor, color, borderRadius }}
       >

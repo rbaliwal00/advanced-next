@@ -3,7 +3,7 @@ import { Form } from 'formik';
 import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';
 import { Box } from '@mui/material';
 import PropTypes from 'prop-types';
-import { nextBtn, renderBackButton, ne } from './utilities';
+import { nextBtn, renderBackButton, } from './utilities';
 
 const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 
@@ -40,7 +40,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                 <MaterialUIFieldAdapter
                     {...formikProps}
                     type="file"
-                    name="image"
+                    name="profile.data.image_url"
                     label="Upload Image"
                 />
                 <Box fullWidth sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
@@ -48,7 +48,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                         <MaterialUIFieldAdapter
                             {...formikProps}
                             type="text"
-                            name="firstName"
+                            name="profile.data.first_name"
                             label="First Name"
                             placeholder="Type"
                         />
@@ -57,9 +57,10 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                         <MaterialUIFieldAdapter
                             {...formikProps}
                             type="text"
-                            name="lastName"
+                            name="profile.data.last_name"
                             label="Last Name"
                             placeholder="Type"
+                            value={formikProps?.profile?.lastName || ""}
                         />
                     </Box>
                 </Box>
@@ -76,7 +77,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                     <MaterialUIFieldAdapter
                         {...formikProps}
                         type="radio"
-                        name="gender"
+                        name="profile.data.gender"
                         label="Gender"
                         options={[{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }, { value: 'others', label: 'Others' }]}
                     />
@@ -85,7 +86,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                     <MaterialUIFieldAdapter
                         {...formikProps}
                         type='date'
-                        name='dateOfBirth'
+                        name='profile.data.dob'
                         label='Date of Birth'
                         placeholder='DD/MM/YYYY'
                     />
@@ -104,7 +105,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                 )}
                 <Box display="flex" justifyContent="space-between" width="100%">
                     {nextBtn(isLastStep)}
-                    {renderBackButton({ onBack, step })}
+                    {renderBackButton( onBack, step )}
                 </Box>
             </Box>
         </Form>

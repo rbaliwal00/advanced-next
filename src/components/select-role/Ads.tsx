@@ -10,7 +10,7 @@ import AdsSwiper from "@components/ads-swiper";
 const Ads = () => {
   return (
     <div
-      className={`grid gap-8 justify-center border-r-[3px] border-r-white border-solid ${styles["side-bar"]}`}
+      className={`grid gap-8 justify-center border-r-[3px] border-r-white border-solid h-max p-4 ${styles["side-bar"]}`}
     >
       <div className={`text-start pl-7`}>
         <h1 className="text-3xl font-bold py-6">Why join Horecah</h1>

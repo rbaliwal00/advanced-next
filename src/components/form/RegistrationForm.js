@@ -3,7 +3,7 @@ import { Form } from 'formik';
 import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';
 import { Box } from '@mui/material';
 import PropTypes from 'prop-types';
-import { nextBtn, renderBackButton, ne } from './utilities';
+import { nextBtn, renderBackButton, } from './utilities';
 
 const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 
@@ -40,7 +40,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                 <MaterialUIFieldAdapter
                     {...formikProps}
                     type="file"
-                    name="profile.data.imageUrl"
+                    name="profile.data.image_url"
                     label="Upload Image"
                 />
                 <Box fullWidth sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
@@ -48,7 +48,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                         <MaterialUIFieldAdapter
                             {...formikProps}
                             type="text"
-                            name="profile.data.firstName"
+                            name="profile.data.first_name"
                             label="First Name"
                             placeholder="Type"
                         />
@@ -57,7 +57,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                         <MaterialUIFieldAdapter
                             {...formikProps}
                             type="text"
-                            name="profile.data.lastName"
+                            name="profile.data.last_name"
                             label="Last Name"
                             placeholder="Type"
                             value={formikProps?.profile?.lastName || ""}
@@ -105,7 +105,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                 )}
                 <Box display="flex" justifyContent="space-between" width="100%">
                     {nextBtn(isLastStep)}
-                    {renderBackButton({ onBack, step })}
+                    {renderBackButton( onBack, step )}
                 </Box>
             </Box>
         </Form>

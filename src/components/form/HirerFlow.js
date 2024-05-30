@@ -1,23 +1,49 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box } from '@mui/material';
 import BusinessForm from './BusinessForm'
 import AddressForm from './AddressForm';
 import ContactForm from './ContactForm';
 import MultiStepForm from './StepFormContainer';
 import GstPanCardForm from './GstPanCardForm'
-import { businessValidationSchema, addressValidationSchema, contactValidationSchema, gstPanValidationSchema  } from './validationSchemas';
+import VisitingCardComponent from './CarouselScreen';
+import { businessValidationSchema, addressValidationSchema, contactValidationSchema, gstPanValidationSchema, SupplierThemeSelectionVaidationSchema  } from './validationSchemas';
 
 // Initial values for Formik
 const formConfigs = [
     {
+        Component: (props) => (
+            <VisitingCardComponent {...props} />),
+        initialValues: {
+            organization_auth_map: {
+                data: {
+                    organization: {
+                        data: {
+                            vc_theme: ''
+                        }
+                    }
+                }
+            }
+        },
+        validationSchema: SupplierThemeSelectionVaidationSchema,
+        key: 'choose theme',
+        type: 'recruiter'  
+    },
+    {
         Component: BusinessForm,
         initialValues: {
-            companyLogo: '',
-            brandName: '',
-            companyName: '',
-            gender: '',
-            natureOfBusiness: '',
-            numberOfEmployees: ''
+            organization_auth_map: {
+                data: {
+                    organization: {
+                        data: {
+                            brand_name: '',
+                            company_name: '',
+                            image_url: '',
+                            business_nature: '',
+                            no_of_employee: ''
+                        }
+                    }
+                }
+            }
         },
         validationSchema: businessValidationSchema,
         key: 'business',   

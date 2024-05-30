@@ -1,0 +1,22 @@
+query MyQuery($id: uuid = "") {
+  user: user_auth_by_pk(id: $id) {
+    created_at
+    email
+    id
+    is_active
+    organization_auth_map {
+      id
+      created_at
+      auth_id
+      is_active
+      organization {
+        brand_name
+        business_nature
+        contact {
+          email
+          id
+        }
+      }
+    }
+  }
+}

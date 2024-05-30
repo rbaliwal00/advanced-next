@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   height: 4rem;
-  filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 4px 25px rgba(0, 0, 0, 0.07));
   font-weight: 300;
   padding: 0rem 1.5rem;
 }
@@ -77,7 +77,7 @@
   justify-content: center;
   position: relative;
   height: 4rem;
-  box-shadow: rgba(0, 35, 81, 0.03) 0px 4px 15px;
+  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.03);
 }
 
 .topbar_back_button {

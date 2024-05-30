@@ -1,48 +1,104 @@
 import * as Yup from 'yup';
 import eighteenYearsAgo,{validateFile, phoneRegExp} from './utilities';
 
-export const registrationValidationSchema = Yup.object({
-    image: Yup.mixed()
-        .test("fileSize", "The file is too large", (value) => validateFile(value, 1))  // Assuming a max size of 5MB
-        .test("fileType", "Unsupported file format", (value) => validateFile(value, 1)),
-    firstName: Yup.string()
-        .required('First Name is required')
-        .min(2, 'First Name must be at least 2 characters long'),
-    lastName: Yup.string()
-        .required('Last Name is required')
-        .min(2, 'Last Name must be at least 2 characters long'),
-    email: Yup.string()
-        .email('Invalid email address')
-        .required('Email is required'),
-    gender: Yup.string()
-        .oneOf(['male', 'female', 'others'], 'Invalid gender')
-        .required('Gender is required'),
-    dateOfBirth: Yup.date()
-        .required('Date of birth is required')
-        .max(eighteenYearsAgo, 'You must be at least 18 years old'),
-    currentCity: Yup.string().when('type', {
-        is: 'fresher',
-        then: Yup.string().required('Current city is required'),
+export const ThemeSelectionVaidationSchema = Yup.object().shape({
+    profile: Yup.object().shape({
+        data: Yup.object().shape({
+            vc_theme: Yup.string()
+                .oneOf(['Vc Theme 1', 'Vc Theme 2'], 'Theme must be "fixedValue"')
+                .required('Theme is required'),
+        }),
     }),
 });
 
-export const statusValidationSchema = Yup.object({
-    brandName: Yup.string()
-        .required('Brand Name is required')
-        .min(2, 'Brand Name must be at least 2 characters long')
-        .max(50, 'Brand Name cannot be longer than 50 characters'),
-    currentCity: Yup.string()
-        .required('Current working city is required')
-        .oneOf(['newYork', 'losAngeles'], 'Invalid city selected'),
-    monthlySalary: Yup.string()
-        .required('Monthly Salary is required')
-        .oneOf(['1000', '2000'], 'Invalid salary selected'),
+export const SupplierThemeSelectionVaidationSchema = Yup.object().shape({
+    organization_auth_map: Yup.object().shape({
+        data: Yup.object().shape({
+            organization: Yup.object().shape({
+                data: Yup.object().shape({
+                    vc_theme: Yup.string()
+                        .oneOf(['Vc Theme 1', 'Vc Theme 2'], 'Theme must be "fixedValue"')
+                        .required('Theme is required'),
+                })
+            })
+        }),
+    }),
 });
 
-export const workExperienceValidationSchema = Yup.object({
-    workExperience: Yup.string().required('Work experience is required'),
-    department: Yup.string().required('Department is required'),
-    position: Yup.string().required('Position is required')
+export const registrationValidationSchema = Yup.object().shape({
+    profile: Yup.object().shape({
+        data: Yup.object().shape({
+            imageUrl: Yup.mixed()
+                .test('fileSize', 'The file is too large', (value) => validateFile(value, 1)) // Assuming a max size of 5MB
+                .test('fileType', 'Unsupported file format', (value) => validateFile(value, 1)),
+            firstName: Yup.string()
+                .required('First Name is required')
+                .min(2, 'First Name must be at least 2 characters long'),
+            lastName: Yup.string()
+                .required('Last Name is required')
+                .min(2, 'Last Name must be at least 2 characters long'),
+            gender: Yup.string()
+                .oneOf(['male', 'female', 'others'], 'Invalid gender')
+                .required('Gender is required'),
+            dob: Yup.date()
+                .required('Date of birth is required')
+                .max(eighteenYearsAgo, 'You must be at least 18 years old'),
+        }),
+        email: Yup.string()
+            .email('Invalid email address')
+            .required('Email is required'),
+    }),
+});
+
+export const educationValidationSchema = Yup.object().shape({
+    profile: Yup.object().shape({
+        data: Yup.object().shape({
+            education: Yup.object().shape({
+                data: Yup.object().shape({
+                    institutionName: Yup.string().required('Institution Name is required'),
+                    institutionCity: Yup.string().required('City of Institution is required'),
+                    level: Yup.string().required('Level of education is required'),
+                    studyField: Yup.string().required('Field of study is required'),
+                    passoutYear: Yup.date()
+                        .max(new Date(), 'Passout year cannot be in the future')
+                        .required('Passout year is required')
+                        .typeError('Invalid date format'),
+                })
+            })
+        }),
+    }),
+})
+
+export const statusValidationSchema = Yup.object().shape({
+    profile: Yup.object().shape({
+        data: Yup.object().shape({
+            experience: Yup.object().shape({
+                data: Yup.object().shape({
+                    brand_name: Yup.string()
+                        .required('Brand Name is required')
+                        .min(2, 'Brand Name must be at least 2 characters long')
+                        .max(50, 'Brand Name cannot be longer than 50 characters'),
+                    monthly_salary: Yup.string()
+                        .required('Monthly Salary is required')
+                        .oneOf(['1000', '2000'], 'Invalid salary selected'),
+                }),
+            }),
+        }),
+    }),
+});
+
+export const workExperienceValidationSchema = Yup.object().shape({
+    profile: Yup.object().shape({
+        data: Yup.object().shape({
+            experience: Yup.object().shape({
+                data: Yup.object().shape({
+                    work_experience: Yup.string().required('Work experience is required'),
+                    department: Yup.string().required('Department is required'),
+                    position: Yup.string().required('Position is required'),
+                }),
+            }),
+        }),
+    }),
 });
 
 export const businessValidationSchema = Yup.object({
@@ -133,35 +189,34 @@ export const supplierContactValidationSchema = Yup.object({
 });
 
 export const preferenceValidationSchema = Yup.object().shape({
-    city: Yup.string()
-        .required('City is required'),
-    oneDayJob: Yup.boolean()
-        .required('Please specify if you want a one-day job'),
-    internship: Yup.boolean()
-        .required('Please specify if you want an internship'),
-    partTimeJob: Yup.boolean()
-        .required('Please specify if you want a part-time job'),
-    idType: Yup.string()
-        .oneOf(['Aadhar', 'Passport'], 'ID type must be either Aadhar or Passport')
-        .required('ID type is required'),
-    serialNo: Yup.string()
-        .when('idType', {
-            is: 'Aadhar',
-            then: Yup.string()
-                .matches(/^\d{12}$/, 'Aadhar serial number must be 12 digits')
-                .required('Serial number is required'),
-            otherwise: Yup.string()
-                .matches(/^[A-Z0-9]{8,12}$/, 'Passport serial number must be between 8 and 12 characters')
-                .required('Serial number is required')
+    profile: Yup.object().shape({
+        data: Yup.object().shape({
+            preference: Yup.object().shape({
+                data: Yup.object().shape({
+                    working_city: Yup.string().required('City is required'),
+                    one_day_job: Yup.boolean().required('Please specify if you want a one-day job'),
+                    internship: Yup.boolean().required('Please specify if you want an internship'),
+                    partime_job: Yup.boolean().required('Please specify if you want a part-time job'),
+                    aadhar: Yup.string()
+                        .when('idType', {
+                            is: 'Aadhar',
+                            then: Yup.string()
+                                .matches(/^\d{12}$/, 'Aadhar serial number must be 12 digits')
+                                .required('Aadhar serial number is required'),
+                            otherwise: Yup.string().notRequired(),
+                        }),
+                    passport: Yup.string()
+                        .when('idType', {
+                            is: 'Passport',
+                            then: Yup.string()
+                                .matches(/^[A-Z0-9]{8,12}$/, 'Passport serial number must be between 8 and 12 characters')
+                                .required('Passport serial number is required'),
+                            otherwise: Yup.string().notRequired(),
+                        }),
+                }),
+            }),
         }),
-    idImage: Yup.mixed()
-        .required('ID image is required')
-        .test('fileSize', 'File size is too large', value => {
-            return value && value.size <= 2000000; // 2MB
-        })
-        .test('fileType', 'Unsupported file format', value => {
-            return value && ['image/jpeg', 'image/png'].includes(value.type);
-        })
+    }),
 });
 
 export const gstPanValidationSchema = Yup.object().shape({

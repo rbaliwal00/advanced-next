@@ -57,26 +57,20 @@ const MobileNumberForm = ({
             display: "flex",
             flexDirection: "column",
             textAlign: "center",
+            width: "100%"
           }}
         >
-          <Typography
-            sx={{
-              fontSize: "33.33px",
-            }}
-            display={{
-              xs: "block",
-              sm: "none",
-            }}
-          >
-            Welcome!
-          </Typography>
           <Typography
             sx={{
               fontSize: {
                 xs: "27.65px",
                 sm: "33.18px",
               },
-              mt: 1,
+              mt: {
+                xs: "48px",
+                sm: "16px"
+              },
+              fontWeight: "bold"
             }}
           >
             {header || "Enter Mobile Number"}
@@ -89,7 +83,7 @@ const MobileNumberForm = ({
               name="mobileNumber"
               type="text"
               label="Mobile Number"
-              placeholder="Type Mobile Number"
+              placeholder="+9876543210"
               // style={{ backgroundColor: "white" }}
             />
           </Box>
@@ -102,7 +96,7 @@ const MobileNumberForm = ({
               },
             }}
           >
-            <AdsSwiper width={280} />
+            <AdsSwiper width={328} />
           </Box>
           <Button
             color="white"
@@ -121,9 +115,10 @@ const MobileNumberForm = ({
             fontSize={10}
             fontWeight={400}
             sx={{ marginTop: "30px" }}
+            color={'#8899A8'}
           >
             {footerText || "By continuing agree to Horecah"} <br></br>
-            <Typography fontWeight={600} fontSize={10}>
+            <Typography fontWeight={600} fontSize={10} color={'#8899A8'}>
               <Link href="#" underline="always">
                 Terms of Use & Privacy Policy
               </Link>

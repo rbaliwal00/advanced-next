@@ -9,6 +9,7 @@ import ExperienceForm from './experienceForm';
 import ReferenceForm from './referenceForm';
 import AwardForm from './awardForm';
 import BioForm from './bioForm';
+import educationValidationSchema from './validationSchemas'
 // import GstPanCardForm from './GstPanCardForm'
 // import { businessValidationSchema, addressValidationSchema, contactValidationSchema, gstPanValidationSchema  } from './validationSchemas';
 
@@ -16,14 +17,12 @@ import BioForm from './bioForm';
 const formConfigs = [
     {
         Component: EducationForm,
-        initialValues: {
-            institutionName: '',
-            educationType: '',
-            cgpa: '',
-            fromDate: '',
-            toDate: '',
+        initialValues:
+        {
+            educations:[]
         },
         key: 'education',   
+        validationSchema: educationValidationSchema
     },
     {
         Component: ExperienceForm,
@@ -74,7 +73,6 @@ const formConfigs = [
 
 const CVForm = () => {
    
-
     return (
         <Box sx={{ flex: 1 }}>
             <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => alert(`end of recruiter flow ${JSON.stringify(values)}`)} />
@@ -83,3 +81,4 @@ const CVForm = () => {
 };
 
 export default CVForm;
+

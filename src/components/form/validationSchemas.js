@@ -5,8 +5,22 @@ export const ThemeSelectionVaidationSchema = Yup.object().shape({
     profile: Yup.object().shape({
         data: Yup.object().shape({
             vc_theme: Yup.string()
-                .oneOf(['fixedValue'], 'Theme must be "fixedValue"')
+                .oneOf(['Vc Theme 1', 'Vc Theme 2'], 'Theme must be "fixedValue"')
                 .required('Theme is required'),
+        }),
+    }),
+});
+
+export const SupplierThemeSelectionVaidationSchema = Yup.object().shape({
+    organization_auth_map: Yup.object().shape({
+        data: Yup.object().shape({
+            organization: Yup.object().shape({
+                data: Yup.object().shape({
+                    vc_theme: Yup.string()
+                        .oneOf(['Vc Theme 1', 'Vc Theme 2'], 'Theme must be "fixedValue"')
+                        .required('Theme is required'),
+                })
+            })
         }),
     }),
 });

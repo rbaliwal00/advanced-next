@@ -1,25 +1,50 @@
-import React, { useState } from 'react';
-import { Box } from '@mui/material';
+import React from 'react';
 import BusinessForm from './BusinessForm'
 import AddressForm from './AddressForm';
 import ContactForm from './SupplierContactForm';
 import GstPanCardForm from './GstPanCardForm'
-import { businessValidationSchema, addressValidationSchema, supplierContactValidationSchema, gstPanValidationSchema } from './validationSchemas';
+import VisitingCardComponent from './CarouselScreen';
+import { businessValidationSchema, addressValidationSchema, supplierContactValidationSchema, gstPanValidationSchema, SupplierThemeSelectionVaidationSchema } from './validationSchemas';
 import MultiStepForm from './StepFormContainer';
 // Initial values for Formik
 const formConfigs = [
     {
+        Component: (props) => (
+            <VisitingCardComponent {...props} />),
+        initialValues: {
+            organization_auth_map: {
+                data: {
+                    organization: {
+                        data: {
+                            vc_theme: ''
+                        }
+                    }
+                }
+            }
+        },
+        validationSchema: SupplierThemeSelectionVaidationSchema,
+        key: 'choose theme',
+        type: 'supplier'
+    },
+    {
         Component: BusinessForm,
         initialValues: {
-            companyLogo: '',
-            brandName: '',
-            companyName: '',
-            gender: '',
-            natureOfBusiness: '',
-            numberOfEmployees: ''
+            organization_auth_map: {
+                data: {
+                    organization: {
+                        data: {
+                            brand_name: '',
+                            company_name: '',
+                            image_url: '',
+                            business_nature: '',
+                            no_of_employee: ''
+                        }
+                    }
+                }
+            }
         },
         validationSchema: businessValidationSchema,
-        key: 'business',
+        key: 'business',   
     },
     {
         Component: GstPanCardForm,

@@ -30,10 +30,10 @@ const styles = {
 }
 
 const renderCard = (type, formDetails) => {
-    const { phone_number, email, profile} = formDetails;
-    const { education, experience,  preference, image_url ='https://picsum.photos/200/300', first_name, last_name } = profile.data;
-    const { brand_name, business_nature, company_name, no_of_employee, organization_location_map, contact} = organization_auth_map.data.organization.data
-    const { block_number, area, city } = organization_location_map.data.location.data;
+    const { phone_number, email, profile, organization_auth_map } = formDetails;
+    const { education, experience,  preference, image_url ='https://picsum.photos/200/300', first_name, last_name } = profile[0];
+    const { brand_name, business_nature, company_name, no_of_employee, organization_location_map, contact} = organization_auth_map[0].organization
+    const { block_number, area, city } = organization_location_map[0].location;
 
 
     if (type === 'job')
@@ -57,7 +57,7 @@ const renderCard = (type, formDetails) => {
                                     Department
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {experience.data.department}
+                                    {experience[0].department}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
@@ -65,7 +65,7 @@ const renderCard = (type, formDetails) => {
                                     Position
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {experience.data.position}
+                                    {experience[0].position}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
@@ -73,7 +73,7 @@ const renderCard = (type, formDetails) => {
                                     Current Location
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {currentLocation}
+                                    {'Bangalore'}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
@@ -81,25 +81,21 @@ const renderCard = (type, formDetails) => {
                                     Preferred Location
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {preferredLocation}
-                                    <br />
-                                    Location 2
-                                    <br />
-                                    Location 3
+                                    {preference[0].working_city}
                                 </Typography>
                             </Box>
                         </Grid>
                         <Grid item xs={6} sm={6} style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                            {image && <Avatar
+                            {image_url && <Avatar
                                 alt="Yanis Petros"
-                                src={image} // Update with your avatar path
+                                src={image_url} // Update with your avatar path
                                 style={{ width: 80, height: 80, marginLeft: 'auto', marginBottom: '10px' }}
                             />}
                             <Typography sx={styles.nameTxt} component="div">
                                 {first_name + last_name}
                             </Typography>
                             <Typography variant="subtitle1">
-                                {experience.data.work_experience}
+                                {experience[0].work_experience}
                             </Typography>
                             <Typography sx={styles.label}>
                                 Contact No.

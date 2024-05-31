@@ -12,11 +12,11 @@ import { useMediaQuery } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 
-const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange, onDelete }) => {
+const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChange, onDelete }) => {
 
   const isMobile = useMediaQuery('(max-width:600px)');
+  console.log('hi ajith kumar =>',formikProps.values)
 
-  console.log('asdfjasdflkjsd',formikProps.value)
   return (
     <Accordion 
     expanded={expanded}
@@ -34,8 +34,10 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
       >
         <Box display={'flex'} justifyContent={'space-between'} width={'100%'} alignItems={'center'}  >
           <Typography color={'#113B73'}>
-            {formikProps.values.educations[index].institutionName===''?'Name of Institution':formikProps.values.educations[index].institutionName}, 
-            {!formikProps.values.educations[index].toDate ?' Passout Years':formikProps.values.educations[index].toDate}
+            {formikProps.values.experiences[index].jobType===''?'Job Type':formikProps.values.experiences[index].jobType}, 
+            {!formikProps.values.experiences[index].position ?' Position':formikProps.values.experiences[index].position},
+            {!formikProps.values.experiences[index].fromDate ?' From':formikProps.values.experiences[index].fromDate},
+            {!formikProps.values.experiences[index].toDate ?' to':formikProps.values.experiences[index].toDate},
           </Typography>
           {
             !isMobile && 
@@ -46,29 +48,61 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
           
         </Box>
       </AccordionSummary>
-      <AccordionDetails>
-        <Box>
+      <AccordionDetails> 
+        <Box> 
           <MaterialUIFieldAdapter
               fromik={formikProps}
-              name={`educations.${index}.institutionName`}
+              type="select"
+            name={`experiences.${index}.jobType`}
+            label="Job Type"
+            options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
+          />
+          <MaterialUIFieldAdapter
+              fromik={formikProps}
+              name={`experiences.${index}.brandName`}
             type="text"
-            label="Name of Institution"
+            label="Brand Name"
             placeholder="Type"
           />
           <MaterialUIFieldAdapter
               fromik={formikProps}
               type="select"
-            name={`educations.${index}.educationType`}
-            label="Education Type"
+            name={`experiences.${index}.department`}
+            label="Department"
             options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
           />
           <MaterialUIFieldAdapter
               fromik={formikProps}
-              name={`educations.${index}.cgpa`}
-            type="text"
-            label="Add CGPA/Percentage (Optional)"
-            placeholder="Type"
+              type="select"
+            name={`experiences.${index}.position`}
+            label="Position"
+            options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
           />
+          <Box 
+            display={'flex'} 
+            gap={'1rem'}
+            sx={{
+              flexDirection:{
+                xs: "column",
+                sm: "row",
+              }
+            }}
+          >
+            <MaterialUIFieldAdapter
+              fromik={formikProps}
+              type="select"
+            name={`experiences.${index}.city`}
+            label="Position"
+            options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
+          />
+            <MaterialUIFieldAdapter
+              fromik={formikProps}
+              type="select"
+            name={`experiences.${index}.monthlySalary`}
+            label="Position"
+            options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
+          />
+          </Box>
           <Box 
             display={'flex'} 
             gap={'1rem'}
@@ -98,7 +132,7 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
   );
 }
 
-EducationFormTemplate.propTypes = {
+ExperiencedFormTemplate.propTypes = {
   index: PropTypes.number.isRequired,
   formikProps: PropTypes.object.isRequired,
   onDelete: PropTypes.func.isRequired,
@@ -106,4 +140,4 @@ EducationFormTemplate.propTypes = {
   onDelete: PropTypes.func.isRequired,
 };
 
-export default EducationFormTemplate;
+export default ExperiencedFormTemplate;

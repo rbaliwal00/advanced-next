@@ -27,14 +27,7 @@ const formConfigs = [
     {
         Component: ExperienceForm,
         initialValues: {
-            jobType: '',
-            brandName: '',
-            department: '',
-            position: '',
-            city: '',
-            monthlySalary: '',
-            fromDate: '',
-            toDate: '',
+            experiences:[]
         },
         key: 'experience'
     },

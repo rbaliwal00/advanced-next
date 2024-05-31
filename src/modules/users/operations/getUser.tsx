@@ -15,7 +15,7 @@ const withGetUser = (Component: FunctionComponent) =>
             };
         },
         props({ data }) {
-            return { data.user_auth };
+            return { data};
         },
     })(Component);
 

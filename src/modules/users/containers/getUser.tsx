@@ -14,7 +14,7 @@ const Container = (props) => {
 
     console.log("check object  here- --", user)
 
-    return <ThemeCard type={'job'} formDetails={user}/>
+    return <div/>
 };
 
 export default compose(withGetUser)(Container);

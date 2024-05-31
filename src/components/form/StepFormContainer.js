@@ -3,10 +3,11 @@ import { Formik } from 'formik';
 import { Box } from '@mui/material';
 import CustomProgressBar from './CustomProgressBar'
 import { deepMerge } from './utilities';
+import PropTypes from 'prop-types';
 
-const MultiStepForm = ({ formConfigs, onSubmitFinal }) => {
+const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
     const [step, setStep] = useState(0);  // Current form step
-    const [formData, setFormData] = useState({}); 
+    const [formData, setFormData] = useState(prefillData || {}); 
     const isLastStep = step === formConfigs.length - 1;
 
     const currentConfig = formConfigs[step];
@@ -58,7 +59,7 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal }) => {
 
     return (
         <Box sx={{ background: '#fff'}}>
-            <CustomProgressBar  progress={progress} label={(currentConfig.key)}/>
+            <CustomProgressBar  progress={progress} label={(currentConfig.key)} onBack={handleBack}/>
             <Formik
                 key={step}
                 initialValues={getInitialValues()}
@@ -73,5 +74,9 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal }) => {
         </Box>
     );
 };
+
+MultiStepForm.propTypess = { 
+    prefillData: PropTypes.object
+}
 
 export default MultiStepForm;

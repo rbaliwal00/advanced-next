@@ -4,7 +4,7 @@ import { styles } from "./utilities";
 import PropTypes from "prop-types";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-const CustomProgressBar = ({progress, label}) => {
+const CustomProgressBar = ({progress, label, onBack}) => {
 
     return (
         <Box sx={[styles.formContainers, { display: 'flex', 
@@ -26,7 +26,7 @@ const CustomProgressBar = ({progress, label}) => {
             }
         }]}>
             <Box display={'flex'} sx={{ alignItems: 'center'}}>
-                <IconButton  sx={{ height: '24px', width: '24px',  marginRight: '10px', display: { sm: 'none'}}} onClick={() => console.log("check click here")}>
+                <IconButton  sx={{ height: '24px', width: '24px',  marginRight: '10px', display: { sm: 'none'}}} onClick={onBack}>
                     <ArrowBackIcon color="#374151"/>
                 </IconButton>
                 <Typography sx={{ fontSize: '24px', fontWeight: '600', color: '#4B5563', textTransform: 'capitalize' }}>{label}</Typography>
@@ -43,7 +43,8 @@ const CustomProgressBar = ({progress, label}) => {
 
 CustomProgressBar.proptypes = {
     progress: PropTypes.number,
-    label: PropTypes.string
+    label: PropTypes.string,
+    onBack: PropTypes.func
 }
 
 export default CustomProgressBar;

@@ -4,33 +4,24 @@ import PropTypes from 'prop-types';
 
 const styles = {
     label: {
-        fontSize: {
-            xs: '8px',
-            sm: '12px'
-        },
+        fontSize: '8px',
         color: '#8899A8',
         fontWeight: '400',
     },
     valueTxt: {
-        fontSize: {
-            xs: '11px',
-            sm: '16px'
-        },
+        fontSize: '11px',
         color: '#4B5563',
         fontWeight: '500',
     },
     nameTxt: {
-        fontSize: {
-            xs: '16px',
-            sm: '20px'
-        },
+        fontSize: '16px',
         color: '#4B5563',
         fontWeight: '500',
     }
 }
 
 const renderCard = (type, formDetails) => {
-    const { phone_number, email, profile, organization_auth_map } = formDetails[0];
+    const { phone_number, email, profile, organization_auth_map } = formDetails;
     const { education, experience,  preference, image_url ='https://picsum.photos/200/300', first_name, last_name } = profile[0] || [];
     const { brand_name = '', business_nature = '', company_name = '', no_of_employee = '', organization_location_map = '', contact = ''} = organization_auth_map[0]?.organization || []
     const { block_number, area, city } = organization_location_map[0]?.location || [];
@@ -93,7 +84,7 @@ const renderCard = (type, formDetails) => {
                             <Typography sx={styles.nameTxt} component="div">
                                 {first_name + last_name}
                             </Typography>
-                            <Typography variant="subtitle1">
+                            <Typography sx={styles.valueTxt}>
                                 {experience && experience[0]?.work_experience || 'experienced'}
                             </Typography>
                             <Typography sx={styles.label}>

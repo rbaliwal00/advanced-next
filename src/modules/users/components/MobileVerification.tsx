@@ -28,7 +28,7 @@ const MobileVerification = (props) => {
         </div>
       ) : (
         <div>
-          <div className="text-[#4B5563] min-h-[calc(100vh-64px)]">
+          <div className="text-[#4B5563] min-h-[calc(100vh-64px)] grid justify-items-center">
             <div className="grid grid-cols-[1fr_0rem_1fr] pt-10">
               <Ads />
               <div className="border-l-2 h-[60vh] mt-8"></div>
@@ -36,7 +36,7 @@ const MobileVerification = (props) => {
                 <OtpRegistrationFlow />
               </div>
             </div>
-            <Box
+           {!matches && <Box
               sx={{
                 width: {
                   xs: "100%",
@@ -47,7 +47,7 @@ const MobileVerification = (props) => {
               }}
             >
               <Cities />
-            </Box>
+            </Box>}
           </div>
         </div>
       )}

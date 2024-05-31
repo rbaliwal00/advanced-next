@@ -44,8 +44,8 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
         width: "100%"
       }}
     >
-      <h4 className="text-center text-[33.18px] mt-10">Verify OTP</h4>
-      <p className="text-[#C1C1C1] text-center mb-2 text-sm text-[16px] mb-4">
+      <h4 className="text-center text-[33.18px] mt-10 font-semibold">Verify OTP</h4>
+      <p className="text-[#C1C1C1] text-center mb-2 text-sm text-[16px] mb-4 font-normal">
         Enter the 4 digit code sent to 9414098765
       </p>
       {/* <Typography variant="body2" sx={{ mb: 2 }}>
@@ -68,7 +68,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
             <Field name="otp">
               {({ field }) => (
                 <Box>
-                  <div className="grid justify-center">
+                  <div className="grid justify-center gap-2 mt-12">
                     <OtpInput
                       {...field}
                       value={field.value}
@@ -78,6 +78,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                       shouldAutoFocus
                       isInputNum
                       renderInput={(props) => <input {...props} />}
+                      containerStyle={{gap:'2rem'}}
                       inputStyle={{
                         width: "45px",
                         height: "45px",
@@ -91,6 +92,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                             ? "1px solid red"
                             : "1px solid rgba(0,0,0,0.3)",
                       }}
+                      
                     />
                     <Box
                       disabled={timeLeft > 0}
@@ -150,7 +152,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                 },
                 alignSelf: "center",
                 height: "48px",
-                mt: "60px",
+                mt: "15px",
                 mb: "16px",
                 background: "#113B73",
                 color: "white",

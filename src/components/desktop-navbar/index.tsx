@@ -39,33 +39,14 @@ export const DesktopNavbar = ({
 
   return (
     <header>
-      <div className="sm:hidden">
-        <Box
-          className={`${styles.topbar_container} ${styles.clearfix} flex justify-between`}
-          style={{ backgroundColor, color }}
-        >
-          <div className={styles.topbar_back_button}>
-            {button && (
-              <Image src={button} alt="" className="" onClick={onBack} />
-            )}
-            <div
-              className={`${styles.topbar_label} ${
-                button && styles.topbar_label_button
-              }`}
-            >
-              {label}
-            </div>
-          </div>
-          {logo && (
-            <div className={styles.topbar_logo}>
-              <Image
-                src={PrimaryLogo}
-                alt=""
-                className=""
-                height={logoHeight ?? 30}
-              />
-            </div>
-          )}
+      <div className="sm:hidden" >
+        <Box sx={{ background: '#fff', display: 'flex', justifyContent: "flex-start", px: '16px', py: "10px", maxHeight: '56px'}}>
+          <Image
+            src={logo}
+            height={logoHeight}
+            alt="logo"
+            style={{ alignSelf: 'flex-start'}}
+          />
         </Box>
       </div>
       <Box

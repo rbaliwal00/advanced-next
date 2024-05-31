@@ -20,7 +20,6 @@ import { Radio, RadioGroup } from "@mui/material";
 import GstInputComponent from "./UploadCard";
 import Image from "next/image";
 
-
 const responsiveFontSize = {
   fontSize: {
     xs: "14px",
@@ -59,11 +58,13 @@ class MaterialUIFieldAdapter extends Component {
     ]),
     style: PropTypes.object,
     radioImg: PropTypes.string,
-    docType: PropTypes.string
+    docType: PropTypes.string,
+    isSmallScreen: PropTypes.bool
   };
 
   static defaultProps = {
     rowRadio: true, // Default value if not provided
+    isSmallScreen: false
   };
 
   handleChange = (event) => {
@@ -82,19 +83,20 @@ class MaterialUIFieldAdapter extends Component {
   };
 
   renderComponent = () => {
-    const { type, name, label, formik, placeholder, options, rowRadio, style, radioImg, docType } =
+    const { type, name, label, formik, placeholder, options, rowRadio, style, radioImg, docType, isSmallScreen } =
       this.props;
     const { values, errors, touched } = formik;
     const value = getIn(values, name);
     const error = getIn(errors, name);
     const touch = getIn(touched, name);
+    
 
     switch (type) {
       case "text":
       case "number":
       case "email":
         return (
-          <Box alignSelf={"center"} sx={{ mb: "24px" }}>
+          <Box alignSelf={"center"} sx={{ mb: "24px" }} fontFamily={''}>
             {label && (
               <Typography
                 textAlign={"left"}
@@ -115,6 +117,15 @@ class MaterialUIFieldAdapter extends Component {
                   maxHeight: "48px",
                   borderWidth: 1,
                   borderColor: "#F3F4F6",
+                  "& .MuiInputBase-root": {
+                    borderColor: "#F3F4F6", // Default border color
+                    "&.Mui-focused": {
+                      borderColor: "#113B73", // Border color when focused
+                    },
+                    "&.Mui-error": {
+                      borderColor: "#f44336", // Border color when error
+                    },
+                  },
                   "& .MuiInputBase-input": {
                     color: "#4B5563", // Changes the text color
                   },
@@ -203,7 +214,7 @@ class MaterialUIFieldAdapter extends Component {
           <Box alignSelf={"center"} sx={{ mb: "24px" }}>
             {label && (
               <Typography
-                sx={responsiveFontSize}
+                sx={[responsiveFontSize, { mb: '8px'}]}
                 textAlign={"left"}
                 color={"#9CA3AF"}
               >
@@ -252,6 +263,7 @@ class MaterialUIFieldAdapter extends Component {
               onBlur={this.handleBlur}
               displayEmpty
               error={touch && Boolean(error)}
+              placeholder="Select"
             >
               {options.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -388,18 +400,18 @@ class MaterialUIFieldAdapter extends Component {
 
       case 'radioCard':
         return (
-          <Card variant="outlined" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: '16px', mb: '8px', background: '#113B73', borderRadius: '10px', maxHeight: {
+          <Card variant="outlined" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', py: '16px', mb: '8px', background: '#113B73', px: '16px', borderRadius: '10px', maxHeight: {
             xs: '80px',
             sm: '88px'
           }}}>
-            <CardContent sx={{ flexGrow: 1, p: '0px' }}>
-              <Typography variant="subtitle1" color={'#fff'}>{label}</Typography>
+            <CardContent sx={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <Typography variant="subtitle1" color={'#fff'} fontWeight={'bold'} fontFamily={'Poppins'}>{label}</Typography>
               <RadioGroup
                 row
                 name={name}
                 value={value || ''}
                 onChange={this.handleChange}
-                sx={{ justifyContent: 'space-between', maxWidth: '67%' }}
+                sx={{ justifyContent: 'space-between', maxWidth: isSmallScreen ? '100%' : '67%' }}
               >
                 {options.map(option => (
                   <FormControlLabel
@@ -412,10 +424,10 @@ class MaterialUIFieldAdapter extends Component {
                 ))}
               </RadioGroup>
             </CardContent>
-            <Box sx={{ ml: 2, maxWidth: '72px', maxHeight: '72px', display: 'flex', justifyContent: 'center', alignItems: 'flex-end'}}>
-              {/* Placeholder for image or icon */}
-              <Image src={radioImg} alt="icon" style={{ width: '100%', maxHeight: '64px' }} />
-            </Box>
+            <Box sx={{ maxWidth: '72px', maxHeight: '72px', display: isSmallScreen ? 'none' : 'flex', justifyContent: 'center', alignItems: 'center', }} >
+                {/* Placeholder for image or icon */}
+                <Image src={radioImg} alt="icon" style={{ width: '100%', maxHeight: '64px' }} />
+              </Box>
           </Card>
         );
       

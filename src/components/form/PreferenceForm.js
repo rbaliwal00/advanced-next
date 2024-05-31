@@ -6,9 +6,10 @@ import PropTypes from 'prop-types';
 import { nextBtn, renderBackButton } from './utilities';
 import { OneDayJob, GraduateIcon } from "@public/assets/icons";
 import { partTimeImg } from './utilities';
-
+import useIsSmallScreen from './SmallScreen';
 
 const PreferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
+    const isSmallScreen = useIsSmallScreen()
     return (
         <Form {...formikProps}>
             <Box sx={{
@@ -41,50 +42,53 @@ const PreferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
             }}>
 
                 <MaterialUIFieldAdapter
-                    {...formikProps}
+                    formik={formikProps}
                     type="select"
                     name="profile.data.preference.data.working_city"
-                    label="City"
+                    label="What City to work in"
                     options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
                 />
 
                 <MaterialUIFieldAdapter 
-                    {...formikProps}
+                    formik={formikProps}
                     type="radioCard"
                     name="profile.data.preference.data.one_day_job"
                     label="Do you want one day job ?"
+                    isSmallScreen={isSmallScreen}
                     radioImg={OneDayJob}
                     options={[{ value: true, label: 'Yes' }, { value: false, label: 'No' }]}
                 />
 
                 {formikProps.values.profile.data.sub_type === 'fresher' && <MaterialUIFieldAdapter
-                    {...formikProps}
+                    formik={formikProps}
                     type="radioCard"
                     name="profile.data.preference.data.internship"
                     label="Do you want internship ?"
+                    isSmallScreen={isSmallScreen}
                     radioImg={GraduateIcon}
                     options={[{ value: true, label: 'Yes' }, { value: false, label: 'No' }]}
                 />}
 
                 <MaterialUIFieldAdapter
-                    {...formikProps}
+                    formik={formikProps}
                     type="radioCard"
                     name="profile.data.preference.data.partime_job"
                     label="Do you want Part-Time job ?"
+                    isSmallScreen={isSmallScreen}
                     radioImg={partTimeImg}
                     options={[{ value: true, label: 'Yes' }, { value: false, label: 'No' }]}
                 />
 
                 <Box sx={{ p: '16px', borderRadius: '10px', mt: '16px', mb: "16px", boxShadow: '0px 5px 25px rgba(29, 29, 29, 0.05)' }}>
                     <MaterialUIFieldAdapter
-                        {...formikProps}
+                        formik={formikProps}
                         name="idType"
                         type="radio"
                         label="Upload ID Image"
                         options={[{ value: 'aadhar', label: 'Aadhar' }, { value: 'passport', label: 'Passport' }]}
                     />
                     <MaterialUIFieldAdapter 
-                        {...formikProps}
+                        formik={formikProps}
                         name={formikProps.values.idType === 'aadhar' ? "profile.data.preference.data.aadhar" : 'profile.data.preference.data.passport'}
                         type="text"
                         placeholder={"serial no"}

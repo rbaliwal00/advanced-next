@@ -40,14 +40,14 @@ const StatusForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                 bgcolor: 'background.paper',
             }}>
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             name="profile.data.experience.data.brand_name"
                             type="text"
                             label="Brand Name"
                             placeholder="Type"
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             name="currentCity"
                             type="select"
                             label="Current working city"
@@ -57,7 +57,7 @@ const StatusForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             ]}
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             name="profile.data.experience.data.montly_salary"
                             type="select"
                             label="Monthly Salary"

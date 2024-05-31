@@ -21,12 +21,18 @@ const formDetails = {
 const ButtonStack = () => {
     return (
         <Box display="flex"
-            flexDirection="column"
-            alignItems="center"
-            position="absolute"
-            right="-30px"
-            top="50%"
-            transform="translateY(-50%)" 
+            sx={{ 
+                flexDirection:{
+                    xs: 'row',
+                    sm: 'coloumn'
+                },
+                alignItems: "center",
+                position: "absolute",
+                right: "-30px",
+                top: "50%",
+                transform: "translateY(-50%)"            
+            }}
+             
         >
             <IconButton
                 sx={{
@@ -91,7 +97,11 @@ const FilledCard = ({type}) => {
                     alignItems: 'center',
                     background: 'red',
                     position: 'relative',
-                    padding: '20px'
+                    padding: '20px',
+                    maxWidth: {
+                        xs: '328px',
+                        sm: '440px'
+                    }
             }}>
                 <ThemeCard type={type || 'job'} formDetails={formDetails} />
                 <ButtonStack />

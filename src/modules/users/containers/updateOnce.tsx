@@ -166,26 +166,21 @@ const testObj = {
                     ]
             }
         }
-    },
-    "update_columns": [
-        "email",
-        "phone_number",
-        "is_active",
-        "password"
-    ]
+    }
 }
 
 const Container = (props) => {
     const {
         insertUserAuth,
-        router: { push },
+        //router: { push },
     } = props;
 
     const onSubmit = async (values) => {
-        await withInsert(testObj);
-        //push("/posts");
+        await insertUserAuth(testObj.object);
+        //push("/posts"); // Change the path according to your routing structure
     };
+
     return <Component {...props} onSubmit={onSubmit} />;
 };
 
-export default compose( withInsert)(Container);
+export default compose(withInsert)(Container);

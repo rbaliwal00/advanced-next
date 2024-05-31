@@ -11,10 +11,9 @@ const Container = (props) => {
         data: user,
         // router: { push },
     } = props;
+    console.log("cehck datae---", user)
 
-    console.log("check object  here- --", user)
-
-    return <ThemeCard type={'job'} formDetails={user}/>
+    return <div />
 };
 
 export default compose(withGetUser)(Container);

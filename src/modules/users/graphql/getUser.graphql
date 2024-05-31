@@ -1,5 +1,5 @@
-query getUser($phone_number: String!) {
-  user_auth (where: {phone_number: {_eq: $phone_number}}) {
+query getUser($id: String!) {
+  user_auth (where: {id: {_eq: $id}}) {
     id
     email
     phone_number

@@ -1,8 +1,7 @@
-import React from "react";
-import {GetUser} from "@modules/users/containers";
+import { GetUser } from "@modules/users";
 
-const GetUserContainer = (props) => {
-    return <GetUser {...props}/>
+const Get_User = (props) => {
+    return <GetUser {...props} />
 }
 
-export default GetUserContainer;
+export default Get_User;

@@ -7,3 +7,5 @@ export { default as GetOne } from "./getOne";
 export { default as GetUser } from "./getUser";
 export { default as CreateRecruiter } from "./CreateRecruiter";
 export { default as CreateSupplier } from "./CreateSupplier";
+export { default as UpdateOnce} from "./updateOnce"
+export { default as GetOther } from "./getOthers"

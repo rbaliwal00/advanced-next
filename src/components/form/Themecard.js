@@ -30,15 +30,14 @@ const styles = {
 }
 
 const renderCard = (type, formDetails) => {
-    const { phone_number, email, profile, organization_auth_map } = formDetails;
-    const { education, experience,  preference, image_url ='https://picsum.photos/200/300', first_name, last_name } = profile[0];
-    const { brand_name, business_nature, company_name, no_of_employee, organization_location_map, contact} = organization_auth_map[0].organization
-    const { block_number, area, city } = organization_location_map[0].location;
+    const { phone_number, email, profile, organization_auth_map } = formDetails[0];
+    const { education, experience,  preference, image_url ='https://picsum.photos/200/300', first_name, last_name } = profile[0] || [];
+    const { brand_name = '', business_nature = '', company_name = '', no_of_employee = '', organization_location_map = '', contact = ''} = organization_auth_map[0]?.organization || []
+    const { block_number, area, city } = organization_location_map[0]?.location || [];
 
 
     if (type === 'job')
         return (
-
             <Card style={{
                 width: '100%',
                 minWidth: '320px',
@@ -57,7 +56,7 @@ const renderCard = (type, formDetails) => {
                                     Department
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {experience[0].department}
+                                    {experience && experience[0]?.department || 'department'}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
@@ -65,7 +64,7 @@ const renderCard = (type, formDetails) => {
                                     Position
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {experience[0].position}
+                                    {experience && experience[0]?.position || 'position'}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '20px' }}>
@@ -81,13 +80,13 @@ const renderCard = (type, formDetails) => {
                                     Preferred Location
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {preference[0].working_city}
+                                    {preference && preference[0]?.working_city || 'hyderabad'}
                                 </Typography>
                             </Box>
                         </Grid>
                         <Grid item xs={6} sm={6} style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                             {image_url && <Avatar
-                                alt="Yanis Petros"
+                                alt={first_name + last_name || ''}
                                 src={image_url} // Update with your avatar path
                                 style={{ width: 80, height: 80, marginLeft: 'auto', marginBottom: '10px' }}
                             />}
@@ -95,19 +94,19 @@ const renderCard = (type, formDetails) => {
                                 {first_name + last_name}
                             </Typography>
                             <Typography variant="subtitle1">
-                                {experience[0].work_experience}
+                                {experience && experience[0]?.work_experience || 'experienced'}
                             </Typography>
                             <Typography sx={styles.label}>
                                 Contact No.
                             </Typography>
                             <Typography sx={styles.valueTxt} color="text.primary">
-                                {phone_number}
+                                {phone_number || '8208363654'}
                             </Typography>
                             <Typography sx={styles.label}>
                                 Email
                             </Typography>
                             <Typography sx={styles.valueTxt} color="text.primary">
-                                {email}
+                                {email || 'check@gmail.com'}
                             </Typography>
                         </Grid>
                     </Grid>
@@ -189,12 +188,13 @@ const renderCard = (type, formDetails) => {
                     </Grid>
                 </CardContent>
             </Card>
-        )
+         
+    )
 }
 
 const ThemeCard = ({type, formDetails}) => {
    return (
-       <Container sx={{ maxWidth: { xs: '328px', sm: '560px' }, minWidth: { xs: '180px', sm: '300px'}, p: '4px', mt: '32px', width: '100%'}}>
+       <Container sx={{ maxWidth: { xs: '328px', sm: '328px' }, minWidth: { xs: '180px', sm: '300px'}, p: '4px', mt: '32px', width: '100%'}}>
             {renderCard(type, formDetails)}
         </Container>
    )

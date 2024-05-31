@@ -14,7 +14,7 @@ const Container = (props) => {
     } = props;
     console.log("check  values herer----", user, loadingUserData)
 
-    return <ThemeCard type={'supplier'} formDetails={user} />
+    return <h1>check div here</h1>
 };
 
 export default compose(withGetOne)(Container);

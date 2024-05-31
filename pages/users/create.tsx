@@ -1,2 +1,11 @@
 import { Create } from "@modules/users";
-export default Create;
+import React from "react";
+
+const CreateContainer = (props) => {
+    return (
+        <Create {...props}/>
+    )
+}
+
+
+export default CreateContainer;

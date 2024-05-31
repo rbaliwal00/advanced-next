@@ -1,10 +1,8 @@
 import React from "react";
-import SupplierForm from '@components/form/SupplierFlow'
+import { CreateSupplier } from "@modules/users";
 
-const Supplier = () => {
-    return (
-        <SupplierForm />
-    )
+const RecruiterParentForm = () => {
+    return <CreateSupplier />
 }
 
-export default Supplier;
+export default RecruiterParentForm;

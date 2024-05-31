@@ -7,32 +7,28 @@ import DownloadIcon from '@mui/icons-material/Download';
 import EditIcon from '@mui/icons-material/Edit';
 import ShareIcon from '@mui/icons-material/Share';
 
-const formDetails = {
-    name: 'kikhae',
-    position: 'Architect',
-    department: 'IT',
-    currentLocation: 'Blr',
-    number: '8830285891',
-    email: 'beingTmk@gmail.com',
-    preferredLocation: 'hyd',
-    experience: 'Experienced'
+const checkDataWithFLows = (data) => {
+    console.log("cehck data---", data);
 }
 
-const ButtonStack = () => {
+const ButtonStack = ({data}) => {
     return (
         <Box display="flex"
-            flexDirection="column"
-            alignItems="center"
-            position="absolute"
-            right="-30px"
-            top="50%"
-            transform="translateY(-50%)" 
+            sx={{ 
+                flexDirection: 'column',
+                alignItems: "center",
+                position: "absolute",
+                right: "10px",
+                top: "50%",
+                transform: "translateY(-50%)"            
+            }}
+             
         >
             <IconButton
                 sx={{
                     backgroundColor: 'white',
                     boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.05)',
-                    marginBottom: 2,
+                    marginBottom: '16px',
                     '&:hover': {
                         backgroundColor: 'white',
                     },
@@ -45,7 +41,7 @@ const ButtonStack = () => {
                 sx={{
                     backgroundColor: 'white',
                     boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.05)',
-                    marginBottom: 2,
+                    marginBottom: '16px',
                     '&:hover': {
                         backgroundColor: 'white',
                     },
@@ -58,11 +54,12 @@ const ButtonStack = () => {
                 sx={{
                     backgroundColor: 'white',
                     boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.05)',
-                    marginBottom: 2,
+                    marginBottom: '16px',
                     '&:hover': {
                         backgroundColor: 'white',
                     },
                 }}
+                onClick={() => checkDataWithFLows(data)}
             >
                 <EditIcon sx={{ color: 'black' }} />
             </IconButton>
@@ -71,7 +68,7 @@ const ButtonStack = () => {
                 sx={{
                     backgroundColor: 'white',
                     boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.05)',
-                    marginBottom: 2,
+                    marginBottom: '16px',
                     '&:hover': {
                         backgroundColor: 'white',
                     },
@@ -83,18 +80,26 @@ const ButtonStack = () => {
     );
 };
 
-const FilledCard = ({type}) => {
-    console.log("check  form", formDetails);
+const FilledCard = ({type, formDetails}) => {
 
     return (<Box display={'flex'} sx={{
                     flexDirection: 'row',
                     alignItems: 'center',
-                    background: 'red',
                     position: 'relative',
-                    padding: '20px'
+                    padding: '16px',
+                    maxWidth: {
+                        xs: '360px',
+                        sm: '472px'
+                    },
+                    minWidth: {
+                        xs: '100%',
+                        sm: '360px'
+                    },
+                    m: 'auto',
+                    mt: '32px'
             }}>
                 <ThemeCard type={type || 'job'} formDetails={formDetails} />
-                <ButtonStack />
+                <ButtonStack data={formDetails}/>
             </Box>)
     }
 

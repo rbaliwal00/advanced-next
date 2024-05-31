@@ -38,46 +38,46 @@ const AddressForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                         bgcolor: 'background.paper',
                     }}>
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="checkbox"
                             name="useMap"
                             label="Use Map"
                         />
 
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="text"
-                            name="pincode"
+                            name="organization_auth_map.data.organization.data.organization_location_map.data.location.data.pincode"
                             label="Pincode"
                         />
 
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="select"
-                            name="city"
+                            name="organization_auth_map.data.organization.data.organization_location_map.data.location.data.city"
                             label="City"
                             options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
                         />
 
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="select"
-                            name="state"
+                            name="organization_auth_map.data.organization.data.organization_location_map.data.location.data.state"
                             label="State"
                             options={[{ value: 'state1', label: 'State 1' }, { value: 'state2', label: 'State 2' }]} // Populate according to your data
                         />
 
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="textarea"
-                            name="houseNumber"
+                            name="organization_auth_map.data.organization.data.organization_location_map.data.location.data.block_number"
                             label="House / Flat / Block No."
                         />
 
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="textarea"
-                            name="area"
+                            name="organization_auth_map.data.organization.data.organization_location_map.data.location.data.area"
                             label="Road / Area (Optional)"
                         />
 

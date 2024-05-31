@@ -18,7 +18,7 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                         name="currentCity"
                         label="Current City"
                         placeholder="Select"
-                        {...formikProps}
+                        formik={formikProps}
                     />
                 )
             }else if(typeOfCoverage === 'inter_state' || typeOfCoverage === "inter_city"){
@@ -26,7 +26,7 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                     name="cityOrState"
                     type="multiselect"
                     label=""
-                    {...formikProps}
+                    formik={formikProps}
                     options={[{ value: 'tech', label: 'Tech' }, { value: 'retail', label: 'Retail' }]}
                 />)
             }else return <></>
@@ -64,9 +64,9 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
             }}>
                         
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="radio"
-                            name="areaOfCoverage"
+                            name="organization_auth_map.data.organization.data.suppliers.data.area"
                             label="Area of Coverage"
                             rowRadio={false}
                             options={[
@@ -79,9 +79,9 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                         />
                         {renderSelect(formikProps.values.areaOfCoverage)}
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="radio"
-                            name="scaleOfSupply"
+                            name="organization_auth_map.data.organization.data.suppliers.data.scale"
                             label="Scale of Supply"
                             options={[
                                 { label: "Small Scale", value: "small" },
@@ -90,29 +90,29 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             rowRadio
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="personName"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.contact.data.name"
                             type="text"
                             label="Contact Person Name"
                             placeholder="Type"
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="contactNumber"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.contact.data.phone_number"
                             type="text"
                             label="Contact Number"
                             placeholder="Type"
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="email"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.contact.data.email"
                             type="email"
                             label="Email"
                             placeholder="Type"
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="website"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.contact.data.website"
                             type="text"
                             label="Website(Optional)"
                             placeholder="Type"

@@ -112,7 +112,7 @@ const formConfigs = [
 ];
 
 // Initial values for Formik
-const ExperiencedForm = ({onSubmit}) => {
+const ExperiencedForm = ({onSubmit, prefillData}) => {
     
     const handleSubmitFinal = (values) => {
         delete values.idType;
@@ -129,12 +129,13 @@ const ExperiencedForm = ({onSubmit}) => {
     }
 
     return (
-        <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => handleSubmitFinal(values)} />
+        <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => handleSubmitFinal(values)} prefillData={prefillData}/>
     );
 };
 
 ExperiencedForm.propTypes = {
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
+    prefillData: PropTypes.object
 }
 
 export default ExperiencedForm;

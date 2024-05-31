@@ -1,2 +1,7 @@
 import { GetOne } from "@modules/users";
-export default GetOne;
+
+const Get_One = (props) => {
+   return <GetOne {...props}/>
+}
+
+export default Get_One;

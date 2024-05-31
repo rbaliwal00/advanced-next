@@ -38,24 +38,24 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                 bgcolor: 'background.paper',
             }}>
                 <MaterialUIFieldAdapter
-                    {...formikProps}
+                    formik={formikProps}
                     type="file"
                     name="profile.data.image_url"
                     label="Upload Image"
                 />
                 <Box fullWidth sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                    <Box sx={{ width: '49%' }}>
+                    <Box sx={{ width: '48%' }}>
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="text"
                             name="profile.data.first_name"
                             label="First Name"
                             placeholder="Type"
                         />
                     </Box>
-                    <Box sx={{ width: '49%' }}>
+                    <Box sx={{ width: '48%' }}>
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="text"
                             name="profile.data.last_name"
                             label="Last Name"
@@ -66,7 +66,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                 </Box>
                 <Box>
                     <MaterialUIFieldAdapter
-                        {...formikProps}
+                        formik={formikProps}
                         type="email"
                         name="email"
                         label="Email"
@@ -75,7 +75,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                 </Box>
                 <Box>
                     <MaterialUIFieldAdapter
-                        {...formikProps}
+                        formik={formikProps}
                         type="radio"
                         name="profile.data.gender"
                         label="Gender"
@@ -84,7 +84,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                 </Box>
                 <Box>
                     <MaterialUIFieldAdapter
-                        {...formikProps}
+                        formik={formikProps}
                         type='date'
                         name='profile.data.dob'
                         label='Date of Birth'
@@ -94,7 +94,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                 {type === 'fresher' && (
                     <Box>
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="select"
                             options={[{ value: 'New York', label: 'New York' }, { value: 'Los Angeles', label: 'Los Angeles' }]}
                             name="currentCity"

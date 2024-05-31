@@ -75,7 +75,7 @@ const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) 
                     }}>
                         <Box>
                             <MaterialUIFieldAdapter
-                                {...formikProps}
+                                formik={formikProps}
                                 type="select"
                                 name="profile.data.experience.data.work_experience"
                                 label="Work Experience"
@@ -83,7 +83,7 @@ const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) 
                             />
                         </Box>
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="select"
                             name="profile.data.experience.data.department"
                             label="Department"
@@ -91,7 +91,7 @@ const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) 
                         />
                         {formikProps.values.department && renderSelect(formikProps.values.department)}
                         <MaterialUIFieldAdapter
-                            {...formikProps}
+                            formik={formikProps}
                             type="select"
                             name="profile.data.experience.data.position"
                             label="Position"

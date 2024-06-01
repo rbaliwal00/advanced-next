@@ -13,7 +13,7 @@ import { businessValidationSchema, addressValidationSchema, contactValidationSch
 const formConfigs = [
     {
         Component: (props) => (
-            <VisitingCardComponent {...props} type={'recruiter'} />),
+            <VisitingCardComponent {...props} type={'recruiter'}/>),
         initialValues: {
             organization_auth_map: {
                 data: {

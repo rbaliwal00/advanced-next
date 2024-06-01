@@ -12,7 +12,7 @@ const Container = (props) => {
 
     const onSubmit = async (object) => {
         const result = await createUserProfile(object);
-        console.log("check here--- result api", result);
+        localStorage.setItem("currId", result.id);
         // push("/posts");
     };
     return <RecruiterForm {...props} onSubmit={onSubmit} />;

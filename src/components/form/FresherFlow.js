@@ -11,13 +11,13 @@ import VisitingCardComponent from './CarouselScreen'
 
 
 // Initial values for Formik
-const FresherForm = ({onSubmit}) => {
+const FresherForm = ({onSubmit, prefillData}) => {
 
   // Define form configurations with specific props
   const formConfigs = [
     {
       Component: (props) => (
-        <VisitingCardComponent {...props} />),
+        <VisitingCardComponent {...props} type={'job'}/>),
       initialValues: {
         profile: {
           data: {
@@ -99,25 +99,36 @@ const FresherForm = ({onSubmit}) => {
   ];
 
   const handleSubmitFinal = (values) => {
+    try {
+
     delete values.idType;
     delete values.profile.email;
+    delete values.__typename;
     values['phone_number'] = '8919729965';
     values.profile.data.website = 'google.com';
     values.profile.data.cv_theme = 'cv theme 1';
     values.profile.data.education.data.cgpa = '6';
     values.profile.data.education.data.from_date = "2023/05/01";
     values.profile.data.education.data.to_date = '2024/03/01'
+    console.log('something')
+    }catch(e) {
+      console.log(e)
+    }
     onSubmit(values)
   }
 
 
     return (
-      <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => handleSubmitFinal(values)}/>
+      <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => {
+        console.log('someting2')
+        handleSubmitFinal(values)
+      }}/>
     );
 };
 
 FresherForm.propTypes = {
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  prefillData: PropTypes.object
 }
 
 export default FresherForm;

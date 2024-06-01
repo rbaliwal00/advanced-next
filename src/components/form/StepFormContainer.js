@@ -18,7 +18,7 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
     const handleNext = async (values, actions) => {
         const newFormData = deepMerge(formData, values);
         setFormData(newFormData)
-        console.log("handleNext", newFormData);
+        console.log("handleNext", newFormData, isLastStep);
 
         if (!isLastStep) {
             const errors = await actions.validateForm();
@@ -43,6 +43,7 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
                 actions.setTouched(touched);
             }
         } else {
+            console.log('seomthing1')
             await onSubmitFinal(newFormData); // Final submission handler
         }
     };

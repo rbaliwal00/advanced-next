@@ -1,9 +1,5 @@
 import React from 'react';
 import { Box, Button, Container, IconButton } from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import DownloadIcon from '@mui/icons-material/Download';
-import EditIcon from '@mui/icons-material/Edit';
-import ShareIcon from '@mui/icons-material/Share';
 import PropTypes from 'prop-types';
 import { nextBtn, renderBackButton } from './utilities';
 import { Carousel } from "@components/look";
@@ -35,12 +31,11 @@ const CarouselProps = {
     // centerMode: true
 }
 
-const CarouselComponent = ({ field, form, setFieldValue, name }) => {
+const CarouselComponent = ({ field, form, setFieldValue, name, type }) => {
     const handleFieldValue = (item) => {
         setFieldValue(name, item)
     }
 
-    console.log("carouselcomponent", field.data);
     const CarouselProps = {
         data: [{
                 image: 'https://picsum.photos/id/237/200/300',
@@ -55,7 +50,7 @@ const CarouselComponent = ({ field, form, setFieldValue, name }) => {
         autoplaySpeed: 3,
         // centerMode: true
     }
-    return <Carousel {...field}  {...CarouselProps} handleClickItem={(item) => handleFieldValue(item)}/>
+    return <Carousel {...field} type={type}  {...CarouselProps} handleClickItem={(item) => handleFieldValue(item)}/>
 }
 
 const VisitingCardComponent = ({type, isLastStep, ... formikProps }) => {
@@ -71,6 +66,7 @@ const VisitingCardComponent = ({type, isLastStep, ... formikProps }) => {
                             {...fieldProps}
                             setFieldValue={formikProps.setFieldValue}
                             name={fieldName}
+                            type={type}
                         />
                     )}
                 />
@@ -87,6 +83,7 @@ VisitingCardComponent.propTypes = {
     type: PropTypes.string,
     isLastStep: PropTypes.bool,
     step: PropTypes.number,
+    type: PropTypes.string.isRequired
 }
 
 export default VisitingCardComponent;

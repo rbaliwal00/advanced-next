@@ -64,7 +64,6 @@ const formConfigs = [
             linkedInLink:'',
             languages:'',
             skills:'',
-            position:'',
         },
         key: 'bio'
     }

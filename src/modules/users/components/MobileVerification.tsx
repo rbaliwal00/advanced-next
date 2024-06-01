@@ -24,7 +24,7 @@ const MobileVerification = (props) => {
     <div>
       {matches ? (
         <div className=" text-[#4B5563] p-4">
-          <OtpRegistrationFlow />
+          <OtpRegistrationFlow {...props} />
         </div>
       ) : (
         <div>
@@ -33,21 +33,23 @@ const MobileVerification = (props) => {
               <Ads />
               <div className="border-l-2 h-[60vh] mt-8"></div>
               <div className="mx-auto p-6">
-                <OtpRegistrationFlow />
+                <OtpRegistrationFlow {...props} />
               </div>
             </div>
-           {!matches && <Box
-              sx={{
-                width: {
-                  xs: "100%",
-                  sm: "100%",
-                  md: "75%",
-                },
-                margin: "auto",
-              }}
-            >
-              <Cities />
-            </Box>}
+            {!matches && (
+              <Box
+                sx={{
+                  width: {
+                    xs: "100%",
+                    sm: "100%",
+                    md: "75%",
+                  },
+                  margin: "auto",
+                }}
+              >
+                <Cities />
+              </Box>
+            )}
           </div>
         </div>
       )}

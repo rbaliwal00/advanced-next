@@ -1,33 +1,45 @@
-import { FunctionComponent } from "react";
+import React, { useState, useEffect } from "react";
 import { graphql } from "@apollo/client/react/hoc";
-
 import GET_ONE from "../graphql/getOne.graphql";
 
-const withGetOne = (Component: FunctionComponent) =>
-    graphql(GET_ONE, {
-        options: () => {
-            return {
-                variables: {
-                    // id: parseInt(getLastStringParamFromUrl(2, "set_id")),
-                    id: "e0597681-bbcb-4e86-b513-b5ebd5e821e9",
-                },
-            };
-        },
-        props: ({ data }) => {
-            const {
-                loading: loadingUserData,
-                error,
-                user,
-                refetch: refetchUserData,
-            } = data as any;
+const withGetOne = (Component: FunctionComponent) => {
+    return (props: any) => {
+        const [userId, setUserId] = useState<string | null>(null);
 
-            // if (error) throw new Error(error.message);
-            return {
-                loadingUserData,
-                user,
-                refetchUserData,
-            };
-        },
-    })(Component);
+        useEffect(() => {
+            const storedUserId = localStorage.getItem('currId');
+            setUserId(storedUserId || "e0597681-bbcb-4e86-b513-b5ebd5e821e9");
+        }, []);
+
+        if (!userId) {
+            return <div>Loading...</div>; // Or any other loading indicator
+        }
+
+        const EnhancedComponent = graphql(GET_ONE, {
+            options: {
+                variables: {
+                    id: userId,
+                },
+            },
+            props: ({ data }) => {
+                const {
+                    loading: loadingUserData,
+                    error,
+                    user,
+                    refetch: refetchUserData,
+                } = data as any;
+
+                // if (error) throw new Error(error.message);
+                return {
+                    loadingUserData,
+                    user,
+                    refetchUserData,
+                };
+            },
+        })(Component);
+
+        return <EnhancedComponent {...props} />;
+    };
+};
 
 export default withGetOne;

@@ -1,10 +1,16 @@
-mutation insert($object: user_auth_insert_input = {}, $update_columns: [user_auth_update_column!] = id) {
-  insert_user_auth_one(object: $object, on_conflict: {constraint: auth_pkey, update_columns: $update_columns}) {
+mutation updateUser($object: user_auth_insert_input = {}, $update_columns: [user_auth_update_column!] = id) {
+  user: insert_user_auth_one(
+    object: $object
+    on_conflict: {constraint: auth_pkey, update_columns: $update_columns}
+  ) {
     id
     email
     profile {
       id
       first_name
+      __typename
     }
+    __typename
   }
 }
+

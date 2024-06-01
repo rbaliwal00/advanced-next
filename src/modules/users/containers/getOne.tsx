@@ -1,8 +1,9 @@
 import React from "react";
-
+import { CircularProgress} from '@mui/material'
 import { compose } from "@common";
 import ThemeCard from "@components/form/Themecard";
 import { withGetOne } from "../operations";
+import FilledCard from "@components/form/FilledCard";
 
 
 
@@ -12,9 +13,9 @@ const Container = (props) => {
         loadingUserData
         // router: { push },
     } = props;
-    console.log("check  values herer----", user, loadingUserData)
 
-    return <h1>check div here</h1>
+    if(loadingUserData) return <CircularProgress />
+    return <FilledCard type={'job'} formDetails={user}/>
 };
 
 export default compose(withGetOne)(Container);

@@ -10,7 +10,7 @@ import MultiStepForm from './StepFormContainer';
 const formConfigs = [
     {
         Component: (props) => (
-            <VisitingCardComponent {...props} />),
+            <VisitingCardComponent {...props} type={'supplier'}/>),
         initialValues: {
             organization_auth_map: {
                 data: {

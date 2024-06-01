@@ -4,5 +4,5 @@ export { default as withCreatePost } from "./create";
 export { default as withUpdatePost } from "./update";
 export { default as withDeletePost } from "./delete";
 export { default as withGetOne } from "./getOne";
+export { default as withOTP } from "./otp";
 export { default as withInsert } from "./updateOne";
-export { default as withGetUser } from "./getUser";

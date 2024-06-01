@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import { nextBtn, renderBackButton } from "../form/utilities";
 import graduated from "@public/assests/graduation-hat-with-certificate.svg";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import EducationFormTemplate from "./EducationFormTemplate";
+import EducationFormTemplate from "./educationFormTemplate";
 import AddItemsButton from './addItemsButton'
 
 const EducationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {

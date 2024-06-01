@@ -16,13 +16,14 @@ const validationSchema = Yup.object({
     .length(4, "OTP must be exactly 4 digits"),
 });
 
-const VerifyOTP = ({ subHeader, onBack, callBack }) => {
-  const [timeLeft, setTimeLeft] = useState(30);
+const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
+  const [timeLeft, setTimeLeft] = useState(30 / 6);
+  const [resendStatus, setResendStatus] = useState('');
 
   const router = useRouter();
 
-  const btnText = (timeLeft > 0) ? `Resend OTP in ${timeLeft} sec` : 'Resend OTP';
-  const btnTextColor = timeLeft > 0 ? "#8899A8" : '#113B73';
+  const btnText = timeLeft > 0 ? `Resend OTP in ${timeLeft} sec` : "Resend OTP";
+  const btnTextColor = timeLeft > 0 ? "#8899A8" : "#113B73";
 
   useEffect(() => {
     const timer = createTimer(30, (val) => setTimeLeft(val));
@@ -41,12 +42,14 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
         flexDirection: "column", // Stack children vertically
         alignItems: "center", // Center-align children horizontally
         justifyContent: "center",
-        width: "100%"
+        width: "100%",
       }}
     >
-      <h4 className="text-center text-[33.18px] mt-10 font-semibold">Verify OTP</h4>
+      <h4 className="text-center text-[33.18px] mt-10 font-semibold">
+        Verify OTP
+      </h4>
       <p className="text-[#C1C1C1] text-center mb-2 text-sm text-[16px] mb-4 font-normal">
-        Enter the 4 digit code sent to 9414098765
+        Enter the 4 digit code sent to {mobile}
       </p>
       {/* <Typography variant="body2" sx={{ mb: 2 }}>
         {subHeader || "We will send you a Confirmation Code"}
@@ -55,12 +58,14 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
         initialValues={{ otp: "" }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
+          setResendStatus(false)
+          setSubmitting(true);
           if (values.otp >= 1000 && values.otp <= 9999) {
-            callBack();
+            callBack(values.otp).then((status) => {
+              if (!status) setResendStatus(true)
+            });
           }
-          setTimeout(() => {
-            setSubmitting(false);
-          }, 400);
+          setSubmitting(false);
         }}
       >
         {({ setFieldValue, isSubmitting, errors, touched }) => (
@@ -72,13 +77,16 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                     <OtpInput
                       {...field}
                       value={field.value}
-                      onChange={(otp) => setFieldValue("otp", otp)}
+                      onChange={(otp) => {
+                        setFieldValue("otp", otp);
+                        setResendStatus(false)
+                      }}
                       numInputs={4}
                       separator={<span>-</span>}
                       shouldAutoFocus
                       isInputNum
                       renderInput={(props) => <input {...props} />}
-                      containerStyle={{gap:'2rem'}}
+                      containerStyle={{ gap: "2rem" }}
                       inputStyle={{
                         width: "45px",
                         height: "45px",
@@ -92,17 +100,19 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                             ? "1px solid red"
                             : "1px solid rgba(0,0,0,0.3)",
                       }}
-                      
                     />
                     <Box
                       disabled={timeLeft > 0}
-                      onClick={() => alert("OTP sent, check for callback")}
+                      onClick={() => {
+                        setTimeLeft(60);
+                        resend();
+                      }}
                       sx={{
                         textTransform: "none", // Prevent uppercase
-                        display: 'flex',
-                        width: '100%',
+                        display: "flex",
+                        width: "100%",
                         marginBottom: "30px",
-                        cursor: timeLeft > 0 ? 'not-allowed' : 'pointer',
+                        cursor: timeLeft > 0 ? "not-allowed" : "pointer",
                       }}
                     >
                       <Typography
@@ -110,7 +120,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                           textAlign: "right", // Ensures text is right-aligned
                           fontSize: "10px", // Sets font size
                           display: "flex", // Uses flexbox for internal alignment
-                          color: {btnTextColor},
+                          color: { btnTextColor },
                           alignItems: "center",
                           justifyContent: "flex-end",
                           width: "100%",
@@ -125,6 +135,13 @@ const VerifyOTP = ({ subHeader, onBack, callBack }) => {
                       sx={{ color: "error.main", textAlign: "right" }}
                     >
                       {errors.otp}
+                    </FormHelperText>
+                  )}
+                  {resendStatus && (
+                    <FormHelperText
+                      sx={{ color: "error.main", textAlign: "right" }}
+                    >
+                      Invalid OTP
                     </FormHelperText>
                   )}
                   <Box

@@ -77,6 +77,13 @@ class MaterialUIFieldAdapter extends Component {
     formik.setFieldValue(name, value);
   };
 
+  handleBooleanValueChange = (event) => {
+    const { formik, name } = this.props;
+    console.log("check selected value here---", event.target.value);
+    const value = event.target.value === 'true';
+    formik.setFieldValue(name, value);
+  }
+
   handleBlur = () => {
     const { formik, name } = this.props;
     formik.setFieldTouched(name, true);
@@ -329,7 +336,7 @@ class MaterialUIFieldAdapter extends Component {
               onChange={(date) => {
                 formik.setFieldValue(
                   name,
-                  date ? moment(date, "DD/MM/YYYY") : "",
+                  date,
                 );
               }}
               onBlur={this.handleBlur}
@@ -410,13 +417,13 @@ class MaterialUIFieldAdapter extends Component {
                 row
                 name={name}
                 value={value || ''}
-                onChange={this.handleChange}
+                onChange={this.handleBooleanValueChange}
                 sx={{ justifyContent: 'space-between', maxWidth: isSmallScreen ? '100%' : '67%' }}
               >
                 {options.map(option => (
                   <FormControlLabel
                     key={option.value}
-                    value={option.value}
+                    value={option.value.toString()}
                     control={<Radio sx={{ color: '#fff', '&.Mui-checked': { color: '#fff' } }} />}
                     label={<Typography sx={{ color: '#fff' }}>{option.label}</Typography>}
                     sx={{ mr: 2 }}

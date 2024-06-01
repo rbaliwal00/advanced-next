@@ -5,9 +5,7 @@ import UPDATE_ONCE from "../graphql/updateOnce.graphql"; // Make sure to update 
 
 const updatedColoumns = [
     "email",
-    "phone_number",
-    "is_active",
-    "password"
+    "is_active"
 ]
 
 const withInsert = (Component: FunctionComponent) =>
@@ -23,7 +21,7 @@ const withInsert = (Component: FunctionComponent) =>
                             __typename: "Mutation",
                             insert_user_auth_one: {
                                 id: null,
-                                email: object.email,
+                                email: object?.email,
                                 profile: {
                                     id: null,
                                     first_name: object.profile?.data.first_name,

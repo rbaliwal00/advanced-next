@@ -1,19 +1,20 @@
 import React from "react";
 
 import { compose } from "@common";
-import ThemeCard from "@components/form/Themecard";
-import { withGetUser } from "../operations";
-
+import { withGetOne } from "../operations";
+import FilledCard from "@components/form/FilledCard";
+import { CircularProgress } from "@mui/material";
 
 
 const Container = (props) => {
     const {
-        data: user,
+        user,
+        loadingUserData
         // router: { push },
     } = props;
-    console.log("cehck datae---", user)
 
-    return <div />
+    if (loadingUserData) return <CircularProgress />
+    return <FilledCard type={'recruiter'} formDetails={user} />
 };
 
-export default compose(withGetUser)(Container);
+export default compose(withGetOne)(Container);

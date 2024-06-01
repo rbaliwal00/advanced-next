@@ -1,7 +1,7 @@
 import UpdateOnce from "@modules/users/containers/updateOnce";
 
-const UpdateContainer = () => {
-    return <UpdateOnce />
+const UpdateContainer = (props) => {
+    return <UpdateOnce {...props}/>
 }
 
 export default UpdateContainer;

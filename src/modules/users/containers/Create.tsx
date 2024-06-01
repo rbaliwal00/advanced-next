@@ -5,6 +5,7 @@ import { compose } from "@common";
 import Component from "../components/CreateView";
 import FresherForm from "@components/form/FresherFlow";
 import { withCreatePost } from "../operations";
+import { useRouter } from "next/router";
 
 const testObject = 
   {
@@ -143,9 +144,12 @@ const Container = (props) => {
     // router: { push },
   } = props;
 
+  const router = useRouter()
+
   const onSubmit = async (object) => {
-    await createUserProfile( object);
-    // push("/posts");
+    const result = await createUserProfile(object);
+    localStorage.setItem("currId", result.id);
+    router.push("/users/get-one");
   };
   return <FresherForm {...props} onSubmit={onSubmit} />;
 };

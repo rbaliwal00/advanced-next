@@ -9,7 +9,10 @@ import ExperienceForm from './experienceForm';
 import ReferenceForm from './referenceForm';
 import AwardForm from './awardForm';
 import BioForm from './bioForm';
-import educationValidationSchema from './validationSchemas'
+import educationValidationSchema, {
+    awardValidationSchema,
+    referenceValidationSchema,
+  } from "./validationSchemas";
 // import GstPanCardForm from './GstPanCardForm'
 // import { businessValidationSchema, addressValidationSchema, contactValidationSchema, gstPanValidationSchema  } from './validationSchemas';
 
@@ -34,24 +37,19 @@ const formConfigs = [
     {
         Component: ReferenceForm,
         initialValues: {
-            referalName:'',
-            referalContactNumber:'',
-            referalEmail:'',
-            referalDepartment:'',
-            referalPosition:'',
+          references: [],
         },
-        key: 'reference'
-    },
-    {
+        key: "reference",
+        validationSchema: referenceValidationSchema,
+      },
+      {
         Component: AwardForm,
         initialValues: {
-            awardName:'',
-            brandName:'',
-            department:'',
-            position:'',
+          awards: [],
         },
-        key: 'awards'
-    },
+        key: "award",
+        validationSchema: awardValidationSchema,
+      },
     {
         Component: BioForm,
         initialValues: {

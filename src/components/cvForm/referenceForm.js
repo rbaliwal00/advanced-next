@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import PropTypes from "prop-types";
 import { Persist } from "formik-persist";
 import { nextBtn, renderBackButton } from "../form/utilities";
-import { reference } from "@public/assests";
+import reference from "@public/assests/references.svg";
 import AddItemsButton from "./addItemsButton";
 import ReferenceFormTemplate from "./referenceFormTemplate";
 

@@ -30,7 +30,7 @@ const RoundButton = ({
     >
       {icon && (
         <div>
-          <Image src={icon} alt="" height={50} />
+          <Image src={icon} alt="" width={100} height={50} />
         </div>
       )}
       {label && <div className={styles.round_button_label}>{label}</div>}

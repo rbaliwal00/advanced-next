@@ -55,9 +55,15 @@ const formConfigs = [
     {
         Component: BioForm,
         initialValues: {
-            awardName:'',
-            brandName:'',
-            department:'',
+            about:'',
+            portfolioLink:'',
+            newsletterLink:'',
+            whatsAppNumber:'',
+            facebookLink:'',
+            instagramLink:'',
+            linkedInLink:'',
+            languages:'',
+            skills:'',
             position:'',
         },
         key: 'bio'

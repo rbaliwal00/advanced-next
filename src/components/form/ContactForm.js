@@ -39,29 +39,29 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                         bgcolor: 'background.paper',
                     }}>
                         <MaterialUIFieldAdapter 
-                            {...formikProps}
-                            name="personName"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.contact.data.name"
                             type="text"
                             label="Contact Person Name"
                             placeholder="Type"
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="contactNumber"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.contact.data.phone_number"
                             type="text"
                             label="Contact Number"
                             placeholder="Type"
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="email"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.contact.data.email"
                             type="email"
                             label="Email"
                             placeholder="Type"
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="website"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.contact.data.website"
                             type="text"
                             label="Website(Optional)"
                             placeholder="Type"

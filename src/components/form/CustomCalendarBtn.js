@@ -1,25 +1,26 @@
 import React from 'react';
 import { Box, TextField, Typography } from '@mui/material';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
 const CustomDatePicker = ({ value, onChange, placeholder, label }) => {
+    console.log("check incoming date----", value)
 
     const handleDateChange = (newValue) => {
         // Ensure newValue is converted to the expected format or dayjs object before passing up
-        onChange(newValue ? moment(newValue, 'DD/MM/YYYY') : null);
+        onChange(newValue ? moment(newValue).format('DD/MM/YYYY') : '');
     };
 
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
             <Box>
-                {label && <Typography color={'#9CA3AF'}>{label}</Typography>}
+                {label && <Typography color={'#9CA3AF'} sx={{ mb: '8px' }}>{label}</Typography>}
                 <DatePicker
                     value={value ? moment(value, 'DD/MM/YYYY') : null}
-                    sx={{ width: '100%'}}
+                    sx={{ width: '100%' }}
                     onChange={handleDateChange}
                     inputFormat="DD/MM/YYYY"
                     renderInput={(params) => (
@@ -56,7 +57,7 @@ const CustomDatePicker = ({ value, onChange, placeholder, label }) => {
 
 CustomDatePicker.propTypes = {
     value: PropTypes.any,
-    onChange: PropTypes.func,
+    onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
     label: PropTypes.string,
 };

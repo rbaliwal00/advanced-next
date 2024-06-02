@@ -39,41 +39,34 @@ const BusinessForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                     }}>
                         <MaterialUIFieldAdapter
                             type="file"
-                            name="companyLogo"
+                            name="organization_auth_map.data.organization.data.image_url"
                             label="Upload Company Logo"
-                            {...formikProps}
+                            formik={formikProps}
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="brandName"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.brand_name"
                             type="text"
                             label="Brand Name"
                             placeholder="Type"
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="companyName"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.company_name"
                             type="text"
                             label="Company Name"
                             placeholder="Type"
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="gender"
-                            type="radio"
-                            label="Gender"
-                            options={[{ value: 'male', label: 'Male' }, { value: 'female', label: 'Female' }, { value: 'others', label: 'Others' }]}
-                        />
-                        <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="natureOfBusiness"
-                            type="multiselect"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.business_nature"
+                            type="select"
                             label="Nature of Business"
                             options={[{ value: 'tech', label: 'Tech' }, { value: 'retail', label: 'Retail' }]}
                         />
                         <MaterialUIFieldAdapter
-                            {...formikProps}
-                            name="numberOfEmployees"
+                            formik={formikProps}
+                            name="organization_auth_map.data.organization.data.no_of_employee"
                             type="select"
                             label="No. of Employees"
                             options={[{ value: '1-10', label: '1-10' }, { value: '11-50', label: '11-50' }]}

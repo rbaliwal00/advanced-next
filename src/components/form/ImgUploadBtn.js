@@ -12,12 +12,9 @@ function ImageUploadButton({ onFileSelect, label }) {
         if (selectedFile) {
             // Handle file processing or updating state
             setFile(selectedFile);
-            onFileSelect(selectedFile);
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setPreviewUrl(reader.result);
-            };
-            reader.readAsDataURL(selectedFile);
+            const fileUrl = URL.createObjectURL(selectedFile)
+            onFileSelect(fileUrl);
+            setPreviewUrl(fileUrl)
         }
     };
 

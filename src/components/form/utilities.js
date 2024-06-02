@@ -24,16 +24,16 @@ export const nextBtn = (isLast) => {
             }, 
             backgroundColor: '#113B73',
             textTransform: 'none',
-            maxWidth: '608px'
+            maxWidth: '608px',
+            boxShadow: 'none'
          }} 
         >
-            <Typography fontSize={'16px'} fontWeight={'600'} color={'#fff'}>{text}</Typography>
+            <Typography fontSize={'16px'} fontWeight={'600'} color={'#fff'} fontFamily={'Poppins'}>{text}</Typography>
         </Button>
     )
 }
 
 export const renderBackButton = ( onBack, step ) => {
-    console.log("check  bakc btn step ---", step);
     if (step > 0){
         return (
             <Button type="button" variant="outlined" sx={{
@@ -130,3 +130,241 @@ export function deepMerge(target, source) {
 }
 
 export const partTimeImg = require('@public/assets/partTime.png')
+
+export const transformObject = (obj) => {
+    if (Array.isArray(obj)) {
+        if (obj.length === 1) {
+            // If array has only one element, transform that element
+            return transformObject(obj[0]);
+        } else {
+            // If array has more than one element, wrap it in data
+            return { data: obj.map(item => transformObject(item)) };
+        }
+    } else if (obj !== null && typeof obj === 'object') {
+        const newObj = {};
+        for (const key in obj) {
+            if (key !== '__typename') {
+                const value = obj[key];
+                if (value !== null && typeof value === 'object') {
+                    newObj[key] = transformObject(value);
+                } else {
+                    newObj[key] = value;
+                }
+            }
+        }
+        return { data: newObj };
+    } else {
+        return obj;
+    }
+};
+
+export const addOnConflict = (obj, excludeColumns = []) => {
+    if (!obj) return null;
+
+    const newObj = JSON.parse(JSON.stringify(obj)); // Deep copy to avoid mutation
+
+    function extractKeys(data) {
+        if (Array.isArray(data)) {
+            return Object.keys(data[0] || {});
+        } else if (typeof data === 'object' && data !== null) {
+            return Object.keys(data);
+        } else {
+            return [];
+        }
+    }
+
+    function addOnConflictToData(data, path) {
+        if (Array.isArray(data)) {
+            return data.map((item, index) => addOnConflictToData(item, `${path}[${index}]`));
+        } else if (typeof data === 'object' && data !== null) {
+            const newData = {};
+            for (let key in data) {
+                if (key === 'data') {
+                    const updateColumns = extractKeys(data[key]).filter(column => !excludeColumns.includes(column));
+                    newData[key] = addOnConflictToData(data[key], `${path}.${key}`);
+                    newData['on_conflict'] = {
+                        constraint: `${path.split('.').pop()}_pkey`,
+                        update_columns: updateColumns
+                    };
+                } else {
+                    newData[key] = addOnConflictToData(data[key], `${path}.${key}`);
+                }
+            }
+            return newData;
+        } else {
+            return data;
+        }
+    }
+
+    return addOnConflictToData(newObj, '');
+}
+
+const profileDataExtracter = (profileDetails) => {
+    if(Array.isArray(profileDetails.data)){
+        return profileDetails.data[0].data
+    }else
+    return profileDetails.data ;
+}
+
+export const getUpdateFormValues = (user) => {
+   const formValues =  {
+                ...(user?.id ? { id: user.id } : {}),
+                phone_number: user?.phone_number ?? "",
+                email: user?.email ?? "",
+                is_active: user?.is_active ?? true,
+
+                profile: {
+                    data: [
+                        {
+                            id: user.id ?? "",
+                            first_name: profileDataExtracter(user.profile)?.first_name ?? "",
+                            last_name: profileDataExtracter(user.profile)?.last_name ?? "",
+                            gender: profileDataExtracter(user.profile)?.gender ?? "",
+                            dob: profileDataExtracter(user.profile)?.dob ?? "",
+                            image_url: profileDataExtracter(user.profile)?.image_url ?? "",
+                            website: profileDataExtracter(user.profile)?.website ?? "",
+                            vc_theme: profileDataExtracter(user.profile)?.vc_theme  ?? "",
+                            cv_theme: profileDataExtracter(user.profile)?.cv_theme  ?? "",
+                            sub_type: profileDataExtracter(user.profile)?.sub_type  ?? "",
+                            type: profileDataExtracter(user.profile)?.type ?? "",
+                            awards: {
+                                data:[{
+                                    brand_name: profileDataExtracter(user.profile).awards.data?.brand_name ?? "",
+                                    department: profileDataExtracter(user.profile).awards.data?.department ?? "",
+                                    name: profileDataExtracter(user.profile).awards.data?.name ?? "",
+                                    position: profileDataExtracter(user.profile).awards.data?.position ?? "",
+                                }] ?? [],
+                                on_conflict: {
+                                    constraint: "awards_pkey",
+                                    update_columns: [
+                                        "brand_name",
+                                        "department",
+                                        "name",
+                                        "position",
+                                    ],
+                                },
+                            },
+
+                            education: {
+                                data:
+                                    [{
+                                        cgpa: profileDataExtracter(user.profile).education.data?.cgpa ?? "",
+                                        from_date: profileDataExtracter(user.profile).education.data?.from_date ?? "",
+                                        to_date: profileDataExtracter(user.profile).education.data?.to_date ?? "",
+                                        institution_city: profileDataExtracter(user.profile).education.data?.institution_city ?? "",
+                                        institution_name: profileDataExtracter(user.profile).education.data?.institution_name ?? "",
+                                        level: profileDataExtracter(user.profile).education.data?.level ?? "",
+                                        passout_year: profileDataExtracter(user.profile).education.data?.passout_year ?? "",
+                                        study_field: profileDataExtracter(user.profile).education.data?.study_field ?? "",
+                                    }] ?? [],
+                                on_conflict: {
+                                    constraint: "education_pkey",
+                                    update_columns: [
+                                        "cgpa",
+                                        "from_date",
+                                        "to_date",
+                                        "institution_city",
+                                        "institution_name",
+                                        "level",
+                                        "passout_year",
+                                        "study_field",
+                                    ],
+                                },
+                            },
+
+                            experience: {
+                                data:
+                                    [{
+                                        brand_name: profileDataExtracter(user.profile).experience.data?.brand_name ?? "",
+                                        department: profileDataExtracter(user.profile).experience.data?.department ?? "",
+                                        from_date: profileDataExtracter(user.profile).experience.data?.from_date ?? "",
+                                        to_date: profileDataExtracter(user.profile).experience.data?.to_date ?? "",
+                                        montly_salary: profileDataExtracter(user.profile).experience.data?.montly_salary ?? 0,
+                                        position: profileDataExtracter(user.profile).experience.data?.position ?? "",
+                                        sub_category: profileDataExtracter(user.profile).experience.data?.sub_category ?? "",
+                                        type: profileDataExtracter(user.profile).experience.data?.type ?? "",
+                                        work_experience: profileDataExtracter(user.profile).experience.data?.work_experience ?? "",
+                                    }] ?? [],
+                                on_conflict: {
+                                    constraint: "experience_pkey",
+                                    update_columns: [
+                                        "brand_name",
+                                        "department",
+                                        "from_date",
+                                        "to_date",
+                                        "montly_salary",
+                                        "position",
+                                        "sub_category",
+                                        "type",
+                                        "work_experience",
+                                    ],
+                                },
+                            },
+                            preference: {
+                                data:
+                                    [{
+                                        aadhar: profileDataExtracter(user.profile).preference.data?.aadhar ?? "",
+                                        internship: profileDataExtracter(user.profile).preference.data?.internship ?? false,
+                                        one_day_job: profileDataExtracter(user.profile).preference.data?.one_day_job ?? false,
+                                        partime_job: profileDataExtracter(user.profile).preference.data?.partime_job ?? false,
+                                        passport: profileDataExtracter(user.profile).preference.data?.passport ?? "",
+                                        working_city: profileDataExtracter(user.profile).preference.data?.working_city ?? "",
+                                    }] ?? [],
+                                on_conflict: {
+                                    constraint: "preference_pkey",
+                                    update_columns: [
+                                        "aadhar",
+                                        "internship",
+                                        "one_day_job",
+                                        "partime_job",
+                                        "passport",
+                                        "working_city",
+                                    ],
+                                },
+                            },
+
+                            references: {
+                                data:
+                                   [{
+                                       brand_name: profileDataExtracter(user.profile).references.data?.brand_name ?? "",
+                                       department: profileDataExtracter(user.profile).references.data?.department ?? "",
+                                       email: profileDataExtracter(user.profile).references.data?.email ?? "",
+                                       name: profileDataExtracter(user.profile).references.data?.name ?? "",
+                                       phone_number: profileDataExtracter(user.profile).references.data?.phone_number ?? "",
+                                       position: profileDataExtracter(user.profile).references.data?.position ?? "",
+                                   }] ?? [],
+
+                                on_conflict: {
+                                    constraint: "reference_pkey",
+                                    update_columns: [
+                                        "brand_name",
+                                        "department",
+                                        "email",
+                                        "name",
+                                        "phone_number",
+                                        "position",
+                                    ],
+                                },
+                            },
+                        },
+                    ],
+                    on_conflict: {
+                    constraint: "profile_pkey",
+                        update_columns: [
+                            "first_name",
+                            "last_name",
+                            "gender",
+                            "dob",
+                            "image_url",
+                            "website",
+                            "vc_theme",
+                            "cv_theme",
+                            "sub_type",
+                            "type",
+                        ],
+                    },
+                },
+    };
+
+    return formValues;
+}

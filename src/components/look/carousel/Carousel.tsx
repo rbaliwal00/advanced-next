@@ -23,7 +23,8 @@ interface SliderProps {
   autoplay: boolean;
   autoplaySpeed: number;
   centerMode: boolean;
-  handleClickItem: (val: string) => {}
+  handleClickItem: (val: string) => {},
+  type: string
 }
 
 const formDetails = {
@@ -218,7 +219,8 @@ const Carousel: React.FC<SliderProps> = ({
   autoplay,
   autoplaySpeed,
   centerMode,
-  handleClickItem
+  handleClickItem,
+  type
 }) => {
   const { screenType } = useResponsive();
   const sliderRef = useRef<Slider>(null);
@@ -263,7 +265,7 @@ const Carousel: React.FC<SliderProps> = ({
 
             <div className="flex overflow-x-scroll space-x-4 p-4">             
                   <div onClick={() => handleClickItem('Vc Theme 1')} style={{ margin: 'auto'}}>
-                    <ThemeCard type={'job'} formDetails={formDetails.data.user_auth[1]} />
+                    <ThemeCard type={type || 'job'} formDetails={formDetails.data.user_auth[1]} />
                   </div>
             </div>
           

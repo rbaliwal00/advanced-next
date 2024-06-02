@@ -3,10 +3,11 @@ import { Formik } from 'formik';
 import { Box } from '@mui/material';
 import CustomProgressBar from './CustomProgressBar'
 import { deepMerge } from './utilities';
+import PropTypes from 'prop-types';
 
-const MultiStepForm = ({ formConfigs, onSubmitFinal }) => {
+const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
     const [step, setStep] = useState(0);  // Current form step
-    const [formData, setFormData] = useState({}); 
+    const [formData, setFormData] = useState(prefillData || {}); 
     const isLastStep = step === formConfigs.length - 1;
 
     const currentConfig = formConfigs[step];
@@ -17,11 +18,12 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal }) => {
     const handleNext = async (values, actions) => {
         const newFormData = deepMerge(formData, values);
         setFormData(newFormData)
-        console.log("handleNext", newFormData);
+        console.log("handleNext", newFormData, isLastStep);
 
         if (!isLastStep) {
             const errors = await actions.validateForm();
-            if (Object.keys({}).length === 0) {
+            console.log("cehck  errors here", errors);
+            if (Object.keys(errors || {}).length === 0) {
                 setStep(prevStep => prevStep + 1);
             } else {
                 const touched = {};
@@ -41,6 +43,7 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal }) => {
                 actions.setTouched(touched);
             }
         } else {
+            console.log('seomthing1')
             await onSubmitFinal(newFormData); // Final submission handler
         }
     };
@@ -56,12 +59,12 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal }) => {
     };
 
     return (
-        <Box>
-            <CustomProgressBar  progress={progress} label={(currentConfig.key)}/>
+        <Box sx={{ background: '#fff'}}>
+            <CustomProgressBar  progress={progress} label={(currentConfig.key)} onBack={handleBack}/>
             <Formik
                 key={step}
                 initialValues={getInitialValues()}
-                // validationSchema={currentConfig.validationSchema}
+                //validationSchema={currentConfig.validationSchema}
                 onSubmit={handleNext}
             >
                     {formikProps =>  {
@@ -72,5 +75,9 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal }) => {
         </Box>
     );
 };
+
+MultiStepForm.propTypess = { 
+    prefillData: PropTypes.object
+}
 
 export default MultiStepForm;

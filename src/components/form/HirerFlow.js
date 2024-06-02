@@ -6,13 +6,14 @@ import ContactForm from './ContactForm';
 import MultiStepForm from './StepFormContainer';
 import GstPanCardForm from './GstPanCardForm'
 import VisitingCardComponent from './CarouselScreen';
+import PropTypes from 'prop-types';
 import { businessValidationSchema, addressValidationSchema, contactValidationSchema, gstPanValidationSchema, SupplierThemeSelectionVaidationSchema  } from './validationSchemas';
 
 // Initial values for Formik
 const formConfigs = [
     {
         Component: (props) => (
-            <VisitingCardComponent {...props} />),
+            <VisitingCardComponent {...props} type={'recruiter'}/>),
         initialValues: {
             organization_auth_map: {
                 data: {
@@ -22,7 +23,15 @@ const formConfigs = [
                         }
                     }
                 }
-            }
+            },
+            profile: {
+                data: {
+                    type: "recruiter",
+                    sub_type: 'recruiter',
+                    website: 'dummyData.com',
+                    image_url: 'jbjbjbjbj'
+                },
+            },
         },
         validationSchema: SupplierThemeSelectionVaidationSchema,
         key: 'choose theme',
@@ -51,8 +60,21 @@ const formConfigs = [
     {
         Component: GstPanCardForm,
         initialValues: {
-            gstFile: '',
-            panFile: ''
+            organization_auth_map: {
+                data: {
+                    organization: {
+                        data: {
+                            gst_pan: {
+                                data: {
+                                    gst: "",
+                                    pan: "",
+                                    status: ""
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         },
         validationSchema: gstPanValidationSchema,
         key: 'Gst/Pan'
@@ -60,12 +82,35 @@ const formConfigs = [
     {
         Component: AddressForm,
         initialValues: {
-            useMap: false,
-            pincode: '',
-            city: '',
-            state: '',
-            houseNumber: '',
-            area: ''
+            organization_auth_map: {
+                data: {
+                    organization: {
+                        data: {
+                            organization_location_map: {
+                                data: {
+                                    location: {
+                                        data: {
+                                            area: "",
+                                            block_number: "",
+                                            city: "",
+                                            geolocation: {
+                                                data: {
+                                                    "latitude": "12.21",
+                                                    "longitude": "21.12",
+                                                    "other": {},
+                                                    "type": "Type 1"
+                                                }
+                                            },
+                                            pincode: "",
+                                            state: ""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         },
         validationSchema: addressValidationSchema,
         key: 'address'
@@ -73,24 +118,50 @@ const formConfigs = [
     {
         Component: ContactForm,
         initialValues: {
-            personName: '',
-            contactNumber: '',
-            email: '',
-            website: '',
+            organization_auth_map: {
+                data: {
+                    organization: {
+                        data: {
+                            contact: {
+                                data: {
+                                    name: "",
+                                    email: "",
+                                    website: "",
+                                    phone_number: ""
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         },
         validationSchema: contactValidationSchema,
         key: 'contact'
     }
 ];
 
-const RecruiterForm = () => {
+const RecruiterForm = ({onSubmit}) => {
    
+    const handleSubmitFinal = (values) => {
+        values['phone_number'] = '8209275390';
+        values.profile.data.first_name = 'saksham';
+        values.profile.data.last_name = 'meher';
+        values.profile.data.gender = 'male';
+        values.profile.data.dob = '22/5/1999';
+        values.profile.data.cv_theme = 'theme 1'
+        values.organization_auth_map.data.organization.data.no_of_employee = 13;
+        onSubmit(values)
+    }
 
     return (
         <Box sx={{ flex: 1 }}>
-            <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => alert(`end of recruiter flow ${JSON.stringify(values)}`)} />
+            <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => handleSubmitFinal(values)} />
         </Box>
     );
 };
+
+RecruiterForm.propTypes = { 
+    onSubmit: PropTypes.func
+}
 
 export default RecruiterForm;

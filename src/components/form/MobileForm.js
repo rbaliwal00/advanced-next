@@ -41,10 +41,10 @@ const MobileNumberForm = ({
     }}
     validationSchema={validationSchema}
     onSubmit={(values, { setSubmitting, resetForm }) => {
-      callback();
-      // alert(`OTP sent`);
+      setSubmitting(true);
+      const status = callback(values.mobileNumber);
+      if (!status) resetForm();
       setSubmitting(false);
-      resetForm();
     }}
   >
     {() => (
@@ -84,7 +84,7 @@ const MobileNumberForm = ({
               type="text"
               label="Mobile Number"
               placeholder="+9876543210"
-              // style={{ backgroundColor: "white" }}
+            // style={{ backgroundColor: "white" }}
             />
           </Box>
           <Box

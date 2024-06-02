@@ -1,8 +1,8 @@
 import React from "react";
-import RecruiterForm from "@components/form/HirerFlow";
+import { CreateRecruiter } from "@modules/users";
 
 const RecruiterParentForm = () => {
-    return <RecruiterForm />
+    return <CreateRecruiter />
 }
 
 export default RecruiterParentForm;

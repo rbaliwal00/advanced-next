@@ -12,7 +12,7 @@ import { statusValidationSchema, workExperienceValidationSchema, registrationVal
 const formConfigs = [
     {
         Component: (props) => (
-            <VisitingCardComponent {...props} />),
+            <VisitingCardComponent {...props} type={'job'}/>),
             initialValues: {
                 profile: {
                     data: {
@@ -95,7 +95,7 @@ const formConfigs = [
                     preference: {
                         data: {
                             aadhar: '',
-                            internship: '',
+                            internship: false,
                             one_day_job: '',
                             partime_job: '',
                             passport: '',
@@ -112,7 +112,7 @@ const formConfigs = [
 ];
 
 // Initial values for Formik
-const ExperiencedForm = ({onSubmit}) => {
+const ExperiencedForm = ({onSubmit, prefillData}) => {
     
     const handleSubmitFinal = (values) => {
         delete values.idType;
@@ -122,19 +122,21 @@ const ExperiencedForm = ({onSubmit}) => {
         values.profile.data.website = 'google.com';
         values.profile.data.cv_theme = 'cv theme 1';
         values.profile.data.experience.data.type =  'type 1';
+        //values.profile.data.experience.data.from_date = "02/03/2012"
         // values.profile.data.education.data.cgpa = '6';
-        // values.profile.data.education.data.from_date = "2023/05/01";
-        // values.profile.data.education.data.to_date = '2024/03/01'
+        values.profile.data.experience.data.from_date = "2023/05/01";
+        values.profile.data.experience.data.to_date = '2024/03/01'
         onSubmit(values)
     }
 
     return (
-        <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => handleSubmitFinal(values)} />
+        <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => handleSubmitFinal(values)} prefillData={prefillData}/>
     );
 };
 
 ExperiencedForm.propTypes = {
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
+    prefillData: PropTypes.object
 }
 
 export default ExperiencedForm;

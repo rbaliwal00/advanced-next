@@ -1,0 +1,104 @@
+query getUser($id: uuid = "") {
+  user_auth (where: {id: {_eq: $id}}) {
+    id
+    email
+    phone_number
+    is_active
+    created_at
+    updated_at
+    profile {
+      first_name
+      last_name
+      gender
+      dob
+      image_url
+      website
+      vc_theme
+      cv_theme
+      sub_type
+      type
+      awards {
+        brand_name
+        department
+        name
+        position
+      }
+      education {
+        cgpa
+        from_date
+        to_date
+        institution_city
+        institution_name
+        level
+        passout_year
+        study_field
+      }
+      experience {
+        brand_name
+        department
+        from_date
+        to_date
+        montly_salary
+        position
+        sub_category
+        type
+        work_experience
+      }
+      preference {
+        aadhar
+        internship
+        one_day_job
+        partime_job
+        passport
+        working_city
+      }
+      references {
+        brand_name
+        department
+        email
+        name
+        phone_number
+        position
+      }
+    }
+    organization_auth_map {
+      organization {
+        vc_theme
+        brand_name
+        business_nature
+        company_name
+        image_url
+        no_of_employee
+        gst_pan {
+          gst
+          pan
+          status
+        }
+        contact {
+          name
+          email
+          website
+          phone_number
+        }
+        organization_location_map {
+          location {
+            area
+            block_number
+            city
+            pincode
+            state
+            geolocation {
+              latitude
+              longitude
+              type
+            }
+          }
+        }
+        suppliers {
+          area
+          scale
+        }
+      }
+    }
+  }
+}

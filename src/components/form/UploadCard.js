@@ -16,9 +16,10 @@ const GstInputComponent = ({ onFileSelect, docType }) => {
 
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0];
+        const fileUrl = URL.createObjectURL(selectedFile)
         setFile(selectedFile);
-        onFileSelect(selectedFile)
-        setPreviewUrl(URL.createObjectURL(selectedFile));
+        onFileSelect(fileUrl)
+        setPreviewUrl(fileUrl);
         // For demo purposes, we assume the GST number is extracted from the file
     };
 

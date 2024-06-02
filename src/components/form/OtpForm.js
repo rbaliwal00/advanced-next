@@ -13,7 +13,7 @@ const validationSchema = Yup.object({
   otp: Yup.string()
     .required("OTP is required")
     .matches(/^[0-9]+$/, "Must be only digits")
-    .length(6, "OTP must be exactly 4 digits"),
+    .length(4, "OTP must be exactly 4 digits"),
 });
 
 const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
@@ -81,7 +81,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
                         setFieldValue("otp", otp);
                         setResendStatus(false)
                       }}
-                      numInputs={6}
+                      numInputs={4}
                       separator={<span>-</span>}
                       shouldAutoFocus
                       isInputNum

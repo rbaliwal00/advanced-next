@@ -1,5 +1,9 @@
 import axios from "axios";
 import * as React from "react";
+import {
+  createCode,
+  consumeCode,
+} from "supertokens-web-js/recipe/passwordless";
 
 const serverEndpoint = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
 
@@ -8,51 +12,26 @@ const withOTP = (Component: React.FunctionComponent) => {
     const [mobile, setMobile] = React.useState("");
 
     const otpResend = async (phone_number: string) => {
+      return;
       if (!mobile && phone_number) return otpGenerate(phone_number, "text");
       return otpGenerate(mobile, "text");
     };
 
     const otpGenerate = async (phone_number: string, resendType?: string) => {
+      let response = await createCode({
+        phoneNumber: `+91${phone_number}`,
+      });
+      if (response?.status != "OK") return false;
       setMobile(phone_number);
-      const response: any = await axios
-        .post(
-          `${serverEndpoint}/send-otp`,
-          {
-            data: {
-              phone_number,
-              ...(resendType ? { resendType } : {}),
-            },
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          },
-        )
-        .catch((e) => null);
-      if (response?.status != 200 || !response?.data) return false;
       return true;
     };
 
     const otpValidate = async (otp: string) => {
       if (!otp) return false;
-      const response: any = await axios
-        .post(
-          `${serverEndpoint}/validate-otp`,
-          {
-            data: {
-              phone_number: mobile,
-              otp,
-            },
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          },
-        )
-        .catch((e) => null);
-      if (response?.status != 200 || !response?.data) return false;
+      let response = await consumeCode({
+        userInputCode: otp,
+      });
+      if (response?.status != "OK") return false;
       return true;
     };
 

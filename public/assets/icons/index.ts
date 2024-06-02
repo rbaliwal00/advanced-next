@@ -1,3 +1,5 @@
+import { WhatsApp } from "@mui/icons-material";
+
 export * as Home from "./home.webp";
 export * as Chat from "./chat.webp";
 export * as Cv from "./cv.webp";
@@ -34,9 +36,16 @@ export * as hydrabad from "./cities/Hydrabad.png";
 export * as Fresher from "./fresher.png";
 export * as Experienced from "./experienced.png";
 
-export * as Edit from './Group.svg'
-export * as OrangeShare from './material-symbols_share.svg'
-export * as Download from './download.svg'
-export * as Pan from './pan.svg'
+export * as Edit from "./Group.svg";
+export * as OrangeShare from "./material-symbols_share.svg";
+export * as Download from "./download.svg";
+export * as Pan from "./pan.svg";
 
-export * as Company from './company.png'
+export * as Company from "./company.png";
+
+export * as WhatsApp from "./whatsapp.svg";
+export * as Facebook from "./facebook.svg";
+export * as Insta from "./insta.svg";
+export * as Linkedin from "./linkedin.svg";
+
+export * as Person from "./Person.svg";

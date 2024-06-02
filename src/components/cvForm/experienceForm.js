@@ -102,11 +102,11 @@ const ExperienceForm = ({ onBack, isLastStep, type, deleteFunction, step,...form
             },
         }}
       >
-        {formikProps.values.experience.length === 0 && (
+        {formikProps.values.experience?.length === 0 && (
           <img src={experienced.src} alt="Experienced" />
         )}
 
-        {formikProps.values.experience.map((_, index) => (
+        {(formikProps.values.experience || []).map((_, index) => (
           <Box key={index} width="100%">
             <ExperiencedFormTemplate
               formikProps={formikProps}

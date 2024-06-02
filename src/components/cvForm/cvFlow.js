@@ -146,7 +146,7 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
       },
       key: "education",
       validationSchema: educationValidationSchema,
-      deleteFunction: deleteFunctionProps.deleteEducation,
+      deleteFunction: deleteFunctionProps?.deleteEducation,
     },
     {
       Component: ExperienceForm,
@@ -154,7 +154,7 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
         experiences: [],
       },
       key: "experience",
-      deleteFunction: deleteFunctionProps.deleteExperience,
+      deleteFunction: deleteFunctionProps?.deleteExperience,
     },
     {
       Component: ReferenceForm,
@@ -163,7 +163,7 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
       },
       key: "reference",
       validationSchema: referenceValidationSchema,
-      deleteFunction: deleteFunctionProps.deleteReference,
+      deleteFunction: deleteFunctionProps?.deleteReference,
     },
     {
       Component: AwardForm,
@@ -172,7 +172,7 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
       },
       key: "award",
       validationSchema: awardValidationSchema,
-      deleteFunction: deleteFunctionProps.deleteAward,
+      deleteFunction: deleteFunctionProps?.deleteAward,
     },
     {
       Component: BioForm,
@@ -183,7 +183,7 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
         position: "",
       },
       key: "bio",
-      deleteFunction: deleteFunctionProps.deleteBio,
+      deleteFunction: deleteFunctionProps?.deleteBio,
     },
   ];
 

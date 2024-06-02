@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 const CustomDatePicker = ({ value, onChange, placeholder, label }) => {
-    console.log("check incoming date----", value)
 
     const handleDateChange = (newValue) => {
         // Ensure newValue is converted to the expected format or dayjs object before passing up

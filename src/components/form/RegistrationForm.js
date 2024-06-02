@@ -5,10 +5,11 @@ import { Box } from '@mui/material';
 import PropTypes from 'prop-types';
 import { nextBtn, renderBackButton, } from './utilities';
 
-const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
+const RegistrationForm = ({ onBack, isLastStep, type, step, handleNext, ...formikProps }) => {
+    console.log("check  handlenext in registartion", handleNext);
 
     return (
-        <Form onSubmit={formikProps.handleSubmit}>
+        <Form {...formikProps} >
             <Box sx={{
                 maxWidth: {
                     xs: '100%',  // If viewport width is below 600px, maxWidth is 100%
@@ -116,7 +117,8 @@ RegistrationForm.propTypes = {
     type: PropTypes.string,
     onBack: PropTypes.func,
     isLastStep: PropTypes.bool,
-    step: PropTypes.number.isRequired
+    step: PropTypes.number.isRequired,
+    handleNext: PropTypes.func
 }
 
 export default RegistrationForm;

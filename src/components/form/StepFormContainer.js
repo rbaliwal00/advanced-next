@@ -18,32 +18,19 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
     const handleNext = async (values, actions) => {
         const newFormData = deepMerge(formData, values);
         setFormData(newFormData)
-        console.log("handleNext", newFormData, isLastStep);
+        console.log("handleNext", newFormData, isLastStep, step);
 
         if (!isLastStep) {
             const errors = await actions.validateForm();
-            console.log("cehck  errors here", errors);
-            if (Object.keys(errors || {}).length === 0) {
-                setStep(prevStep => prevStep + 1);
+            if (Object.keys(errors).length === 0) {
+                console.log("checek no errors", errors);
+                setStep(step => step + 1);
+                console.log("check current screen ---", step);
             } else {
-                const touched = {};
-                const setNestedTouched = (obj, path) => {
-                    const [head, ...rest] = path.split('.');
-                    if (!rest.length) {
-                        obj[head] = true;
-                    } else {
-                        obj[head] = obj[head] || {};
-                        setNestedTouched(obj[head], rest.join('.'));
-                    }
-                };
-
-                Object.keys(errors).forEach(key => {
-                    setNestedTouched(touched, key);
-                });
-                actions.setTouched(touched);
+                console.log("checek all errors", errors);
+                actions.setTouched(errors);
             }
         } else {
-            console.log('seomthing1')
             await onSubmitFinal(newFormData); // Final submission handler
         }
     };

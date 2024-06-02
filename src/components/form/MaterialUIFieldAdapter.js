@@ -190,7 +190,7 @@ class MaterialUIFieldAdapter extends Component {
               inputProps={{
                 maxLength: 50,
               }}
-              helperText={`${value.length}/50`}
+              helperText={`${(value || '').length}/50`}
               FormHelperTextProps={{
                 xs: { textAlign: "right" }, // This style will align the helper text to the right
               }}

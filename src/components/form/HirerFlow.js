@@ -140,7 +140,8 @@ const formConfigs = [
     }
 ];
 
-const RecruiterForm = ({onSubmit}) => {
+const RecruiterForm = ({prefillData, onSubmit}) => {
+    console.log("check recruiter form start---");
    
     const handleSubmitFinal = (values) => {
         values['phone_number'] = '8209275390';
@@ -155,13 +156,14 @@ const RecruiterForm = ({onSubmit}) => {
 
     return (
         <Box sx={{ flex: 1 }}>
-            <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => handleSubmitFinal(values)} />
+            <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => handleSubmitFinal(values)} />
         </Box>
     );
 };
 
 RecruiterForm.propTypes = { 
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
+    prefillData: PropTypes.object
 }
 
 export default RecruiterForm;

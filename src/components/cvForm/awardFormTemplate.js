@@ -42,13 +42,13 @@ const AwardFormTemplate = ({
           alignItems={"center"}
         >
           <Typography color={"#113B73"}>
-            {formikProps.values.awards[index].awardTitle === ""
+            {formikProps.values.awards[index].name === ""
               ? "Award Title"
-              : formikProps.values.awards[index].awardTitle}
+              : formikProps.values.awards[index].name}
             ,
-            {!formikProps.values.awards[index].brandName
+            {!formikProps.values.awards[index].brand_name
               ? " Brand Name"
-              : formikProps.values.awards[index].brandName}
+              : formikProps.values.awards[index].brand_name}
           </Typography>
           {!isMobile && (
             <IconButton onClick={() => onDelete(index)}>
@@ -62,12 +62,12 @@ const AwardFormTemplate = ({
           <MaterialUIFieldAdapter
             fromik={formikProps}
             type="text"
-            name={`awards.${index}.awardTitle`}
+            name={`awards.${index}.name`}
             label="Award/Certification Title"
           />
           <MaterialUIFieldAdapter
             fromik={formikProps}
-            name={`awards.${index}.brandName`}
+            name={`awards.${index}.brand_name`}
             type="text"
             label="Brand Name"
             placeholder="Type"
@@ -78,7 +78,7 @@ const AwardFormTemplate = ({
             name={`awards.${index}.department`}
             label="Department"
             options={[
-              { value: "city1", label: "City 1" },
+              { value: "Department 1", label: "Department 1" },
               { value: "city2", label: "City 2" },
             ]} // Populate according to your data
           />
@@ -88,7 +88,7 @@ const AwardFormTemplate = ({
             name={`awards.${index}.position`}
             label="Position"
             options={[
-              { value: "city1", label: "City 1" },
+              { value: "Position 1", label: "Position 1" },
               { value: "city2", label: "City 2" },
             ]} // Populate according to your data
           />

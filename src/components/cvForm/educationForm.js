@@ -3,13 +3,15 @@ import { Formik, Form, FieldArray } from "formik";
 import { Box, Button, Typography } from "@mui/material";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
+// import { toast } from 'react-toastify';
+
 import { nextBtn, renderBackButton } from "../form/utilities";
 import graduated from "@public/assests/graduation-hat-with-certificate.svg";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import EducationFormTemplate from "./educationFormTemplate";
 import AddItemsButton from './addItemsButton'
 
-const EducationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
+const EducationForm = ({ onBack, isLastStep, deleteFunction, type, step, ...formikProps }) => {
   const initialEducation = {
     institutionName: "",
     educationType: "",
@@ -26,23 +28,30 @@ const EducationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
   };
 
   const handleAddEducation = () => {
-    const updatedEducations = [
-      ...formikProps.values.educations,
+    const updatededucation = [
+      ...formikProps.values.education,
       initialEducation,
     ];
-    formikProps.setFieldValue("educations", updatedEducations);
-    setExpandedIndex(updatedEducations.length - 1);
+    formikProps.setFieldValue("education", updatededucation);
+    setExpandedIndex(updatededucation.length - 1);
   };
 
-  const handleDeleteEducation = (index) => {
-    const updatedEducations = [...formikProps.values.educations];
-    updatedEducations.splice(index, 1);
-    formikProps.setFieldValue("educations", updatedEducations);
+  const handleDeleteEducation = async (index) => {
+    // toast.loading('Education Deleting....', { position: 'top-right',  });
+    const educationId = formikProps.values.education[index].id;
+    const updatededucation = [...formikProps.values.education];
+    updatededucation.splice(index, 1);
+    formikProps.setFieldValue("education", updatededucation);
     if (expandedIndex === index) {
       setExpandedIndex(-1);
     } else if (expandedIndex > index) {
       setExpandedIndex(expandedIndex - 1);
     }
+    if (educationId) {
+      await deleteFunction(educationId);
+    }
+    // toast.dismiss();
+    // toast.success('Education Deleted Successfully', { position: 'top-right',  });
   };
 
   return (
@@ -87,18 +96,18 @@ const EducationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
               sm: "flex-start",
             },
             height:
-              formikProps.values.educations.length !== 0 &&
+              formikProps.values.education.length !== 0 &&
               {
                 //   xs: 'calc(100vh - 14rem)',
                 //   sm: 'calc(100vh - 20rem)'
               },
           }}
         >
-          {formikProps.values.educations.length === 0 && (
+          {formikProps.values.education.length === 0 && (
             <img src={graduated.src} alt="Experienced" />
           )}
 
-          {formikProps.values.educations.map((_, index) => (
+          {formikProps.values.education.map((_, index) => (
             <Box key={index} width="100%">
               <EducationFormTemplate
                 formikProps={formikProps}

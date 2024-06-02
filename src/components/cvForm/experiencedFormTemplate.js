@@ -34,10 +34,10 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
       >
         <Box display={'flex'} justifyContent={'space-between'} width={'100%'} alignItems={'center'}  >
           <Typography color={'#113B73'}>
-            {formikProps.values.experiences[index].jobType===''?'Job Type':formikProps.values.experiences[index].jobType}, 
-            {!formikProps.values.experiences[index].position ?' Position':formikProps.values.experiences[index].position},
-            {!formikProps.values.experiences[index].fromDate ?' From':formikProps.values.experiences[index].fromDate},
-            {!formikProps.values.experiences[index].toDate ?' to':formikProps.values.experiences[index].toDate},
+            {formikProps.values.experience[index].job_type===''?'Job Type':formikProps.values.experience[index].job_type}, 
+            {!formikProps.values.experience[index].position ?' Position':formikProps.values.experience[index].position},
+            {!formikProps.values.experience[index].from_date ?' From':formikProps.values.experience[index].from_date},
+            {!formikProps.values.experience[index].to_date ?' to':formikProps.values.experience[index].to_date},
           </Typography>
           {
             !isMobile && 
@@ -53,13 +53,13 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
           <MaterialUIFieldAdapter
               fromik={formikProps}
               type="select"
-            name={`experiences.${index}.jobType`}
+            name={`experience.${index}.type`}
             label="Job Type"
-            options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
+            options={[{ value: 'Type 1', label: 'Type 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
           />
           <MaterialUIFieldAdapter
               fromik={formikProps}
-              name={`experiences.${index}.brandName`}
+              name={`experience.${index}.brand_name`}
             type="text"
             label="Brand Name"
             placeholder="Type"
@@ -67,16 +67,16 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
           <MaterialUIFieldAdapter
               fromik={formikProps}
               type="select"
-            name={`experiences.${index}.department`}
+            name={`experience.${index}.department`}
             label="Department"
-            options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
+            options={[{ value: 'Department 1', label: 'Department 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
           />
           <MaterialUIFieldAdapter
               fromik={formikProps}
               type="select"
-            name={`experiences.${index}.position`}
+            name={`experience.${index}.position`}
             label="Position"
-            options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
+            options={[{ value: 'Position 1', label: 'Position 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
           />
           <Box 
             display={'flex'} 
@@ -88,19 +88,19 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
               }
             }}
           >
-            <MaterialUIFieldAdapter
+            {/* <MaterialUIFieldAdapter
               fromik={formikProps}
               type="select"
-            name={`experiences.${index}.city`}
-            label="Position"
+            name={`experience.${index}.city`}
+            label="City"
             options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
-          />
+          /> */}
             <MaterialUIFieldAdapter
               fromik={formikProps}
-              type="select"
-            name={`experiences.${index}.monthlySalary`}
-            label="Position"
-            options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
+              type="number"
+            name={`experience.${index}.monthly_salary`}
+            label="Salary"
+            // options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
           />
           </Box>
           <Box 
@@ -115,13 +115,13 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
           >
             <MaterialUIFieldAdapter
               type="date"
-              name={`educations.${index}.fromDate`}
+              name={`education.${index}.from_date`}
               label="From"
               fromik={formikProps}
             />
             <MaterialUIFieldAdapter
               type="date"
-              name={`educations.${index}.toDate`}
+              name={`education.${index}.to_date`}
               label="To"
               fromik={formikProps}
             />

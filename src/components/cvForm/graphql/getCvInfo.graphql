@@ -1,0 +1,69 @@
+query MyQuery($id:uuid!) {
+  user_profile(where: {auth_id: {_eq: $id}}) {
+    auth_id
+    id
+    first_name
+    last_name
+    gender
+    dob
+    image_url
+    website
+    vc_theme
+    cv_theme
+    sub_type
+    type
+    awards {
+      id
+      profile_id
+      brand_name
+      department
+      name
+      position
+    }
+    education {
+      id
+      profile_id
+      cgpa
+      from_date
+      to_date
+      institution_city
+      institution_name
+      level
+      passout_year
+      study_field
+    }
+    experience {
+      id
+      profile_id
+      brand_name
+      department
+      from_date
+      to_date
+      monthly_salary
+      position
+      sub_category
+      type
+      work_experience
+    }
+    preference {
+      id
+      profile_id
+      aadhar
+      internship
+      one_day_job
+      partime_job
+      passport
+      working_city
+    }
+    references {
+      id
+      profile_id
+      brand_name
+      department
+      email
+      name
+      phone_number
+      position
+    }
+  }
+}

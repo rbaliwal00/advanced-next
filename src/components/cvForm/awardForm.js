@@ -8,7 +8,7 @@ import { nextBtn, renderBackButton } from "../form/utilities";
 import AddItemsButton from "./addItemsButton";
 import AwardFormTemplate from "./awardFormTemplate";
 
-const AwardForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
+const AwardForm = ({ onBack, isLastStep, type, step, deleteFunction, ...formikProps }) => {
   const initialAwards = {
     awardTitle: "",
     brandName: "",
@@ -28,7 +28,8 @@ const AwardForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
     setExpandedIndex(updatedAwards.length - 1);
   };
 
-  const handleDeleteAward = (index) => {
+  const handleDeleteAward = async(index) => {
+    const id = formikProps.values.awards[index].id;
     const updatedAwards = [...formikProps.values.awards];
     updatedAwards.splice(index, 1);
     formikProps.setFieldValue("awards", updatedAwards);
@@ -36,6 +37,9 @@ const AwardForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
       setExpandedIndex(-1);
     } else if (expandedIndex > index) {
       setExpandedIndex(expandedIndex - 1);
+    }
+    if(id){
+      await deleteFunction(id)
     }
   };
 
@@ -81,7 +85,7 @@ const AwardForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
               sm: "flex-start",
             },
             height:
-              formikProps.values.educations.length !== 0 &&
+              formikProps.values.education.length !== 0 &&
               {
                 //   xs: 'calc(100vh - 14rem)',
                 //   sm: 'calc(100vh - 20rem)'

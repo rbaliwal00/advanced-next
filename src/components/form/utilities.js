@@ -1,4 +1,5 @@
 import { Button, Typography } from "@mui/material";
+import PropTypes from 'prop-types';
 
 const eighteenYearsAgo = new Date();
 eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
@@ -13,7 +14,9 @@ export const validateFile = (file, maxSize) => {
 
 export const phoneRegExp = /^(\+\d{1,3}[- ]?)?\d{10}$/;
 
+
 export const nextBtn = (isLast) => {
+    console.log("next btn clicked");
     const text = isLast ? 'Confirm' : 'Next';
 
     return (
@@ -26,7 +29,7 @@ export const nextBtn = (isLast) => {
             textTransform: 'none',
             maxWidth: '608px',
             boxShadow: 'none'
-         }} 
+         }}
         >
             <Typography fontSize={'16px'} fontWeight={'600'} color={'#fff'} fontFamily={'Poppins'}>{text}</Typography>
         </Button>
@@ -365,6 +368,99 @@ export const getUpdateFormValues = (user) => {
                     },
                 },
     };
+
+    return formValues;
+}
+
+export const updateOrgFormValues = (user) => {
+    const org = user.organization_auth_map.data.organization.data;
+    console.log("check org no of employee", org.no_of_employee)
+    const formValues = {
+        object: {
+            brand_name: org.brand_name ?? '',
+            business_nature: org.business_nature ?? '',
+            company_name: org.company_name ?? '',
+            contact: {
+                data: [{
+                    email: org.contact.data.email ?? '',
+                    name: org.contact.data.name ?? '',
+                    phone_number: org.contact.data.phone_number ?? '',
+                    website: org.contact.data.website ?? ''
+                }],
+                on_conflict: {
+                    constraint: "contact_pkey",
+                    update_columns: [
+                        "created_at",
+                        "email",
+                        "id",
+                        "is_active",
+                        "name",
+                        "organization_id",
+                        "phone_number",
+                        "updated_at",
+                        "website"
+                    ]
+                }
+            },
+            gst_pan: {
+                data: [{
+                        gst: org.gst_pan.data.gst ?? '',
+                        pan: org.gst_pan.data.pan ?? '',
+                        status: org.gst_pan.data.status ?? '',
+                    }],
+                on_conflict: {
+                    constraint: "gst_pan_pkey",
+                    update_columns: [
+                        "created_at",
+                        "gst",
+                        "id",
+                        "is_active",
+                        "organization_id",
+                        "pan",
+                        "status",
+                        "updated_at"
+                    ]
+                }
+            },
+            id: user.id ?? '',
+            image_url: org.image_url ?? '',
+            no_of_employee: org.no_of_employee.toString() ?? '',
+            suppliers: {
+                data: org.suppliers.data.map((item) => { 
+                    return {
+                        id: item.id ?? "",
+                        area: item.area ?? "",
+                        scale: item.scale ?? ""
+                    }                    
+                }) ?? [],
+                on_conflict: {
+                    constraint: "supplier_pkey",
+                    update_columns: [
+                        "area",
+                        "created_at",
+                        "id",
+                        "is_active",
+                        "organization_id",
+                        "scale",
+                        "updated_at"
+                    ]
+                }
+            },
+            vc_theme: org.vc_theme ?? ""
+        },
+        update_columns: [
+            "brand_name",
+            "business_nature",
+            "company_name",
+            "created_at",
+            "id",
+            "image_url",
+            "is_active",
+            "no_of_employee",
+            "updated_at",
+            "vc_theme"
+        ]
+    }
 
     return formValues;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, Container, IconButton } from '@mui/material';
 import PropTypes from 'prop-types';
-import { nextBtn, renderBackButton } from './utilities';
+import { nextBtn } from './utilities';
 import { Carousel } from "@components/look";
 import { Form, Field } from 'formik';
 

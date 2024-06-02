@@ -21,7 +21,7 @@ const styles = {
 }
 
 const renderCard = (type, formDetails) => {
-    const { phone_number, email, profile, organization_auth_map } = formDetails;
+    const { phone_number, email, profile, organization_auth_map } = formDetails || {};
     const { education, experience,  preference, image_url ='https://picsum.photos/200/300', first_name, last_name } = profile[0] || [];
     const { brand_name = '', business_nature = '', company_name = '', no_of_employee = '', organization_location_map = '', contact = ''} = organization_auth_map[0]?.organization || []
     const { block_number, area, city } = organization_location_map[0]?.location || [];
@@ -50,7 +50,7 @@ const renderCard = (type, formDetails) => {
                                     {experience && experience[0]?.department || 'department'}
                                 </Typography>
                             </Box>
-                            <Box style={{ marginTop: '20px' }}>
+                            <Box style={{ marginTop: '8px' }}>
                                 <Typography sx={styles.label}>
                                     Position
                                 </Typography>
@@ -58,7 +58,7 @@ const renderCard = (type, formDetails) => {
                                     {experience && experience[0]?.position || 'position'}
                                 </Typography>
                             </Box>
-                            <Box style={{ marginTop: '20px' }}>
+                            <Box style={{ marginTop: '8px' }}>
                                 <Typography sx={styles.label}>
                                     Current Location
                                 </Typography>
@@ -66,7 +66,7 @@ const renderCard = (type, formDetails) => {
                                     {'Bangalore'}
                                 </Typography>
                             </Box>
-                            <Box style={{ marginTop: '20px' }}>
+                            <Box style={{ marginTop: '8px' }}>
                                 <Typography sx={styles.label}>
                                     Preferred Location
                                 </Typography>
@@ -112,6 +112,7 @@ const renderCard = (type, formDetails) => {
                     xs: '16px',
                     sm: '32px'
                 },
+                minWidth: '320px',
                 py: '16px',
                 boxShadow: '0px 4px 25px 0px rgba(0, 0, 0, 0.05)',
             }}>
@@ -129,13 +130,13 @@ const renderCard = (type, formDetails) => {
                             <Typography sx={styles.valueTxt}>
                                 {company_name}
                             </Typography>
-                            <Typography sx={styles.label} style={{ marginTop: '10px' }}>
+                            <Typography sx={styles.label} style={{ marginTop: '8px' }}>
                                 Contact Person
                             </Typography>
                             <Typography sx={styles.valueTxt}>
                                 {contact[0].name}
                             </Typography>
-                            <Typography sx={styles.label} style={{ marginTop: '10px' }}>
+                            <Typography sx={styles.label} style={{ marginTop: '8px' }}>
                                 Contact No.
                             </Typography>
                             <Typography sx={styles.valueTxt}>
@@ -151,7 +152,7 @@ const renderCard = (type, formDetails) => {
                                     {business_nature}
                                 </Typography>
                             </Box>
-                            <Box style={{ marginTop: '20px' }}>
+                            <Box style={{ marginTop: '8px' }}>
                                 <Typography sx={styles.label}>
                                     Nunber of Employees
                                 </Typography>
@@ -159,7 +160,7 @@ const renderCard = (type, formDetails) => {
                                     {no_of_employee}
                                 </Typography>
                             </Box>
-                            <Box style={{ marginTop: '20px' }}>
+                            <Box style={{ marginTop: '8px' }}>
                                 <Typography sx={styles.label}>
                                     Current Location
                                 </Typography>
@@ -167,7 +168,7 @@ const renderCard = (type, formDetails) => {
                                     {block_number + city + area}
                                 </Typography>
                             </Box>
-                            <Box style={{ marginTop: '20px' }}>
+                            <Box style={{ marginTop: '8px' }}>
                                 <Typography sx={styles.label}>
                                     Email
                                 </Typography>

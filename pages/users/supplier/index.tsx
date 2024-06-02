@@ -1,8 +1,8 @@
 import React from "react";
 import { CreateSupplier } from "@modules/users";
 
-const RecruiterParentForm = () => {
+const SupplierParentForm = () => {
     return <CreateSupplier />
 }
 
-export default RecruiterParentForm;
+export default SupplierParentForm;

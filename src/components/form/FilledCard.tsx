@@ -1,29 +1,31 @@
-import React from "react";
+import React, { useRef} from "react";
 import ThemeCard from "./Themecard";
 import PropTypes from 'prop-types';
 import { IconButton, Box } from "@mui/material";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import DownloadIcon from '@mui/icons-material/Download';
-import EditIcon from '@mui/icons-material/Edit';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import ShareIcon from '@mui/icons-material/Share';
+import { toPng } from 'html-to-image';
+import { saveAs } from 'file-saver';
 
-const checkDataWithFLows = (data) => {
-    console.log("cehck data---", data);
+const checkDataWithFLows = (type :string) => {
+    console.log("chcek dta", type);
 }
 
-const ButtonStack = ({data}) => {
+const ButtonStack = ({type, handleDownloadImage}) => {
     return (
         <Box display="flex"
             sx={{ 
                 flexDirection: 'column',
                 alignItems: "center",
                 position: "absolute",
-                right: "10px",
+                left: "372px",
                 top: "50%",
                 transform: "translateY(-50%)"            
             }}
              
         >
+
             <IconButton
                 sx={{
                     backgroundColor: 'white',
@@ -32,9 +34,12 @@ const ButtonStack = ({data}) => {
                     '&:hover': {
                         backgroundColor: 'white',
                     },
+                    borderWidth: '1px',
+                    borderColor: '#EFEFEF'
                 }}
+                onClick={handleDownloadImage}
             >
-                <VisibilityIcon sx={{ color: 'black' }} />
+                <FileDownloadOutlinedIcon sx={{ color: 'black' }} />
             </IconButton>
 
             <IconButton
@@ -45,9 +50,12 @@ const ButtonStack = ({data}) => {
                     '&:hover': {
                         backgroundColor: 'white',
                     },
+                    borderWidth: '1px',
+                    borderColor: '#EFEFEF'
                 }}
+                onClick={() => checkDataWithFLows(type)}
             >
-                <DownloadIcon sx={{ color: 'black' }} />
+                <EditOutlinedIcon sx={{ color: 'black' }} />
             </IconButton>
 
             <IconButton
@@ -58,20 +66,8 @@ const ButtonStack = ({data}) => {
                     '&:hover': {
                         backgroundColor: 'white',
                     },
-                }}
-                onClick={() => checkDataWithFLows(data)}
-            >
-                <EditIcon sx={{ color: 'black' }} />
-            </IconButton>
-
-            <IconButton
-                sx={{
-                    backgroundColor: 'white',
-                    boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.05)',
-                    marginBottom: '16px',
-                    '&:hover': {
-                        backgroundColor: 'white',
-                    },
+                    borderWidth: '1px',
+                    borderColor: '#EFEFEF'
                 }}
             >
                 <ShareIcon sx={{ color: '#FF7E41' }} />
@@ -81,6 +77,16 @@ const ButtonStack = ({data}) => {
 };
 
 const FilledCard = ({type, formDetails}) => {
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    const handleDownloadImage = async () => {
+        if (cardRef.current === null) {
+            return;
+        }
+
+        const dataUrl = await toPng(cardRef.current, { width: cardRef.current.scrollWidth, height: cardRef.current.scrollHeight});
+        saveAs(dataUrl, 'theme-card.png');
+    };
 
     return (<Box display={'flex'} sx={{
                     flexDirection: 'row',
@@ -93,13 +99,15 @@ const FilledCard = ({type, formDetails}) => {
                     },
                     minWidth: {
                         xs: '100%',
-                        sm: '360px'
+                        sm: '376px'
                     },
                     m: 'auto',
                     mt: '32px'
             }}>
-                <ThemeCard type={type || 'job'} formDetails={formDetails} />
-                <ButtonStack data={formDetails}/>
+                <div ref={cardRef}>
+                    <ThemeCard type={type || 'job'} formDetails={formDetails} />
+                </div>
+                <ButtonStack type={type || 'job'} handleDownloadImage={handleDownloadImage}/>
             </Box>)
     }
 

@@ -45,8 +45,8 @@ const FresherForm = ({onSubmit, prefillData}) => {
             type: "jobSeeker",
             sub_type: 'fresher' 
           },
-          email: '', // Moved `email` under `profile`
         },
+        email: '',
       },
       validationSchema: registrationValidationSchema,
       key: 'registration',     
@@ -119,10 +119,7 @@ const FresherForm = ({onSubmit, prefillData}) => {
 
 
     return (
-      <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => {
-        console.log('someting2')
-        handleSubmitFinal(values)
-      }}/>
+      <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => handleSubmitFinal(values)}/>
     );
 };
 

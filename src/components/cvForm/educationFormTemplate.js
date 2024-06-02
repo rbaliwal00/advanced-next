@@ -34,8 +34,8 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
       >
         <Box display={'flex'} justifyContent={'space-between'} width={'100%'} alignItems={'center'}  >
           <Typography color={'#113B73'}>
-            {formikProps.values.educations[index].institutionName===''?'Name of Institution':formikProps.values.educations[index].institutionName}, 
-            {!formikProps.values.educations[index].toDate ?' Passout Years':formikProps.values.educations[index].toDate}
+            {formikProps.values.education[index].institution_name===''?'Name of Institution':formikProps.values.education[index].institution_name}, 
+            {!formikProps.values.education[index].to_date ?' Passout Years':formikProps.values.education[index].to_date}
           </Typography>
           {
             !isMobile && 
@@ -50,7 +50,7 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
         <Box>
           <MaterialUIFieldAdapter
               fromik={formikProps}
-              name={`educations.${index}.institutionName`}
+              name={`education.${index}.institution_name`}
             type="text"
             label="Name of Institution"
             placeholder="Type"
@@ -58,13 +58,13 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
           <MaterialUIFieldAdapter
               fromik={formikProps}
               type="select"
-            name={`educations.${index}.educationType`}
+            name={`education.${index}.study_field`}
             label="Education Type"
-            options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
+            options={[{ value: 'Field 1', label: 'Field 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
           />
           <MaterialUIFieldAdapter
               fromik={formikProps}
-              name={`educations.${index}.cgpa`}
+              name={`education.${index}.cgpa`}
             type="text"
             label="Add CGPA/Percentage (Optional)"
             placeholder="Type"
@@ -81,13 +81,13 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
           >
             <MaterialUIFieldAdapter
               type="date"
-              name={`educations.${index}.fromDate`}
+              name={`education.${index}.from_date`}
               label="From"
               fromik={formikProps}
             />
             <MaterialUIFieldAdapter
               type="date"
-              name={`educations.${index}.toDate`}
+              name={`education.${index}.to_date`}
               label="To"
               fromik={formikProps}
             />

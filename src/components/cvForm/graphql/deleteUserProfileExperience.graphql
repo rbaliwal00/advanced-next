@@ -1,0 +1,5 @@
+mutation myMutation($id: uuid!) {
+  delete_user_experience(where: {id: {_eq: $id}}) {
+    affected_rows
+  }
+}

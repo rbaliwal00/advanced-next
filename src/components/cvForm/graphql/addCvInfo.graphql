@@ -1,0 +1,5 @@
+mutation MyMutation($data: [user_profile_insert_input!]!, $on_conflict:user_profile_on_conflict!) {
+  insert_user_profile(objects: $data, on_conflict: $on_conflict) {
+    affected_rows
+  }
+}

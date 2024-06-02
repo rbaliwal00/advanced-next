@@ -10,6 +10,7 @@ import Layout from "./layout"; // Import your layout component
 import { ReactElement, ReactNode } from "react";
 import { NextPage } from "next";
 import { createTheme, ThemeProvider } from "@mui/material";
+import "@services/supertoken";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -25,18 +26,18 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 
   const theme = createTheme({
     typography: {
-      fontFamily: 'poppins',
+      fontFamily: "poppins",
     },
   });
 
   return (
     <ApolloProvider client={apolloClient}>
       <RootStoreProvider>
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Component {...pageProps} router={router} />
+          </Layout>
+        </ThemeProvider>
       </RootStoreProvider>
     </ApolloProvider>
   );

@@ -5018,6 +5018,13 @@ browser-process-hrtime@^1.0.0:
   resolved "https://registry.npmjs.org/browser-process-hrtime/-/browser-process-hrtime-1.0.0.tgz"
   integrity sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==
 
+browser-tabs-lock@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/browser-tabs-lock/-/browser-tabs-lock-1.3.0.tgz#4c0381b47b55cd29feaaea5846b7bb97aac76053"
+  integrity sha512-g6nHaobTiT0eMZ7jh16YpD2kcjAp+PInbiVq3M1x6KKaEIVhT4v9oURNIpZLOZ3LQbQ3XYfNhMAb/9hzNLIWrw==
+  dependencies:
+    lodash ">=4.17.21"
+
 browserify-aes@^1.0.4, browserify-aes@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/browserify-aes/-/browserify-aes-1.2.0.tgz"
@@ -8606,6 +8613,11 @@ interpret@^2.2.0:
   resolved "https://registry.npmjs.org/interpret/-/interpret-2.2.0.tgz"
   integrity sha512-Ju0Bz/cEia55xDwUWEa8+olFpCiQoypjnQySseKtmjNrnps3P+xfpUmGr90T7yjlVJmOtybRvPXhKMbHr+fWnw==
 
+intl-tel-input@^17.0.19:
+  version "17.0.21"
+  resolved "https://registry.yarnpkg.com/intl-tel-input/-/intl-tel-input-17.0.21.tgz#2d69777ecf5fd188d545f7e482cefe4d3523645b"
+  integrity sha512-TfyPxLe41QZPOf6RqBxRE2dpQ0FThB/PBD/gRbxVhGW7IuYg30QD90x/vjmEo4vkZw7j8etxpVcjIZVRcG+Otw==
+
 ip@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npmjs.org/ip/-/ip-2.0.1.tgz"
@@ -9978,7 +9990,7 @@ lodash.xorby@^4.7.0:
   resolved "https://registry.npmjs.org/lodash.xorby/-/lodash.xorby-4.7.0.tgz"
   integrity sha512-gYiD6nvuQy0AEkMoUju+t4f4Rn18fjsLB/7x7YZFqtFT9kmegRLrj/uGEQVyVDy7otTmSrIMXNOk2wwuLcfHCQ==
 
-lodash@4.x, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
+lodash@4.x, lodash@>=4.17.21, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.7.0:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -11818,6 +11830,11 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
 
+qr.js@0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
+  integrity sha512-c4iYnWb+k2E+vYpRimHqSu575b1/wKl4XFeJGpFmrJQz5I88v9aY2czh7s0w36srfCM1sXgC/xpoJz5dJfq+OQ==
+
 qs@6.11.0:
   version "6.11.0"
   resolved "https://registry.npmjs.org/qs/-/qs-6.11.0.tgz"
@@ -12029,6 +12046,14 @@ react-otp-input@^3.1.1:
   version "3.1.1"
   resolved "https://registry.npmjs.org/react-otp-input/-/react-otp-input-3.1.1.tgz"
   integrity sha512-bjPavgJ0/Zmf/AYi4onj8FbH93IjeD+e8pWwxIJreDEWsU1ILR5fs8jEJmMGWSBe/yyvPP6X/W6Mk9UkOCkTPw==
+
+react-qr-code@^2.0.12:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/react-qr-code/-/react-qr-code-2.0.13.tgz#ef0e38241916045123f639477e75d3319f075c47"
+  integrity sha512-mq2fpTSlYLwnLsbSjJRwxggFcxzmksfm7pCMe3cnzRinJSaR8Iy9/lzhsfaLEQL7UlRbucl9KZgKTOdzM5QY0w==
+  dependencies:
+    prop-types "^15.8.1"
+    qr.js "0.0.0"
 
 react-refresh@^0.11.0:
   version "0.11.0"
@@ -13490,6 +13515,37 @@ sucrase@^3.32.0:
     mz "^2.7.0"
     pirates "^4.0.1"
     ts-interface-checker "^0.1.9"
+
+supertokens-auth-react@^0.42.2:
+  version "0.42.2"
+  resolved "https://registry.yarnpkg.com/supertokens-auth-react/-/supertokens-auth-react-0.42.2.tgz#806dce414d97b8ef2ff6edd1648730f6116d8ef3"
+  integrity sha512-y6iGHUHjiKau7796YvuqF0XpJrwNwXgsUP5Q6f4GRZQd3G361s+3EsMAPCxEIhP1sitetdtcaWPyWlHNfr2CzQ==
+  dependencies:
+    intl-tel-input "^17.0.19"
+    prop-types "^15.7.2"
+    react-qr-code "^2.0.12"
+    supertokens-js-override "^0.0.4"
+
+supertokens-js-override@0.0.4, supertokens-js-override@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/supertokens-js-override/-/supertokens-js-override-0.0.4.tgz#9af583fbc5e1f0195dbb358c4fcf75f44c76dc09"
+  integrity sha512-r0JFBjkMIdep3Lbk3JA+MpnpuOtw4RSyrlRAbrzMcxwiYco3GFWl/daimQZ5b1forOiUODpOlXbSOljP/oyurg==
+
+supertokens-web-js@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/supertokens-web-js/-/supertokens-web-js-0.12.0.tgz#13fc291a30441a33e91d533c85c996ba8ac81c2d"
+  integrity sha512-QQGp2TuikT29AuzAa+M0PvwNG8qZBUs3fuJzaD45G70HxD3Or5Yrz9gkhAH1BNQF9xIFIyLnTxxb+vU3HBGa0w==
+  dependencies:
+    supertokens-js-override "0.0.4"
+    supertokens-website "^20.0.1"
+
+supertokens-website@^20.0.1:
+  version "20.0.1"
+  resolved "https://registry.yarnpkg.com/supertokens-website/-/supertokens-website-20.0.1.tgz#35d3c968781acebe3bfe74c4cf5523702c2438ad"
+  integrity sha512-lP9G2Bf0lQ1WMmS++q8ZsyeTpSsGOKzhOZyxm+xd47U6ukqFKLva687CyIZTqcLq1EStOPoYGbkmPdaaWQMcTw==
+  dependencies:
+    browser-tabs-lock "^1.3.0"
+    supertokens-js-override "^0.0.4"
 
 supports-color@^2.0.0:
   version "2.0.0"

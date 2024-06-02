@@ -10,10 +10,11 @@ import Ads from "./Ads";
 import Cities from "@components/cities/cities";
 import { Box } from "@mui/material";
 import AdsSwiper from "@components/ads-swiper";
+import { SuperTokensWrapper } from "@modules/look";
 
 const RoleSelection = () => {
   return (
-    <div>
+    <SuperTokensWrapper>
       <div className={`text-[#4B5563] min-h-[calc(100vh-64px)]`}>
         <div className="grid pt-10 mb-6">
           <div
@@ -50,7 +51,7 @@ const RoleSelection = () => {
           <Cities />
         </Box>
       </div>
-    </div>
+    </SuperTokensWrapper>
   );
 };
 

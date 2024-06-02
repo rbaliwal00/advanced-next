@@ -9,6 +9,7 @@ import { Box } from "@mui/material";
 import Experienced from "@public/assets/experienced.png";
 import Fresher from "@public/assets/fresher.png";
 import { useRouter } from "next/router";
+import { SuperTokensWrapper } from "@modules/look";
 
 const ExperienceSelection = () => {
   const router = useRouter();
@@ -47,32 +48,34 @@ const ExperienceSelection = () => {
   }
 
   return (
-    <div className="text-[#4B5563] min-h-[calc(100vh-64px)]">
-      <div className="p-10 px-4 grid justify-center mb-0 sm:mb-10">
-        <h2 className="text-center mb-12 text-[30px] sm:text-[33.18px] font-[600]">
-          Select Experience
-        </h2>
-        <RoleCardList {...roleCardProps} />
+    <SuperTokensWrapper>
+      <div className="text-[#4B5563] min-h-[calc(100vh-64px)]">
+        <div className="p-10 px-4 grid justify-center mb-0 sm:mb-10">
+          <h2 className="text-center mb-12 text-[30px] sm:text-[33.18px] font-[600]">
+            Select Experience
+          </h2>
+          <RoleCardList {...roleCardProps} />
+        </div>
+        <Box
+          sx={{
+            width: {
+              xs: "100%",
+              sm: "100%",
+              md: "75%",
+            },
+            color: "white",
+            margin: "auto",
+            paddingBottom: "50px",
+            marginTop: {
+              xs: "30px",
+              sm: "60px",
+            },
+          }}
+        >
+          <Cities />
+        </Box>
       </div>
-      <Box
-        sx={{
-          width: {
-            xs: "100%",
-            sm: "100%",
-            md: "75%",
-          },
-          color: "white",
-          margin: "auto",
-          paddingBottom: "50px",
-          marginTop: {
-            xs: "30px",
-            sm: "60px",
-          },
-        }}
-      >
-        <Cities />
-      </Box>
-    </div>
+    </SuperTokensWrapper>
   );
 };
 

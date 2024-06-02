@@ -10,8 +10,8 @@ import ExperiencedFormTemplate from './experiencedFormTemplate';
 import AddItemsButton from './addItemsButton'
 
 
-const ExperienceForm = ({ onBack, isLastStep, type, step,...formikProps}) => {
-  const initialExperiences = {
+const ExperienceForm = ({ onBack, isLastStep, type, deleteFunction, step,...formikProps}) => {
+  const initialexperience = {
     jobType: '',
     brandName: '',
     department: '',
@@ -30,22 +30,27 @@ const ExperienceForm = ({ onBack, isLastStep, type, step,...formikProps}) => {
   };
 
   const handleAddExperience = () => {
-    const updatedExperiences = [
-      ...formikProps.values.experiences,
-      initialExperiences,
+    const updatedexperience = [
+      ...formikProps.values.experience,
+      initialexperience,
     ];
-    formikProps.setFieldValue("experiences", updatedExperiences);
-    setExpandedIndex(updatedExperiences.length - 1);
+    formikProps.setFieldValue("experience", updatedexperience);
+    setExpandedIndex(updatedexperience.length - 1);
   };
 
-  const handleDeleteExperience = (index) => {
-    const updatedExperiences = [...formikProps.values.experiences];
-    updatedExperiences.splice(index, 1);
-    formikProps.setFieldValue("experiences", updatedExperiences);
+  const handleDeleteExperience = async(index) => {
+    const id = formikProps.values.experience[index].id;
+    const updatedexperience = [...formikProps.values.experience];
+    updatedexperience.splice(index, 1);
+    formikProps.setFieldValue("experience", updatedexperience);
     if (expandedIndex === index) {
       setExpandedIndex(-1);
     } else if (expandedIndex > index) {
       setExpandedIndex(expandedIndex - 1);
+    }
+
+    if (id) {
+      await deleteFunction(id);
     }
   };
   return (
@@ -90,18 +95,18 @@ const ExperienceForm = ({ onBack, isLastStep, type, step,...formikProps}) => {
             sm: "flex-start",
           },
           height:
-            formikProps.values.educations.length !== 0 &&
+            formikProps.values.education.length !== 0 &&
             {
               //   xs: 'calc(100vh - 14rem)',
               //   sm: 'calc(100vh - 20rem)'
             },
         }}
       >
-        {formikProps.values.experiences.length === 0 && (
+        {formikProps.values.experience?.length === 0 && (
           <img src={experienced.src} alt="Experienced" />
         )}
 
-        {formikProps.values.experiences.map((_, index) => (
+        {(formikProps.values.experience || []).map((_, index) => (
           <Box key={index} width="100%">
             <ExperiencedFormTemplate
               formikProps={formikProps}

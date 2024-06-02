@@ -10,7 +10,7 @@ import reference from "@public/assests/references.svg";
 import AddItemsButton from "./addItemsButton";
 import ReferenceFormTemplate from "./referenceFormTemplate";
 
-const ReferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
+const ReferenceForm = ({ onBack, isLastStep, type, step, deleteFunction, ...formikProps }) => {
   const initialReferences = {
     referenceName: "",
     contact: "",
@@ -35,7 +35,8 @@ const ReferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
     setExpandedIndex(updatedReferences.length - 1);
   };
 
-  const handleDeleteReference = (index) => {
+  const handleDeleteReference = async (index) => {
+    const id = formikProps.values.references[index].id;
     const updatedReferences = [...formikProps.values.references];
     updatedReferences.splice(index, 1);
     formikProps.setFieldValue("references", updatedReferences);
@@ -43,6 +44,9 @@ const ReferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
       setExpandedIndex(-1);
     } else if (expandedIndex > index) {
       setExpandedIndex(expandedIndex - 1);
+    }
+    if (id) {
+      await deleteFunction(id);
     }
   };
 
@@ -88,7 +92,7 @@ const ReferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
               sm: "flex-start",
             },
             height:
-              formikProps.values.educations.length !== 0 &&
+              formikProps.values.education.length !== 0 &&
               {
                 //   xs: 'calc(100vh - 14rem)',
                 //   sm: 'calc(100vh - 20rem)'

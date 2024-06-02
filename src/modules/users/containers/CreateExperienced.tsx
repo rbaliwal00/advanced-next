@@ -4,6 +4,7 @@ import { compose } from "@common";
 import ExperiencedForm from "@components/form/ExperiencedFlow";
 import { withCreatePost } from "../operations";
 import { SuperTokensWrapper } from "@modules/look";
+import { useRouter } from "next/router";
 
 const Container = (props) => {
   const {
@@ -11,10 +12,12 @@ const Container = (props) => {
     // router: { push },
   } = props;
 
+  const router = useRouter();
+
   const onSubmit = async (object) => {
     const result = await createUserProfile(object);
     localStorage.setItem("currId", result.id);
-    // push("/posts");
+    router.push("/users/get-one");
   };
   return (
     <SuperTokensWrapper>

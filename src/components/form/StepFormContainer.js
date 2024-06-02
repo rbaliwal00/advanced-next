@@ -12,38 +12,27 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
 
     const currentConfig = formConfigs[step];
     const CurrentForm = currentConfig.Component;
+    const deleteFunction = currentConfig.deleteFunction;
+    
 
     const progress = Math.floor(((step+1)/formConfigs.length)*100)
 
     const handleNext = async (values, actions) => {
         const newFormData = deepMerge(formData, values);
         setFormData(newFormData)
-        console.log("handleNext", newFormData, isLastStep);
+        console.log("handleNext", newFormData, isLastStep, step);
 
         if (!isLastStep) {
             const errors = await actions.validateForm();
-            console.log("cehck  errors here", errors);
-            if (Object.keys(errors || {}).length === 0) {
-                setStep(prevStep => prevStep + 1);
+            if (Object.keys(errors).length === 0) {
+                console.log("checek no errors", errors);
+                setStep(step => step + 1);
+                console.log("check current screen ---", step);
             } else {
-                const touched = {};
-                const setNestedTouched = (obj, path) => {
-                    const [head, ...rest] = path.split('.');
-                    if (!rest.length) {
-                        obj[head] = true;
-                    } else {
-                        obj[head] = obj[head] || {};
-                        setNestedTouched(obj[head], rest.join('.'));
-                    }
-                };
-
-                Object.keys(errors).forEach(key => {
-                    setNestedTouched(touched, key);
-                });
-                actions.setTouched(touched);
+                console.log("checek all errors", errors);
+                actions.setTouched(errors);
             }
         } else {
-            console.log('seomthing1')
             await onSubmitFinal(newFormData); // Final submission handler
         }
     };
@@ -58,6 +47,8 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
         return deepMerge(currentConfig.initialValues, formData);
     };
 
+    console.log("initialValues---", getInitialValues())
+
     return (
         <Box sx={{ background: '#fff'}}>
             <CustomProgressBar  progress={progress} label={(currentConfig.key)} onBack={handleBack}/>
@@ -69,7 +60,7 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
             >
                     {formikProps =>  {
                         return (                
-                            <CurrentForm {...formikProps} name={currentConfig.name} type={currentConfig.type} onBack={handleBack} isLastStep={isLastStep} step={step} />
+                            <CurrentForm {...formikProps} deleteFunction={deleteFunction} name={currentConfig.name} type={currentConfig.type} onBack={handleBack} isLastStep={isLastStep} step={step} />
                     )}}
             </Formik>
         </Box>

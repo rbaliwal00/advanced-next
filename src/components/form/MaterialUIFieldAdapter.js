@@ -190,7 +190,7 @@ class MaterialUIFieldAdapter extends Component {
               inputProps={{
                 maxLength: 50,
               }}
-              helperText={`${value.length}/50`}
+              helperText={`${(value || '').length}/50`}
               FormHelperTextProps={{
                 xs: { textAlign: "right" }, // This style will align the helper text to the right
               }}
@@ -340,7 +340,7 @@ class MaterialUIFieldAdapter extends Component {
                 );
               }}
               onBlur={this.handleBlur}
-              placeholder={placeholder || "DD/MM/YYYY"}
+              placeholder={placeholder || "YYYY-MM-DD"}
             />
             {touch && error && <Typography color="error">{error}</Typography>}
           </Box>

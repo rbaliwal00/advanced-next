@@ -12,6 +12,8 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
 
     const currentConfig = formConfigs[step];
     const CurrentForm = currentConfig.Component;
+    const deleteFunction = currentConfig.deleteFunction;
+    
 
     const progress = Math.floor(((step+1)/formConfigs.length)*100)
 
@@ -58,6 +60,8 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
         return deepMerge(currentConfig.initialValues, formData);
     };
 
+    console.log("initialValues---", getInitialValues())
+
     return (
         <Box sx={{ background: '#fff'}}>
             <CustomProgressBar  progress={progress} label={(currentConfig.key)} onBack={handleBack}/>
@@ -69,7 +73,7 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
             >
                     {formikProps =>  {
                         return (                
-                            <CurrentForm {...formikProps} name={currentConfig.name} type={currentConfig.type} onBack={handleBack} isLastStep={isLastStep} step={step} />
+                            <CurrentForm {...formikProps} deleteFunction={deleteFunction} name={currentConfig.name} type={currentConfig.type} onBack={handleBack} isLastStep={isLastStep} step={step} />
                     )}}
             </Formik>
         </Box>

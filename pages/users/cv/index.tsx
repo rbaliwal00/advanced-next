@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import CV from '@components/experience/ExperienceFormPage';
+import CVForm from '@components/cvForm';
 
 
 const UserCV = () => {
     return (
         <div>
-            <CV />
+            <CVForm />
         </div>
     );
 };

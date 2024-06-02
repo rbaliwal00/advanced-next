@@ -11,7 +11,7 @@ const CustomDatePicker = ({ value, onChange, placeholder, label }) => {
 
     const handleDateChange = (newValue) => {
         // Ensure newValue is converted to the expected format or dayjs object before passing up
-        onChange(newValue ? moment(newValue).format('DD/MM/YYYY') : '');
+        onChange(newValue ? moment(newValue).format('YYYY-MM-DD') : '');
     };
 
     return (
@@ -19,10 +19,10 @@ const CustomDatePicker = ({ value, onChange, placeholder, label }) => {
             <Box>
                 {label && <Typography color={'#9CA3AF'} sx={{ mb: '8px' }}>{label}</Typography>}
                 <DatePicker
-                    value={value ? moment(value, 'DD/MM/YYYY') : null}
+                    value={value ? moment(value, 'YYYY-MM-DD') : null}
                     sx={{ width: '100%' }}
                     onChange={handleDateChange}
-                    inputFormat="DD/MM/YYYY"
+                    inputFormat="YYYY-MM-DD"
                     renderInput={(params) => (
                         <TextField
                             {...params}

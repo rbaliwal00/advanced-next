@@ -340,7 +340,7 @@ class MaterialUIFieldAdapter extends Component {
                 );
               }}
               onBlur={this.handleBlur}
-              placeholder={placeholder || "DD/MM/YYYY"}
+              placeholder={placeholder || "YYYY-MM-DD"}
             />
             {touch && error && <Typography color="error">{error}</Typography>}
           </Box>

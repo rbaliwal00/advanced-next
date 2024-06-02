@@ -10,7 +10,7 @@ import {
 } from "@public/assets/icons";
 import Image from "next/image";
 
-const CvHeader = () => {
+const CvHeader = ({profile_data}:any) => {
   return (
     <Box sx={{ borderBottom: "1px solid #CED4DA", padding: "16px 14px" }}>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -18,7 +18,7 @@ const CvHeader = () => {
           <Typography
             sx={{ fontWeight: 400, color: "#374151", fontSize: "19.2px" }}
           >
-            First Name Last Name
+           {`${profile_data.first_name ?? ""} ${profile_data.last_name ?? ""}`}
           </Typography>
           <Typography
             sx={{ color: "#374151", fontWeight: 400, fontSize: "11.11px" }}

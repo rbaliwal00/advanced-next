@@ -47,15 +47,13 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
         return deepMerge(currentConfig.initialValues, formData);
     };
 
-    console.log("initialValues---", getInitialValues())
-
     return (
         <Box sx={{ background: '#fff'}}>
             <CustomProgressBar  progress={progress} label={(currentConfig.key)} onBack={handleBack}/>
             <Formik
                 key={step}
                 initialValues={getInitialValues()}
-                //validationSchema={currentConfig.validationSchema}
+                validationSchema={currentConfig.validationSchema}
                 onSubmit={handleNext}
             >
                     {formikProps =>  {
@@ -68,7 +66,8 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
 };
 
 MultiStepForm.propTypess = { 
-    prefillData: PropTypes.object
+    prefillData: PropTypes.object,
+    onSubmitFinal: PropTypes.func
 }
 
 export default MultiStepForm;

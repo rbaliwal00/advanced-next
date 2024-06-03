@@ -73,13 +73,13 @@ class MaterialUIFieldAdapter extends Component {
       event.target.type === "checkbox"
         ? event.target.checked
         : event.target.value;
-
+    console.log("check fields here ----", name, value)
     formik.setFieldValue(name, value);
   };
 
   handleBooleanValueChange = (event) => {
     const { formik, name } = this.props;
-    console.log("check selected value here---", event.target.value);
+    console.log("check selected value here---", typeof(event.target.value));
     const value = event.target.value === 'true';
     formik.setFieldValue(name, value);
   }
@@ -407,7 +407,7 @@ class MaterialUIFieldAdapter extends Component {
 
       case 'radioCard':
         return (
-          <Card variant="outlined" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', py: '16px', mb: '8px', background: '#113B73', px: '16px', borderRadius: '10px', maxHeight: {
+          <Card variant="outlined" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', py: '16px', mb: '8px', background: '#113B73', px: { xs: '8px', sm: '16px'}, borderRadius: '10px', maxHeight: {
             xs: '80px',
             sm: '88px'
           }}}>
@@ -416,7 +416,7 @@ class MaterialUIFieldAdapter extends Component {
               <RadioGroup
                 row
                 name={name}
-                value={value || ''}
+                value={value !== undefined ? value.toString() : ''}
                 onChange={this.handleBooleanValueChange}
                 sx={{ justifyContent: 'space-between', maxWidth: isSmallScreen ? '100%' : '67%' }}
               >

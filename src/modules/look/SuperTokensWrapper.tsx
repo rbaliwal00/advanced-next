@@ -30,12 +30,15 @@ const SuperTokensWrapper = ({
       }
       const id = await Session.getUserId();
       const res = await getUser({ variables: { id } });
-      if (!res.data?.user?.profile?.id && redirectIfLoggedIn) {
+      console.log(res.data?.user?.profile[0]?.id, redirectIfLoggedIn)
+      if (!res.data?.user?.profile[0]?.id && redirectIfLoggedIn) {
         router.replace?.("/users/role-selection");
         setLoading(false);
         return;
       }
-      router.replace?.("/users/get-one");
+      if (res.data?.user?.profile[0]?.id) {
+        router.replace?.("/users/get-one");
+      }
       setLoading(false);
     });
   }, []);

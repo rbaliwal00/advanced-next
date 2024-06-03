@@ -23,7 +23,7 @@ const styles = {
 const renderCard = (type, formDetails) => {
     const { phone_number, email, profile, organization_auth_map } = formDetails || {};
     const { education, experience,  preference, image_url ='https://picsum.photos/200/300', first_name, last_name } = profile[0] || [];
-    const { brand_name = '', business_nature = '', company_name = '', no_of_employee = '', organization_location_map = '', contact = ''} = organization_auth_map[0]?.organization || []
+    const { brand_name = '', business_nature = '', company_name = '', no_of_employee = '', organization_location_map = '', contact = [], image_url: orgImgUrl='https://picsum.photos/200/300' } = organization_auth_map[0]?.organization || []
     const { block_number, area, city } = organization_location_map[0]?.location || [];
 
 
@@ -119,11 +119,11 @@ const renderCard = (type, formDetails) => {
                 <CardContent>
                     <Grid container spacing={2}>
                         <Grid item xs={6} sm={6} style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                            <Avatar
-                                alt="Yanis Petros"
-                                src="/path/to/avatar.jpg" // Update with your avatar path
+                            {orgImgUrl && <Avatar
+                                alt={brand_name || ''}
+                                src={orgImgUrl} // Update with your avatar path
                                 style={{ width: 80, height: 80, marginLeft: 'auto', marginBottom: '10px' }}
-                            />
+                            />}
                             <Typography sx={styles.nameTxt}>
                                 {brand_name}
                             </Typography>

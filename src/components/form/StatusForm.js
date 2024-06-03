@@ -10,7 +10,7 @@ import { nextBtn, renderBackButton } from './utilities';
 
 const StatusForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
     return (
-                <Form {...formikProps}>
+            <Form {...formikProps}>
             <Box sx={{
                 maxWidth: {
                     xs: '100%',  // If viewport width is below 600px, maxWidth is 100%
@@ -58,7 +58,7 @@ const StatusForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                         />
                         <MaterialUIFieldAdapter
                             formik={formikProps}
-                            name="profile.data.experience.data.montly_salary"
+                            name="profile.data.experience.data.monthly_salary"
                             type="select"
                             label="Monthly Salary"
                             options={[

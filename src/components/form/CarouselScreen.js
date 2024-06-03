@@ -54,7 +54,7 @@ const CarouselComponent = ({ field, form, setFieldValue, name, type }) => {
 }
 
 const VisitingCardComponent = ({type, isLastStep, ... formikProps }) => {
-    const fieldName = type === 'fresher' || 'experienced' ? 'profile.data.vc_theme' : 'organization_auth_map.data.organization.data.vc_theme'
+    const fieldName = (type === 'fresher') || (type === 'experienced') ? 'profile.data.vc_theme' : 'organization_auth_map.data.organization.data.vc_theme'
 
     return (
         <Form {...formikProps}>

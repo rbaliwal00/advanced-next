@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Session from "supertokens-web-js/recipe/session";
 
-const SuperTokensWrapper = ({ children, auth = true }: any) => {
+const SuperTokensWrapper = ({ children, auth = false }: any) => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   useEffect(() => {

@@ -1,17 +1,13 @@
-import React from "react";
-import BusinessForm from "./BusinessForm";
-import AddressForm from "./AddressForm";
-import ContactForm from "./SupplierContactForm";
-import GstPanCardForm from "./GstPanCardForm";
-import VisitingCardComponent from "./CarouselScreen";
-import {
-  businessValidationSchema,
-  addressValidationSchema,
-  supplierContactValidationSchema,
-  gstPanValidationSchema,
-  SupplierThemeSelectionVaidationSchema,
-} from "./validationSchemas";
-import MultiStepForm from "./StepFormContainer";
+import React from 'react';
+import BusinessForm from './BusinessForm'
+import AddressForm from './AddressForm';
+import ContactForm from './SupplierContactForm';
+import GstPanCardForm from './GstPanCardForm'
+import VisitingCardComponent from './CarouselScreen';
+import { businessValidationSchema, addressValidationSchema, supplierContactValidationSchema, gstPanValidationSchema, SupplierThemeSelectionVaidationSchema } from './validationSchemas';
+import MultiStepForm from './StepFormContainer';
+import PropTypes from 'prop-types';
+
 // Initial values for Formik
 const formConfigs = [
   {

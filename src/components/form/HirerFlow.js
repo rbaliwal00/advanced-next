@@ -150,7 +150,6 @@ const RecruiterForm = ({prefillData, onSubmit}) => {
         values.profile.data.gender = 'male';
         values.profile.data.dob = '22/5/1999';
         values.profile.data.cv_theme = 'theme 1'
-        values.organization_auth_map.data.organization.data.no_of_employee = 13;
         onSubmit(values)
     }
 

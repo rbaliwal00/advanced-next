@@ -13,6 +13,8 @@ const Container = (props) => {
         // router: { push },
     } = props;
 
+    console.log("check userData here---", user);
+
     if (loadingUserData) return <CircularProgress />
     return <FilledCard type={'recruiter'} formDetails={user} />
 };

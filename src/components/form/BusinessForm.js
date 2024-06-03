@@ -5,7 +5,7 @@ import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';  // Adjust import
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { Persist } from 'formik-persist';
-import { nextBtn, renderBackButton } from './utilities';
+import { natureOfBusiness, nextBtn, renderBackButton } from './utilities';
 
 
 const BusinessForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
@@ -62,14 +62,20 @@ const BusinessForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             name="organization_auth_map.data.organization.data.business_nature"
                             type="select"
                             label="Nature of Business"
-                            options={[{ value: 'tech', label: 'Tech' }, { value: 'retail', label: 'Retail' }]}
+                            options={natureOfBusiness.map((item) => { return { value: item, label: item } })}
                         />
                         <MaterialUIFieldAdapter
                             formik={formikProps}
                             name="organization_auth_map.data.organization.data.no_of_employee"
                             type="select"
                             label="No. of Employees"
-                            options={[{ value: '1-10', label: '1-10' }, { value: '11-50', label: '11-50' }]}
+                            options={[{ value: '0-20', label: '0-20' },
+                                    { value: '20-50', label: '20-50' },
+                                    { value: '50-100', label: '50-100' },
+                                    { value: '100-200', label: '100-200' },
+                                    { value: '200-500', label: '200-500' },
+                                    { value: '500+', label: '500+' }
+                                    ]}
                         />
                         <Box display="flex" justifyContent="space-between" width="100%" fullWidth>
                             {nextBtn(isLastStep)}

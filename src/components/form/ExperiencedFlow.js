@@ -71,7 +71,7 @@ const formConfigs = [
             profile: {
                 data: {
                     type: "jobSeeker",
-                    sub_type: 'fresher',
+                    sub_type: 'experienced',
                     experience: {
                         data: {
                             work_experience: '',
@@ -96,9 +96,9 @@ const formConfigs = [
                     preference: {
                         data: {
                             aadhar: '',
-                            internship: false,
-                            one_day_job: false,
-                            partime_job: false,
+                            internship: '',
+                            one_day_job: '',
+                            partime_job: '',
                             passport: '',
                             working_city: ''
                         }
@@ -113,10 +113,9 @@ const formConfigs = [
 ];
 
 // Initial values for Formik
-const ExperiencedForm = ({onSubmit, prefillData}) => {
+const ExperiencedForm = ({onSubmit, prefillData, user}) => {
     
     const handleSubmitFinal = (values) => {
-        console.log("Check entered onSubmit here on experience", values);
         delete values.idType;
         delete values.profile.email;
         delete values.currentCity;
@@ -127,12 +126,15 @@ const ExperiencedForm = ({onSubmit, prefillData}) => {
         //values.profile.data.experience.data.from_date = "02/03/2012"
         // values.profile.data.education.data.cgpa = '6';
         values.profile.data.experience.data.from_date = "2023/05/01";
-        values.profile.data.experience.data.to_date = '2024/03/01'
-        onSubmit(values)
+        values.profile.data.experience.data.to_date = '2024/03/01';
+        if (values.profile.data.type != 'jobSeeker') {
+            delete values.organization_auth_map
+        }
+        onSubmit({ id: user.id ,phone_number: user.phone_number, ...values })
     }
 
     return (
-        <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => {console.log("check entered here onSubmit"); handleSubmitFinal(values)}} />
+        <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => handleSubmitFinal(values)} />
     );
 };
 

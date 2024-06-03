@@ -3,7 +3,7 @@ import { Form } from 'formik';
 import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';
 import { Box, Button } from '@mui/material';
 import PropTypes from 'prop-types';
-import { nextBtn, renderBackButton } from './utilities';
+import { levelOfEducation, nextBtn, renderBackButton } from './utilities';
 
 const EducationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 
@@ -41,7 +41,7 @@ const EducationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                     type="select"
                     name="profile.data.education.data.level"
                     label="Level of Education"
-                    options={[{ value: 'Bachelors', label: 'Bachelors' }, { value: 'Masters', label: 'Masters' }]}
+                    options={levelOfEducation.map((item) => { return { value: item, label: item } })}
                     formik={formikProps}
                 />
                 <MaterialUIFieldAdapter

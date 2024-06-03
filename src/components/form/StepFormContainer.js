@@ -25,11 +25,8 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
         if (!isLastStep) {
             const errors = await actions.validateForm();
             if (Object.keys(errors).length === 0) {
-                console.log("checek no errors", errors);
                 setStep(step => step + 1);
-                console.log("check current screen ---", step);
             } else {
-                console.log("checek all errors", errors);
                 actions.setTouched(errors);
             }
         } else {

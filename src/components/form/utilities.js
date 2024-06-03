@@ -463,3 +463,73 @@ export const updateOrgFormValues = (user) => {
 
     return formValues;
 }
+
+export const states = ["Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal"
+]
+
+export const natureOfBusiness = [
+    "Hotel",
+    "Cafe",
+    "Restaurant",
+    "Microbreweries",
+    "QSR-Quick Service Restaurant",
+    "HR-HOReCa-Consultancy",
+    "Security Guard-Consultancy",
+    "Fast Food Restauant",
+    "Bar Restaurant",
+    "Lounge Bar",
+    "Pub Bar",
+    "Resorts",
+    "Homestay",
+    "Apartment- Homestay",
+    "Spa",
+    "GYM",
+    "Housekeeping Agency",
+    "Catering",
+    "Industrial Catering",
+    "Bakery",
+    "Resto Bar",
+    "Bar N Cafe",
+    "Coffee Shop"
+]
+
+export const levelOfEducation = [
+    "Undergraduate",
+    "Postgraduate",
+    "Diploma",
+    "Certification"
+]
+
+export const monthlySalaries = [
+    "Less than 20k m",
+    "20k - 50k m",
+    "50k - 75k m",
+    "75k - 100k m"
+]

@@ -9,3 +9,6 @@ export { default as CreateSupplier } from "./CreateSupplier";
 export { default as UpdateOnce } from "./updateOnce";
 export { default as GetOther } from "./getOthers";
 export { default as VerifyMobile } from "./VerifyMobile";
+export { default as UpdateRecruiter } from "./updateRecruiter";
+export { default as UpdateSupplier } from "./updateSupplier";
+export { default as UpdateExperienced } from "./updateExperienced";

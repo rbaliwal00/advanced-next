@@ -51,8 +51,9 @@ const Dashcard = ({
       href={link ? link : ""}
       className={styles.dash_card}
       style={{
-        width: `${dashcardWidth ? dashcardWidth : "200px"}`,
-        height: `${height ? height : "150px"}`,
+        maxWidth: "154px",
+        maxHeight: "104px",
+        margin: "20px",
       }}
     >
       <div>
@@ -68,7 +69,7 @@ const Dashcard = ({
           src={banner}
           className={styles.dash_card_image}
           alt=""
-          height={72}
+          height={"100%"}
         />
         {stat1 && stat2 ? (
           <div className={styles.stats}>

@@ -23,7 +23,7 @@ const ViewCv = ({ ...props }) => {
           boxShadow: "0 4px 15px rgba(0, 0, 0, 0.05)",
         }}
       >
-        <CvHeader />
+        <CvHeader profile_data={profile_data} />
         <About />
         <Content />
       </Box>

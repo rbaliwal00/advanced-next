@@ -15,9 +15,11 @@ const Container = (props) => {
   const router = useRouter();
 
   const onSubmit = async (object) => {
-    const result = await createUserProfile(object);
-    localStorage.setItem("currId", result.id);
-    router.push("/users/get-one");
+    const result = await createUserProfile( object);
+    if (result?.id) {
+      localStorage.setItem("currId", result.id);
+      router.push("/users/get-one");
+    }
   };
   return (
     <SuperTokensWrapper>

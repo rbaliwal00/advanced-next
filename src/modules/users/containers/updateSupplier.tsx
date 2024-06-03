@@ -3,7 +3,7 @@ import React from "react";
 
 import { compose } from "@common";
 import { withInsertOrg, withGetOne } from "../operations";
-import RecruiterForm from "@components/form/HirerFlow";
+import SupplierForm from "@components/form/SupplierFlow";
 import { CircularProgress } from "@mui/material";
 import { transformObject, updateOrgFormValues } from "@components/form/utilities";
 
@@ -134,7 +134,7 @@ const Container = (props) => {
     };
 
     if (loadingUserData) return <CircularProgress />
-    return <RecruiterForm prefillData={transformObject(user).data} onSubmit={onSubmit} />;
+    return <SupplierForm prefillData={transformObject(user).data} onSubmit={onSubmit} />;
 };
 
 export default compose(withInsertOrg, withGetOne)(Container);

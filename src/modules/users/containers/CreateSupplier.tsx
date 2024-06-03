@@ -4,6 +4,7 @@ import { compose } from "@common";
 import SupplierForm from "@components/form/SupplierFlow";
 import { withCreatePost } from "../operations";
 import { SuperTokensWrapper } from "@modules/look";
+import { useRouter } from "next/router";
 
 const Container = (props) => {
   const {
@@ -11,9 +12,14 @@ const Container = (props) => {
     // router: { push },
   } = props;
 
+  const router = useRouter()
+
   const onSubmit = async (object) => {
     const result = await createUserProfile(object);
-    localStorage.setItem("currId", result.id);
+    if(result.id){
+      localStorage.setItem("currId", result.id);
+      router.push("/users/getOther");
+    }
     // push("/posts");
   };
   return (

@@ -13,7 +13,7 @@ const withPWA = require("@ducanh2912/next-pwa").default({
 
 const withPlugins = require("next-compose-plugins");
 
-module.exports = withPWA(withPlugins([], {
+module.exports = withPlugins([], {
   typescript: { ignoreBuildErrors: true },
   webpack: (config) => {
     config.module.rules.push({
@@ -24,4 +24,4 @@ module.exports = withPWA(withPlugins([], {
     config.experiments.topLevelAwait = true;
     return config;
   },
-}));
+});

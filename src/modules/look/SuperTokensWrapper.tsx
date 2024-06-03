@@ -1,21 +1,56 @@
+import { useLazyQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Session from "supertokens-web-js/recipe/session";
+import ITEM from "@modules/users/graphql/item.graphql";
 
-const SuperTokensWrapper = ({ children, auth = false }: any) => {
+const SuperTokensWrapper = ({
+  children,
+  auth = true,
+  redirectIfLoggedIn = false,
+}: any) => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [getUser, { loading: userLoading, data }] = useLazyQuery(ITEM);
+
   useEffect(() => {
-    Session.doesSessionExist().then((i) => {
-      console.log("🚀 ~ Session.doesSessionExist ~ isUserLoggedIn:", i);
+    Session.doesSessionExist().then(async (i) => {
+      console.log(
+        "🚀 ~ Session.doesSessionExist ~ i:",
+        i,
+        auth == false && !redirectIfLoggedIn,
+      );
+      if (auth == false && !redirectIfLoggedIn) {
+        setLoading(false);
+        return;
+      }
+      if (!i) {
+        setLoading(false);
+        return;
+      }
+      const id = await Session.getUserId();
+      const res = await getUser({ variables: { id } });
+      if (!res.data?.user?.profile?.id && redirectIfLoggedIn) {
+        router.replace?.("/users/role-selection");
+        setLoading(false);
+        return;
+      }
+      router.replace?.("/users/get-one");
       setLoading(false);
-      if (i == auth) return;
-      router.replace?.("/");
     });
   }, []);
 
-  if (loading) return <></>;
-  return <>{children}</>;
+  if (loading || userLoading) return <></>;
+
+  const childrenWithProps = React.Children.map(children, (child) => {
+    // Checking isValidElement is the safe way and avoids a
+    // typescript error too.
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, { user: data?.user });
+    }
+    return child;
+  });
+  return <>{childrenWithProps}</>;
 };
 
 export default SuperTokensWrapper;

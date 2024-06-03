@@ -8,7 +8,7 @@ import { SuperTokensWrapper } from "@modules/look";
 
 const VerifyMobile = (props: any) => {
   return (
-    <SuperTokensWrapper auth={false}>
+    <SuperTokensWrapper auth={false} redirectIfLoggedIn={true}>
       <MobileVerification {...props} />
     </SuperTokensWrapper>
   );

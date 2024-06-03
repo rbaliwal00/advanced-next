@@ -12,7 +12,10 @@ const withCreate = (Component: FunctionComponent) =>
           const {
             data: { insert_user_auth_one },
           } = await mutate({
-            variables: { object },
+            variables: {
+              object,
+              update_columns: ["email", "id", "phone_number", "type"],
+            },
             optimisticResponse: {
               __typename: "Mutation",
               createPost: {

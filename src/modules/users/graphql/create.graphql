@@ -1,5 +1,15 @@
-mutation InserUser($object: user_auth_insert_input!) {
-  insert_user_auth_one(object: $object) {
+mutation InserUser(
+  $object: user_auth_insert_input!
+  $update_columns: [user_auth_update_column!] = created_at
+) {
+  insert_user_auth_one(
+    object: $object
+    on_conflict: {
+      constraint: auth_phone_number_key
+      update_columns: $update_columns
+    }
+  ) {
     id
+    email
   }
 }

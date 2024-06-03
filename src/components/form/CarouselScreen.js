@@ -38,9 +38,9 @@ const CarouselComponent = ({ field, form, setFieldValue, name, type }) => {
 
     const CarouselProps = {
         data: [{
-                image: 'https://picsum.photos/id/237/200/300',
-                title: 'theme1'
-            }, 
+            image: 'https://picsum.photos/id/237/200/300',
+            title: 'theme1'
+        },
         ],
         label: 'check carousel',
         heading: 'Theme Selection',
@@ -50,15 +50,15 @@ const CarouselComponent = ({ field, form, setFieldValue, name, type }) => {
         autoplaySpeed: 3,
         // centerMode: true
     }
-    return <Carousel {...field} type={type}  {...CarouselProps} handleClickItem={(item) => handleFieldValue(item)}/>
+    return <Carousel {...field} type={type}  {...CarouselProps} handleClickItem={(item) => handleFieldValue(item)} />
 }
 
-const VisitingCardComponent = ({type, isLastStep, ... formikProps }) => {
-    const fieldName = (type === 'fresher') || (type === 'experienced') ? 'profile.data.vc_theme' : 'organization_auth_map.data.organization.data.vc_theme'
+const VisitingCardComponent = ({ type, isLastStep, ...formikProps }) => {
+    const fieldName = (type === 'job') || (type === 'experienced') ? 'profile.data.vc_theme' : 'organization_auth_map.data.organization.data.vc_theme'
 
     return (
         <Form {...formikProps}>
-            <Box >    
+            <Box >
                 <Field
                     name={fieldName}
                     component={(fieldProps) => (
@@ -70,7 +70,7 @@ const VisitingCardComponent = ({type, isLastStep, ... formikProps }) => {
                         />
                     )}
                 />
-                <Box display="flex" justifyContent="center" width="100%" fullWidth sx={{ mt: '32px', alignItems: 'center'}}>
+                <Box display="flex" justifyContent="center" width="100%" fullWidth sx={{ mt: '32px', alignItems: 'center' }}>
                     {nextBtn(isLastStep)}
                 </Box>
             </Box>

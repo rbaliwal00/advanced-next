@@ -4,20 +4,20 @@ import EducationForm from './EducationForm';
 import MultiStepForm from './StepFormContainer';
 import PreferenceForm from './PreferenceForm'
 import * as Yup from 'yup';
-import {preferenceValidationSchema} from './validationSchemas'
+import { preferenceValidationSchema } from './validationSchemas'
 import PropTypes from 'prop-types';
 import { registrationValidationSchema, educationValidationSchema, ThemeSelectionVaidationSchema } from './validationSchemas';
 import VisitingCardComponent from './CarouselScreen'
 
 
 // Initial values for Formik
-const FresherForm = ({onSubmit, prefillData}) => {
+const FresherForm = ({ onSubmit, prefillData, user }) => {
 
   // Define form configurations with specific props
   const formConfigs = [
     {
       Component: (props) => (
-        <VisitingCardComponent {...props} type={'job'}/>),
+        <VisitingCardComponent {...props} type={'job'} />),
       initialValues: {
         profile: {
           data: {
@@ -29,11 +29,11 @@ const FresherForm = ({onSubmit, prefillData}) => {
       },
       validationSchema: ThemeSelectionVaidationSchema,
       key: 'choose theme',
-      type: 'fresher'  
+      type: 'fresher'
     },
     {
       Component: RegistrationForm,
-      
+
       initialValues: {
         profile: {
           data: {
@@ -43,13 +43,13 @@ const FresherForm = ({onSubmit, prefillData}) => {
             gender: '',
             dob: '',
             type: "jobSeeker",
-            sub_type: 'fresher' 
+            sub_type: 'fresher'
           },
         },
         email: '',
       },
       validationSchema: registrationValidationSchema,
-      key: 'registration',     
+      key: 'registration',
     },
     {
       Component: EducationForm,
@@ -104,23 +104,25 @@ const FresherForm = ({onSubmit, prefillData}) => {
       delete values.idType;
       delete values.profile.email;
       delete values.__typename;
-      values['phone_number'] = '8919729965';
       values.profile.data.website = 'google.com';
       values.profile.data.cv_theme = 'cv theme 1';
       values.profile.data.education.data.cgpa = '6';
       values.profile.data.education.data.from_date = "2023/05/01";
       values.profile.data.education.data.to_date = '2024/03/01'
+      if (values.profile.data.sub_type != 'jobSeeker') {
+        delete values.organization_auth_map
+      }
       console.log('something')
-    }catch(e) {
+    } catch (e) {
       console.log(e)
     }
-    onSubmit(values)
+    console.log("🚀 ~ handleSubmitFinal ~ values:", values, user)
+    onSubmit({ id: user.id, phone_number: user.phone_number, ...values })
   }
 
-
-    return (
-      <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => { console.log("check all values here---", values); handleSubmitFinal(values)}}/>
-    );
+  return (
+    <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => { console.log("check all values here---", values); handleSubmitFinal(values) }} />
+  );
 };
 
 FresherForm.propTypes = {

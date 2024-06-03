@@ -1,9 +1,9 @@
-query Post($id: Int!) {
-  post: posts_by_pk(id: $id) {
+query user($id: uuid!) {
+  user: user_auth_by_pk(id: $id) {
     id
-    title
-    sub_title
-    category
-    banner
+    phone_number
+    profile {
+      id
+    }
   }
 }

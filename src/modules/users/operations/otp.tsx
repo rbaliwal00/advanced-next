@@ -4,11 +4,13 @@ import {
   createCode,
   consumeCode,
 } from "supertokens-web-js/recipe/passwordless";
+import withCreate from "./create";
 
 const serverEndpoint = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
 
 const withOTP = (Component: React.FunctionComponent) => {
   const WithComponent = (props: any) => {
+    const { createUserProfile } = props;
     const [mobile, setMobile] = React.useState("");
 
     const otpResend = async (phone_number: string) => {
@@ -31,7 +33,11 @@ const withOTP = (Component: React.FunctionComponent) => {
       let response = await consumeCode({
         userInputCode: otp,
       });
-      if (response?.status != "OK") return false;
+      if (response?.status != "OK" || !response.user?.id) return false;
+      createUserProfile({
+        id: response.user.id,
+        phone_number: mobile,
+      });
       return true;
     };
 
@@ -46,7 +52,7 @@ const withOTP = (Component: React.FunctionComponent) => {
       />
     );
   };
-  return WithComponent;
+  return withCreate(WithComponent);
 };
 
 export default withOTP;

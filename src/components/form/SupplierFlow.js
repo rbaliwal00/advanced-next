@@ -143,7 +143,7 @@ const formConfigs = [
     }
 ];
 
-const SupplierForm = ({onSubmit}) => {
+const SupplierForm = ({onSubmit, prefillData}) => {
 
     const handleSubmitFinal = (values) => {
         values['phone_number'] = '8209275391';
@@ -157,8 +157,13 @@ const SupplierForm = ({onSubmit}) => {
     }
 
     return (
-        <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => handleSubmitFinal(values)} />
+        <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => handleSubmitFinal(values)} />
     )
 };
+
+SupplierForm.propTypes = {
+    onSubmit: PropTypes.func,
+    prefillData: PropTypes.object
+}
 
 export default SupplierForm;

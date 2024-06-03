@@ -16,7 +16,6 @@ export const phoneRegExp = /^(\+\d{1,3}[- ]?)?\d{10}$/;
 
 
 export const nextBtn = (isLast) => {
-    console.log("next btn clicked");
     const text = isLast ? 'Confirm' : 'Next';
 
     return (

@@ -1,6 +1,19 @@
+const withPWA = require("@ducanh2912/next-pwa").default({
+  dest: "public",
+  cacheOnFrontEndNav: true,
+  aggressiveFrontEndNavCaching: true,
+  reloadOnOnline: true,
+  swcMinify: true,
+  disable: false,
+  workboxOptions: {
+    disableDevLogs: true,
+  },
+  // ... other options you like
+});
+
 const withPlugins = require("next-compose-plugins");
 
-module.exports = withPlugins([], {
+module.exports = withPWA(withPlugins([], {
   typescript: { ignoreBuildErrors: true },
   webpack: (config) => {
     config.module.rules.push({
@@ -11,4 +24,4 @@ module.exports = withPlugins([], {
     config.experiments.topLevelAwait = true;
     return config;
   },
-});
+}));

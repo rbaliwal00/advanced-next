@@ -35,6 +35,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
       <RootStoreProvider>
         <ThemeProvider theme={theme}>
           <Layout>
+            {/*@ts-ignore */}
             <Component {...pageProps} router={router} />
           </Layout>
         </ThemeProvider>

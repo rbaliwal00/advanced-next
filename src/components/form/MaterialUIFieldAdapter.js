@@ -73,13 +73,11 @@ class MaterialUIFieldAdapter extends Component {
       event.target.type === "checkbox"
         ? event.target.checked
         : event.target.value;
-    console.log("check fields here ----", name, value)
     formik.setFieldValue(name, value);
   };
 
   handleBooleanValueChange = (event) => {
     const { formik, name } = this.props;
-    console.log("check selected value here---", typeof(event.target.value));
     const value = event.target.value === 'true';
     formik.setFieldValue(name, value);
   }

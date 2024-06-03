@@ -83,15 +83,16 @@ const FresherForm = ({onSubmit, prefillData}) => {
             preference: {
               data: {
                 aadhar: '',
-                internship: '',
-                one_day_job: '',
-                partime_job: '',
+                internship: false,
+                one_day_job: false,
+                partime_job: false,
                 passport: '',
                 working_city: ''
               }
             }
           }
-        }
+        },
+        idType: ''
       },
       validationSchema: preferenceValidationSchema,
       key: 'preference',
@@ -100,17 +101,16 @@ const FresherForm = ({onSubmit, prefillData}) => {
 
   const handleSubmitFinal = (values) => {
     try {
-
-    delete values.idType;
-    delete values.profile.email;
-    delete values.__typename;
-    values['phone_number'] = '8919729965';
-    values.profile.data.website = 'google.com';
-    values.profile.data.cv_theme = 'cv theme 1';
-    values.profile.data.education.data.cgpa = '6';
-    values.profile.data.education.data.from_date = "2023/05/01";
-    values.profile.data.education.data.to_date = '2024/03/01'
-    console.log('something')
+      delete values.idType;
+      delete values.profile.email;
+      delete values.__typename;
+      values['phone_number'] = '8919729965';
+      values.profile.data.website = 'google.com';
+      values.profile.data.cv_theme = 'cv theme 1';
+      values.profile.data.education.data.cgpa = '6';
+      values.profile.data.education.data.from_date = "2023/05/01";
+      values.profile.data.education.data.to_date = '2024/03/01'
+      console.log('something')
     }catch(e) {
       console.log(e)
     }
@@ -119,7 +119,7 @@ const FresherForm = ({onSubmit, prefillData}) => {
 
 
     return (
-      <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => handleSubmitFinal(values)}/>
+      <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => { console.log("check all values here---", values); handleSubmitFinal(values)}}/>
     );
 };
 

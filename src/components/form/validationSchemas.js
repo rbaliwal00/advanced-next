@@ -83,6 +83,7 @@ export const statusValidationSchema = Yup.object().shape({
             }),
         }),
     }),
+    currentCity: Yup.string()
 });
 
 export const workExperienceValidationSchema = Yup.object().shape({
@@ -118,8 +119,7 @@ export const businessValidationSchema = Yup.object({
                         .min(2, 'Company Name must be at least 2 characters')
                         .max(100, 'Company Name must not exceed 100 characters'),
 
-                    business_nature: Yup.array()
-                        .min(1, 'Please select at least one option')
+                    business_nature: Yup.string()
                         .required('This field is required'),
 
                     no_of_employee: Yup.string()
@@ -247,11 +247,11 @@ export const supplierContactValidationSchema = Yup.object({
     })
 });
 
-export const preferenceValidationSchema = Yup.object().shape({
-    profile: Yup.object().shape({
-        data: Yup.object().shape({
-            preference: Yup.object().shape({
-                data: Yup.object().shape({
+export const preferenceValidationSchema = Yup.object({
+    profile: Yup.object({
+        data: Yup.object({
+            preference: Yup.object({
+                data: Yup.object({
                     working_city: Yup.string().required('City is required'),
                     one_day_job: Yup.boolean().required('Please specify if you want a one-day job'),
                     internship: Yup.boolean().required('Please specify if you want an internship'),
@@ -259,23 +259,24 @@ export const preferenceValidationSchema = Yup.object().shape({
                     aadhar: Yup.string()
                         .when('idType', {
                             is: 'Aadhar',
-                            then: Yup.string()
+                            then: sch => sch.string()
                                 .matches(/^\d{12}$/, 'Aadhar serial number must be 12 digits')
                                 .required('Aadhar serial number is required'),
-                            otherwise: Yup.string().notRequired(),
+                            otherwise: sch => sch.notRequired(),
                         }),
                     passport: Yup.string()
                         .when('idType', {
                             is: 'Passport',
-                            then: Yup.string()
+                            then: sch => sch.string()
                                 .matches(/^[A-Z0-9]{8,12}$/, 'Passport serial number must be between 8 and 12 characters')
                                 .required('Passport serial number is required'),
-                            otherwise: Yup.string().notRequired(),
+                            otherwise: sch => sch.notRequired(),
                         }),
                 }),
             }),
         }),
     }),
+    idType: Yup.string().required('ID type is required'),
 });
 
 export const gstPanValidationSchema = Yup.object().shape({

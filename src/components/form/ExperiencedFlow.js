@@ -39,8 +39,8 @@ const formConfigs = [
                     type: "jobSeeker",
                     sub_type: 'experienced'
                 },
-                email: '', // Moved `email` under `profile`
             },
+            email: '', // Moved `email` under `profile`
         },
         validationSchema: registrationValidationSchema,
         key: 'registration',    
@@ -51,15 +51,16 @@ const formConfigs = [
             profile: {
                 data: {
                     type: "jobSeeker",
-                    sub_type: 'fresher',
+                    sub_type: 'experienced',
                     experience: {
                         data: {
                             brand_name: '',
-                            montly_salary: '',
+                            monthly_salary: '',
                         }
                     }
                 }
-            }
+            },
+            currentCity: ''
         },
         validationSchema: statusValidationSchema,
         key: 'status'
@@ -96,8 +97,8 @@ const formConfigs = [
                         data: {
                             aadhar: '',
                             internship: false,
-                            one_day_job: '',
-                            partime_job: '',
+                            one_day_job: false,
+                            partime_job: false,
                             passport: '',
                             working_city: ''
                         }
@@ -115,10 +116,11 @@ const formConfigs = [
 const ExperiencedForm = ({onSubmit, prefillData}) => {
     
     const handleSubmitFinal = (values) => {
+        console.log("Check entered onSubmit here on experience", values);
         delete values.idType;
         delete values.profile.email;
         delete values.currentCity;
-        values['phone_number'] = '8919729964';
+        //values['phone_number'] = '8919729964';
         values.profile.data.website = 'google.com';
         values.profile.data.cv_theme = 'cv theme 1';
         values.profile.data.experience.data.type =  'type 1';
@@ -130,7 +132,7 @@ const ExperiencedForm = ({onSubmit, prefillData}) => {
     }
 
     return (
-        <MultiStepForm formConfigs={formConfigs} onSubmitFinal={(values) => handleSubmitFinal(values)} prefillData={prefillData}/>
+        <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => {console.log("check entered here onSubmit"); handleSubmitFinal(values)}} />
     );
 };
 

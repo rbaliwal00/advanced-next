@@ -78,7 +78,6 @@ export const statusValidationSchema = Yup.object().shape({
                         .max(50, 'Brand Name cannot be longer than 50 characters'),
                     monthly_salary: Yup.string()
                         .required('Monthly Salary is required')
-                        .oneOf(['1000', '2000'], 'Invalid salary selected'),
                 }),
             }),
         }),
@@ -124,7 +123,6 @@ export const businessValidationSchema = Yup.object({
 
                     no_of_employee: Yup.string()
                         .required('Please select the number of employees')
-                        .oneOf(['1-10', '11-50'], 'Invalid number of employees selection')
                 })
             })
         })

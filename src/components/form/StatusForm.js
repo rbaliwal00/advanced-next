@@ -3,7 +3,7 @@ import {  Form } from 'formik';
 import { Box, Button, formControlLabelClasses } from '@mui/material';
 import MaterialUIFieldAdapter from './MaterialUIFieldAdapter'; 
 import PropTypes from 'prop-types';
-import { nextBtn, renderBackButton } from './utilities';
+import { monthlySalaries, nextBtn, renderBackButton } from './utilities';
 
 
 
@@ -61,10 +61,7 @@ const StatusForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             name="profile.data.experience.data.monthly_salary"
                             type="select"
                             label="Monthly Salary"
-                            options={[
-                                { value: '1000', label: '$1,000' },
-                                { value: '2000', label: '$2,000' }
-                            ]}
+                            options={monthlySalaries.map((item) => { return { value: item, label: item } })}
                         />
                         <Box display="flex" justifyContent="space-between" width="100%" fullWidth>
                             {nextBtn(isLastStep)}

@@ -82,8 +82,8 @@ const ButtonStack = ({updateType, handleDownloadImage}) => {
 
 const FilledCard = ({type, formDetails}) => {
     const cardRef = useRef<HTMLDivElement>(null);
-
-    const updateType = formDetails.profile[0].type;
+    console.log("check formdetails here", formDetails);
+    const updateType = formDetails.profile[0].sub_type;
 
     const handleDownloadImage = async () => {
         if (cardRef.current === null) {

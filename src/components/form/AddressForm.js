@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import { Box, Button } from '@mui/material';
 import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';
 import PropTypes from 'prop-types';
-import { nextBtn, renderBackButton } from './utilities';
+import { nextBtn, renderBackButton, states } from './utilities';
 
 
 const AddressForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
@@ -64,7 +64,7 @@ const AddressForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             type="select"
                             name="organization_auth_map.data.organization.data.organization_location_map.data.location.data.state"
                             label="State"
-                            options={[{ value: 'state1', label: 'State 1' }, { value: 'state2', label: 'State 2' }]} // Populate according to your data
+                            options={states.map((item) => {return { value: item, label: item}})} // Populate according to your data
                         />
 
                         <MaterialUIFieldAdapter

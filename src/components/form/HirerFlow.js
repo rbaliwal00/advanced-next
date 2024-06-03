@@ -140,17 +140,15 @@ const formConfigs = [
     }
 ];
 
-const RecruiterForm = ({prefillData, onSubmit}) => {
-    console.log("check recruiter form start---");
+const RecruiterForm = ({prefillData, onSubmit, user}) => {
    
     const handleSubmitFinal = (values) => {
-        values['phone_number'] = '8209275390';
-        values.profile.data.first_name = 'saksham';
-        values.profile.data.last_name = 'meher';
-        values.profile.data.gender = 'male';
-        values.profile.data.dob = '22/5/1999';
-        values.profile.data.cv_theme = 'theme 1'
-        onSubmit(values)
+        // values.profile.data.first_name = 'saksham';
+        // values.profile.data.last_name = 'meher';
+        // values.profile.data.gender = 'male';
+        // values.profile.data.dob = '22/5/1999';
+        // values.profile.data.cv_theme = 'theme 1'
+        onSubmit({ id: user.id, phone_number: user.phone_number, ...values})
     }
 
     return (

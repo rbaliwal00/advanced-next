@@ -3,7 +3,6 @@ import RegistrationForm from './RegistrationForm';
 import EducationForm from './EducationForm';
 import MultiStepForm from './StepFormContainer';
 import PreferenceForm from './PreferenceForm'
-import * as Yup from 'yup';
 import { preferenceValidationSchema } from './validationSchemas'
 import PropTypes from 'prop-types';
 import { registrationValidationSchema, educationValidationSchema, ThemeSelectionVaidationSchema } from './validationSchemas';
@@ -84,9 +83,9 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
             preference: {
               data: {
                 aadhar: '',
-                internship: false,
-                one_day_job: false,
-                partime_job: false,
+                internship: '',
+                one_day_job: '',
+                partime_job: '',
                 passport: '',
                 working_city: ''
               }
@@ -110,7 +109,7 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
       values.profile.data.education.data.cgpa = '6';
       values.profile.data.education.data.from_date = "2023/05/01";
       values.profile.data.education.data.to_date = '2024/03/01'
-      if (values.profile.data.sub_type != 'jobSeeker') {
+      if (values.profile.data.type != 'jobSeeker') {
         delete values.organization_auth_map
       }
       console.log('something')

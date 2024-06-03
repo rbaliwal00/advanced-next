@@ -7,12 +7,15 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import ShareIcon from '@mui/icons-material/Share';
 import { toPng } from 'html-to-image';
 import { saveAs } from 'file-saver';
+import Link from "next/link";
 
-const checkDataWithFLows = (type :string) => {
-    console.log("chcek dta", type);
-}
 
-const ButtonStack = ({type, handleDownloadImage}) => {
+const ButtonStack = ({updateType, handleDownloadImage}) => {
+
+    console.log("check updateType here--", updateType);
+    const nextRoute = '/users/update' + updateType[0].toUpperCase() + updateType.slice(1);
+
+
     return (
         <Box display="flex"
             sx={{ 
@@ -42,21 +45,22 @@ const ButtonStack = ({type, handleDownloadImage}) => {
                 <FileDownloadOutlinedIcon sx={{ color: 'black' }} />
             </IconButton>
 
-            <IconButton
-                sx={{
-                    backgroundColor: 'white',
-                    boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.05)',
-                    marginBottom: '16px',
-                    '&:hover': {
+            <Link href={nextRoute}>
+                <IconButton
+                    sx={{
                         backgroundColor: 'white',
-                    },
-                    borderWidth: '1px',
-                    borderColor: '#EFEFEF'
-                }}
-                onClick={() => checkDataWithFLows(type)}
-            >
-                <EditOutlinedIcon sx={{ color: 'black' }} />
-            </IconButton>
+                        boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.05)',
+                        marginBottom: '16px',
+                        '&:hover': {
+                            backgroundColor: 'white',
+                        },
+                        borderWidth: '1px',
+                        borderColor: '#EFEFEF'
+                    }}
+                >
+                    <EditOutlinedIcon sx={{ color: 'black' }} />
+                </IconButton>
+            </Link>
 
             <IconButton
                 sx={{
@@ -78,6 +82,8 @@ const ButtonStack = ({type, handleDownloadImage}) => {
 
 const FilledCard = ({type, formDetails}) => {
     const cardRef = useRef<HTMLDivElement>(null);
+
+    const updateType = formDetails.profile[0].type;
 
     const handleDownloadImage = async () => {
         if (cardRef.current === null) {
@@ -107,7 +113,7 @@ const FilledCard = ({type, formDetails}) => {
                 <div ref={cardRef}>
                     <ThemeCard type={type || 'job'} formDetails={formDetails} />
                 </div>
-                <ButtonStack type={type || 'job'} handleDownloadImage={handleDownloadImage}/>
+                <ButtonStack updateType={updateType || 'job'} handleDownloadImage={handleDownloadImage}/>
             </Box>)
     }
 

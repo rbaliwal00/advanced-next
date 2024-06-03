@@ -47,6 +47,7 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
           },
         },
         email: '',
+        currentCity: '',
       },
       validationSchema: registrationValidationSchema,
       key: 'registration',

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { nextBtn, renderBackButton, } from './utilities';
 
 const RegistrationForm = ({ onBack, isLastStep, type, step, handleNext, ...formikProps }) => {
-    console.log("check  handlenext in registartion", handleNext);
+    console.log("check  handlenext in registartion", handleNext, formikProps.values);
 
     return (
         <Form {...formikProps} >
@@ -18,7 +18,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, handleNext, ...formi
                 m: 'auto',
                 mt: {
                     xs: '8px',
-                    sm:'32px',
+                    sm: '32px',
                 },
                 px: {
                     xs: '16px',
@@ -92,25 +92,28 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, handleNext, ...formi
                         placeholder='DD/MM/YYYY'
                     />
                 </Box>
-                {type === 'fresher' && (
-                    <Box>
-                        <MaterialUIFieldAdapter
-                            formik={formikProps}
-                            type="select"
-                            options={[{ value: 'New York', label: 'New York' }, { value: 'Los Angeles', label: 'Los Angeles' }]}
-                            name="currentCity"
-                            label="Current City"
-                            placeholder="Select"
-                        />
-                    </Box>
-                )}
+
+                {type === 'fresher' &&
+                    (
+                        <Box>
+                            <MaterialUIFieldAdapter
+                                formik={formikProps}
+                                type="autocomplete"
+                                name="currentCity"
+                                label="Current City"
+                                placeholder="Current City"
+                            />
+                        </Box>
+                    )}
+
                 <Box display="flex" justifyContent="space-between" width="100%">
                     {nextBtn(isLastStep)}
-                    {renderBackButton( onBack, step )}
+                    {renderBackButton(onBack, step)}
                 </Box>
             </Box>
         </Form>
     );
+
 }
 
 RegistrationForm.propTypes = {

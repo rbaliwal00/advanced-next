@@ -10,7 +10,8 @@ import {
   MenuItem,
   Select,
   Card,
-  CardContent
+  CardContent,
+  Autocomplete
 } from "@mui/material";
 import CustomDatePicker from "./CustomCalendarBtn";
 import { connect, getIn } from "formik";
@@ -19,6 +20,7 @@ import ImageUploadButton from "./ImgUploadBtn";
 import { Radio, RadioGroup } from "@mui/material";
 import GstInputComponent from "./UploadCard";
 import Image from "next/image";
+import CityAutoComplete from "../cities/CityAutoComplete";
 
 const responsiveFontSize = {
   fontSize: {
@@ -94,7 +96,6 @@ class MaterialUIFieldAdapter extends Component {
     const value = getIn(values, name);
     const error = getIn(errors, name);
     const touch = getIn(touched, name);
-    
 
     switch (type) {
       case "text":
@@ -106,7 +107,7 @@ class MaterialUIFieldAdapter extends Component {
               <Typography
                 textAlign={"left"}
                 color={"#9CA3AF"}
-                sx={[{ responsiveFontSize },{ mb: '8px'}]}
+                sx={[{ responsiveFontSize }, { mb: '8px' }]}
               >
                 {label}
               </Typography>
@@ -145,13 +146,13 @@ class MaterialUIFieldAdapter extends Component {
               value={value || ""}
               InputLabelProps={{ shrink: false }}
               placeholder={placeholder}
-              inputProps={{ maxlength: type === 'number' ? 10 : 100}}
+              inputProps={{ maxlength: type === 'number' ? 10 : 100 }}
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               error={touch && Boolean(error)}
               helperText={touch && error}
               FormHelperTextProps={{
-                 textAlign: "left", // This style will align the helper text to the right
+                textAlign: "left", // This style will align the helper text to the right
               }}
             />
           </Box>
@@ -219,7 +220,7 @@ class MaterialUIFieldAdapter extends Component {
           <Box alignSelf={"center"} sx={{ mb: "24px" }}>
             {label && (
               <Typography
-                sx={[responsiveFontSize, { mb: '8px'}]}
+                sx={[responsiveFontSize, { mb: '8px' }]}
                 textAlign={"left"}
                 color={"#9CA3AF"}
               >
@@ -303,14 +304,14 @@ class MaterialUIFieldAdapter extends Component {
               renderValue={(selected) =>
                 Array.isArray(selected)
                   ? selected
-                      .map(
-                        (item) =>
-                          (
-                            options.find((option) => option.value === item) ||
-                            {}
-                          ).label,
-                      )
-                      .join(", ")
+                    .map(
+                      (item) =>
+                        (
+                          options.find((option) => option.value === item) ||
+                          {}
+                        ).label,
+                    )
+                    .join(", ")
                   : selected
               }
               error={touch && Boolean(error)}
@@ -405,10 +406,12 @@ class MaterialUIFieldAdapter extends Component {
 
       case 'radioCard':
         return (
-          <Card variant="outlined" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', py: '16px', mb: '8px', background: '#113B73', px: { xs: '8px', sm: '16px'}, borderRadius: '10px', maxHeight: {
-            xs: '80px',
-            sm: '88px'
-          }}}>
+          <Card variant="outlined" sx={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between', py: '16px', mb: '8px', background: '#113B73', px: { xs: '8px', sm: '16px' }, borderRadius: '10px', maxHeight: {
+              xs: '80px',
+              sm: '88px'
+            }
+          }}>
             <CardContent sx={{ flexGrow: 1, justifyContent: 'center', alignItems: 'center' }}>
               <Typography variant="subtitle1" color={'#fff'} fontWeight={'bold'} fontFamily={'Poppins'}>{label}</Typography>
               <RadioGroup
@@ -430,12 +433,12 @@ class MaterialUIFieldAdapter extends Component {
               </RadioGroup>
             </CardContent>
             <Box sx={{ maxWidth: '72px', maxHeight: '72px', display: isSmallScreen ? 'none' : 'flex', justifyContent: 'center', alignItems: 'center', }} >
-                {/* Placeholder for image or icon */}
-                <Image src={radioImg} alt="icon" style={{ width: '100%', maxHeight: '64px' }} />
-              </Box>
+              {/* Placeholder for image or icon */}
+              <Image src={radioImg} alt="icon" style={{ width: '100%', maxHeight: '64px' }} />
+            </Box>
           </Card>
         );
-      
+
       case 'documentFile':
         return (
           <Box alignSelf={"center"} fullWidth sx={{ mb: "24px" }}>
@@ -447,6 +450,63 @@ class MaterialUIFieldAdapter extends Component {
               docType={docType}
             />
             {touch && error && <Typography color="error">{error}</Typography>}
+          </Box>
+        );
+      case "autocomplete":
+        return (
+          <Box alignSelf={"center"} sx={{ mb: "24px" }} fontFamily={''}>
+            {label && (
+              <Typography
+                textAlign={"left"}
+                color={"#9CA3AF"}
+                sx={[{ responsiveFontSize }, { mb: '8px' }]}
+              >
+                {label}
+              </Typography>
+            )}
+            <CityAutoComplete
+              type={type}
+              fullWidth
+              sx={[
+                {
+                  background: "white",
+                  width: "100%",
+                  borderRadius: "6px",
+                  maxHeight: "48px",
+                  borderWidth: 1,
+                  borderColor: "#F3F4F6",
+                  "& .MuiInputBase-root": {
+                    borderColor: "#F3F4F6", // Default border color
+                    "&.Mui-focused": {
+                      borderColor: "#113B73", // Border color when focused
+                    },
+                    "&.Mui-error": {
+                      borderColor: "#f44336", // Border color when error
+                    },
+                  },
+                  "& .MuiInputBase-input": {
+                    color: "#4B5563", // Changes the text color
+                  },
+                  "& .MuiInputBase-input::placeholder": {
+                    color: "#D1D5DB", // Changes the placeholder color
+                  },
+                  background: '#fff'
+                },
+                { ...style },
+              ]}
+              name={name}
+              value={value || ""}
+              InputLabelProps={{ shrink: false }}
+              placeholder={placeholder}
+              inputProps={{ maxlength: type === 'number' ? 10 : 100 }}
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              error={touch && Boolean(error)}
+              helperText={touch && error}
+              FormHelperTextProps={{
+                textAlign: "left", // This style will align the helper text to the right
+              }}
+            />
           </Box>
         );
 

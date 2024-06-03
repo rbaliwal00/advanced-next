@@ -1,0 +1,10 @@
+query Cities($limit: Int, $_ilike: String = "") {
+  cities: other_city(
+    limit: $limit
+    order_by: { id: desc }
+    where: { city: { _ilike: $_ilike } }
+  ) {
+    id
+    city
+  }
+}

@@ -73,10 +73,10 @@ const Content = () => {
   return (
     <Box sx={{ padding: "16px 14px" }}>
       <Grid container spacing={2}>
-        <Grid item xs={5}>
+        <Grid item xs={5} sm={6}>
           <Info />
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={7} sm={6}>
           <Experience experiences={experiences} />
         </Grid>
       </Grid>

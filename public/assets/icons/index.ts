@@ -49,3 +49,4 @@ export * as Insta from "./insta.svg";
 export * as Linkedin from "./linkedin.svg";
 
 export * as Person from "./Person.svg";
+export * as Hotel from "./hotel.svg";

@@ -66,7 +66,15 @@ const CvHeader = ({profile_data}:any) => {
             </Box>
           </Grid>
           <Grid item xs={6} sm={3}>
-            <Box sx={{ display: "flex", marginTop: "16px" }}>
+            <Box
+              sx={{
+                display: "flex",
+                marginTop: {
+                  xs: "16px",
+                  sm: "0",
+                },
+              }}
+            >
               <Image src={Insta} />
               <Typography
                 sx={{
@@ -82,7 +90,15 @@ const CvHeader = ({profile_data}:any) => {
             </Box>
           </Grid>
           <Grid item xs={6} sm={3}>
-            <Box sx={{ display: "flex", marginTop: "16px" }}>
+            <Box
+              sx={{
+                display: "flex",
+                marginTop: {
+                  xs: "16px",
+                  sm: "0",
+                },
+              }}
+            >
               <Image src={Linkedin} />
               <Typography
                 sx={{

@@ -35,7 +35,7 @@ function convertSchema(input) {
           type: input.type,
           auth_id: input.auth_id,
           awards: {
-              data: input.awards.map(award => ({
+              data: input.awards?.map(award => ({
                   id: award.id,
                   brand_name: award.brand_name,
                   department: award.department,
@@ -48,7 +48,7 @@ function convertSchema(input) {
               }
           },
           education: {
-              data: input.education.map(edu => ({
+              data: input.education?.map(edu => ({
                   id: edu.id,
                   cgpa: edu.cgpa,
                   from_date: edu.from_date,
@@ -65,7 +65,7 @@ function convertSchema(input) {
               }
           },
           experience: {
-              data: input.experience.map(exp => ({
+              data: input.experience?.map(exp => ({
                   id: exp.id,
                   brand_name: exp.brand_name,
                   department: exp.department,
@@ -82,24 +82,24 @@ function convertSchema(input) {
                   update_columns: ["brand_name", "department", "from_date", "to_date", "monthly_salary", "position", "sub_category", "type", "work_experience"]
               }
           },
-          preference: {
-              data: input.preference.map(pref => ({
-                  id: pref.id,
+          // preference: {
+          //     data: input.preference?.map(pref => ({
+          //         id: pref.id,
                   
-                  aadhar: pref.aadhar,
-                  internship: pref.internship,
-                  one_day_job: pref.one_day_job,
-                  partime_job: pref.partime_job,
-                  passport: pref.passport,
-                  working_city: pref.working_city
-              })),
-              on_conflict: {
-                  constraint: "preference_pkey",
-                  update_columns: ["aadhar", "internship", "one_day_job", "partime_job", "passport", "working_city"]
-              }
-          },
+          //         aadhar: pref.aadhar,
+          //         internship: pref.internship,
+          //         one_day_job: pref.one_day_job,
+          //         partime_job: pref.partime_job,
+          //         passport: pref.passport,
+          //         working_city: pref.working_city
+          //     })),
+          //     on_conflict: {
+          //         constraint: "preference_pkey",
+          //         update_columns: ["aadhar", "internship", "one_day_job", "partime_job", "passport", "working_city"]
+          //     }
+          // },
           references: {
-              data: input.references.map(ref => ({
+              data: input.references?.map(ref => ({
                   id: ref.id,
                   
                   brand_name: ref.brand_name,
@@ -194,7 +194,7 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
         formConfigs={formConfigs}
         // deleteFunctionProps={deleteFunctionProps}
         onSubmitFinal={(values) =>{
-          alert(`end of recruiter flow ${JSON.stringify(values)}`);
+          // alert(`end of recruiter flow ${JSON.stringify(values)}`);
           console.log("values---", values);
           handleSubmitForm(convertSchema(values), on_conflict)
         }

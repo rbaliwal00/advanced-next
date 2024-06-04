@@ -28,7 +28,7 @@ const ReferenceForm = ({ onBack, isLastStep, type, step, deleteFunction, ...form
 
   const handleAddReference = () => {
     const updatedReferences = [
-      ...formikProps.values.references,
+      ...(formikProps.values.references ?? []),
       initialReferences,
     ];
     formikProps.setFieldValue("references", updatedReferences);
@@ -49,6 +49,8 @@ const ReferenceForm = ({ onBack, isLastStep, type, step, deleteFunction, ...form
       await deleteFunction(id);
     }
   };
+
+  console.log("formikProps", formikProps);
 
   return (
     <Form {...formikProps}>
@@ -92,7 +94,7 @@ const ReferenceForm = ({ onBack, isLastStep, type, step, deleteFunction, ...form
               sm: "flex-start",
             },
             height:
-              formikProps.values.education.length !== 0 &&
+              formikProps.values.education?.length !== 0 &&
               {
                 //   xs: 'calc(100vh - 14rem)',
                 //   sm: 'calc(100vh - 20rem)'

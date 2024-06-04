@@ -14,6 +14,7 @@ const withAddCvInfo = (Component: FunctionComponent) =>
   graphql(ADD_CV_FLOW, {
     props: ({ mutate }) => ({
       addCvFlow: async (object: Object, onConflict: any) => {
+        console.log("object---", object, onConflict);
         try {
           const data = await mutate({
             variables: { data: object, on_conflict: onConflict },

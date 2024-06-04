@@ -10,7 +10,7 @@ import ExperiencedFormTemplate from './experiencedFormTemplate';
 import AddItemsButton from './addItemsButton'
 
 
-const ExperienceForm = ({ onBack, isLastStep, type, deleteFunction, step,...formikProps}) => {
+const ExperienceForm = ({ onBack, isLastStep, type, deleteFunction, step, ...formikProps}) => {
   const initialexperience = {
     jobType: '',
     brandName: '',
@@ -31,7 +31,7 @@ const ExperienceForm = ({ onBack, isLastStep, type, deleteFunction, step,...form
 
   const handleAddExperience = () => {
     const updatedexperience = [
-      ...formikProps.values.experience,
+      ...(formikProps.values.experience ?? []),
       initialexperience,
     ];
     formikProps.setFieldValue("experience", updatedexperience);

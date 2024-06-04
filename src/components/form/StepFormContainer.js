@@ -50,7 +50,7 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
             <Formik
                 key={step}
                 initialValues={getInitialValues()}
-                validationSchema={currentConfig.validationSchema}
+                // validationSchema={currentConfig.validationSchema}
                 onSubmit={handleNext}
             >
                     {formikProps =>  {

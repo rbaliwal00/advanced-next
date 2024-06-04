@@ -23,7 +23,7 @@ const AwardForm = ({ onBack, isLastStep, type, step, deleteFunction, ...formikPr
   };
 
   const handleAddAward = () => {
-    const updatedAwards = [...formikProps.values.awards, initialAwards];
+    const updatedAwards = [...(formikProps.values.awards ?? []), initialAwards];
     formikProps.setFieldValue("awards", updatedAwards);
     setExpandedIndex(updatedAwards.length - 1);
   };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { compose } from "@common";
 
 import CvHeader from "./CvHeader";
@@ -10,9 +10,15 @@ import { withGetCvInfo } from "@components/cvForm/cvOperations";
 const ViewCv = ({ ...props }) => {
   console.log("props---", props);
 
+  useEffect(() => {
+    props.refetchProfileData();
+  }, []);
+
+
   if (props.loading) {
     return <div>Loading...</div>;
   }
+  
 
   const profile_data = props.profile_data;
   return (

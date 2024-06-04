@@ -1,19 +1,24 @@
 import React, { useRef} from "react";
 import ThemeCard from "./Themecard";
 import PropTypes from 'prop-types';
-import { IconButton, Box } from "@mui/material";
+import { IconButton, Box, Button } from "@mui/material";
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import ShareIcon from '@mui/icons-material/Share';
 import { toPng } from 'html-to-image';
 import { saveAs } from 'file-saver';
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 
 const ButtonStack = ({updateType, handleDownloadImage}) => {
 
-    console.log("check updateType here--", updateType);
     const nextRoute = '/users/update' + updateType[0].toUpperCase() + updateType.slice(1);
+    const fullMsg = `Check my VC card here https://dev.client.horecah.com/`
+    const shareOnWatsapp = () => {
+        const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(fullMsg)}`;
+        window.open(whatsappURL, '_blank');
+    }
 
 
     return (
@@ -73,6 +78,7 @@ const ButtonStack = ({updateType, handleDownloadImage}) => {
                     borderWidth: '1px',
                     borderColor: '#EFEFEF'
                 }}
+                onClick={shareOnWatsapp}
             >
                 <ShareIcon sx={{ color: '#FF7E41' }} />
             </IconButton>
@@ -84,6 +90,10 @@ const FilledCard = ({type, formDetails}) => {
     const cardRef = useRef<HTMLDivElement>(null);
     console.log("check formdetails here", formDetails);
     const updateType = formDetails.profile[0].sub_type;
+
+    const redirectToDashboard = () => {
+
+    }
 
     const handleDownloadImage = async () => {
         if (cardRef.current === null) {
@@ -114,6 +124,10 @@ const FilledCard = ({type, formDetails}) => {
                     <ThemeCard type={type || 'job'} formDetails={formDetails} />
                 </div>
                 <ButtonStack updateType={updateType || 'job'} handleDownloadImage={handleDownloadImage}/>
+
+                {/* <Button onClick={}>
+
+                </Button> */}
             </Box>)
     }
 

@@ -76,7 +76,7 @@ export const statusValidationSchema = Yup.object().shape({
                         .required('Brand Name is required')
                         .min(2, 'Brand Name must be at least 2 characters long')
                         .max(50, 'Brand Name cannot be longer than 50 characters'),
-                    monthly_salary: Yup.string()
+                    monthly_salary_text: Yup.string()
                         .required('Monthly Salary is required')
                 }),
             }),
@@ -253,6 +253,38 @@ export const preferenceValidationSchema = Yup.object({
                     working_city: Yup.string().required('City is required'),
                     one_day_job: Yup.boolean().required('Please specify if you want a one-day job'),
                     internship: Yup.boolean().required('Please specify if you want an internship'),
+                    partime_job: Yup.boolean().required('Please specify if you want a part-time job'),
+                    aadhar: Yup.string()
+                        .when('idType', {
+                            is: 'Aadhar',
+                            then: sch => sch.string()
+                                .matches(/^\d{12}$/, 'Aadhar serial number must be 12 digits')
+                                .required('Aadhar serial number is required'),
+                            otherwise: sch => sch.notRequired(),
+                        }),
+                    passport: Yup.string()
+                        .when('idType', {
+                            is: 'Passport',
+                            then: sch => sch.string()
+                                .matches(/^[A-Z0-9]{8,12}$/, 'Passport serial number must be between 8 and 12 characters')
+                                .required('Passport serial number is required'),
+                            otherwise: sch => sch.notRequired(),
+                        }),
+                }),
+            }),
+        }),
+    }),
+    idType: Yup.string().required('ID type is required'),
+});
+
+export const experiencedPreferenceValidationSchema = Yup.object({
+    profile: Yup.object({
+        data: Yup.object({
+            preference: Yup.object({
+                data: Yup.object({
+                    working_city: Yup.string().required('City is required'),
+                    one_day_job: Yup.boolean().required('Please specify if you want a one-day job'),
+                    internship: Yup.boolean().notRequired(),
                     partime_job: Yup.boolean().required('Please specify if you want a part-time job'),
                     aadhar: Yup.string()
                         .when('idType', {

@@ -38,7 +38,7 @@ query MyQuery($id: uuid = "") {
         department
         from_date
         to_date
-        monthly_salary
+        monthly_salary_text
         position
         sub_category
         type

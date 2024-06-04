@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Box } from '@mui/material';
 // import BusinessForm from './BusinessForm'
 // import AddressForm from './AddressForm';
@@ -113,6 +114,35 @@ function convertSchema(input) {
                   constraint: "reference_pkey",
                   update_columns: ["brand_name", "department", "email", "name", "phone_number", "position"]
               }
+          },
+          bio:{
+              data: input.bio?.map(bio => ({
+                  id: bio.id,
+                  about: bio.about,
+                  facebook: bio.facebook,
+                  instagram: bio.instagram,
+                  linkedin: bio.linkedin,
+                  language: bio.language,
+                  newsletter: bio.newsletter,
+                  portfolio: bio.portfolio,
+                  skills: bio.skills,
+                  whatsapp: bio.whatsapp
+              })),
+              on_conflict: {
+                  constraint: "bio_pkey",
+                  update_columns: [
+                      "about",
+                      "facebook",
+                      "instagram",
+                      "linkedin",
+                      "language",
+                      "newsletter",
+                      "portfolio",
+                      "skills",
+                      "whatsapp"
+                  ]
+              }
+          
           }
       }
   ];
@@ -138,6 +168,7 @@ const on_conflict = {
 }
 
 const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
+  const router = useRouter();
   const formConfigs = [
     {
       Component: EducationForm,
@@ -193,10 +224,13 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
         prefillData={profile_data}
         formConfigs={formConfigs}
         // deleteFunctionProps={deleteFunctionProps}
-        onSubmitFinal={(values) =>{
+        onSubmitFinal={async (values) =>{
           // alert(`end of recruiter flow ${JSON.stringify(values)}`);
           console.log("values---", values);
-          handleSubmitForm(convertSchema(values), on_conflict)
+          await handleSubmitForm(convertSchema(values), on_conflict);
+          setTimeout(() => {
+            router.push("/users/job-seeker/cv/view");
+          }, 1000);
         }
         }
       />

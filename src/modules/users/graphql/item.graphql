@@ -4,6 +4,7 @@ query user($id: uuid!) {
     phone_number
     profile {
       id
+      type
     }
   }
 }

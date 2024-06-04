@@ -18,7 +18,7 @@ export const JobSeekerDashCards = [
     id: "1",
     title: "View Cv",
     banner: Cv,
-    link: "/cv-create",
+    link: "/users/cv",
     lastUpdated: new Date(),
     progress: "20",
   },

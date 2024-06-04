@@ -58,7 +58,6 @@ export const educationValidationSchema = Yup.object().shape({
                     level: Yup.string().required('Level of education is required'),
                     study_field: Yup.string().required('Field of study is required'),
                     passout_year: Yup.date()
-                        .max(new Date(), 'Passout year cannot be in the future')
                         .required('Passout year is required')
                         .typeError('Invalid date format'),
                 })

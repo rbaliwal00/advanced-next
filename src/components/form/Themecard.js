@@ -22,9 +22,10 @@ const styles = {
 
 const renderCard = (type, formDetails) => {
     const { phone_number, email, profile, organization_auth_map } = formDetails || {};
-    const { education, experience,  preference, image_url ='https://picsum.photos/200/300', first_name, last_name } = profile[0] || [];
+    const { education, experience,  preference, image_url ='https://picsum.photos/200/300', first_name, last_name, sub_type } = profile[0] || [];
     const { brand_name = '', business_nature = '', company_name = '', no_of_employee = '', organization_location_map = '', contact = [], image_url: orgImgUrl='https://picsum.photos/200/300' } = organization_auth_map[0]?.organization || []
     const { block_number, area, city } = organization_location_map[0]?.location || [];
+    const checkIfexperienced = sub_type === 'experienced';
 
 
     if (type === 'job')
@@ -44,18 +45,18 @@ const renderCard = (type, formDetails) => {
                         <Grid item xs={6} sm={6} style={{ textAlign: 'left' }}>
                             <Box>
                                 <Typography sx={styles.label}>
-                                    Department
+                                    {checkIfexperienced ? 'Department' : 'Education'}
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {experience && experience[0]?.department || 'department'}
+                                    {checkIfexperienced ? experience[0]?.department : education[0]?.level}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '8px' }}>
                                 <Typography sx={styles.label}>
-                                    Position
+                                    {checkIfexperienced ? 'Position' : 'Institution'}
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {experience && experience[0]?.position || 'position'}
+                                    {checkIfexperienced ? experience[0]?.position : education[0]?.institution_name}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '8px' }}>

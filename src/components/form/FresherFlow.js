@@ -123,13 +123,14 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
   }
 
   return (
-    <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) => { console.log("check all values here---", values); handleSubmitFinal(values) }} />
+    <MultiStepForm formConfigs={formConfigs} prefillData={prefillData} onSubmitFinal={(values) =>  handleSubmitFinal(values)} />
   );
 };
 
 FresherForm.propTypes = {
   onSubmit: PropTypes.func,
-  prefillData: PropTypes.object
+  prefillData: PropTypes.object,
+  user: PropTypes.object
 }
 
 export default FresherForm;

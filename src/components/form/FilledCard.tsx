@@ -88,11 +88,12 @@ const ButtonStack = ({updateType, handleDownloadImage}) => {
 
 const FilledCard = ({type, formDetails}) => {
     const cardRef = useRef<HTMLDivElement>(null);
+    const router = useRouter()
     console.log("check formdetails here", formDetails);
-    const updateType = formDetails.profile[0].sub_type;
+    const updateType = formDetails?.profile[0].sub_type;
 
     const redirectToDashboard = () => {
-        console.log("check formType-- && btn clicked", formDetails)
+        router.push('/users/dashboard/job-seeker')
     }
 
     const handleDownloadImage = async () => {
@@ -136,7 +137,8 @@ const FilledCard = ({type, formDetails}) => {
                             backgroundColor: '#113B73',
                             textTransform: 'none',
                             maxWidth: '608px',
-                            boxShadow: 'none'
+                            boxShadow: 'none',
+                            mt: '48px',
                         }}>
                             <Typography fontSize={'16px'} fontWeight={'600'} color={'#fff'} fontFamily={'Poppins'}>Dashboard</Typography>
                         </Button>

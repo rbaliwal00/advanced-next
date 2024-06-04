@@ -103,6 +103,8 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
     try {
       delete values.idType;
       delete values.profile.email;
+      delete values.currentCity;
+
       delete values.__typename;
       values.profile.data.website = 'google.com';
       values.profile.data.cv_theme = 'cv theme 1';

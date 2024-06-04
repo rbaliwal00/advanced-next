@@ -98,7 +98,7 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
             <MaterialUIFieldAdapter
               fromik={formikProps}
               type="number"
-            name={`experience.${index}.monthly_salary`}
+            name={`experience.${index}.monthly_salary_text`}
             label="Salary"
             // options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
           />

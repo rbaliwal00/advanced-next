@@ -125,11 +125,10 @@ const ExperiencedForm = ({onSubmit, prefillData, user}) => {
         values.profile.data.experience.data.type =  'type 1';
         //values.profile.data.experience.data.from_date = "02/03/2012"
         // values.profile.data.education.data.cgpa = '6';
-        values.profile.data.experience.data.from_date = "2023/05/01";
-        values.profile.data.experience.data.to_date = '2024/03/01';
         if (values.profile.data.type != 'jobSeeker') {
             delete values.organization_auth_map
         }
+        console.log("check entered onSubmit expereienced---")
         onSubmit({ id: user.id ,phone_number: user.phone_number, ...values })
     }
 
@@ -140,7 +139,8 @@ const ExperiencedForm = ({onSubmit, prefillData, user}) => {
 
 ExperiencedForm.propTypes = {
     onSubmit: PropTypes.func,
-    prefillData: PropTypes.object
+    prefillData: PropTypes.object,
+    user: PropTypes.object
 }
 
 export default ExperiencedForm;

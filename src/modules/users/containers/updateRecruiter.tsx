@@ -6,6 +6,8 @@ import { withInsertOrg, withGetOne } from "../operations";
 import RecruiterForm from "@components/form/HirerFlow";
 import { CircularProgress } from "@mui/material";
 import { transformObject, updateOrgFormValues } from "@components/form/utilities";
+import { SuperTokensWrapper } from "@modules/look";
+import { useRouter } from "next/router";
 
 const obj = {
     "object": {
@@ -126,15 +128,24 @@ const Container = (props) => {
         //router: { push },
     } = props;
 
+    const router = useRouter()
+
     const onSubmit = async (values) => {
         const newFormValues = updateOrgFormValues(values);
         //console.log("check modified values here---", newFormValues);
         const result = await insertUserOrganization(newFormValues.object);
+        console.log("check result", result)
+        if(result?.id){
+            localStorage.setItem('currId', result.id)
+            router.push('/users/getOther')
+        }
         //push("/posts"); // Change the path according to your routing structure
     };
 
     if (loadingUserData) return <CircularProgress />
-    return <RecruiterForm prefillData={transformObject(user).data} onSubmit={onSubmit} />;
+    return <SuperTokensWrapper>
+            <RecruiterForm prefillData={transformObject(user).data} onSubmit={onSubmit} />;
+        </SuperTokensWrapper>
 };
 
 export default compose(withInsertOrg, withGetOne)(Container);

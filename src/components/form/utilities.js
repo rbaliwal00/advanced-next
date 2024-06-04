@@ -394,7 +394,6 @@ export const updateOrgFormValues = (user) => {
                         "id",
                         "is_active",
                         "name",
-                        "organization_id",
                         "phone_number",
                         "updated_at",
                         "website"
@@ -421,7 +420,7 @@ export const updateOrgFormValues = (user) => {
                     ]
                 }
             },
-            id: user.id ?? '',
+            id: org.id,
             image_url: org.image_url ?? '',
             no_of_employee: org.no_of_employee.toString() ?? '',
             suppliers: {

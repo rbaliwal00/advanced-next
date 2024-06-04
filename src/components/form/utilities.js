@@ -251,8 +251,8 @@ export const getUpdateFormValues = (user) => {
                                 data:
                                     [{
                                         cgpa: profileDataExtracter(user.profile).education.data?.cgpa ?? "",
-                                        from_date: profileDataExtracter(user.profile).education.data?.from_date ?? "",
-                                        to_date: profileDataExtracter(user.profile).education.data?.to_date ?? "",
+                                        //from_date: profileDataExtracter(user.profile).education.data?.from_date ?? "",
+                                        //to_date: profileDataExtracter(user.profile).education.data?.to_date ?? "",
                                         institution_city: profileDataExtracter(user.profile).education.data?.institution_city ?? "",
                                         institution_name: profileDataExtracter(user.profile).education.data?.institution_name ?? "",
                                         level: profileDataExtracter(user.profile).education.data?.level ?? "",
@@ -279,9 +279,9 @@ export const getUpdateFormValues = (user) => {
                                     [{
                                         brand_name: profileDataExtracter(user.profile).experience.data?.brand_name ?? "",
                                         department: profileDataExtracter(user.profile).experience.data?.department ?? "",
-                                        from_date: profileDataExtracter(user.profile).experience.data?.from_date ?? "",
-                                        to_date: profileDataExtracter(user.profile).experience.data?.to_date ?? "",
-                                        monthly_salary_text: profileDataExtracter(user.profile).experience.data?.monthly_salary_text ?? 0,
+                                        // from_date: profileDataExtracter(user.profile).experience.data?.from_date ?? "",
+                                        // to_date: profileDataExtracter(user.profile).experience.data?.to_date ?? "",
+                                        monthly_salary_text: profileDataExtracter(user.profile).experience.data?.monthly_salary_text ?? '',
                                         position: profileDataExtracter(user.profile).experience.data?.position ?? "",
                                         sub_category: profileDataExtracter(user.profile).experience.data?.sub_category ?? "",
                                         type: profileDataExtracter(user.profile).experience.data?.type ?? "",

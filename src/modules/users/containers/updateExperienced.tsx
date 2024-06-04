@@ -21,9 +21,8 @@ const Container = (props) => {
     const onSubmit = async (values) => {
         const newFormValues = getUpdateFormValues(values);
         const result = await insertUserAuth(newFormValues);
-        if(result){
-            router.push('/users/get-one');
-        }
+        setTimeout(() => router.push('/users/get-one'), 500);
+        
     };
 
     if (loadingUserData) return <CircularProgress />

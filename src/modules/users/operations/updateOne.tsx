@@ -8,7 +8,7 @@ const updatedColoumns = [
     "is_active"
 ]
 
-const withInsert = (Component: FunctionComponent) =>
+const     withInsert = (Component: FunctionComponent) =>
     graphql(UPDATE_ONCE, {
         props: ({ mutate }) => ({
             insertUserAuth: async (object: Object) => {

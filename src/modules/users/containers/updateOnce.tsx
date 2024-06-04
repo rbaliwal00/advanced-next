@@ -5,6 +5,8 @@ import { withInsert, withGetOne  } from "../operations";
 import FresherForm from "@components/form/FresherFlow";
 import { CircularProgress } from "@mui/material";
 import { transformObject, addOnConflict, getUpdateFormValues } from "@components/form/utilities";
+import { SuperTokensWrapper } from "@modules/look";
+import { useRouter } from "next/router";
 
 const testObj = {
     "object": {
@@ -178,16 +180,20 @@ const Container = (props) => {
         //router: { push },
     } = props;
 
+    const router = useRouter()
+
     const onSubmit = async (values) => {
         const newFormValues = getUpdateFormValues(values);
-        //console.log("check modified values here---", newFormValues);
         const result = await insertUserAuth(newFormValues);
-        console.log("check result received", result)
+        setTimeout(() => router.push('/users/get-one'), 500);
         //push("/posts"); // Change the path according to your routing structure
     };
 
     if(loadingUserData) return <CircularProgress />
-    return <FresherForm prefillData={transformObject(user).data} onSubmit={onSubmit} />;
+    return <SuperTokensWrapper>
+                <FresherForm prefillData={transformObject(user).data} onSubmit={onSubmit} />;
+           </SuperTokensWrapper> 
+        
 };
 
 export default compose(withInsert, withGetOne)(Container);

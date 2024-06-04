@@ -176,7 +176,7 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
         education: [],
       },
       key: "education",
-      validationSchema: educationValidationSchema,
+      //validationSchema: educationValidationSchema,
       deleteFunction: deleteFunctionProps?.deleteEducation,
     },
     {
@@ -193,7 +193,7 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
         references: [],
       },
       key: "reference",
-      validationSchema: referenceValidationSchema,
+      //validationSchema: referenceValidationSchema,
       deleteFunction: deleteFunctionProps?.deleteReference,
     },
     {
@@ -202,7 +202,7 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
         awards: [],
       },
       key: "award",
-      validationSchema: awardValidationSchema,
+      //validationSchema: awardValidationSchema,
       deleteFunction: deleteFunctionProps?.deleteAward,
     },
     {

@@ -134,8 +134,9 @@ const Container = (props) => {
         //console.log("check modified values here---", newFormValues);
         const result = await insertUserOrganization(newFormValues.object);
         if (result?.id) {
-            localStorage.setItem('currId', result.id)
-            router.push('/users/getOther')
+            localStorage.setItem('currId', values.id);
+            
+            router.push('/users/getOther');
         }
         //push("/posts"); // Change the path according to your routing structure
     };

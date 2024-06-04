@@ -69,6 +69,7 @@ query MyQuery($id: uuid = "") {
         company_name
         image_url
         no_of_employee
+        id
         gst_pan {
           gst
           pan

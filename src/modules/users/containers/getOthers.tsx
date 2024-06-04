@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { compose } from "@common";
 import { withGetOne } from "../operations";
@@ -12,6 +12,11 @@ const Container = (props) => {
         loadingUserData
         // router: { push },
     } = props;
+
+    useEffect(() => {
+        console.log("props---+", props);
+        props.refetchUserData();
+    }, []);
 
     console.log("check userData here---", user);
 

@@ -54,17 +54,19 @@ const withAddCvInfo = (Component: FunctionComponent) =>
                     id: userId,
                 },
             },
-            props: ({ data }) => {
+            props: ({ data,  }) => {
                 const {
                     loading,
                     error,
                     user_profile,
+                    refetch
                 } = data;
 
                 return {
                     loading,
                     error,
                     profile_data: user_profile && user_profile[0],
+                    refetchProfileData: refetch,
                 };
             },
         })(Component);

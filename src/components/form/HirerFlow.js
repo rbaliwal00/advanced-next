@@ -160,7 +160,8 @@ const RecruiterForm = ({prefillData, onSubmit, user}) => {
 
 RecruiterForm.propTypes = { 
     onSubmit: PropTypes.func,
-    prefillData: PropTypes.object
+    prefillData: PropTypes.object,
+    user: PropTypes.object
 }
 
 export default RecruiterForm;

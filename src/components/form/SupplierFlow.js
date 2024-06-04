@@ -146,16 +146,10 @@ const formConfigs = [
   },
 ];
 
-const SupplierForm = ({ onSubmit, prefillData }) => {
+const SupplierForm = ({ onSubmit, prefillData, user }) => {
   const handleSubmitFinal = (values) => {
-    values["phone_number"] = "8209275391";
-    values.profile.data.first_name = "saksham";
-    values.profile.data.last_name = "meher";
-    values.profile.data.gender = "male";
-    values.profile.data.dob = "22/5/1999";
-    values.profile.data.cv_theme = "theme 1";
-    values.organization_auth_map.data.organization.data.no_of_employee = 11;
-    onSubmit(values);
+    
+    onSubmit({ id: user.id, phone_number: user.phone_number, ...values })
   };
 
   return (
@@ -170,6 +164,7 @@ const SupplierForm = ({ onSubmit, prefillData }) => {
 SupplierForm.propTypes = {
   onSubmit: PropTypes.func,
   prefillData: PropTypes.object,
+  user: PropTypes.object
 };
 
 export default SupplierForm;

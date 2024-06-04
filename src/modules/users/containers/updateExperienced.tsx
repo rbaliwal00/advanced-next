@@ -5,6 +5,8 @@ import { withInsert, withGetOne } from "../operations";
 import ExperiencedForm from "@components/form/ExperiencedFlow";
 import { CircularProgress } from "@mui/material";
 import { transformObject, getUpdateFormValues } from "@components/form/utilities";
+import { SuperTokensWrapper } from "@modules/look";
+import { useRouter } from "next/router";
 
 const Container = (props) => {
     const {
@@ -14,16 +16,20 @@ const Container = (props) => {
         //router: { push },
     } = props;
 
+    const router = useRouter()
+
     const onSubmit = async (values) => {
         const newFormValues = getUpdateFormValues(values);
-        //console.log("check modified values here---", newFormValues);
         const result = await insertUserAuth(newFormValues);
-        console.log("check result received", result)
-        //push("/posts"); // Change the path according to your routing structure
+        if(result){
+            router.push('/users/get-one');
+        }
     };
 
     if (loadingUserData) return <CircularProgress />
-    return <ExperiencedForm prefillData={transformObject(user).data} onSubmit={onSubmit} />;
+    return <SuperTokensWrapper>
+                <ExperiencedForm prefillData={transformObject(user).data} onSubmit={onSubmit} />;
+            </SuperTokensWrapper>
 };
 
 export default compose(withInsert, withGetOne)(Container);

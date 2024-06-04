@@ -1,7 +1,7 @@
 import React, { useRef} from "react";
 import ThemeCard from "./Themecard";
 import PropTypes from 'prop-types';
-import { IconButton, Box, Button } from "@mui/material";
+import { IconButton, Box, Button, Typography } from "@mui/material";
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import ShareIcon from '@mui/icons-material/Share';
@@ -92,7 +92,7 @@ const FilledCard = ({type, formDetails}) => {
     const updateType = formDetails.profile[0].sub_type;
 
     const redirectToDashboard = () => {
-
+        console.log("check formType-- && btn clicked", formDetails)
     }
 
     const handleDownloadImage = async () => {
@@ -104,31 +104,44 @@ const FilledCard = ({type, formDetails}) => {
         saveAs(dataUrl, 'theme-card.png');
     };
 
-    return (<Box display={'flex'} sx={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    position: 'relative',
-                    padding: '16px',
-                    maxWidth: {
-                        xs: '360px',
-                        sm: '472px'
-                    },
-                    minWidth: {
-                        xs: '100%',
-                        sm: '376px'
-                    },
-                    m: 'auto',
-                    mt: '32px'
-            }}>
-                <div ref={cardRef}>
-                    <ThemeCard type={type || 'job'} formDetails={formDetails} />
-                </div>
-                <ButtonStack updateType={updateType || 'job'} handleDownloadImage={handleDownloadImage}/>
+    return (
+        <Box>
+            <Box display={'flex'} sx={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            position: 'relative',
+                            padding: '16px',
+                            maxWidth: {
+                                xs: '360px',
+                                sm: '472px'
+                            },
+                            minWidth: {
+                                xs: '100%',
+                                sm: '376px'
+                            },
+                            m: 'auto',
+                            mt: '32px'
+                    }}>
+                        <div ref={cardRef}>
+                            <ThemeCard type={type || 'job'} formDetails={formDetails} />
+                        </div>
+                        <ButtonStack updateType={updateType || 'job'} handleDownloadImage={handleDownloadImage}/>
 
-                {/* <Button onClick={}>
-
-                </Button> */}
-            </Box>)
+            </Box>
+                        <Button variant="contained" onClick={redirectToDashboard} sx={{
+                            borderRadius: '8px', maxHeight: '48px', py: '10px', width: {
+                                xs: '100%',
+                                sm: '79%'
+                            },
+                            backgroundColor: '#113B73',
+                            textTransform: 'none',
+                            maxWidth: '608px',
+                            boxShadow: 'none'
+                        }}>
+                            <Typography fontSize={'16px'} fontWeight={'600'} color={'#fff'} fontFamily={'Poppins'}>Dashboard</Typography>
+                        </Button>
+        </Box>
+        )
     }
 
 FilledCard.propTypes = {

@@ -8,7 +8,7 @@ const withGetOne = (Component: FunctionComponent) => {
 
         useEffect(() => {
             const storedUserId = localStorage.getItem('currId');
-            setUserId(storedUserId || "34c3fdc2-d927-440d-b305-8ef8e1834678");
+            setUserId(storedUserId);
         }, []);
 
         if (!userId) {

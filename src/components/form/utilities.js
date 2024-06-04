@@ -281,7 +281,7 @@ export const getUpdateFormValues = (user) => {
                                         department: profileDataExtracter(user.profile).experience.data?.department ?? "",
                                         from_date: profileDataExtracter(user.profile).experience.data?.from_date ?? "",
                                         to_date: profileDataExtracter(user.profile).experience.data?.to_date ?? "",
-                                        montly_salary: profileDataExtracter(user.profile).experience.data?.montly_salary ?? 0,
+                                        monthly_salary_text: profileDataExtracter(user.profile).experience.data?.monthly_salary_text ?? 0,
                                         position: profileDataExtracter(user.profile).experience.data?.position ?? "",
                                         sub_category: profileDataExtracter(user.profile).experience.data?.sub_category ?? "",
                                         type: profileDataExtracter(user.profile).experience.data?.type ?? "",
@@ -294,7 +294,7 @@ export const getUpdateFormValues = (user) => {
                                         "department",
                                         "from_date",
                                         "to_date",
-                                        "montly_salary",
+                                        "monthly_salary_text",
                                         "position",
                                         "sub_category",
                                         "type",
@@ -425,13 +425,10 @@ export const updateOrgFormValues = (user) => {
             image_url: org.image_url ?? '',
             no_of_employee: org.no_of_employee.toString() ?? '',
             suppliers: {
-                data: org.suppliers.data.map((item) => { 
-                    return {
-                        id: item.id ?? "",
-                        area: item.area ?? "",
-                        scale: item.scale ?? ""
-                    }                    
-                }) ?? [],
+                data: [{ 
+                        area: org.suppliers.data.area ?? "",
+                        scale: org.suppliers.data.scale ?? ""                  
+                }] ?? [],
                 on_conflict: {
                     constraint: "supplier_pkey",
                     update_columns: [

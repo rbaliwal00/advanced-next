@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { compose } from "@common";
+import { Button } from "@mui/material";
 
 import CvHeader from "./CvHeader";
 import { Box } from "@mui/material";
@@ -23,6 +24,9 @@ const ViewCv = ({ ...props }) => {
   const profile_data = props.profile_data;
   return (
     <Box sx={{ maxWidth: "496px", margin: "20px auto" }}>
+      <Button>
+        <a href="/users/cv">Edit</a>
+      </Button>
       <Box
         sx={{
           border: "0.5px solid #F3F4F6",

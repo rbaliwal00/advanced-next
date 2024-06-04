@@ -14,7 +14,7 @@ const withCreate = (Component: FunctionComponent) =>
           } = await mutate({
             variables: {
               object,
-              update_columns: ["email", "id", "phone_number", "type"],
+              update_columns: ["email", "id", "type"],
             },
             optimisticResponse: {
               __typename: "Mutation",

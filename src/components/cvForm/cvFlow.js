@@ -71,7 +71,7 @@ function convertSchema(input) {
                   department: exp.department,
                   from_date: exp.from_date,
                   to_date: exp.to_date,
-                  monthly_salary: exp.monthly_salary,
+                  monthly_salary_text: exp.monthly_salary,
                   position: exp.position,
                   sub_category: exp.sub_category,
                   type: exp.type,
@@ -79,7 +79,7 @@ function convertSchema(input) {
               })),
               on_conflict: {
                   constraint: "experience_pkey",
-                  update_columns: ["brand_name", "department", "from_date", "to_date", "monthly_salary", "position", "sub_category", "type", "work_experience"]
+                  update_columns: ["brand_name", "department", "from_date", "to_date", "monthly_salary_text", "position", "sub_category", "type", "work_experience"]
               }
           },
           preference: {

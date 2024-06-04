@@ -7,7 +7,7 @@ import PreferenceForm from './PreferenceForm';
 import VisitingCardComponent from './CarouselScreen'
 import PropTypes from 'prop-types';
 
-import { statusValidationSchema, workExperienceValidationSchema, registrationValidationSchema, preferenceValidationSchema, ThemeSelectionVaidationSchema } from './validationSchemas';
+import { statusValidationSchema, workExperienceValidationSchema, registrationValidationSchema, experiencedPreferenceValidationSchema, ThemeSelectionVaidationSchema } from './validationSchemas';
 
 const formConfigs = [
     {
@@ -55,7 +55,7 @@ const formConfigs = [
                     experience: {
                         data: {
                             brand_name: '',
-                            monthly_salary: '',
+                            monthly_salary_text: '',
                         }
                     }
                 }
@@ -96,9 +96,9 @@ const formConfigs = [
                     preference: {
                         data: {
                             aadhar: '',
-                            internship: '',
-                            one_day_job: '',
-                            partime_job: '',
+                            internship: false,
+                            one_day_job: false,
+                            partime_job: false,
                             passport: '',
                             working_city: ''
                         }
@@ -106,7 +106,7 @@ const formConfigs = [
                 }
             }
         },
-        validationSchema: preferenceValidationSchema,
+        validationSchema: experiencedPreferenceValidationSchema,
         key: 'preference',
         type: 'experienced'
     }

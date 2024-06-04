@@ -58,7 +58,7 @@ const StatusForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                         />
                         <MaterialUIFieldAdapter
                             formik={formikProps}
-                            name="profile.data.experience.data.monthly_salary"
+                            name="profile.data.experience.data.monthly_salary_text"
                             type="select"
                             label="Monthly Salary"
                             options={monthlySalaries.map((item) => { return { value: item, label: item } })}

@@ -1,5 +1,5 @@
-query MyQuery($id:uuid!) {
-  user_profile(where: {auth_id: {_eq: $id}}) {
+query MyQuery($id: uuid!) {
+  user_profile(where: { auth_id: { _eq: $id } }) {
     auth_id
     id
     first_name
@@ -64,6 +64,19 @@ query MyQuery($id:uuid!) {
       name
       phone_number
       position
+    }
+    bio {
+      about
+      facebook
+      id
+      instagram
+      is_active
+      language
+      linkedin
+      newsletter
+      portfolio
+      skills
+      whatsapp
     }
   }
 }

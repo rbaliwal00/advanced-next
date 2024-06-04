@@ -29,7 +29,7 @@ const EducationForm = ({ onBack, isLastStep, deleteFunction, type, step, ...form
 
   const handleAddEducation = () => {
     const updatededucation = [
-      ...formikProps.values.education,
+      ...(formikProps.values.education ?? []),
       initialEducation,
     ];
     formikProps.setFieldValue("education", updatededucation);

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Box } from '@mui/material';
 // import BusinessForm from './BusinessForm'
 // import AddressForm from './AddressForm';
@@ -35,7 +36,7 @@ function convertSchema(input) {
           type: input.type,
           auth_id: input.auth_id,
           awards: {
-              data: input.awards.map(award => ({
+              data: input.awards?.map(award => ({
                   id: award.id,
                   brand_name: award.brand_name,
                   department: award.department,
@@ -48,7 +49,7 @@ function convertSchema(input) {
               }
           },
           education: {
-              data: input.education.map(edu => ({
+              data: input.education?.map(edu => ({
                   id: edu.id,
                   cgpa: edu.cgpa,
                   from_date: edu.from_date,
@@ -65,7 +66,7 @@ function convertSchema(input) {
               }
           },
           experience: {
-              data: input.experience.map(exp => ({
+              data: input.experience?.map(exp => ({
                   id: exp.id,
                   brand_name: exp.brand_name,
                   department: exp.department,
@@ -82,24 +83,24 @@ function convertSchema(input) {
                   update_columns: ["brand_name", "department", "from_date", "to_date", "monthly_salary_text", "position", "sub_category", "type", "work_experience"]
               }
           },
-          preference: {
-              data: input.preference.map(pref => ({
-                  id: pref.id,
+          // preference: {
+          //     data: input.preference?.map(pref => ({
+          //         id: pref.id,
                   
-                  aadhar: pref.aadhar,
-                  internship: pref.internship,
-                  one_day_job: pref.one_day_job,
-                  partime_job: pref.partime_job,
-                  passport: pref.passport,
-                  working_city: pref.working_city
-              })),
-              on_conflict: {
-                  constraint: "preference_pkey",
-                  update_columns: ["aadhar", "internship", "one_day_job", "partime_job", "passport", "working_city"]
-              }
-          },
+          //         aadhar: pref.aadhar,
+          //         internship: pref.internship,
+          //         one_day_job: pref.one_day_job,
+          //         partime_job: pref.partime_job,
+          //         passport: pref.passport,
+          //         working_city: pref.working_city
+          //     })),
+          //     on_conflict: {
+          //         constraint: "preference_pkey",
+          //         update_columns: ["aadhar", "internship", "one_day_job", "partime_job", "passport", "working_city"]
+          //     }
+          // },
           references: {
-              data: input.references.map(ref => ({
+              data: input.references?.map(ref => ({
                   id: ref.id,
                   
                   brand_name: ref.brand_name,
@@ -113,6 +114,35 @@ function convertSchema(input) {
                   constraint: "reference_pkey",
                   update_columns: ["brand_name", "department", "email", "name", "phone_number", "position"]
               }
+          },
+          bio:{
+              data: input.bio?.map(bio => ({
+                  id: bio.id,
+                  about: bio.about,
+                  facebook: bio.facebook,
+                  instagram: bio.instagram,
+                  linkedin: bio.linkedin,
+                  language: bio.language,
+                  newsletter: bio.newsletter,
+                  portfolio: bio.portfolio,
+                  skills: bio.skills,
+                  whatsapp: bio.whatsapp
+              })),
+              on_conflict: {
+                  constraint: "bio_pkey",
+                  update_columns: [
+                      "about",
+                      "facebook",
+                      "instagram",
+                      "linkedin",
+                      "language",
+                      "newsletter",
+                      "portfolio",
+                      "skills",
+                      "whatsapp"
+                  ]
+              }
+          
           }
       }
   ];
@@ -138,6 +168,7 @@ const on_conflict = {
 }
 
 const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
+  const router = useRouter();
   const formConfigs = [
     {
       Component: EducationForm,
@@ -193,10 +224,13 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
         prefillData={profile_data}
         formConfigs={formConfigs}
         // deleteFunctionProps={deleteFunctionProps}
-        onSubmitFinal={(values) =>{
-          alert(`end of recruiter flow ${JSON.stringify(values)}`);
+        onSubmitFinal={async (values) =>{
+          // alert(`end of recruiter flow ${JSON.stringify(values)}`);
           console.log("values---", values);
-          handleSubmitForm(convertSchema(values), on_conflict)
+          await handleSubmitForm(convertSchema(values), on_conflict);
+          setTimeout(() => {
+            router.push("/users/job-seeker/cv/view");
+          }, 1000);
         }
         }
       />

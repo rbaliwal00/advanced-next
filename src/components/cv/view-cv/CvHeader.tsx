@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 
 const CvHeader = ({profile_data}:any) => {
+  const bio = profile_data.bio && profile_data.bio[0];
   return (
     <Box sx={{ borderBottom: "1px solid #CED4DA", padding: "16px 14px" }}>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -18,7 +19,7 @@ const CvHeader = ({profile_data}:any) => {
           <Typography
             sx={{ fontWeight: 400, color: "#374151", fontSize: "19.2px" }}
           >
-           {`${profile_data.first_name ?? ""} ${profile_data.last_name ?? ""}`}
+           {`${profile_data?.first_name ?? ""} ${profile_data?.last_name ?? ""}`}
           </Typography>
           <Typography
             sx={{ color: "#374151", fontWeight: 400, fontSize: "11.11px" }}
@@ -45,7 +46,7 @@ const CvHeader = ({profile_data}:any) => {
                   marginLeft: "6px",
                 }}
               >
-                1234567890
+                {bio?.whatsapp}
               </Typography>
             </Box>
           </Grid>
@@ -61,7 +62,7 @@ const CvHeader = ({profile_data}:any) => {
                   marginLeft: "6px",
                 }}
               >
-                www.facebook.com
+                {bio?.facebook}
               </Typography>
             </Box>
           </Grid>
@@ -85,7 +86,7 @@ const CvHeader = ({profile_data}:any) => {
                   marginLeft: "6px",
                 }}
               >
-                ig username
+                {bio?.instagram}
               </Typography>
             </Box>
           </Grid>
@@ -109,7 +110,7 @@ const CvHeader = ({profile_data}:any) => {
                   marginLeft: "6px",
                 }}
               >
-                linkdln username
+                {bio?.linkedin}
               </Typography>
             </Box>
           </Grid>

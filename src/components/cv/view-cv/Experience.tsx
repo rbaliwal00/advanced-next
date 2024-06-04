@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
-const Experience = ({ experiences }: any) => {
+const Experience = ({ experience }: any) => {
   return (
     <Box sx={{ borderLeft: "1px solid #4B5563" }}>
       <Typography
@@ -26,7 +26,7 @@ const Experience = ({ experiences }: any) => {
         ></span>
         Work Experience
       </Typography>
-      {experiences.map((exprience: any) => (
+      {experience?.map((exp: any) => (
         <Box sx={{ padding: "16px 14px", position: "relative" }}>
           <span
             style={{
@@ -42,26 +42,26 @@ const Experience = ({ experiences }: any) => {
           ></span>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography sx={{ fontSize: "8px", fontWeight: 400 }}>
-              {exprience.from}
+              {exp.from_date}
             </Typography>
-            <Typography sx={{ fontSize: "8px" }}>{exprience.to}</Typography>
+            <Typography sx={{ fontSize: "8px" }}>{exp.to_date}</Typography>
             <Typography sx={{ fontSize: "8px" }}>
-              {exprience.jobType}
+              {exp.type}
             </Typography>
           </Box>
 
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography sx={{ fontSize: "8px" }}>
-              {exprience.brandName}
+              {exp.brand_name}
             </Typography>
-            <Typography sx={{ fontSize: "8px" }}>{exprience.city}</Typography>
+            <Typography sx={{ fontSize: "8px" }}>{exp.city}</Typography>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography sx={{ fontSize: "8px" }}>
-              {exprience.department}
+              {exp.department}
             </Typography>
             <Typography sx={{ fontSize: "8px" }}>
-              {exprience.position}
+              {exp.position}
             </Typography>
           </Box>
         </Box>

@@ -1,5 +1,7 @@
 import React from "react";
 import { compose } from "@common";
+import { SuperTokensWrapper } from "@modules/look";
+
 import {
   withAddCvInfo,
   withGetCvInfo,
@@ -26,7 +28,7 @@ const UserCV = ({ ...props }) => {
     deleteExperience: props.deleteExperience,
     deletePreference: props.deletePreference,
     deleteReference: props.deleteReference,
-  }
+  };
   return (
     <div>
       {/* <button  onClick={()=>{
@@ -34,12 +36,16 @@ const UserCV = ({ ...props }) => {
         }}>
             Add CV
         </button> */}
-      <CVForm profile_data={profile_data} handleSubmitForm={props.addCvFlow} deleteFunctionProps={deleteFunctionProps} />
+      <CVForm
+        profile_data={profile_data}
+        handleSubmitForm={props.addCvFlow}
+        deleteFunctionProps={deleteFunctionProps}
+      />
     </div>
   );
 };
 
-export default compose(
+const WithApiWrapperComponent = compose(
   withGetCvInfo,
   withAddCvInfo,
   withDeleteUserProfileAward,
@@ -48,3 +54,13 @@ export default compose(
   withDeleteUserProfilePreference,
   withDeleteUserProfileReference,
 )(UserCV);
+
+const UserCVContainer = (props) => {
+  return (
+    <SuperTokensWrapper>
+      <WithApiWrapperComponent {...props} />{" "}
+    </SuperTokensWrapper>
+  );
+};
+
+export default UserCVContainer;

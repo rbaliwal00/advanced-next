@@ -20,6 +20,8 @@ import  whatsapp  from '@public/assets/socialMedia/whatsapp.svg';
 
 
 const BioForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
+    const index = 0;
+    console.log("formikProps5555", formikProps)
     return (
                 <Form {...formikProps}>
                     <Box sx={{
@@ -50,7 +52,7 @@ const BioForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                     }}>
                        <MaterialUIFieldAdapter
                             fromik={formikProps}
-                            name={`about`}
+                            name={`bio.${index}.about`}
                           type="textarea"
                           label="About"
                           placeholder="use AI to write"
@@ -71,14 +73,14 @@ const BioForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                         </Button>
                         <MaterialUIFieldAdapter
                             fromik={formikProps}
-                            name={`portfolioLink`}
+                            name={`bio.${index}.portfolio`}
                             type="text"
                             label="Portfolio Link"
                             placeholder="Type"
                         />
                         <MaterialUIFieldAdapter
                             fromik={formikProps}
-                            name={`newsletterLink`}
+                            name={`bio.${index}.newsletter`}
                             type="text"
                             label="Newsletter Link"
                             placeholder="Type"
@@ -99,7 +101,7 @@ const BioForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             </Box>
                                 <MaterialUIFieldAdapter
                                     fromik={formikProps}
-                                    name={`whatsAppNumber`}
+                                    name={`bio.${index}.whatsapp`}
                                     type="text"
                                     label=""
                                     placeholder="Whatsapp No."
@@ -111,7 +113,7 @@ const BioForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             </Box>
                                 <MaterialUIFieldAdapter
                                     fromik={formikProps}
-                                    name={`facebookLink`}
+                                    name={`bio.${index}.facebook`}
                                     type="text"
                                     label=""
                                     placeholder="facebook"
@@ -134,7 +136,7 @@ const BioForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             </Box>
                                 <MaterialUIFieldAdapter
                                     fromik={formikProps}
-                                    name={`instagramLink`}
+                                    name={`bio.${index}.instagram`}
                                     type="text"
                                     label=""
                                     placeholder="Instagram"
@@ -146,7 +148,7 @@ const BioForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             </Box>
                                 <MaterialUIFieldAdapter
                                     fromik={formikProps}
-                                    name={`linkedInLink`}
+                                    name={`bio.${index}.linkedin`}
                                     type="text"
                                     label=""
                                     placeholder="linkedin"
@@ -154,14 +156,15 @@ const BioForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             </Box>
                         </Box>
                         <MaterialUIFieldAdapter
-                            name="languages"
+                            name={`bio.${index}.language`}
                             type="multiselect"
                             label="Language"
                             formik={formikProps}
                             options={[{ value: 'tech', label: 'Tech' }, { value: 'retail', label: 'Retail' }]}
+                            
                         />
                         <MaterialUIFieldAdapter
-                            name="skills"
+                            name={`bio.${index}.skills`}
                             type="multiselect"
                             label="Skills"
                             formik={formikProps}

@@ -1,8 +1,10 @@
 import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 
-const Info = () => {
+const Info = ({ profile_data }) => {
   const mobile = useMediaQuery("(max-width:600px)");
+
+  const bio = profile_data.bio && profile_data.bio[0];
 
   return (
     <Box>
@@ -21,7 +23,7 @@ const Info = () => {
             <Typography
               sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
             >
-              Skill1, SKill2, skill3, skill4
+              {bio?.skills.join(", ")}
             </Typography>
           </Box>
           <Box>
@@ -38,7 +40,7 @@ const Info = () => {
             <Typography
               sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
             >
-              Language1, Language2, Language3, Language4, Language5, Language6
+              {bio?.language.join(", ")}
             </Typography>
           </Box>
           <Box>
@@ -52,52 +54,31 @@ const Info = () => {
             >
               Awards
             </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Award name
-            </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Brand name
-            </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Department
-            </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Position
-            </Typography>
 
-            <Typography
-              sx={{
-                fontSize: "8px",
-                color: "#000000",
-                fontWeight: 300,
-                marginTop: "10px",
-              }}
-            >
-              Award name
-            </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Brand name
-            </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Department
-            </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Position
-            </Typography>
+            {profile_data?.awards?.map((award: any) => (
+              <Box>
+                <Typography
+                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                >
+                  {award.name}
+                </Typography>
+                <Typography
+                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                >
+                  {award.brand_name}
+                </Typography>
+                <Typography
+                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                >
+                  {award.department}
+                </Typography>
+                <Typography
+                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                >
+                  {award.position}
+                </Typography>
+              </Box>
+            ))}
           </Box>
           <Box>
             <Typography
@@ -110,36 +91,40 @@ const Info = () => {
             >
               Reference
             </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Reference name
-            </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Reference contact number
-            </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Brand name
-            </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Add email
-            </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Department
-            </Typography>
-            <Typography
-              sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-            >
-              Position
-            </Typography>
+            {profile_data?.references?.map((refer: any, index: any) => (
+              <Box>
+                <Typography
+                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                >
+                  {refer.name}
+                </Typography>
+                <Typography
+                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                >
+                 {refer.phone_number}
+                </Typography>
+                <Typography
+                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                >
+                  {refer.brand_name}
+                </Typography>
+                <Typography
+                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                >
+                  {refer.email}
+                </Typography>
+                <Typography
+                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                >
+                  {refer.department}
+                </Typography>
+                <Typography
+                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                >
+                  {refer.position}
+                </Typography>
+              </Box>
+            ))}
           </Box>
         </>
       ) : (
@@ -157,36 +142,40 @@ const Info = () => {
                 >
                   Reference
                 </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Reference name
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Reference contact number
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Brand name
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Add email
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Department
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Position
-                </Typography>
+                {
+                  profile_data?.references?.map((refer: any, index: any) => (
+                    <Box>
+                    <Typography
+                      sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                    >
+                      {refer.name}
+                    </Typography>
+                    <Typography
+                      sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                    >
+                     {refer.phone_number}
+                    </Typography>
+                    <Typography
+                      sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                    >
+                      {refer.brand_name}
+                    </Typography>
+                    <Typography
+                      sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                    >
+                      {refer.email}
+                    </Typography>
+                    <Typography
+                      sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                    >
+                      {refer.department}
+                    </Typography>
+                    <Typography
+                      sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                    >
+                      {refer.position}
+                    </Typography>
+                  </Box>))}
               </Box>
               <Box>
                 <Typography
@@ -199,26 +188,16 @@ const Info = () => {
                 >
                   Skills
                 </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Skill1
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  SKill2
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Skill3
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Skill4
-                </Typography>
+                {
+                  bio?.skills.map((skill: any) => (
+                    <Typography
+                      sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                    >
+                      {skill}
+                    </Typography>
+                  ))
+                }
+                
               </Box>
             </Grid>
             <Grid item xs={7} sm={6}>
@@ -233,52 +212,30 @@ const Info = () => {
                 >
                   Awards
                 </Typography>
+                {profile_data?.awards?.map((award: any) => (
+              <Box>
                 <Typography
                   sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
                 >
-                  Award name
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Brand name
+                  {award.name}
                 </Typography>
                 <Typography
                   sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
                 >
-                  Department
+                  {award.brand_name}
                 </Typography>
                 <Typography
                   sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
                 >
-                  Position
-                </Typography>
-
-                <Typography
-                  sx={{
-                    fontSize: "8px",
-                    color: "#000000",
-                    fontWeight: 300,
-                    marginTop: "10px",
-                  }}
-                >
-                  Award name
+                  {award.department}
                 </Typography>
                 <Typography
                   sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
                 >
-                  Brand name
+                  {award.position}
                 </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Department
-                </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  Position
-                </Typography>
+              </Box>
+            ))}
               </Box>
               <Box>
                 <Typography
@@ -291,30 +248,15 @@ const Info = () => {
                 >
                   Language
                 </Typography>
-                <Typography
-                  sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                >
-                  <Typography
-                    sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                  >
-                    Language1
-                  </Typography>
-                  <Typography
-                    sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                  >
-                    Language2
-                  </Typography>
-                  <Typography
-                    sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                  >
-                    Language3
-                  </Typography>
-                  <Typography
-                    sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
-                  >
-                    Language4
-                  </Typography>
-                </Typography>
+                {
+                  bio?.language?.map((language: any) => (
+                    <Typography
+                      sx={{ fontSize: "8px", color: "#000000", fontWeight: 300 }}
+                    >
+                      {language}
+                    </Typography>
+                  ))
+                }
               </Box>
             </Grid>
           </Grid>

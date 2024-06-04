@@ -24,8 +24,8 @@ const ViewCv = ({ ...props }) => {
         }}
       >
         <CvHeader profile_data={profile_data} />
-        <About />
-        <Content />
+        <About   profile_data={profile_data} />
+        <Content  profile_data={profile_data} />
       </Box>
       <Box sx={{ margin: "30px" }}>
         <video

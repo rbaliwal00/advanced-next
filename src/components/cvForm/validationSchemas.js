@@ -1,15 +1,29 @@
 import * as Yup from "yup";
 
 export const educationValidationSchema = Yup.object().shape({
-  educations: Yup.array().of(
-    Yup.object().shape({
-      institutionName: Yup.string().required("Institution name is required"),
-      educationType: Yup.string().required("Education type is required"),
-      cgpa: Yup.string().required("CGPA is required"),
-      fromDate: Yup.date().required("From date is required"),
-      toDate: Yup.date().required("To date is required"),
-    }),
-  ),
+  education:  Yup.array().of(Yup.object().shape({
+      institution_name: Yup.string().required("Institution Name is required"),
+      // institution_city: Yup.string().required(
+      //   "City of Institution is required",
+      // ),
+      // level: Yup.string().required("Level of education is required"),
+      study_field: Yup.string().required("Field of study is required"),
+      // passout_year: Yup.date()
+      //     .max(new Date(), 'Passout year cannot be in the future')
+      //     .required('Passout year is required')
+      //     .typeError('Invalid date format'),
+      from_date: Yup.date()
+        .max(new Date(), "From date cannot be in the future")
+        .required("From date is required")
+        .typeError("Invalid date format"),
+      to_date: Yup.date()
+        .max(new Date(), "To date cannot be in the future")
+        .required("To date is required")
+        .typeError("Invalid date format")
+        .when("from_date", (from_date, schema) => {
+          return schema.min(from_date, "To date cannot be before from date");
+        }),
+    })),
 });
 
 export const awardValidationSchema = Yup.object().shape({

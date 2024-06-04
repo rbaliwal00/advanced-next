@@ -16,7 +16,7 @@ const Container = (props) => {
 
   const onSubmit = async (object) => {
     const result = await createUserProfile(object);
-    if(result.id){
+    if(result?.id){
       localStorage.setItem("currId", result.id);
       router.push("/users/getOther");
     }

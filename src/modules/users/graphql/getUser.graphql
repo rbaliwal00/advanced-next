@@ -38,7 +38,7 @@ query getUser($id: uuid = "") {
         department
         from_date
         to_date
-        montly_salary
+        # montly_salary
         position
         sub_category
         type

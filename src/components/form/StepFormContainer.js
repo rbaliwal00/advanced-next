@@ -54,7 +54,7 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
                 onSubmit={handleNext}
             >
                     {formikProps =>  {
-                        console.log("check formikprops here--", formikProps)
+                        console.log("check formik prop here--", formikProps)
                         return (                
                             <CurrentForm {...formikProps} deleteFunction={deleteFunction} name={currentConfig.name} type={currentConfig.type} onBack={handleBack} isLastStep={isLastStep} step={step} />
                     )}}

@@ -36,7 +36,7 @@ const SuperTokensWrapper = ({
         setLoading(false);
         return;
       }
-      // if (res.data?.user?.profile[0]?.id) {
+      // if (router.pathname === '/users/update' && res.data?.user?.profile[0]?.id) {
       //   router.replace?.("/users/get-one");
       // }
       setLoading(false);

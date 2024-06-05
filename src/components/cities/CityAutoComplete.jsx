@@ -49,13 +49,15 @@ const CityAutoComplete = (props) => {
       id="combo-box-demo"
       options={options}
       fullWidth
-      onInputChange={debounce(async (e) => {
+      onInputChange={debounce(async (e, value, re) => {
+        console.log("check event here--", e, value, re);
         const newCities =
           (await loadMoreCities(e.target.value))?.data?.cities ?? [];
         setOptions(newCities?.map((i) => ({ label: i.city })) ?? []);
       }, 500)}
       renderInput={(params) => <TextField {...params} />}
       {...rest}
+      onChange={(e,value) => console.log("check value to be sent", value)}
     />
   );
 };

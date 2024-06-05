@@ -50,6 +50,7 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
       },
       validationSchema: registrationValidationSchema,
       key: 'registration',
+      type: 'fresher'
     },
     {
       Component: EducationForm,

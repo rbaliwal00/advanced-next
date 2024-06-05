@@ -12,9 +12,15 @@ const Container = (props) => {
     const {
         insertUserAuth,
         user,
-        loadingUserData
+        loadingUserData,
+        refetchUserData
         //router: { push },
     } = props;
+
+    React.useEffect(() => {
+        console.log("props---+", props);
+        refetchUserData();
+    }, []);
 
     const router = useRouter()
 

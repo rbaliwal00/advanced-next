@@ -36,9 +36,14 @@ const SuperTokensWrapper = ({
         setLoading(false);
         return;
       }
-      // if (router.pathname === '/users/update' && res.data?.user?.profile[0]?.id) {
-      //   router.replace?.("/users/get-one");
-      // }
+      if (router.pathname === '/' && res.data?.user?.profile[0]?.id) {
+        console.log("🚀 ~ Session.doesSessionExist ~ router.pathname", router.pathname, res.data?.user?.profile[0])
+        if(res.data?.user?.profile[0].type === 'jobSeeker'){
+          router.replace?.("/users/get-one");
+        }else{
+          router.replace?.("/users/getOther");
+        }
+      }
       setLoading(false);
     });
   }, []);

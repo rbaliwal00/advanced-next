@@ -5,8 +5,7 @@ import { Box } from '@mui/material';
 import PropTypes from 'prop-types';
 import { nextBtn, renderBackButton, } from './utilities';
 
-const RegistrationForm = ({ onBack, isLastStep, type, step, handleNext, ...formikProps }) => {
-    console.log("check  handlenext in registartion", handleNext, formikProps.values);
+const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 
     return (
         <Form {...formikProps} >
@@ -120,8 +119,7 @@ RegistrationForm.propTypes = {
     type: PropTypes.string,
     onBack: PropTypes.func,
     isLastStep: PropTypes.bool,
-    step: PropTypes.number.isRequired,
-    handleNext: PropTypes.func
+    step: PropTypes.number.isRequired
 }
 
 export default RegistrationForm;

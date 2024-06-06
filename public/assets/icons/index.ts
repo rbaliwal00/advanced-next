@@ -50,3 +50,8 @@ export * as Linkedin from "./linkedin.svg";
 
 export * as Person from "./Person.svg";
 export * as Hotel from "./hotel.svg";
+
+export * as OneDay from "./OneDay.svg";
+export * as Internship from "./internship.svg";
+export * as PartTime from "./PartTime.svg";
+export * as FullTime from "./FullTime.svg";

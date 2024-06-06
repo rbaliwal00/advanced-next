@@ -60,7 +60,8 @@ const BusinessForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                         <MaterialUIFieldAdapter
                             formik={formikProps}
                             name="organization_auth_map.data.organization.data.business_nature"
-                            type="select"
+                            type="multiselect"
+                            maxMultipleLength={2}
                             label="Nature of Business"
                             options={natureOfBusiness.map((item) => { return { value: item, label: item } })}
                         />

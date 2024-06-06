@@ -11,6 +11,7 @@ import Button from "@components/button";
 import { addBanner } from "@public/assests";
 import Image from "next/image";
 import AdsSwiper from "@components/ads-swiper";
+import Toast from "@components/toast";
 
 // Validation schema
 const validationSchema = Yup.object({
@@ -34,6 +35,9 @@ const MobileNumberForm = ({
   btnText,
   footerText,
   callback,
+  handleClose,
+  handleClick,
+  open,
 }) => (
   <Formik
     initialValues={{
@@ -43,6 +47,7 @@ const MobileNumberForm = ({
     onSubmit={(values, { setSubmitting, resetForm }) => {
       setSubmitting(true);
       const status = callback(values.mobileNumber);
+      handleClick();
       if (!status) resetForm();
       setSubmitting(false);
     }}
@@ -57,7 +62,7 @@ const MobileNumberForm = ({
             display: "flex",
             flexDirection: "column",
             textAlign: "center",
-            width: "100%"
+            width: "100%",
           }}
         >
           <Typography
@@ -68,9 +73,9 @@ const MobileNumberForm = ({
               },
               mt: {
                 xs: "48px",
-                sm: "16px"
+                sm: "16px",
               },
-              fontWeight: "bold"
+              fontWeight: "bold",
             }}
           >
             {header || "Enter Mobile Number"}
@@ -84,7 +89,7 @@ const MobileNumberForm = ({
               type="text"
               label="Mobile Number"
               placeholder="+9876543210"
-            // style={{ backgroundColor: "white" }}
+              // style={{ backgroundColor: "white" }}
             />
           </Box>
           <Box
@@ -115,10 +120,10 @@ const MobileNumberForm = ({
             fontSize={10}
             fontWeight={400}
             sx={{ marginTop: "30px" }}
-            color={'#8899A8'}
+            color={"#8899A8"}
           >
             {footerText || "By continuing agree to Horecah"} <br></br>
-            <Typography fontWeight={600} fontSize={10} color={'#8899A8'}>
+            <Typography fontWeight={600} fontSize={10} color={"#8899A8"}>
               <Link href="#" underline="always">
                 Terms of Use & Privacy Policy
               </Link>

@@ -75,6 +75,10 @@ class MaterialUIFieldAdapter extends Component {
     formik.setFieldValue(name, value);
   };
 
+  handleMultipleSelect = (event) => {
+    console.log("cehck all events in multiselect", event);
+  }
+
   handleBooleanValueChange = (event) => {
     const { formik, name } = this.props;
     const value = event.target.value === 'true';
@@ -87,7 +91,7 @@ class MaterialUIFieldAdapter extends Component {
   };
 
   renderComponent = () => {
-    const { type, name, label, formik, placeholder, options, rowRadio, style, radioImg, docType, isSmallScreen, subCategoryName, positionName, multiple } =
+    const { type, name, label, formik, placeholder, options, rowRadio, style, radioImg, docType, isSmallScreen, subCategoryName, positionName, maxMultipleLength } =
       this.props;
     const { values, errors, touched } = formik;
     const value = getIn(values, name);
@@ -296,7 +300,7 @@ class MaterialUIFieldAdapter extends Component {
               sx={{ borderRadius: "6px", maxHeight: "48px", overflow: "auto" }}
               name={name}
               value={formik.values[name] || []} // Ensure the value is an array for multiple selections
-              onChange={this.handleChange}
+              onChange={this.handleMultipleSelect}
               onBlur={this.handleBlur}
               renderValue={(selected) =>
                 Array.isArray(selected)

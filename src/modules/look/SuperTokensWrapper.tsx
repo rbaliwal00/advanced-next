@@ -6,7 +6,7 @@ import ITEM from "@modules/users/graphql/item.graphql";
 
 const SuperTokensWrapper = ({
   children,
-  auth = false,
+  auth = true,
   redirectIfLoggedIn = false,
 }: any) => {
   const router = useRouter();

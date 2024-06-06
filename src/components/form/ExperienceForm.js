@@ -1,47 +1,18 @@
 import React from 'react';
-import { Form } from 'formik';
+import { Form, Field } from 'formik';
 import { Box, Button } from '@mui/material';
 import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';
 import PropTypes from 'prop-types';
 import { nextBtn, renderBackButton } from './utilities';
 
-// Example data for selects (should be fetched or defined elsewhere in real scenarios)
 const experienceOptions = [
     { value: '1-3', label: '1-3 years' },
     { value: '4-6', label: '4-6 years' },
     { value: '7+', label: '7+ years' }
 ];
 
-const departmentOptions = [
-    { value: 'hr', label: 'Human Resources' },
-    { value: 'it', label: 'Information Technology' },
-    { value: 'marketing', label: 'Marketing' }
-];
-
-const positionOptions = [
-    { value: 'manager', label: 'Manager' },
-    { value: 'seniorDeveloper', label: 'Senior Developer' },
-    { value: 'hrConsultant', label: 'HR Consultant' }
-];
-
-
 
 const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
-
-    const renderSelect = (department) => {
-        if (department === 'marketing') {
-            return (
-                <MaterialUIFieldAdapter
-                    type="select"
-                    options={[{ value: 'New York', label: 'New York' }, { value: 'Los Angeles', label: 'Los Angeles' }]}
-                    name="profile.data.experience.data.sub_category"
-                    label="Sub Category"
-                    placeholder="Select"
-                    {...formikProps}
-                />
-            )
-        } else return <></>
-    }
 
     return (
                 <Form {...formikProps}>
@@ -83,19 +54,10 @@ const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) 
                             />
                         </Box>
                         <MaterialUIFieldAdapter
-                            formik={formikProps}
-                            type="select"
+                            type="categoryAutocomplete"
                             name="profile.data.experience.data.department"
-                            label="Department"
-                            options={departmentOptions}
-                        />
-                        {formikProps.values.department && renderSelect(formikProps.values.department)}
-                        <MaterialUIFieldAdapter
-                            formik={formikProps}
-                            type="select"
-                            name="profile.data.experience.data.position"
-                            label="Position"
-                            options={positionOptions}
+                            subCategoryName="profile.data.experience.data.sub_category"
+                            positionName="profile.data.experience.data.position"
                         />
                         <Box display="flex" justifyContent="space-between" width="100%" fullWidth>
                             {nextBtn(isLastStep)}

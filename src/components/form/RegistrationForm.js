@@ -4,6 +4,7 @@ import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';
 import { Box } from '@mui/material';
 import PropTypes from 'prop-types';
 import { nextBtn, renderBackButton, } from './utilities';
+import CatergoryAutoComplete from '@components/category/CatergoryAutoComplete';
 
 const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 

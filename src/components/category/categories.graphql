@@ -1,0 +1,7 @@
+query MyQuery {
+  other_category {
+    name
+    subcategories
+    positions
+  }
+}

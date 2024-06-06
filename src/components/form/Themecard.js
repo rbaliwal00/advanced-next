@@ -22,8 +22,8 @@ const styles = {
 
 const renderCard = (type, formDetails) => {
     const { phone_number, email, profile, organization_auth_map } = formDetails || {};
-    const { education, experience,  preference, image_url ='https://picsum.photos/200/300', first_name, last_name, sub_type } = profile[0] || [];
-    const { brand_name = '', business_nature = '', company_name = '', no_of_employee = '', organization_location_map = '', contact = [], image_url: orgImgUrl='https://picsum.photos/200/300' } = organization_auth_map[0]?.organization || []
+    const { education, experience,  preference, image_url, first_name, last_name, sub_type } = profile[0] || [];
+    const { brand_name = '', business_nature = '', company_name = '', no_of_employee = '', organization_location_map = '', contact = [], image_url: orgImgUrl } = organization_auth_map[0]?.organization || []
     const { block_number, area, city } = organization_location_map[0]?.location || [];
     const checkIfexperienced = sub_type === 'experienced';
 

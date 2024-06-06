@@ -21,13 +21,10 @@ import { Radio, RadioGroup } from "@mui/material";
 import GstInputComponent from "./UploadCard";
 import Image from "next/image";
 import CityAutoComplete from "../cities/CityAutoComplete";
+import { responsiveFontSize } from "./utilities";
+import CatergoryAutoComplete from "@components/category/CatergoryAutoComplete";
 
-const responsiveFontSize = {
-  fontSize: {
-    xs: "14px",
-    sm: '16px'
-  },
-};
+
 
 const filePropType =
   typeof window !== "undefined" && typeof File !== "undefined"
@@ -90,7 +87,7 @@ class MaterialUIFieldAdapter extends Component {
   };
 
   renderComponent = () => {
-    const { type, name, label, formik, placeholder, options, rowRadio, style, radioImg, docType, isSmallScreen } =
+    const { type, name, label, formik, placeholder, options, rowRadio, style, radioImg, docType, isSmallScreen, subCategoryName, positionName, multiple } =
       this.props;
     const { values, errors, touched } = formik;
     const value = getIn(values, name);
@@ -466,6 +463,7 @@ class MaterialUIFieldAdapter extends Component {
             )}
             <CityAutoComplete
               type={type}
+              multiple
               fullWidth
               sx={[
                 {
@@ -508,6 +506,28 @@ class MaterialUIFieldAdapter extends Component {
               }}
             />
           </Box>
+        );
+
+        case "categoryAutocomplete": 
+        return (
+          <CatergoryAutoComplete
+            departmentName={name}
+            multiple
+            subCategoryName={subCategoryName}
+            positionName={positionName}
+            onChange={(values) => {
+              formik.setFieldValue(values.departmentName, values.department);
+              formik.setFieldValue(values.subCategoryName, values.subCategory);
+              formik.setFieldValue(values.positionName, values.position);
+            }}
+            onBlur={this.handleBlur}
+            {...this.props}
+            error={touch && Boolean(error)}
+            helperText={touch && error}
+            FormHelperTextProps={{
+              textAlign: "left", // This style will align the helper text to the right
+            }}
+          />
         );
 
       default:

@@ -460,7 +460,8 @@ export const updateOrgFormValues = (user) => {
     return formValues;
 }
 
-export const states = ["Andhra Pradesh",
+export const states = [
+    "Andhra Pradesh",
     "Arunachal Pradesh",
     "Assam",
     "Bihar",
@@ -529,3 +530,10 @@ export const monthlySalaries = [
     "50k - 75k m",
     "75k - 100k m"
 ]
+
+export const responsiveFontSize = {
+    fontSize: {
+        xs: "14px",
+        sm: '16px'
+    },
+};

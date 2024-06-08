@@ -4,6 +4,7 @@ import Grow, { GrowProps } from "@mui/material/Grow";
 import Snackbar from "@mui/material/Snackbar";
 import CloseIcon from "@mui/icons-material/Close";
 import * as React from "react";
+import { set } from "lodash";
 
 function GrowTransition(props: GrowProps) {
   return <Grow {...props} />;
@@ -14,20 +15,16 @@ type ToastProps = {
   open?: boolean;
   handleClose?: any;
   type?: "success" | "error" | "warning" | "default";
+  setOpen?: any;
 };
 
-const Toast = ({ text, type = "default", open, handleClose }: ToastProps) => {
-  // const [open, setOpen] = React.useState(false);
-  // console.log("show", text);
-
-  // const handleClick = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
+const Toast = ({
+  text,
+  type = "default",
+  open,
+  setOpen,
+  handleClose,
+}: ToastProps) => {
   const getTextColor = () => {
     switch (type) {
       case "success":
@@ -48,7 +45,7 @@ const Toast = ({ text, type = "default", open, handleClose }: ToastProps) => {
     <Box>
       <Snackbar
         open={open}
-        autoHideDuration={3000}
+        autoHideDuration={2000}
         onClose={handleClose}
         anchorOrigin={{ vertical, horizontal }}
       >

@@ -1,12 +1,18 @@
 import Image from "next/image";
-import { banglore, delhi, hydrabad, kolkata, mumbai } from "@public/assests";
+import {
+  bangalore,
+  delhi,
+  hydrabad,
+  kolkata,
+  mumbai,
+} from "@public/assets/icons";
 import { Box } from "@mui/material";
 
 const Cities = () => {
   const cities = [
     { name: "Delhi", src: delhi },
     { name: "Mumbai", src: mumbai },
-    { name: "Bengaluru (HQ)", src: banglore },
+    { name: "Bengaluru (HQ)", src: bangalore },
     { name: "Kolkata", src: kolkata },
     { name: "Hyderabad", src: hydrabad },
   ];

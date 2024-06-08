@@ -5,11 +5,16 @@ body {
   font-family: "Poppins";
 }
 
-.slick-prev:before{
-  display:none;
+.slick-prev:before {
+  display: none;
 }
 
 .slick-next:before {
   display: none;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

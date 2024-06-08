@@ -52,6 +52,7 @@ const formConfigs = [
                 data: {
                     type: "jobSeeker",
                     sub_type: 'experienced',
+                    current_city: '',
                     experience: {
                         data: {
                             brand_name: '',
@@ -60,7 +61,6 @@ const formConfigs = [
                     }
                 }
             },
-            currentCity: ''
         },
         validationSchema: statusValidationSchema,
         key: 'status'

@@ -32,8 +32,9 @@ const withCities = (Component) =>
   })(Component);
 
 const CityAutoComplete = (props) => {
-  const { loadMoreCities, cities, ...rest } = props;
+  const { loadMoreCities, cities, onChange, multiple, maxMultipleLength, ...rest } = props;
   const [loading, setLoading] = useState(true);
+  const [value, setValue] = useState('' || []);
   const [options, setOptions] = useState(
     cities?.map((i) => ({ label: i.city })) ?? [],
   );
@@ -43,21 +44,32 @@ const CityAutoComplete = (props) => {
     }
   }, [loading]);
 
+  const handleChange = (event, value, reason) => {
+    if (reason == 'selectOption'){
+      setValue(value.label)
+      onChange(value.label)
+    }
+  }
+
+  const handleInputChange = debounce(async (e, value, re) => {
+    if (re === 'input' && value.length > 0){     
+      const newCities = (await loadMoreCities(e.target.value))?.data?.cities ?? [];
+      setOptions(newCities?.map((i) => ({ label: i.city })) ?? []);
+    }
+  }, 500)
+
   return (
     <Autocomplete
       disablePortal
-      id="combo-box-demo"
+      id="combo-box-cities"
+      //multiple={maxMultipleLength > 0 ? true : false}
       options={options}
+      value={value}
       fullWidth
-      onInputChange={debounce(async (e, value, re) => {
-        console.log("check event here--", e, value, re);
-        const newCities =
-          (await loadMoreCities(e.target.value))?.data?.cities ?? [];
-        setOptions(newCities?.map((i) => ({ label: i.city })) ?? []);
-      }, 500)}
+      onInputChange={handleInputChange}
       renderInput={(params) => <TextField {...params} />}
       {...rest}
-      onChange={(e,value) => console.log("check value to be sent", value)}
+      onChange={handleChange}
     />
   );
 };

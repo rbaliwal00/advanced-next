@@ -46,7 +46,7 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
 
     return (
         <Box sx={{ background: '#fff'}}>
-            <CustomProgressBar  progress={progress} label={(currentConfig.key)} onBack={handleBack}/>
+            <CustomProgressBar  progress={progress} label={(currentConfig.key)} onBack={handleBack} step={step}/>
             <Formik
                 key={step}
                 initialValues={getInitialValues()}

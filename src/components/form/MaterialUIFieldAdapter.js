@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {
   TextField,
@@ -11,63 +11,46 @@ import {
   Select,
   Card,
   CardContent,
-  Autocomplete
+  Radio,
+  RadioGroup
 } from "@mui/material";
 import CustomDatePicker from "./CustomCalendarBtn";
 import { connect, getIn } from "formik";
 import moment from "moment";
 import ImageUploadButton from "./ImgUploadBtn";
-import { Radio, RadioGroup } from "@mui/material";
 import GstInputComponent from "./UploadCard";
 import Image from "next/image";
 import CityAutoComplete from "../cities/CityAutoComplete";
 import { responsiveFontSize } from "./utilities";
 import CatergoryAutoComplete from "@components/category/CatergoryAutoComplete";
 
-
-
 const filePropType =
   typeof window !== "undefined" && typeof File !== "undefined"
     ? PropTypes.instanceOf(File).isRequired
     : PropTypes.any;
 
-class MaterialUIFieldAdapter extends Component {
-  static propTypes = {
-    formik: PropTypes.object.isRequired,
-    type: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string,
-    placeholder: PropTypes.string,
-    rowRadio: PropTypes.bool,
-    options: PropTypes.arrayOf(
-      PropTypes.shape({
-        label: PropTypes.string.isRequired,
-        value: PropTypes.oneOfType([
-          PropTypes.string,
-          PropTypes.number,
-          PropTypes.bool,
-        ]).isRequired,
-      }),
-    ),
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.object, // For date or complex objects
-      PropTypes.array, // for multiSelect
-      filePropType, // For file inputs
-    ]),
-    style: PropTypes.object,
-    radioImg: PropTypes.string,
-    docType: PropTypes.string,
-    isSmallScreen: PropTypes.bool
-  };
+const MaterialUIFieldAdapter = ({
+  formik,
+  type,
+  name,
+  label,
+  placeholder,
+  rowRadio = true,
+  options,
+  value,
+  style,
+  radioImg,
+  docType,
+  isSmallScreen = false,
+  subCategoryName,
+  positionName,
+  maxMultipleLength = 0,
+  isDob
+}) => {
 
-  static defaultProps = {
-    rowRadio: true, // Default value if not provided
-    isSmallScreen: false
-  };
+  const [ selected, setSelected] = useState([])
 
-  handleChange = (event) => {
-    const { formik, name } = this.props;
+  const handleChange = (event) => {
     const value =
       event.target.type === "checkbox"
         ? event.target.checked
@@ -75,24 +58,36 @@ class MaterialUIFieldAdapter extends Component {
     formik.setFieldValue(name, value);
   };
 
-  handleMultipleSelect = (event) => {
-    console.log("cehck all events in multiselect", event);
-  }
-
-  handleBooleanValueChange = (event) => {
-    const { formik, name } = this.props;
-    const value = event.target.value === 'true';
+  const handleAutocompleteChange = (value) => {
     formik.setFieldValue(name, value);
   }
 
-  handleBlur = () => {
-    const { formik, name } = this.props;
+  const radioValue = () => {
+    const aadharValueLength = formik.values.profile.data.preference.data.aadhar.length;
+    if (name === 'idType'){
+      const tempValue = (aadharValueLength > 0) ? 'aadhar' : 'passport';
+      formik.values.idType = tempValue
+      return tempValue
+    }else return value
+  }
+
+  const handleMultipleSelect = (event) => {
+    if(selected.length < maxMultipleLength) {
+      setSelected([...selected, ...event.target.value])
+      formik.setFieldValue(name, [...selected, ...event.target.value]);
+    }
+  };
+
+  const handleBooleanValueChange = (event) => {
+    const value = event.target.value === 'true';
+    formik.setFieldValue(name, value);
+  };
+
+  const handleBlur = () => {
     formik.setFieldTouched(name, true);
   };
 
-  renderComponent = () => {
-    const { type, name, label, formik, placeholder, options, rowRadio, style, radioImg, docType, isSmallScreen, subCategoryName, positionName, maxMultipleLength } =
-      this.props;
+  const renderComponent = () => {
     const { values, errors, touched } = formik;
     const value = getIn(values, name);
     const error = getIn(errors, name);
@@ -148,8 +143,8 @@ class MaterialUIFieldAdapter extends Component {
               InputLabelProps={{ shrink: false }}
               placeholder={placeholder}
               inputProps={{ maxlength: type === 'number' ? 10 : 100 }}
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
+              onChange={handleChange}
+              onBlur={handleBlur}
               error={touch && Boolean(error)}
               helperText={touch && error}
               FormHelperTextProps={{
@@ -185,8 +180,8 @@ class MaterialUIFieldAdapter extends Component {
               name={name}
               value={value || ""}
               placeholder={placeholder}
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
+              onChange={handleChange}
+              onBlur={handleBlur}
               inputProps={{
                 maxLength: 50,
               }}
@@ -206,8 +201,8 @@ class MaterialUIFieldAdapter extends Component {
               control={
                 <Checkbox
                   checked={value || false}
-                  onChange={this.handleChange}
-                  onBlur={this.handleBlur}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   name={name}
                 />
               }
@@ -266,8 +261,8 @@ class MaterialUIFieldAdapter extends Component {
               }}
               name={name}
               value={value || ""}
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
+              onChange={handleChange}
+              onBlur={handleBlur}
               displayEmpty
               error={touch && Boolean(error)}
               placeholder="Select"
@@ -299,9 +294,9 @@ class MaterialUIFieldAdapter extends Component {
               fullWidth
               sx={{ borderRadius: "6px", maxHeight: "48px", overflow: "auto" }}
               name={name}
-              value={formik.values[name] || []} // Ensure the value is an array for multiple selections
-              onChange={this.handleMultipleSelect}
-              onBlur={this.handleBlur}
+              value={selected} // Ensure the value is an array for multiple selections
+              onChange={handleMultipleSelect}
+              onBlur={handleBlur}
               renderValue={(selected) =>
                 Array.isArray(selected)
                   ? selected
@@ -339,7 +334,8 @@ class MaterialUIFieldAdapter extends Component {
                   date,
                 );
               }}
-              onBlur={this.handleBlur}
+              isDob={isDob}
+              onBlur={handleBlur}
               placeholder={placeholder || "YYYY-MM-DD"}
             />
             {touch && error && <Typography color="error">{error}</Typography>}
@@ -361,9 +357,9 @@ class MaterialUIFieldAdapter extends Component {
             <RadioGroup
               name={name}
               sx={{ width: "100%", justifyContent: "space-between" }}
-              value={value || ""}
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
+              value={radioValue()}
+              onChange={handleChange}
+              onBlur={handleBlur}
               row={rowRadio} // Set 'row' to true if you want horizontal layout
             >
               {options.map((option) => (
@@ -399,6 +395,7 @@ class MaterialUIFieldAdapter extends Component {
                 // Update the Formik state with the file object
                 formik.setFieldValue(name, file);
               }}
+              valueUrl={formik.values.profile.data?.image_url ?? ''}
               label={label}
             />
             {touch && error && <Typography color="error">{error}</Typography>}
@@ -419,7 +416,7 @@ class MaterialUIFieldAdapter extends Component {
                 row
                 name={name}
                 value={value !== undefined ? value.toString() : ''}
-                onChange={this.handleBooleanValueChange}
+                onChange={handleBooleanValueChange}
                 sx={{ justifyContent: 'space-between', maxWidth: isSmallScreen ? '100%' : '67%' }}
               >
                 {options.map(option => (
@@ -449,6 +446,7 @@ class MaterialUIFieldAdapter extends Component {
                 formik.setFieldValue(name, file);
               }}
               docType={docType}
+              // valueUrl={formik.values.profile.data?.image_url ?? ''}
             />
             {touch && error && <Typography color="error">{error}</Typography>}
           </Box>
@@ -467,7 +465,8 @@ class MaterialUIFieldAdapter extends Component {
             )}
             <CityAutoComplete
               type={type}
-              multiple
+              multiple={maxMultipleLength > 0 ? true : false}
+              maxMultipleLength={maxMultipleLength}
               fullWidth
               sx={[
                 {
@@ -501,8 +500,8 @@ class MaterialUIFieldAdapter extends Component {
               InputLabelProps={{ shrink: false }}
               placeholder={placeholder}
               inputProps={{ maxlength: type === 'number' ? 10 : 100 }}
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
+              onChange={handleAutocompleteChange}
+              onBlur={handleBlur}
               error={touch && Boolean(error)}
               helperText={touch && error}
               FormHelperTextProps={{
@@ -512,11 +511,10 @@ class MaterialUIFieldAdapter extends Component {
           </Box>
         );
 
-        case "categoryAutocomplete": 
+      case "categoryAutocomplete":
         return (
           <CatergoryAutoComplete
             departmentName={name}
-            multiple
             subCategoryName={subCategoryName}
             positionName={positionName}
             onChange={(values) => {
@@ -524,8 +522,8 @@ class MaterialUIFieldAdapter extends Component {
               formik.setFieldValue(values.subCategoryName, values.subCategory);
               formik.setFieldValue(values.positionName, values.position);
             }}
-            onBlur={this.handleBlur}
-            {...this.props}
+            onBlur={handleBlur}
+            maxMultipleLength
             error={touch && Boolean(error)}
             helperText={touch && error}
             FormHelperTextProps={{
@@ -539,9 +537,41 @@ class MaterialUIFieldAdapter extends Component {
     }
   };
 
-  render() {
-    return this.renderComponent();
-  }
-}
+  return renderComponent();
+};
+
+MaterialUIFieldAdapter.propTypes = {
+  formik: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  rowRadio: PropTypes.bool,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+        PropTypes.bool,
+      ]).isRequired,
+    }),
+  ),
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object, // For date or complex objects
+    PropTypes.array, // for multiSelect
+    filePropType, // For file inputs
+  ]),
+  style: PropTypes.object,
+  radioImg: PropTypes.string,
+  docType: PropTypes.string,
+  isSmallScreen: PropTypes.bool
+};
+
+MaterialUIFieldAdapter.defaultProps = {
+  rowRadio: true, // Default value if not provided
+  isSmallScreen: false
+};
 
 export default connect(MaterialUIFieldAdapter);

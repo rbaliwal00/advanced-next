@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';
 import { Box, Button } from '@mui/material';
 import PropTypes from 'prop-types';
-import { nextBtn, renderBackButton } from './utilities';
+import { nextBtn, renderBackButton, states } from './utilities';
 
 const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 
@@ -11,24 +11,46 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 
     const renderSelect = (typeOfCoverage) => {
             if(typeOfCoverage === 'state' || typeOfCoverage === 'city'){
-                return (
+                if(typeOfCoverage === 'state'){
+                    return (
+                        <MaterialUIFieldAdapter
+                            type="select"
+                            options={states.map((item) => { return { value: item, label: item } })}
+                            name="State"
+                            label="Select a State"
+                            placeholder="Select state"
+                            formik={formikProps}
+                        />
+                    )
+                }else return(
                     <MaterialUIFieldAdapter
-                        type="select"
-                        options={[{ value: 'New York', label: 'New York' }, { value: 'Los Angeles', label: 'Los Angeles' }]}
-                        name="currentCity"
-                        label="Current City"
-                        placeholder="Select"
                         formik={formikProps}
+                        type="autocomplete"
+                        //name="organization_auth_map.data.organization.data.organization_location_map.data.location.data.city"
+                        label="City"
                     />
                 )
             }else if(typeOfCoverage === 'inter_state' || typeOfCoverage === "inter_city"){
-                return (<MaterialUIFieldAdapter
-                    name="cityOrState"
-                    type="multiselect"
-                    label=""
-                    formik={formikProps}
-                    options={[{ value: 'tech', label: 'Tech' }, { value: 'retail', label: 'Retail' }]}
-                />)
+                if (typeOfCoverage === 'inter_state' ){
+                    return (
+                        <MaterialUIFieldAdapter
+                            name="State"
+                            type="multiselect"
+                            label=""
+                            formik={formikProps}
+                            options={[{ value: 'tech', label: 'Tech' }, { value: 'retail', label: 'Retail' }]}
+                        />
+                    )
+                }else{
+                    return(
+                        <MaterialUIFieldAdapter
+                            formik={formikProps}
+                            type="autocomplete"
+                            //name="organization_auth_map.data.organization.data.organization_location_map.data.location.data.city"
+                            label="City"
+                        /> 
+                    )
+                }
             }else return <></>
     }
 

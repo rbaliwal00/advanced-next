@@ -106,7 +106,7 @@ const FilledCard = ({type, formDetails}) => {
     };
 
     return (
-        <Box>
+        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
             <Box display={'flex'} sx={{
                             flexDirection: 'row',
                             alignItems: 'center',
@@ -136,9 +136,12 @@ const FilledCard = ({type, formDetails}) => {
                             },
                             backgroundColor: '#113B73',
                             textTransform: 'none',
-                            maxWidth: '608px',
+                            maxWidth: {
+                                xs: '328px',
+                                sm:'608px'},
                             boxShadow: 'none',
                             mt: '48px',
+                            alignSelf: 'center'
                         }}>
                             <Typography fontSize={'16px'} fontWeight={'600'} color={'#fff'} fontFamily={'Poppins'}>Dashboard</Typography>
                         </Button>

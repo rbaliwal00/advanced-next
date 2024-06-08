@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { nextBtn, renderBackButton, } from './utilities';
 
 const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
+    console.log("check all values here", formikProps.values);
 
     return (
         <Form {...formikProps} >
@@ -89,6 +90,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                         name='profile.data.dob'
                         label='Date of Birth'
                         placeholder='DD/MM/YYYY'
+                        isDob
                     />
                 </Box>
 
@@ -98,7 +100,7 @@ const RegistrationForm = ({ onBack, isLastStep, type, step, ...formikProps }) =>
                             <MaterialUIFieldAdapter
                                 formik={formikProps}
                                 type="autocomplete"
-                                name="currentCity"
+                                name="profile.data.current_city"
                                 label="Current City"
                                 placeholder="Current City"
                             />

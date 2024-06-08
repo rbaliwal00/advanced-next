@@ -48,13 +48,10 @@ const StatusForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                         />
                         <MaterialUIFieldAdapter
                             formik={formikProps}
-                            name="currentCity"
-                            type="select"
-                            label="Current working city"
-                            options={[
-                                { value: 'newYork', label: 'New York' },
-                                { value: 'losAngeles', label: 'Los Angeles' }
-                            ]}
+                            type="autocomplete"
+                            name="profile.data.current_city"
+                            label="Current City"
+                            placeholder="Current City"
                         />
                         <MaterialUIFieldAdapter
                             formik={formikProps}

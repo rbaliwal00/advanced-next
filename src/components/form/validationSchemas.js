@@ -41,6 +41,8 @@ export const registrationValidationSchema = Yup.object().shape({
             dob: Yup.date()
                 .required('Date of birth is required')
                 .max(eighteenYearsAgo, 'You must be at least 18 years old'),
+            current_city: Yup.string()
+                .required()
         }),
     }),
     email: Yup.string()
@@ -79,9 +81,9 @@ export const statusValidationSchema = Yup.object().shape({
                         .required('Monthly Salary is required')
                 }),
             }),
+            currentCity: Yup.string()
         }),
     }),
-    currentCity: Yup.string()
 });
 
 export const workExperienceValidationSchema = Yup.object().shape({
@@ -117,7 +119,8 @@ export const businessValidationSchema = Yup.object({
                         .min(2, 'Company Name must be at least 2 characters')
                         .max(100, 'Company Name must not exceed 100 characters'),
 
-                    business_nature: Yup.string()
+                    business_nature: Yup.array()
+                        .of(Yup.string())
                         .required('This field is required'),
 
                     no_of_employee: Yup.string()

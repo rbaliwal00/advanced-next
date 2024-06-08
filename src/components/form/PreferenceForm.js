@@ -10,6 +10,16 @@ import useIsSmallScreen from './SmallScreen';
 
 const PreferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
     const isSmallScreen = useIsSmallScreen()
+    const getName = () => {
+        if(formikProps.values.idType.length){
+            return formikProps.values.idType === 'aadhar' ? "profile.data.preference.data.aadhar" : 'profile.data.preference.data.passport'
+        }else{
+            if (formikProps.values.profile.data.preference.data.aadhar){
+                return 'profile.data.preference.data.aadhar'
+            } else return 'profile.data.preference.data.passport'
+        }
+    }
+
     return (
         <Form {...formikProps}>
             <Box sx={{
@@ -41,12 +51,13 @@ const PreferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                 bgcolor: 'background.paper',
             }}>
 
+                
                 <MaterialUIFieldAdapter
                     formik={formikProps}
-                    type="select"
+                    type="autocomplete"
                     name="profile.data.preference.data.working_city"
                     label="What City to work in"
-                    options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
+                    maxMultipleLength={3}
                 />
 
                 <MaterialUIFieldAdapter 
@@ -89,7 +100,7 @@ const PreferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                     />
                     <MaterialUIFieldAdapter 
                         formik={formikProps}
-                        name={formikProps.values.idType === 'aadhar' ? "profile.data.preference.data.aadhar" : 'profile.data.preference.data.passport'}
+                        name={getName()}
                         type="text"
                         placeholder={"serial no"}
                     />

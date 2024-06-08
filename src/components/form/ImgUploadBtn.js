@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Box, Avatar, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import PropTypes from 'prop-types';
 
-function ImageUploadButton({ onFileSelect, label }) {
+function ImageUploadButton({ onFileSelect, label, valueUrl }) {
+    console.log("check url", valueUrl);
+
     const [file, setFile] = useState(null); // State to hold the uploaded file
-    const [previewUrl, setPreviewUrl] = useState(''); // State to hold the preview URL
+    const [previewUrl, setPreviewUrl] = useState(valueUrl || ''); // State to hold the preview URL
 
     const handleUploadClick = (event) => {
         const selectedFile = event.target.files[0];
@@ -17,6 +19,14 @@ function ImageUploadButton({ onFileSelect, label }) {
             setPreviewUrl(fileUrl)
         }
     };
+
+    useEffect(() => {
+        console.log("cehck url here", valueUrl);
+        if (valueUrl) {
+            setPreviewUrl(valueUrl);
+            console.log("cehck preview --", previewUrl);
+        }
+    }, [valueUrl]);
 
     return (
         <Box
@@ -31,7 +41,7 @@ function ImageUploadButton({ onFileSelect, label }) {
                 onChange={handleUploadClick}
             />
             <label htmlFor={`file-upload-${label}`}>
-                {file ? (
+                {previewUrl ? (
                     <Avatar
                         src={previewUrl}
                         sx={{
@@ -71,7 +81,8 @@ function ImageUploadButton({ onFileSelect, label }) {
 
 ImageUploadButton.propTypes = {
     onFileSelect: PropTypes.func.isRequired,
-    label: PropTypes.string
+    label: PropTypes.string,
+    valueUrl: PropTypes.string
 };
 
 export default ImageUploadButton;

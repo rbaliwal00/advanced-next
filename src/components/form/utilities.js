@@ -1,5 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import PropTypes from 'prop-types';
+import { useRouter } from "next/router";
 
 const eighteenYearsAgo = new Date();
 eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
@@ -36,7 +37,13 @@ export const nextBtn = (isLast) => {
 }
 
 export const renderBackButton = ( onBack, step ) => {
-    if (step > 0){
+    const router = useRouter();
+
+    const handleClick = () => {
+        console.log("check btn clicked", step);
+        (step > 0) ? onBack() : router.back()
+    }
+
         return (
             <Button type="button" variant="outlined" sx={{
                 width: { sm: '19%' }, // Applies width starting from the sm breakpoint
@@ -46,11 +53,10 @@ export const renderBackButton = ( onBack, step ) => {
                     sm: 'block' // Displays the button on screens 600px and wider
                 },
                 borderRadius: '8px', maxHeight: '48px', py: '10px', backgroundColor: '#fff', borderWidth: 1, borderColor: '#113B73'
-                }} onClick={onBack}>
+                }} onClick={handleClick}>
                 <Typography fontSize={'16px'} fontWeight={'600'} color={'#113B73'}>Back</Typography>
             </Button> 
         )
-    }else return <></>
 }
 
 
@@ -140,7 +146,8 @@ export const transformObject = (obj) => {
             return transformObject(obj[0]);
         } else {
             // If array has more than one element, wrap it in data
-            return { data: obj.map(item => transformObject(item)) };
+            
+            return transformObject(obj[1]);
         }
     } else if (obj !== null && typeof obj === 'object') {
         const newObj = {};
@@ -222,6 +229,7 @@ export const getUpdateFormValues = (user) => {
                             first_name: profileDataExtracter(user.profile)?.first_name ?? "",
                             last_name: profileDataExtracter(user.profile)?.last_name ?? "",
                             gender: profileDataExtracter(user.profile)?.gender ?? "",
+                            current_city: profileDataExtracter(user.profile)?.current_city ?? "",
                             dob: profileDataExtracter(user.profile)?.dob ?? "",
                             image_url: profileDataExtracter(user.profile)?.image_url ?? "",
                             website: profileDataExtracter(user.profile)?.website ?? "",
@@ -363,6 +371,7 @@ export const getUpdateFormValues = (user) => {
                             "cv_theme",
                             "sub_type",
                             "type",
+                            "current_city"
                         ],
                     },
                 },

@@ -52,11 +52,11 @@ const EducationForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                     formik={formikProps}
                 />
                 <MaterialUIFieldAdapter
-                    type="select"
+                    formik={formikProps}
+                    type="autocomplete"
                     name="profile.data.education.data.institution_city"
                     label="City of Institution"
-                    options={[{ value: 'New York', label: 'New York' }, { value: 'Los Angeles', label: 'Los Angeles' }]}
-                    formik={formikProps}
+                    placeholder="Current City"
                 />
                 <MaterialUIFieldAdapter
                     type="text"

@@ -6,12 +6,14 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-const CustomDatePicker = ({ value, onChange, placeholder, label }) => {
+const CustomDatePicker = ({ value, onChange, placeholder, label, isDob }) => {
 
     const handleDateChange = (newValue) => {
         // Ensure newValue is converted to the expected format or dayjs object before passing up
         onChange(newValue ? moment(newValue).format('YYYY-MM-DD') : '');
     };
+
+    const maxDateDob = moment().subtract(18, 'years');
 
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
@@ -21,6 +23,7 @@ const CustomDatePicker = ({ value, onChange, placeholder, label }) => {
                     value={value ? moment(value, 'YYYY-MM-DD') : null}
                     sx={{ width: '100%' }}
                     onChange={handleDateChange}
+                    maxDate={isDob && maxDateDob}
                     inputFormat="YYYY-MM-DD"
                     renderInput={(params) => (
                         <TextField
@@ -59,6 +62,7 @@ CustomDatePicker.propTypes = {
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
     label: PropTypes.string,
+    isDob: PropTypes.bool
 };
 
 export default CustomDatePicker;

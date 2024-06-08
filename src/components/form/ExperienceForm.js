@@ -8,7 +8,13 @@ import { nextBtn, renderBackButton } from './utilities';
 const experienceOptions = [
     { value: '1-3', label: '1-3 years' },
     { value: '4-6', label: '4-6 years' },
-    { value: '7+', label: '7+ years' }
+    { value: '7-9', label: '7-9 years' },
+    { value: '10-12', label: '10-12 years' },
+    { value: '13-15', label: '13-15 years' },
+    { value: '16-18', label: '16-18 years' },
+    { value: '19-21', label: '19-21 years' },
+    { value: '22-24', label: '22-24 years' },
+    { value: '25+', label: '25+ years' }
 ];
 
 

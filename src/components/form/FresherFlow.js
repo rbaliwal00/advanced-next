@@ -36,17 +36,17 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
       initialValues: {
         profile: {
           data: {
-            image_url: '', // Changed from `image` to `imageUrl`
+            image_url: '',
             first_name: '',
             last_name: '',
             gender: '',
             dob: '',
             type: "jobSeeker",
-            sub_type: 'fresher'
+            sub_type: 'fresher',
+            current_city: '',
           },
         },
         email: '',
-        currentCity: '',
       },
       validationSchema: registrationValidationSchema,
       key: 'registration',
@@ -104,15 +104,14 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
     try {
       delete values.idType;
       delete values.profile.email;
-      delete values.currentCity;
 
       delete values.__typename;
       values.profile.data.website = 'google.com';
       values.profile.data.cv_theme = 'cv theme 1';
-      values.profile.data.education.data.cgpa = '6';
-      values.profile.data.education.data.from_date = "2023/05/01";
-      values.profile.data.education.data.to_date = '2024/03/01'
-      if (values.profile.data.type != 'jobSeeker') {
+      // values.profile.data.education.data.cgpa = '6';
+      // values.profile.data.education.data.from_date = "2023/05/01";
+      // values.profile.data.education.data.to_date = '2024/03/01'
+      if (values.profile.data.type == 'jobSeeker') {
         delete values.organization_auth_map
       }
       console.log('something')

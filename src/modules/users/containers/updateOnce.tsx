@@ -181,15 +181,17 @@ const Container = (props) => {
         //router: { push },
     } = props;
 
-    React.useEffect(() => {
-        console.log("props---+", props);
-        refetchUserData();
-    }, []);
+    // React.useEffect(() => {
+    //     console.log("props---+", props);
+    //     refetchUserData();
+    // }, []);
+    console.log("cehck user data", user);
     
     const router = useRouter()
 
     const onSubmit = async (values) => {
         const newFormValues = getUpdateFormValues(values);
+        console.log("check formValues", newFormValues);
         const result = await insertUserAuth(newFormValues);
         setTimeout(() => router.push('/users/get-one'), 500);
         //push("/posts"); // Change the path according to your routing structure

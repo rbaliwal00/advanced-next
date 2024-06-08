@@ -11,7 +11,9 @@ const SuperTokensWrapper = ({
 }: any) => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [getUser, { loading: userLoading, data }] = useLazyQuery(ITEM);
+  const [getUser, { loading: userLoading, data, error,  }] = useLazyQuery(ITEM);
+
+  console.log("check errors in login---", error);
 
   useEffect(() => {
     Session.doesSessionExist().then(async (i) => {

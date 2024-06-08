@@ -53,10 +53,9 @@ const AddressForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 
                         <MaterialUIFieldAdapter
                             formik={formikProps}
-                            type="select"
+                            type="autocomplete"
                             name="organization_auth_map.data.organization.data.organization_location_map.data.location.data.city"
                             label="City"
-                            options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
                         />
 
                         <MaterialUIFieldAdapter

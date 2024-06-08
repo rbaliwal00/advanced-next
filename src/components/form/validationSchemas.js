@@ -119,7 +119,7 @@ export const businessValidationSchema = Yup.object({
                         .min(2, 'Company Name must be at least 2 characters')
                         .max(100, 'Company Name must not exceed 100 characters'),
 
-                    business_nature: Yup.array()
+                    nature_of_business: Yup.array()
                         .of(Yup.string())
                         .required('This field is required'),
 

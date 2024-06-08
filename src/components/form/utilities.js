@@ -140,73 +140,144 @@ export function deepMerge(target, source) {
 export const partTimeImg = require('@public/assets/partTime.png')
 
 export const transformObject = (obj) => {
-    if (Array.isArray(obj)) {
-        if (obj.length === 1) {
-            // If array has only one element, transform that element
-            return transformObject(obj[0]);
-        } else {
-            // If array has more than one element, wrap it in data
-            
-            return transformObject(obj[1]);
-        }
-    } else if (obj !== null && typeof obj === 'object') {
-        const newObj = {};
-        for (const key in obj) {
-            if (key !== '__typename') {
-                const value = obj[key];
-                if (value !== null && typeof value === 'object') {
-                    newObj[key] = transformObject(value);
-                } else {
-                    newObj[key] = value;
-                }
-            }
-        }
-        return { data: newObj };
-    } else {
-        return obj;
+    const { profile, organization_auth_map } = obj;
+
+    const org = organization_auth_map[0]?.organization;
+    const { organization_location_map, gst_pan, contact, suppliers } = org
+    const location = organization_location_map[0]?.location;
+
+    const profileData = Array.isArray(profile) ? profile[profile.length -1] : profile;
+    const { awards, education, experience, preference, references } = profileData;
+
+    const prefillFormData = {
+        email: obj?.email ?? '',
+        phone_number: obj.phone_number ?? '',
+        profile: {
+            data: {
+                vc_theme: profileData?.vc_theme ?? '',
+                type: profileData?.type ?? '',
+                awards: {
+                    data: {
+                        brand_name: awards[0]?.brand_name ?? '',
+                        department: awards[0]?.department ?? '',
+                        name: awards[0]?.name ?? '',
+                        position: awards[0]?.position ?? '',
+                    },
+                },
+                cv_theme: profileData?.cv_theme ?? '',
+                dob: profileData?.dob ?? '',
+                education: {
+                    data: {
+                        cgpa: education[0]?.cgpa ?? '',
+                        from_date: education[0]?.from_date ?? '',
+                        to_date: education[0]?.to_date ?? '',
+                        institution_city: education[0]?.institution_city ?? '',
+                        institution_name: education[0]?.institution_name ?? '',
+                        level: education[0]?.level ?? '',
+                        passout_year: education[0]?.passout_year ?? '',
+                        study_field: education[0]?.study_field ?? '',
+                    },
+                },
+                experience: {
+                    data: {
+                        brand_name: experience[0]?.brand_name ?? '',
+                        department: experience[0]?.department ?? '',
+                        montly_salary: experience[0]?.montly_salary ?? '',
+                        position: experience[0]?.position ?? '',
+                        sub_category: experience[0]?.sub_category ?? '',
+                        type: experience[0]?.type ?? '',
+                        work_experience: experience[0]?.work_experience ?? '',
+                    },
+                },
+                first_name: profileData?.first_name ?? '',
+                last_name: profileData?.last_name ?? '',
+                gender: profileData?.gender ?? '',
+                image_url: profileData?.image_url ?? '',
+                preference: {
+                    data: {
+                        aadhar: preference[0]?.aadhar ?? '',
+                        internship: preference[0]?.internship ?? '',
+                        one_day_job: preference[0]?.one_day_job ?? '',
+                        partime_job: preference[0]?.partime_job ?? '',
+                        passport: preference[0]?.passport ?? '',
+                        working_city: preference[0]?.working_city ?? '',
+                    },
+                },
+                references: {
+                    data: {
+                        brand_name: references[0]?.brand_name ?? '',
+                        department: references[0]?.department ?? '',
+                        email: references[0]?.email ?? '',
+                        name: references[0]?.name ?? '',
+                        phone_number: references[0]?.phone_number ?? '',
+                        position: references[0]?.position ?? '',
+                    },
+                },
+                sub_type: profileData?.sub_type ?? '',
+                website: profileData?.website ?? '',
+            },
+        },
+        organization_auth_map: {
+            data: {
+                organization: {
+                    data: {
+                        vc_theme: org?.vc_theme ?? '',
+                        brand_name: org?.brand_name ?? '',
+                        nature_of_business: org?.nature_of_business ?? [],
+                        company_name: org?.company_name ?? '',
+                        gst_pan: {
+                            data: {
+                                gst: gst_pan[0]?.gst ?? '',
+                                pan: gst_pan[0]?.pan ?? '',
+                                status: gst_pan[0]?.status ?? '',
+                            },
+                        },
+                        image_url: org?.image_url ?? '',
+                        no_of_employee: org?.no_of_employee ?? '',
+                        contact: {
+                            data: {
+                                name: contact[0]?.name ?? '',
+                                email: contact[0]?.email ?? '',
+                                website: contact[0]?.website ?? '',
+                                phone_number: contact[0]?.phone_number ?? '',
+                            },
+                        },
+                        organization_location_map: {
+                            data: {
+                                location: {
+                                    data: {
+                                        area: location?.area ?? '',
+                                        block_number: location?.block_number ?? '',
+                                        city: location?.city ?? '',
+                                        geolocation: {
+                                            data: {
+                                                latitude: location.geolocation[0]?.latitude ?? "",
+                                                longitude: location.geolocation[0]?.longitude ?? "",
+                                                other: {},
+                                                type: location.geolocation[0]?.type ?? "",
+                                            },
+                                        },
+                                        pincode: location?.pincode ?? '',
+                                        state: location?.state ?? '',
+                                    },
+                                },
+                            },
+                        },
+                        suppliers: {
+                            data: {
+                                area: suppliers[0]?.area ?? '',
+                                scale: suppliers[0]?.scale ?? '',
+                                coverage_area_list: suppliers[0]?.coverage_area_list ?? []
+                            },
+                        },
+                    },
+                },
+            },
+        },
     }
+
+    return prefillFormData;
 };
-
-export const addOnConflict = (obj, excludeColumns = []) => {
-    if (!obj) return null;
-
-    const newObj = JSON.parse(JSON.stringify(obj)); // Deep copy to avoid mutation
-
-    function extractKeys(data) {
-        if (Array.isArray(data)) {
-            return Object.keys(data[0] || {});
-        } else if (typeof data === 'object' && data !== null) {
-            return Object.keys(data);
-        } else {
-            return [];
-        }
-    }
-
-    function addOnConflictToData(data, path) {
-        if (Array.isArray(data)) {
-            return data.map((item, index) => addOnConflictToData(item, `${path}[${index}]`));
-        } else if (typeof data === 'object' && data !== null) {
-            const newData = {};
-            for (let key in data) {
-                if (key === 'data') {
-                    const updateColumns = extractKeys(data[key]).filter(column => !excludeColumns.includes(column));
-                    newData[key] = addOnConflictToData(data[key], `${path}.${key}`);
-                    newData['on_conflict'] = {
-                        constraint: `${path.split('.').pop()}_pkey`,
-                        update_columns: updateColumns
-                    };
-                } else {
-                    newData[key] = addOnConflictToData(data[key], `${path}.${key}`);
-                }
-            }
-            return newData;
-        } else {
-            return data;
-        }
-    }
-
-    return addOnConflictToData(newObj, '');
-}
 
 const profileDataExtracter = (profileDetails) => {
     if(Array.isArray(profileDetails.data)){
@@ -382,7 +453,6 @@ export const getUpdateFormValues = (user) => {
 
 export const updateOrgFormValues = (user) => {
     const org = user.organization_auth_map.data.organization.data;
-    console.log("check org no of employee", org.no_of_employee)
     const formValues = {
         object: {
             brand_name: org.brand_name ?? '',

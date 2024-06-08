@@ -17,6 +17,7 @@ query MyQuery($id: uuid = "") {
       cv_theme
       sub_type
       type
+      current_city
       awards {
         brand_name
         department
@@ -65,7 +66,7 @@ query MyQuery($id: uuid = "") {
       organization {
         vc_theme
         brand_name
-        business_nature
+        nature_of_business
         company_name
         image_url
         no_of_employee
@@ -98,6 +99,7 @@ query MyQuery($id: uuid = "") {
         suppliers {
           area
           scale
+          coverage_area_list
         }
       }
     }

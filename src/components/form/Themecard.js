@@ -23,7 +23,7 @@ const styles = {
 const renderCard = (type, formDetails) => {
     const { phone_number, email, profile, organization_auth_map } = formDetails || {};
     const { education, experience,  preference, image_url, first_name, last_name, sub_type } = profile[0] || [];
-    const { brand_name = '', business_nature = '', company_name = '', no_of_employee = '', organization_location_map = '', contact = [], image_url: orgImgUrl } = organization_auth_map[0]?.organization || []
+    const { brand_name = '', nature_of_business = [], company_name = '', no_of_employee = '', organization_location_map = '', contact = [], image_url: orgImgUrl } = organization_auth_map[0]?.organization || []
     const { block_number, area, city } = organization_location_map[0]?.location || [];
     const checkIfexperienced = sub_type === 'experienced';
 
@@ -150,7 +150,7 @@ const renderCard = (type, formDetails) => {
                                     Nature of Business
                                 </Typography>
                                 <Typography sx={styles.valueTxt}>
-                                    {business_nature}
+                                    {nature_of_business.join(', ')}
                                 </Typography>
                             </Box>
                             <Box style={{ marginTop: '8px' }}>

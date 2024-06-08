@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Button, IconButton, Typography, Paper, Dialog, DialogContent, DialogActions } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { DeleteOutline } from '@mui/icons-material';
 import Image from 'next/image';
 import { Pancard, Gst } from '@public/assets/icons';
 
-const GstInputComponent = ({ onFileSelect, docType }) => {
+const GstInputComponent = ({ onFileSelect, docType, valueUrl }) => {
     const [file, setFile] = useState(null);
     const [previewUrl, setPreviewUrl] = useState('');
     const [open, setOpen] = useState(false);
@@ -13,6 +13,14 @@ const GstInputComponent = ({ onFileSelect, docType }) => {
     const isDocGST = docType === 'gst'
     const label = isDocGST ? "Company's GST Document" : "Company's PAN Card";
     const btnText = isDocGST ?  "Upload GST" : 'Upload PAN'
+
+    useEffect(() => {
+        console.log("cehck url here", valueUrl);
+        if (valueUrl) {
+            setPreviewUrl(valueUrl);
+            console.log("cehck preview --", previewUrl);
+        }
+    }, [valueUrl]);
 
     const handleFileChange = (event) => {
         const selectedFile = event.target.files[0];
@@ -54,7 +62,7 @@ const GstInputComponent = ({ onFileSelect, docType }) => {
             <Typography fontSize={'18px'} fontWeight={'600'} sx={{ mb: '8px'}}>
                 {label}
             </Typography>
-            {file ? (
+            {previewUrl ? (
                 <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', mb: 2 }}>
                     <img src={previewUrl} alt="GST Document" style={{ width: '212px', height: 'auto', border: '1px solid #ccc', borderRadius: '10px', marginRight: '8px' }} />
                     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '92px' }}>

@@ -24,7 +24,6 @@ function ImageUploadButton({ onFileSelect, label, valueUrl }) {
         console.log("cehck url here", valueUrl);
         if (valueUrl) {
             setPreviewUrl(valueUrl);
-            console.log("cehck preview --", previewUrl);
         }
     }, [valueUrl]);
 

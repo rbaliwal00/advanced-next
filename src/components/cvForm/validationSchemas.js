@@ -7,7 +7,7 @@ export const educationValidationSchema = Yup.object().shape({
       //   "City of Institution is required",
       // ),
       // level: Yup.string().required("Level of education is required"),
-      study_field: Yup.string().required("Field of study is required"),
+      // study_field: Yup.string().required("Field of study is required"),
       // passout_year: Yup.date()
       //     .max(new Date(), 'Passout year cannot be in the future')
       //     .required('Passout year is required')
@@ -22,7 +22,12 @@ export const educationValidationSchema = Yup.object().shape({
         .required("To date is required")
         .typeError("Invalid date format")
         .when("from_date", (from_date, schema) => {
-          return schema.min(from_date, "To date cannot be before from date");
+          const actualDate = from_date[0];
+          // console.log("from_date---", from_date, schema)
+          if(!actualDate){
+            return schema;
+          }
+          return schema.min(actualDate, "To date cannot be before from date");
         }),
     })),
 });
@@ -30,10 +35,10 @@ export const educationValidationSchema = Yup.object().shape({
 export const awardValidationSchema = Yup.object().shape({
   awards: Yup.array().of(
     Yup.object().shape({
-      awardTitle: Yup.string().required("Award Title name is required"),
-      brandName: Yup.string().required("Brand Name is required"),
+      name: Yup.string().required("Award Name name is required"),
+      brand_name: Yup.string().required("Brand Name is required"),
       department: Yup.string().required("Department is required"),
-      position: Yup.date().required("Position is required"),
+      position: Yup.string().required("Position is required"),
     }),
   ),
 });
@@ -41,9 +46,11 @@ export const awardValidationSchema = Yup.object().shape({
 export const referenceValidationSchema = Yup.object().shape({
   references: Yup.array().of(
     Yup.object().shape({
-      referenceName: Yup.string().required("Reference Name is required"),
-      contact: Yup.string().required("Reference Contact Number is required"),
-      brandName: Yup.string().required("Brand Name is required"),
+      name: Yup.string().required("Reference Name is required"),
+      phone_number: Yup.string().required("Reference Contact Number is required"),
+      brand_name: Yup.string().required("Brand Name is required"),
+      email: Yup.string().email("Invalid email").required("Email is required"),
+      department: Yup.string().required("Department is required"),
     }),
   ),
 });

@@ -13,11 +13,11 @@ import AddItemsButton from './addItemsButton'
 
 const EducationForm = ({ onBack, isLastStep, deleteFunction, type, step, ...formikProps }) => {
   const initialEducation = {
-    institutionName: "",
-    educationType: "",
+    institution_name: "",
+    level: "",
     cgpa: "",
-    fromDate: "",
-    toDate: "",
+    from_date: "",
+    to_date: "",
   };
 
   const [expandedIndex, setExpandedIndex] = React.useState(false);
@@ -32,6 +32,7 @@ const EducationForm = ({ onBack, isLastStep, deleteFunction, type, step, ...form
       ...(formikProps.values.education ?? []),
       initialEducation,
     ];
+    console.log("updatededucation-----", updatededucation)
     formikProps.setFieldValue("education", updatededucation);
     setExpandedIndex(updatededucation.length - 1);
   };

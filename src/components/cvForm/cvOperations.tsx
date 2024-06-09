@@ -35,46 +35,45 @@ const withAddCvInfo = (Component: FunctionComponent) =>
     }),
   })(Component);
 
-  const withGetCvInfo = (Component: FunctionComponent) => {
-    return (props: any) => {
-        const [userId, setUserId] = React.useState<string | null>(null);
+const withGetCvInfo = (Component: FunctionComponent) => {
+  return (props: any) => {
+    const [userId, setUserId] = React.useState<string | null>(null);
 
-        useEffect(() => {
-            const storedUserId = localStorage.getItem('currId');
-            setUserId(storedUserId || "34c3fdc2-d927-440d-b305-8ef8e1834678");
-        }, []);
+    useEffect(() => {
+      if (props.isPublic) {
+        const userId = props.id;
+        setUserId(userId);
+      } else {
+        const storedUserId = localStorage.getItem("currId");
+        setUserId(storedUserId);
+      }
+    }, [props.isPublic]);
 
-        if (!userId) {
-            return <div>Loading...</div>; // Or any other loading indicator
-        }
+    if (!userId) {
+      return <div>Loading...</div>; // Or any other loading indicator
+    }
 
-        const EnhancedComponent = graphql(GET_CV_INFO, {
-            options: {
-                variables: {
-                    id: userId,
-                },
-            },
-            props: ({ data,  }) => {
-                const {
-                    loading,
-                    error,
-                    user_profile,
-                    refetch
-                } = data;
+    const EnhancedComponent = graphql(GET_CV_INFO, {
+      options: {
+        variables: {
+          id: userId,
+        },
+      },
+      props: ({ data }) => {
+        const { loading, error, user_profile, refetch } = data;
 
-                return {
-                    loading,
-                    error,
-                    profile_data: user_profile && user_profile[0],
-                    refetchProfileData: refetch,
-                };
-            },
-        })(Component);
+        return {
+          loading,
+          error,
+          profile_data: user_profile && user_profile[0],
+          refetchProfileData: refetch,
+        };
+      },
+    })(Component);
 
-        return <EnhancedComponent {...props} />;
-    };
+    return <EnhancedComponent {...props} />;
+  };
 };
-
 
 const withDeleteUserProfileAward = (Component: FunctionComponent) =>
   graphql(DELETE_USER_PROFILE_AWARD, {

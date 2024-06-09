@@ -6,9 +6,13 @@ const updatedColumns = [
     "vc_theme",
     "brand_name",
     "company_name",
-    "business_nature",
+    "nature_of_business",
     "image_url",
     "no_of_employee",
+    "id",
+    "created_at",
+    "updated_at",
+    "is_active",
 ];
 
 const withInsertOrg = (Component) =>

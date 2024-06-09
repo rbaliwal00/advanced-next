@@ -28,8 +28,8 @@ const formConfigs = [
         data: {
           type: "supplier",
           sub_type: "supplier",
-          website: "dummyData.com",
-          image_url: "jbjbjbjbj",
+          website: "",
+          image_url: "",
         },
       },
     },
@@ -95,10 +95,10 @@ const formConfigs = [
                       city: "",
                       geolocation: {
                         data: {
-                          latitude: "12.21",
-                          longitude: "21.12",
+                          latitude: "",
+                          longitude: "",
                           other: {},
-                          type: "Type 1",
+                          type: "",
                         },
                       },
                       pincode: "",
@@ -148,7 +148,10 @@ const formConfigs = [
 
 const SupplierForm = ({ onSubmit, prefillData, user }) => {
   const handleSubmitFinal = (values) => {
-    
+    const areaList = values.organization_auth_map.data.organization.data.suppliers.data.coverage_area_list
+    if(!Array.isArray(areaList)){
+      values.organization_auth_map.data.organization.data.suppliers.data.coverage_area_list = [areaList]
+    }
     onSubmit({ id: user.id, phone_number: user.phone_number, ...values })
   };
 

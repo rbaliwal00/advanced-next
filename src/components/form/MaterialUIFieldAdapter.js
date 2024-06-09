@@ -50,7 +50,7 @@ const MaterialUIFieldAdapter = ({
   const { organization_auth_map, profile } = formik.values;
   const profileData = profile?.data || {};
   const { nature_of_business: businessNature, image_url: orgImgUrl, gst_pan, suppliers }= organization_auth_map?.data.organization?.data || {}
-  const newInitialValue = getInitialValue(businessNature)
+  const newInitialValue =  businessNature?.length >0 ? getInitialValue(businessNature) : []
   const [ selected, setSelected] = useState(newInitialValue ?? [])
   const [areaList, setAreaList] = useState(getInitialValue(suppliers?.data?.coverage_area_list) ?? [])
 
@@ -95,9 +95,9 @@ const MaterialUIFieldAdapter = ({
     console.log("cehck select values here", event.target.value, selected);
     if (name == 'organization_auth_map.data.organization.data.suppliers.data.coverage_area_list'){
       const newValues = event.target.value.filter(value => !areaList.includes(value));
-      const updatedSelected = areaList.length > 0 ? [...areaList, ...newValues] : [...newValues];
-      setAreaList(updatedSelected)
-      formik.setFieldValue(name, updatedSelected);
+      const updatedSelected = areaList.length > 0 ? [...areaList, ...newValues] : [...newValues];     
+        setAreaList(updatedSelected)
+        formik.setFieldValue(name, updatedSelected);
     }else{
       const newValues = event.target.value.filter(value => !selected.includes(value));
       if (selected.length + newValues.length <= maxMultipleLength) {

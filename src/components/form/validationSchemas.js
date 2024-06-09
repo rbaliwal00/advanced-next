@@ -150,15 +150,12 @@ export const addressValidationSchema = Yup.object({
                                     geolocation: Yup.object({
                                         data: Yup.object({
                                             latitude: Yup.number()
-                                                .required('Latitude is required')
                                                 .typeError('Latitude must be a number'),
                                             longitude: Yup.number()
-                                                .required('Longitude is required')
                                                 .typeError('Longitude must be a number'),
                                             other: Yup.object()
                                                 .nullable(),
                                             type: Yup.string()
-                                                .required('Type is required')
                                         })
                                     }),
                                     pincode: Yup.string()

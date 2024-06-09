@@ -65,18 +65,10 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
             placeholder="Type"
           />
           <MaterialUIFieldAdapter
-              fromik={formikProps}
-              type="select"
-            name={`experience.${index}.department`}
-            label="Department"
-            options={[{ value: 'Department 1', label: 'Department 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
-          />
-          <MaterialUIFieldAdapter
-              fromik={formikProps}
-              type="select"
-            name={`experience.${index}.position`}
-            label="Position"
-            options={[{ value: 'Position 1', label: 'Position 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
+              type="categoryAutocomplete"
+              name={`experience.${index}.department`}
+              subCategoryName={`experience.${index}.sub_category`}
+              positionName={`experience.${index}.position`}
           />
           <Box 
             display={'flex'} 
@@ -88,18 +80,18 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
               }
             }}
           >
-            {/* <MaterialUIFieldAdapter
-              fromik={formikProps}
-              type="select"
-            name={`experience.${index}.city`}
-            label="City"
-            options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
-          /> */}
+            <MaterialUIFieldAdapter
+              formik={formikProps}
+              type="autocomplete"
+              name={`experience.${index}.city`}
+              label="City"
+              placeholder="City"
+            />
             <MaterialUIFieldAdapter
               fromik={formikProps}
               type="number"
-            name={`experience.${index}.monthly_salary_text`}
-            label="Salary"
+              name={`experience.${index}.monthly_salary_text`}
+              label="Salary"
             // options={[{ value: 'city1', label: 'City 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
           />
           </Box>

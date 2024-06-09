@@ -21,14 +21,7 @@ const Container = (props) => {
   console.log("check user data on getONe---", user);
 
   if (loadingUserData) return <CircularProgress />;
-  if (isPublic)
-    return <FilledCard type={"job"} formDetails={user} isPublic={isPublic} />;
-
-  return (
-    <SuperTokensWrapper>
-      <FilledCard type={"job"} formDetails={user} isPublic={isPublic} />
-    </SuperTokensWrapper>
-  );
+  return <FilledCard type={"job"} formDetails={user} isPublic={isPublic} />;
 };
 
 export default compose(withGetOne)(Container);

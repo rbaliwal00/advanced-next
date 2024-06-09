@@ -62,7 +62,7 @@ const SuperTokensWrapper = ({
     }
     return child;
   });
-  return <>{!(loading || userLoading) && childrenWithProps}</>;
+  return <div>{!(loading || userLoading) && childrenWithProps}</div>;
 };
 
 export default SuperTokensWrapper;

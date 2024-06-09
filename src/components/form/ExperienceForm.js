@@ -20,6 +20,8 @@ const experienceOptions = [
 
 const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
 
+    console.log("formikProps5555", formikProps)
+
     return (
                 <Form {...formikProps}>
                     <Box sx={{
@@ -66,9 +68,9 @@ const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) 
                             positionName="profile.data.experience.data.position"
                             customValue={
                                 {
-                                  department: formikProps.values.experrience[index].department,
-                                  subCategory: formikProps.values.experrience[index].sub_category,
-                                  position: formikProps.values.experrience[index].position
+                                  department: formikProps.values.profile.data.experience.data.department,
+                                  subCategory: formikProps.values.profile.data.experience.data.sub_category,
+                                  position: formikProps.values.profile.data.experience.data.position
                                 }
                               }
 

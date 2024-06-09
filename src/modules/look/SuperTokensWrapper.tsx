@@ -30,27 +30,27 @@ const SuperTokensWrapper = ({
         setLoading(false);
         return;
       }
-      const id = await Session.getUserId();
-      const res = await getUser({ variables: { id } });
-      console.log(res.data?.user?.profile[0]?.id, redirectIfLoggedIn)
-      if (!res.data?.user?.profile[0]?.id && redirectIfLoggedIn) {
-        router.replace?.("/users/role-selection");
-        setLoading(false);
-        return;
-      }
-      if (router.pathname === '/' && res.data?.user?.profile[0]?.id) {
-        console.log("🚀 ~ Session.doesSessionExist ~ router.pathname", router.pathname, res.data?.user?.profile[0])
-        if(res.data?.user?.profile[0].type === 'jobSeeker'){
-          router.replace?.("/users/get-one");
-        }else{
-          router.replace?.("/users/getOther");
-        }
-      }
-      setLoading(false);
+      // const id = await Session.getUserId();
+      // const res = await getUser({ variables: { id } });
+      // console.log(res.data?.user?.profile[0]?.id, redirectIfLoggedIn)
+      // if (!res.data?.user?.profile[0]?.id && redirectIfLoggedIn) {
+      //   router.replace?.("/users/role-selection");
+      //   setLoading(false);
+      //   return;
+      // }
+      // if (router.pathname === '/' && res.data?.user?.profile[0]?.id) {
+      //   console.log("🚀 ~ Session.doesSessionExist ~ router.pathname", router.pathname, res.data?.user?.profile[0])
+      //   if(res.data?.user?.profile[0].type === 'jobSeeker'){
+      //     router.replace?.("/users/get-one");
+      //   }else{
+      //     router.replace?.("/users/getOther");
+      //   }
+      // }
+      // setLoading(false);
     });
   }, []);
 
-  if (loading || userLoading) return <></>;
+  // if (loading || userLoading) return <></>;
 
   const childrenWithProps = React.Children.map(children, (child) => {
     // Checking isValidElement is the safe way and avoids a

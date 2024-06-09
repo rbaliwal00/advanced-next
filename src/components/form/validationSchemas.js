@@ -41,8 +41,14 @@ export const registrationValidationSchema = Yup.object().shape({
             dob: Yup.date()
                 .required('Date of birth is required')
                 .max(eighteenYearsAgo, 'You must be at least 18 years old'),
+            sub_type: Yup.string(),
             current_city: Yup.string()
-                .required()
+                .when('sub_type', {
+                    is: 'fresher',
+                    then: sch => sch.string()
+                                .required('Current city is required'),
+                            otherwise: sch => sch.notRequired(),
+                }),
         }),
     }),
     email: Yup.string()

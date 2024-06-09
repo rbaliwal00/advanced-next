@@ -66,7 +66,7 @@ const VisitingCardComponent = ({
   ...formikProps
 }) => {
   const fieldName =
-    type === "job" || type === "experienced"
+    type === "jobSeeker"
       ? "profile.data.vc_theme"
       : "organization_auth_map.data.organization.data.vc_theme";
 

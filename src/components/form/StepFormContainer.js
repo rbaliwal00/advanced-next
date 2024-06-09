@@ -58,6 +58,7 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
         onSubmit={handleNext}
       >
         {(formikProps) => {
+          console.log("cehck errors and values", formikProps)
           return (
             <CurrentForm
               {...formikProps}

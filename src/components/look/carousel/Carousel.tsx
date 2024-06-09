@@ -271,7 +271,7 @@ const Carousel: React.FC<SliderProps> = ({
               style={{ margin: "auto" }}
             >
               <ThemeCard
-                type={type || "job"}
+                type={type}
                 formDetails={formDetails.data.user_auth[1]}
               />
             </div>

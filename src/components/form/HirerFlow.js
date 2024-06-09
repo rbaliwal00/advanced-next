@@ -32,6 +32,7 @@ const formConfigs = [
                     // image_url: 'jbjbjbjbj'
                 },
             },
+            type: 'recruiter'
         },
         validationSchema: SupplierThemeSelectionVaidationSchema,
         key: 'choose theme',

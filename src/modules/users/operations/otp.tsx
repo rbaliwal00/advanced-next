@@ -21,12 +21,17 @@ const withOTP = (Component: React.FunctionComponent) => {
     };
 
     const otpGenerate = async (phone_number: string, resendType?: string) => {
-      let response = await createCode({
-        phoneNumber: `+91${phone_number}`,
-      });
-      if (response?.status != "OK") return false;
-      setMobile(phone_number);
-      return true;
+      try {
+        
+        let response = await createCode({
+          phoneNumber: `+91${phone_number}`,
+        });
+        if (response?.status != "OK") return false;
+        setMobile(phone_number);
+        return true;
+      } catch (error) {
+        console.log("check error", error)
+      }
     };
 
     const otpValidate = async (otp: string) => {

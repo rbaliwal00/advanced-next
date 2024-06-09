@@ -17,7 +17,7 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
   // Define form configurations with specific props
   const formConfigs = [
     {
-      Component: (props) => <VisitingCardComponent {...props} type={"job"} />,
+      Component: (props) => <VisitingCardComponent {...props} type={"jobSeeker"} />,
       initialValues: {
         profile: {
           data: {
@@ -26,6 +26,7 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
             sub_type: "fresher",
           },
         },
+        type: 'jobSeeker'
       },
       validationSchema: ThemeSelectionVaidationSchema,
       key: "choose theme",

@@ -42,11 +42,11 @@ export const registrationValidationSchema = Yup.object().shape({
                 .required('Date of birth is required')
                 .max(eighteenYearsAgo, 'You must be at least 18 years old'),
             sub_type: Yup.string(),
-            current_city: Yup.string().when('sub_type', {
-                is: () => 'fresher',
-                then: () => Yup.string().required('Current city is required'),
-                otherwise: () => Yup.string().notRequired(),
-            })
+            // current_city: Yup.string().when('sub_type', {
+            //     is: () => 'fresher',
+            //     then: () => Yup.string().required('Current city is required'),
+            //     otherwise: () => Yup.string().notRequired(),
+            // })
         }),
     }),
     email: Yup.string()

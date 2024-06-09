@@ -149,13 +149,10 @@ const Container = (props) => {
 
   if (loadingUserData) return <CircularProgress />;
   return (
-    <SuperTokensWrapper>
       <RecruiterForm
         prefillData={transformObject(user)}
         onSubmit={onSubmit}
       />
-      ;
-    </SuperTokensWrapper>
   );
 };
 

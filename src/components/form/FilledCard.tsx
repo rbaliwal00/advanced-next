@@ -12,7 +12,8 @@ import { useRouter } from "next/router";
 
 const ButtonStack = ({ updateType, handleDownloadImage, userId, isPublic }) => {
   const nextRoute = (typeof window !== "undefined" ? "https://" + window.location.hostname : "") + "/users/vc/" + userId;
-   ;
+  
+  const updateRoute = '/users/update' + updateType.charAt(0).toUpperCase() + updateType.slice(1);
   const fullMsg = `${isPublic ? "Checkout this profile!!" :"Check my VC card here"} ${nextRoute}`;
   const shareOnWatsapp = () => {
     const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(
@@ -49,7 +50,7 @@ const ButtonStack = ({ updateType, handleDownloadImage, userId, isPublic }) => {
         <FileDownloadOutlinedIcon sx={{ color: "black" }} />
       </IconButton>
 
-      {!isPublic && (<Link href={nextRoute}>
+      {!isPublic && (<Link href={updateRoute}>
         <IconButton
           sx={{
             backgroundColor: "white",

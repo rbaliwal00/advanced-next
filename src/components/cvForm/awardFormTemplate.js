@@ -50,11 +50,10 @@ const AwardFormTemplate = ({
               ? " Brand Name"
               : formikProps.values.awards[index].brand_name}
           </Typography>
-          {!isMobile && (
+        
             <IconButton onClick={() => onDelete(index)}>
               <DeleteOutlineIcon style={{ color: "#8899A8" }} />
             </IconButton>
-          )}
         </Box>
       </AccordionSummary>
       <AccordionDetails>
@@ -79,9 +78,9 @@ const AwardFormTemplate = ({
               positionName={`awards.${index}.position`}
               customValue={
                 {
-                  departmentName: formikProps.values.experience[index].department,
-                  subCategoryName: formikProps.values.experience[index].sub_category,
-                  positionName: formikProps.values.experience[index].position
+                  department: formikProps.values.award[index].department,
+                  subCategory: formikProps.values.award[index].sub_category,
+                  position: formikProps.values.award[index].position
                 }
               }
           />

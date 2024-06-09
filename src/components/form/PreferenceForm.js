@@ -11,10 +11,10 @@ import useIsSmallScreen from './SmallScreen';
 const PreferenceForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
     const isSmallScreen = useIsSmallScreen()
     const getName = () => {
-        if(formikProps.values.idType.length){
+        if(formikProps.values?.idType?.length){
             return formikProps.values.idType === 'aadhar' ? "profile.data.preference.data.aadhar" : 'profile.data.preference.data.passport'
         }else{
-            if (formikProps.values.profile.data.preference.data.aadhar){
+            if (formikProps.values.profile?.data?.preference?.data?.aadhar){
                 return 'profile.data.preference.data.aadhar'
             } else return 'profile.data.preference.data.passport'
         }

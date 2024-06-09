@@ -44,7 +44,7 @@ const MaterialUIFieldAdapter = ({
   isSmallScreen = false,
   subCategoryName,
   positionName,
-  maxMultipleLength = 0,
+  maxMultipleLength = 5,
   isDob
 }) => {
   const { organization_auth_map, profile } = formik.values;
@@ -92,13 +92,22 @@ const MaterialUIFieldAdapter = ({
   }
 
   const handleMultipleSelect = (event) => {
-    console.log("cehck select values here", event.target.value, selected);
     if (name == 'organization_auth_map.data.organization.data.suppliers.data.coverage_area_list'){
       const newValues = event.target.value.filter(value => !areaList.includes(value));
       const updatedSelected = areaList.length > 0 ? [...areaList, ...newValues] : [...newValues];     
         setAreaList(updatedSelected)
         formik.setFieldValue(name, updatedSelected);
-    }else{
+    }else if(name.includes('language')){
+      
+      const newValues = event.target.value.filter(value => !selected.includes(value));
+      console.log("cehck select values here", selected, newValues, maxMultipleLength);
+      if (selected.length + newValues.length <= maxMultipleLength) {
+        const updatedSelected = selected.length > 0 ? [...selected, ...newValues] : [...newValues];
+        setSelected(updatedSelected);
+        formik.setFieldValue(name, updatedSelected);
+      }
+    }
+    else{
       const newValues = event.target.value.filter(value => !selected.includes(value));
       if (selected.length + newValues.length <= maxMultipleLength) {
         const updatedSelected = selected.length > 0 ? [...selected, ...newValues] : [...newValues];

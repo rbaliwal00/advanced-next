@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CircularProgress} from '@mui/material'
 import { compose } from "@common";
 import ThemeCard from "@components/form/Themecard";
@@ -10,9 +10,13 @@ import FilledCard from "@components/form/FilledCard";
 const Container = (props) => {
     const {
         user,
-        loadingUserData
+        loadingUserData,
         // router: { push },
     } = props;
+
+    useEffect(()=>{
+        props.refetchUserData();
+    }, [])
 
     console.log("check user data on getONe---", user);
 

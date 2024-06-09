@@ -28,7 +28,7 @@ export const SupplierThemeSelectionVaidationSchema = Yup.object().shape({
 export const registrationValidationSchema = Yup.object().shape({
     profile: Yup.object().shape({
         data: Yup.object().shape({
-            image_url: Yup.string(),
+            image_url: Yup.string().required(),
             first_name: Yup.string()
                 .required('First Name is required')
                 .min(2, 'First Name must be at least 2 characters long'),
@@ -42,13 +42,11 @@ export const registrationValidationSchema = Yup.object().shape({
                 .required('Date of birth is required')
                 .max(eighteenYearsAgo, 'You must be at least 18 years old'),
             sub_type: Yup.string(),
-            current_city: Yup.string()
-                .when('sub_type', {
-                    is: 'fresher',
-                    then: sch => sch.string()
-                                .required('Current city is required'),
-                            otherwise: sch => sch.notRequired(),
-                }),
+            current_city: Yup.string().when('sub_type', {
+                is: () => 'fresher',
+                then: () => Yup.string().required('Current city is required'),
+                otherwise: () => Yup.string().notRequired(),
+            })
         }),
     }),
     email: Yup.string()

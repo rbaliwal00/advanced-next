@@ -210,143 +210,131 @@ export function deepMerge(target, source) {
 export const partTimeImg = require("@public/assets/partTime.png");
 
 export const transformObject = (obj) => {
-    const { profile, organization_auth_map } = obj;
+  const { profile, organization_auth_map } = obj;
 
-    const org = organization_auth_map[organization_auth_map.length - 1]?.organization;
-    const { organization_location_map, gst_pan, contact, suppliers } = org
-    const location = organization_location_map[0]?.location;
+  const org =
+    organization_auth_map[organization_auth_map.length - 1]?.organization;
+  const { organization_location_map, gst_pan, contact, suppliers } = org || {};
+  const location =
+    (organization_location_map && organization_location_map[0]?.location) || {};
 
-    const profileData = Array.isArray(profile) ? profile[profile.length -1] : profile;
-    const { awards, education, experience, preference, references } = profileData;
+  const profileData = Array.isArray(profile)
+    ? profile[profile.length - 1]
+    : profile;
+  const { awards, education, experience, preference, references } = profileData;
 
-    const prefillFormData = {
-        email: obj?.email ?? '',
-        phone_number: obj.phone_number ?? '',
-        profile: {
-            data: {
-                vc_theme: profileData?.vc_theme ?? '',
-                type: profileData?.type ?? '',
-                awards: {
-                    data: {
-                        brand_name: awards[0]?.brand_name ?? '',
-                        department: awards[0]?.department ?? '',
-                        name: awards[0]?.name ?? '',
-                        position: awards[0]?.position ?? '',
-                    },
-                },
-                cv_theme: profileData?.cv_theme ?? '',
-                dob: profileData?.dob ?? '',
-                education: {
-                    data: {
-                        cgpa: education[0]?.cgpa ?? '',
-                        from_date: education[0]?.from_date ?? '',
-                        to_date: education[0]?.to_date ?? '',
-                        institution_city: education[0]?.institution_city ?? '',
-                        institution_name: education[0]?.institution_name ?? '',
-                        level: education[0]?.level ?? '',
-                        passout_year: education[0]?.passout_year ?? '',
-                        study_field: education[0]?.study_field ?? '',
-                    },
-                },
-                experience: {
-                    data: {
-                        brand_name: experience[0]?.brand_name ?? '',
-                        department: experience[0]?.department ?? '',
-                        montly_salary: experience[0]?.montly_salary ?? '',
-                        position: experience[0]?.position ?? '',
-                        sub_category: experience[0]?.sub_category ?? '',
-                        type: experience[0]?.type ?? '',
-                        work_experience: experience[0]?.work_experience ?? '',
-                    },
-                },
-                first_name: profileData?.first_name ?? '',
-                last_name: profileData?.last_name ?? '',
-                gender: profileData?.gender ?? '',
-                image_url: profileData?.image_url ?? '',
-                preference: {
-                    data: {
-                        aadhar: preference[0]?.aadhar ?? '',
-                        internship: preference[0]?.internship ?? '',
-                        one_day_job: preference[0]?.one_day_job ?? '',
-                        partime_job: preference[0]?.partime_job ?? '',
-                        passport: preference[0]?.passport ?? '',
-                        working_city: preference[0]?.working_city ?? '',
-                    },
-                },
-                references: {
-                    data: {
-                        brand_name: references[0]?.brand_name ?? '',
-                        department: references[0]?.department ?? '',
-                        email: references[0]?.email ?? '',
-                        name: references[0]?.name ?? '',
-                        phone_number: references[0]?.phone_number ?? '',
-                        position: references[0]?.position ?? '',
-                    },
-                },
-                sub_type: profileData?.sub_type ?? '',
-                website: profileData?.website ?? '',
-            },
+  const prefillFormData = {
+    email: obj?.email ?? "",
+    phone_number: obj.phone_number ?? "",
+    profile: {
+      data: {
+        id: profileData?.id ?? null,
+        vc_theme: profileData?.vc_theme ?? "",
+        type: profileData?.type ?? "",
+        current_city: profileData?.type ?? "",
+        cv_theme: profileData?.cv_theme ?? "",
+        dob: profileData?.dob ?? "",
+        education: {
+          data: {
+            id: education[0]?.id ?? "",
+            cgpa: education[0]?.cgpa ?? "",
+            from_date: education[0]?.from_date ?? "",
+            to_date: education[0]?.to_date ?? "",
+            institution_city: education[0]?.institution_city ?? "",
+            institution_name: education[0]?.institution_name ?? "",
+            level: education[0]?.level ?? "",
+            passout_year: education[0]?.passout_year ?? "",
+            study_field: education[0]?.study_field ?? "",
+          },
         },
-        organization_auth_map: {
-            data: {
-                organization: {
-                    data: {
-                        vc_theme: org?.vc_theme ?? '',
-                        brand_name: org?.brand_name ?? '',
-                        nature_of_business: org?.nature_of_business ?? [],
-                        company_name: org?.company_name ?? '',
-                        gst_pan: {
-                            data: {
-                                gst: gst_pan[0]?.gst ?? '',
-                                pan: gst_pan[0]?.pan ?? '',
-                                status: gst_pan[0]?.status ?? '',
-                            },
-                        },
-                        image_url: org?.image_url ?? '',
-                        no_of_employee: org?.no_of_employee ?? '',
-                        contact: {
-                            data: {
-                                name: contact[0]?.name ?? '',
-                                email: contact[0]?.email ?? '',
-                                website: contact[0]?.website ?? '',
-                                phone_number: contact[0]?.phone_number ?? '',
-                            },
-                        },
-                        organization_location_map: {
-                            data: {
-                                location: {
-                                    data: {
-                                        area: location?.area ?? '',
-                                        block_number: location?.block_number ?? '',
-                                        city: location?.city ?? '',
-                                        geolocation: {
-                                            data: {
-                                                latitude: location.geolocation[0]?.latitude ?? "",
-                                                longitude: location.geolocation[0]?.longitude ?? "",
-                                                other: {},
-                                                type: location.geolocation[0]?.type ?? "",
-                                            },
-                                        },
-                                        pincode: location?.pincode ?? '',
-                                        state: location?.state ?? '',
-                                    },
-                                },
-                            },
-                        },
-                        suppliers: {
-                            data: {
-                                area: suppliers[0]?.area ?? '',
-                                scale: suppliers[0]?.scale ?? '',
-                                coverage_area_list: suppliers[0]?.coverage_area_list ?? []
-                            },
-                        },
-                    },
-                },
-            },
+        experience: {
+          data: {
+            id: experience[0]?.id ?? "",
+            brand_name: experience[0]?.brand_name ?? "",
+            department: experience[0]?.department ?? "",
+            montly_salary: experience[0]?.montly_salary ?? "",
+            position: experience[0]?.position ?? "",
+            sub_category: experience[0]?.sub_category ?? "",
+            type: experience[0]?.type ?? "",
+            work_experience: experience[0]?.work_experience ?? "",
+          },
         },
-    }
+        first_name: profileData?.first_name ?? "",
+        last_name: profileData?.last_name ?? "",
+        gender: profileData?.gender ?? "",
+        image_url: profileData?.image_url ?? "",
+        preference: {
+          data: {
+            id: preference[0]?.id ?? "",
+            aadhar: preference[0]?.aadhar ?? "",
+            internship: preference[0]?.internship ?? "",
+            one_day_job: preference[0]?.one_day_job ?? "",
+            partime_job: preference[0]?.partime_job ?? "",
+            passport: preference[0]?.passport ?? "",
+            working_city: preference[0]?.working_city ?? "",
+          },
+        },
+        sub_type: profileData?.sub_type ?? "",
+        website: profileData?.website ?? "",
+      },
+    },
+    organization_auth_map: {
+      data: {
+        organization: {
+          data: {
+            vc_theme: org?.vc_theme ?? "",
+            brand_name: org?.brand_name ?? "",
+            nature_of_business: org?.nature_of_business ?? [],
+            company_name: org?.company_name ?? "",
+            gst_pan: {
+              data: {
+                id: (gst_pan && gst_pan[0]?.id) || "",
+                gst: (gst_pan && gst_pan[0]?.gst) || "",
+                pan: (gst_pan && gst_pan[0]?.pan) || "",
+                status: (gst_pan && gst_pan[0]?.status) || "",
+              },
+            },
+            image_url: org?.image_url ?? "",
+            no_of_employee: org?.no_of_employee ?? "",
+            contact: {
+              data: {
+                id: (contact && contact[0]?.id) || "",
+                name: (contact && contact[0]?.name) || "",
+                email: (contact && contact[0]?.email) || "",
+                website: (contact && contact[0]?.website) || "",
+                phone_number: (contact && contact[0]?.phone_number) || "",
+              },
+            },
+            organization_location_map: {
+              data: {
+                location: {
+                  data: {
+                    id: location?.id ?? "",
+                    area: location?.area ?? "",
+                    block_number: location?.block_number ?? "",
+                    city: location?.city ?? "",
+                    pincode: location?.pincode ?? "",
+                    state: location?.state ?? "",
+                  },
+                },
+              },
+            },
+            suppliers: {
+              data: {
+                id: (suppliers && suppliers[0]?.id) || "",
+                area: (suppliers && suppliers[0]?.area) || "",
+                scale: (suppliers && suppliers[0]?.scale) || "",
+                coverage_area_list:
+                  (suppliers && suppliers[0]?.coverage_area_list) || [],
+              },
+            },
+          },
+        },
+      },
+    },
+  };
 
-    return prefillFormData;
+  return prefillFormData;
 };
 
 const profileDataExtracter = (profileDetails) => {
@@ -356,6 +344,7 @@ const profileDataExtracter = (profileDetails) => {
 };
 
 export const getUpdateFormValues = (user) => {
+  console.log("Check object before update transform", user);
   const formValues = {
     ...(user?.id ? { id: user.id } : {}),
     phone_number: user?.phone_number ?? "",
@@ -365,7 +354,7 @@ export const getUpdateFormValues = (user) => {
     profile: {
       data: [
         {
-          id: user.id ?? "",
+          id: profileDataExtracter(user.profile)?.id ?? "",
           first_name: profileDataExtracter(user.profile)?.first_name ?? "",
           last_name: profileDataExtracter(user.profile)?.last_name ?? "",
           gender: profileDataExtracter(user.profile)?.gender ?? "",
@@ -376,33 +365,12 @@ export const getUpdateFormValues = (user) => {
           cv_theme: profileDataExtracter(user.profile)?.cv_theme ?? "",
           sub_type: profileDataExtracter(user.profile)?.sub_type ?? "",
           type: profileDataExtracter(user.profile)?.type ?? "",
-          awards: {
-            data:
-              [
-                {
-                  brand_name:
-                    profileDataExtracter(user.profile).awards.data
-                      ?.brand_name ?? "",
-                  department:
-                    profileDataExtracter(user.profile).awards.data
-                      ?.department ?? "",
-                  name:
-                    profileDataExtracter(user.profile).awards.data?.name ?? "",
-                  position:
-                    profileDataExtracter(user.profile).awards.data?.position ??
-                    "",
-                },
-              ] ?? [],
-            on_conflict: {
-              constraint: "awards_pkey",
-              update_columns: ["brand_name", "department", "name", "position"],
-            },
-          },
 
           education: {
             data:
               [
                 {
+                  id: profileDataExtracter(user.profile).education.data?.id,
                   cgpa:
                     profileDataExtracter(user.profile).education.data?.cgpa ??
                     "",
@@ -440,54 +408,61 @@ export const getUpdateFormValues = (user) => {
             },
           },
 
-          experience: {
-            data:
-              [
-                {
-                  brand_name:
-                    profileDataExtracter(user.profile).experience.data
-                      ?.brand_name ?? "",
-                  department:
-                    profileDataExtracter(user.profile).experience.data
-                      ?.department ?? "",
-                  // from_date: profileDataExtracter(user.profile).experience.data?.from_date ?? "",
-                  // to_date: profileDataExtracter(user.profile).experience.data?.to_date ?? "",
-                  monthly_salary_text:
-                    profileDataExtracter(user.profile).experience.data
-                      ?.monthly_salary_text ?? "",
-                  position:
-                    profileDataExtracter(user.profile).experience.data
-                      ?.position ?? "",
-                  sub_category:
-                    profileDataExtracter(user.profile).experience.data
-                      ?.sub_category ?? "",
-                  type:
-                    profileDataExtracter(user.profile).experience.data?.type ??
-                    "",
-                  work_experience:
-                    profileDataExtracter(user.profile).experience.data
-                      ?.work_experience ?? "",
+          ...(profileDataExtracter(user.profile)?.sub_type == 'experienced'
+            ? {
+                experience: {
+                  data:
+                    [
+                      {
+                        id: profileDataExtracter(user.profile).experience.data
+                          ?.id,
+                        brand_name:
+                          profileDataExtracter(user.profile).experience.data
+                            ?.brand_name ?? "",
+                        department:
+                          profileDataExtracter(user.profile).experience.data
+                            ?.department ?? "",
+                        // from_date: profileDataExtracter(user.profile).experience.data?.from_date ?? "",
+                        // to_date: profileDataExtracter(user.profile).experience.data?.to_date ?? "",
+                        monthly_salary_text:
+                          profileDataExtracter(user.profile).experience.data
+                            ?.monthly_salary_text ?? "",
+                        position:
+                          profileDataExtracter(user.profile).experience.data
+                            ?.position ?? "",
+                        sub_category:
+                          profileDataExtracter(user.profile).experience.data
+                            ?.sub_category ?? "",
+                        type:
+                          profileDataExtracter(user.profile).experience.data
+                            ?.type ?? "",
+                        work_experience:
+                          profileDataExtracter(user.profile).experience.data
+                            ?.work_experience ?? "",
+                      },
+                    ] ?? [],
+                  on_conflict: {
+                    constraint: "experience_pkey",
+                    update_columns: [
+                      "brand_name",
+                      "department",
+                      "from_date",
+                      "to_date",
+                      "monthly_salary_text",
+                      "position",
+                      "sub_category",
+                      "type",
+                      "work_experience",
+                    ],
+                  },
                 },
-              ] ?? [],
-            on_conflict: {
-              constraint: "experience_pkey",
-              update_columns: [
-                "brand_name",
-                "department",
-                "from_date",
-                "to_date",
-                "monthly_salary_text",
-                "position",
-                "sub_category",
-                "type",
-                "work_experience",
-              ],
-            },
-          },
+              }
+            : {}),
           preference: {
             data:
               [
                 {
+                  id: profileDataExtracter(user.profile).preference.data?.id,
                   aadhar:
                     profileDataExtracter(user.profile).preference.data
                       ?.aadhar ?? "",
@@ -520,44 +495,6 @@ export const getUpdateFormValues = (user) => {
               ],
             },
           },
-
-          references: {
-            data:
-              [
-                {
-                  brand_name:
-                    profileDataExtracter(user.profile).references.data
-                      ?.brand_name ?? "",
-                  department:
-                    profileDataExtracter(user.profile).references.data
-                      ?.department ?? "",
-                  email:
-                    profileDataExtracter(user.profile).references.data?.email ??
-                    "",
-                  name:
-                    profileDataExtracter(user.profile).references.data?.name ??
-                    "",
-                  phone_number:
-                    profileDataExtracter(user.profile).references.data
-                      ?.phone_number ?? "",
-                  position:
-                    profileDataExtracter(user.profile).references.data
-                      ?.position ?? "",
-                },
-              ] ?? [],
-
-            on_conflict: {
-              constraint: "reference_pkey",
-              update_columns: [
-                "brand_name",
-                "department",
-                "email",
-                "name",
-                "phone_number",
-                "position",
-              ],
-            },
-          },
         },
       ],
       on_conflict: {
@@ -577,96 +514,104 @@ export const getUpdateFormValues = (user) => {
       },
     },
   };
+  console.log("check updated object before api call", formValues);
 
   return formValues;
 };
 
 export const updateOrgFormValues = (user) => {
-    const org = user.organization_auth_map.data.organization.data;
-    const formValues = {
-        object: {
-            brand_name: org.brand_name ?? '',
-            business_nature: org.business_nature ?? '',
-            company_name: org.company_name ?? '',
-            contact: {
-                data: [{
-                    email: org.contact.data.email ?? '',
-                    name: org.contact.data.name ?? '',
-                    phone_number: org.contact.data.phone_number ?? '',
-                    website: org.contact.data.website ?? ''
-                }],
-                on_conflict: {
-                    constraint: "contact_pkey",
-                    update_columns: [
-                        "created_at",
-                        "email",
-                        "id",
-                        "is_active",
-                        "name",
-                        "phone_number",
-                        "updated_at",
-                        "website"
-                    ]
-                }
-            },
-            gst_pan: {
-                data: [{
-                        gst: org.gst_pan.data.gst ?? '',
-                        pan: org.gst_pan.data.pan ?? '',
-                        status: org.gst_pan.data.status ?? '',
-                    }],
-                on_conflict: {
-                    constraint: "gst_pan_pkey",
-                    update_columns: [
-                        "created_at",
-                        "gst",
-                        "id",
-                        "is_active",
-                        "organization_id",
-                        "pan",
-                        "status",
-                        "updated_at"
-                    ]
-                }
-            },
-            id: org.id,
-            image_url: org.image_url ?? '',
-            no_of_employee: org.no_of_employee.toString() ?? '',
-            suppliers: {
-                data: [{ 
-                        area: org.suppliers.data.area ?? "",
-                        scale: org.suppliers.data.scale ?? "",
-                        coverage_area_list: org.suppliers.data.org.suppliers.data.scale ?? "" ?? ""
-
-                }] ?? [],
-                on_conflict: {
-                    constraint: "supplier_pkey",
-                    update_columns: [
-                        "area",
-                        "created_at",
-                        "id",
-                        "is_active",
-                        "organization_id",
-                        "scale",
-                        "updated_at",
-                        "coverage_area_list"
-                    ]
-                }
-            },
-            vc_theme: org.vc_theme ?? ""
-        },
-        update_columns: [
-          "brand_name",
-          "business_nature",
-          "company_name",
-          "created_at",
-          "id",
-          "image_url",
-          "is_active",
-          "no_of_employee",
-          "updated_at",
-          "vc_theme",
+  const org = user.organization_auth_map.data.organization.data;
+  const formValues = {
+    object: {
+      brand_name: org.brand_name ?? "",
+      business_nature: org.business_nature ?? "",
+      company_name: org.company_name ?? "",
+      contact: {
+        data: [
+          {
+            email: org.contact.data.email ?? "",
+            name: org.contact.data.name ?? "",
+            phone_number: org.contact.data.phone_number ?? "",
+            website: org.contact.data.website ?? "",
+          },
         ],
+        on_conflict: {
+          constraint: "contact_pkey",
+          update_columns: [
+            "created_at",
+            "email",
+            "id",
+            "is_active",
+            "name",
+            "phone_number",
+            "updated_at",
+            "website",
+          ],
+        },
+      },
+      gst_pan: {
+        data: [
+          {
+            gst: org.gst_pan.data.gst ?? "",
+            pan: org.gst_pan.data.pan ?? "",
+            status: org.gst_pan.data.status ?? "",
+          },
+        ],
+        on_conflict: {
+          constraint: "gst_pan_pkey",
+          update_columns: [
+            "created_at",
+            "gst",
+            "id",
+            "is_active",
+            "organization_id",
+            "pan",
+            "status",
+            "updated_at",
+          ],
+        },
+      },
+      id: org.id,
+      image_url: org.image_url ?? "",
+      no_of_employee: org.no_of_employee.toString() ?? "",
+      suppliers: {
+        data:
+          [
+            {
+              area: org.suppliers.data.area ?? "",
+              scale: org.suppliers.data.scale ?? "",
+              coverage_area_list:
+                org.suppliers.data.org.suppliers.data.scale ?? "" ?? "",
+            },
+          ] ?? [],
+        on_conflict: {
+          constraint: "supplier_pkey",
+          update_columns: [
+            "area",
+            "created_at",
+            "id",
+            "is_active",
+            "organization_id",
+            "scale",
+            "updated_at",
+            "coverage_area_list",
+          ],
+        },
+      },
+      vc_theme: org.vc_theme ?? "",
+    },
+    update_columns: [
+      "brand_name",
+      "business_nature",
+      "company_name",
+      "created_at",
+      "id",
+      "image_url",
+      "is_active",
+      "no_of_employee",
+      "updated_at",
+      "vc_theme",
+    ],
   };
 
   return formValues;
@@ -744,14 +689,15 @@ export const monthlySalaries = [
 ];
 
 export const responsiveFontSize = {
-    fontSize: {
-        xs: "14px",
-        sm: '16px'
-    },
+  fontSize: {
+    xs: "14px",
+    sm: "16px",
+  },
 };
 
 export const getInitialValue = (value) => {
-    if(value && value[0]){
-     return   Array.isArray(value) && value.length > 0 ? [...value] : [value];
-    }return []
-}
+  if (value && value[0]) {
+    return Array.isArray(value) && value.length > 0 ? [...value] : [value];
+  }
+  return [];
+};

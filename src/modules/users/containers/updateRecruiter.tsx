@@ -131,6 +131,7 @@ const Container = (props) => {
   } = props;
 
   const router = useRouter();
+  console.log("check user data here-- update container", user);
 
   const onSubmit = async (values) => {
     const newFormValues = updateOrgFormValues(values);
@@ -150,7 +151,7 @@ const Container = (props) => {
   return (
     <SuperTokensWrapper>
       <RecruiterForm
-        prefillData={transformObject(user).data}
+        prefillData={transformObject(user)}
         onSubmit={onSubmit}
       />
       ;

@@ -16,7 +16,7 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
 
   const isMobile = useMediaQuery('(max-width:600px)');
 
-  console.log('asdfjasdflkjsd',formikProps.value)
+  console.log('asdfjasdflkjsd',formikProps)
   return (
     <Accordion 
     expanded={expanded}
@@ -58,8 +58,8 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
           <MaterialUIFieldAdapter
               fromik={formikProps}
               type="select"
-            name={`education.${index}.study_field`}
-            label="Education Type"
+            name={`education.${index}.level`}
+            label="Level of Education"
             options={[{ value: 'Field 1', label: 'Field 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
           />
           <MaterialUIFieldAdapter

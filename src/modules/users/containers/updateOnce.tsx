@@ -4,7 +4,7 @@ import { compose } from "@common";
 import { withInsert, withGetOne  } from "../operations";
 import FresherForm from "@components/form/FresherFlow";
 import { CircularProgress } from "@mui/material";
-import { transformObject, addOnConflict, getUpdateFormValues } from "@components/form/utilities";
+import { transformObject, getUpdateFormValues } from "@components/form/utilities";
 import { SuperTokensWrapper } from "@modules/look";
 import { useRouter } from "next/router";
 
@@ -199,7 +199,7 @@ const Container = (props) => {
 
     if(loadingUserData) return <CircularProgress />
     return <SuperTokensWrapper>
-                <FresherForm prefillData={transformObject(user).data} onSubmit={onSubmit} />;
+                <FresherForm prefillData={transformObject(user)} onSubmit={onSubmit} />;
            </SuperTokensWrapper> 
         
 };

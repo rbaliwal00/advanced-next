@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 import {
   TextField,
@@ -21,7 +21,7 @@ import ImageUploadButton from "./ImgUploadBtn";
 import GstInputComponent from "./UploadCard";
 import Image from "next/image";
 import CityAutoComplete from "../cities/CityAutoComplete";
-import { responsiveFontSize } from "./utilities";
+import { getInitialValue, responsiveFontSize } from "./utilities";
 import CatergoryAutoComplete from "@components/category/CatergoryAutoComplete";
 
 const filePropType =
@@ -47,8 +47,12 @@ const MaterialUIFieldAdapter = ({
   maxMultipleLength = 0,
   isDob
 }) => {
-
-  const [ selected, setSelected] = useState([])
+  const { organization_auth_map, profile } = formik.values;
+  const profileData = profile?.data || {};
+  const { nature_of_business: businessNature, image_url: orgImgUrl, gst_pan, suppliers }= organization_auth_map?.data.organization?.data || {}
+  const newInitialValue = getInitialValue(businessNature)
+  const [ selected, setSelected] = useState(newInitialValue ?? [])
+  const [areaList, setAreaList] = useState(getInitialValue(suppliers?.data?.coverage_area_list) ?? [])
 
   const handleChange = (event) => {
     const value =
@@ -62,9 +66,25 @@ const MaterialUIFieldAdapter = ({
     formik.setFieldValue(name, value);
   }
 
+  const profileImgValue = () => {
+    const isImgValid = (profileData?.image_url || orgImgUrl)
+    if(isImgValid){
+      return (name == 'organization_auth_map.data.organization.data.image_url') ? orgImgUrl : profileData.image_url;
+    }else return ''
+  }
+
+  const gstPanImgValue = () => {
+    const { gst, pan} = gst_pan.data;
+    const isImgValid = (gst || pan)
+    if (isImgValid) {
+      return (name == 'organization_auth_map.data.organization.data.gst_pan.data.gst') ? gst : pan;
+    } else return ''
+  }
+
   const radioValue = () => {
-    const aadharValueLength = formik.values.profile.data.preference.data.aadhar.length;
-    if (name === 'idType'){
+    const isValidId = (profileData?.preference?.data?.aadhar || profileData?.preference?.data?.passport)
+    const aadharValueLength = profileData?.preference?.data?.aadhar.length;
+    if (isValidId){
       const tempValue = (aadharValueLength > 0) ? 'aadhar' : 'passport';
       formik.values.idType = tempValue
       return tempValue
@@ -72,9 +92,19 @@ const MaterialUIFieldAdapter = ({
   }
 
   const handleMultipleSelect = (event) => {
-    if(selected.length < maxMultipleLength) {
-      setSelected([...selected, ...event.target.value])
-      formik.setFieldValue(name, [...selected, ...event.target.value]);
+    console.log("cehck select values here", event.target.value, selected);
+    if (name == 'organization_auth_map.data.organization.data.suppliers.data.coverage_area_list'){
+      const newValues = event.target.value.filter(value => !areaList.includes(value));
+      const updatedSelected = areaList.length > 0 ? [...areaList, ...newValues] : [...newValues];
+      setAreaList(updatedSelected)
+      formik.setFieldValue(name, updatedSelected);
+    }else{
+      const newValues = event.target.value.filter(value => !selected.includes(value));
+      if (selected.length + newValues.length <= maxMultipleLength) {
+        const updatedSelected = selected.length > 0 ? [...selected, ...newValues] : [...newValues];
+        setSelected(updatedSelected);
+        formik.setFieldValue(name, updatedSelected);
+      }
     }
   };
 
@@ -294,7 +324,7 @@ const MaterialUIFieldAdapter = ({
               fullWidth
               sx={{ borderRadius: "6px", maxHeight: "48px", overflow: "auto" }}
               name={name}
-              value={selected} // Ensure the value is an array for multiple selections
+              value={(name === 'organization_auth_map.data.organization.data.suppliers.data.coverage_area_list') ? areaList : selected} // Ensure the value is an array for multiple selections
               onChange={handleMultipleSelect}
               onBlur={handleBlur}
               renderValue={(selected) =>
@@ -395,7 +425,7 @@ const MaterialUIFieldAdapter = ({
                 // Update the Formik state with the file object
                 formik.setFieldValue(name, file);
               }}
-              valueUrl={formik.values.profile.data?.image_url ?? ''}
+              valueUrl={profileImgValue()}
               label={label}
             />
             {touch && error && <Typography color="error">{error}</Typography>}
@@ -446,7 +476,7 @@ const MaterialUIFieldAdapter = ({
                 formik.setFieldValue(name, file);
               }}
               docType={docType}
-              // valueUrl={formik.values.profile.data?.image_url ?? ''}
+              valueUrl={gstPanImgValue()}
             />
             {touch && error && <Typography color="error">{error}</Typography>}
           </Box>

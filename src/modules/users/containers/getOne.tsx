@@ -14,6 +14,8 @@ const Container = (props) => {
         // router: { push },
     } = props;
 
+    console.log("check user data on getONe---", user);
+
     if(loadingUserData) return <CircularProgress />
     return <FilledCard type={'job'} formDetails={user}/>
 };

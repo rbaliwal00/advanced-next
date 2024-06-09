@@ -59,7 +59,7 @@ const ButtonStack = ({ updateType, handleDownloadImage,  userId }) => {
         <FileDownloadOutlinedIcon sx={{ color: "black" }} />
       </IconButton>
 
-      <Link
+      {/* <Link
         href={nextRoute}
         style={{
           margin: "auto",
@@ -82,7 +82,7 @@ const ButtonStack = ({ updateType, handleDownloadImage,  userId }) => {
         >
           <EditOutlinedIcon sx={{ color: "black" }} />
         </IconButton>
-      </Link>
+      </Link> */}
 
       <IconButton
         sx={{

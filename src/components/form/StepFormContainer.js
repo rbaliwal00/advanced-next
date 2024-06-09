@@ -44,7 +44,7 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
   };
 
   return (
-    <Box sx={{ background: "#fff" }}>
+    <Box sx={{ background: "#fff", mb: { xs: '100px', sm: '24px'} }}>
       <CustomProgressBar
         progress={progress}
         label={currentConfig.key}
@@ -58,7 +58,6 @@ const MultiStepForm = ({ formConfigs, onSubmitFinal, prefillData }) => {
         onSubmit={handleNext}
       >
         {(formikProps) => {
-          console.log("cehck errors and values", formikProps)
           return (
             <CurrentForm
               {...formikProps}

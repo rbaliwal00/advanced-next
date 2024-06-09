@@ -5,7 +5,6 @@ import { withInsert, withGetOne } from "../operations";
 import ExperiencedForm from "@components/form/ExperiencedFlow";
 import { CircularProgress } from "@mui/material";
 import { transformObject, getUpdateFormValues } from "@components/form/utilities";
-import { SuperTokensWrapper } from "@modules/look";
 import { useRouter } from "next/router";
 
 const Container = (props) => {
@@ -32,9 +31,7 @@ const Container = (props) => {
     };
 
     if (loadingUserData) return <CircularProgress />
-    return <SuperTokensWrapper>
-                <ExperiencedForm prefillData={transformObject(user)} onSubmit={onSubmit} />;
-            </SuperTokensWrapper>
+    return <ExperiencedForm prefillData={transformObject(user)} onSubmit={onSubmit} />;
 };
 
 export default compose(withInsert, withGetOne)(Container);

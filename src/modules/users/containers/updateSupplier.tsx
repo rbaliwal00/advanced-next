@@ -142,9 +142,8 @@ const Container = (props) => {
     };
 
     if (loadingUserData) return <CircularProgress />
-    return  <SuperTokensWrapper>
-                <SupplierForm prefillData={transformObject(user)} onSubmit={onSubmit} />;
-            </SuperTokensWrapper>
+    return <SupplierForm prefillData={transformObject(user)} onSubmit={onSubmit} />;
+            
 };
 
 export default compose(withInsertOrg, withGetOne)(Container);

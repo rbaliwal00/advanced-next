@@ -44,7 +44,8 @@ const formConfigs = [
             email: '', // Moved `email` under `profile`
         },
         validationSchema: registrationValidationSchema,
-        key: 'registration',    
+        key: 'registration', 
+        type: 'experienced'   
     },
     {
         Component: StatusForm,

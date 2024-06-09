@@ -53,7 +53,10 @@ export default function Layout({ children }: any) {
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width,minimal-ui,viewport-fit=cover,initial-scale=1,maximum-scale=1,user-scalable=no"
+        />{" "}
         <title>Horecah</title>
         <meta name="description" content="Horecah!" />
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -64,7 +67,7 @@ export default function Layout({ children }: any) {
           type="image/png"
           sizes="192x192"
         /> */}
-              <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="icon" sizes="192x192" href="/icons/app/icon.png" />
         <link rel="icon" sizes="128x128" href="/icons/app/icon-128x128.png" />
         <meta name="theme-color" content="#ffffff" />
@@ -84,7 +87,6 @@ export default function Layout({ children }: any) {
           sizes="167x167"
           href="/icons/touch-icon-ipad-retina.png"
         /> */}
-  
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:url" content="https://client.horecah.com" />
         <meta name="twitter:title" content="Horecah App" />
@@ -97,7 +99,6 @@ export default function Layout({ children }: any) {
         <meta property="og:site_name" content="Horecah App" />
         <meta property="og:url" content="https://client.horecah.com" />
         <meta property="og:image" content="/icons/og.png" />
-
         <meta content="yes" name="apple-mobile-web-app-capable" />
         <meta content="yes" name="mobile-web-app-capable" />
         {/* add the following only if you want to add a startup image for Apple devices. */}

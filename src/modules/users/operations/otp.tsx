@@ -5,6 +5,7 @@ import {
   consumeCode,
 } from "supertokens-web-js/recipe/passwordless";
 import withCreate from "./create";
+import { emitter } from "@modules/common";
 
 const serverEndpoint = process.env.NEXT_PUBLIC_API_SERVER_ENDPOINT;
 
@@ -38,6 +39,7 @@ const withOTP = (Component: React.FunctionComponent) => {
         id: response.user.id,
         phone_number: mobile,
       });
+      emitter.emit("sign_in_status_change");
       return true;
     };
 

@@ -655,9 +655,6 @@ export const updateOrgFormValues = (user) => {
             },
             vc_theme: org.vc_theme ?? ""
         },
-
-        on_conflict: {
-        constraint: "profile_pkey",
         update_columns: [
           "brand_name",
           "business_nature",
@@ -670,8 +667,6 @@ export const updateOrgFormValues = (user) => {
           "updated_at",
           "vc_theme",
         ],
-      },
-  
   };
 
   return formValues;

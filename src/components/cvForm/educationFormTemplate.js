@@ -38,12 +38,10 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
             {formikProps.values.education[index].institution_name===''?'Name of Institution':formikProps.values.education[index].institution_name}, 
             {!formikProps.values.education[index].to_date ?' Passout Years':formikProps.values.education[index].to_date}
           </Typography>
-          {
-            !isMobile && 
             <IconButton onClick={() => onDelete(index)}>
               <DeleteOutlineIcon style={{ color: '#8899A8' }} />
             </IconButton>
-          }
+          
           
         </Box>
       </AccordionSummary>

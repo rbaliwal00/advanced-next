@@ -15,7 +15,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChange, onDelete }) => {
 
   const isMobile = useMediaQuery('(max-width:600px)');
-  console.log('hi ajith kumar =>',formikProps.values)
+
 
   return (
     <Accordion 
@@ -69,6 +69,13 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
               name={`experience.${index}.department`}
               subCategoryName={`experience.${index}.sub_category`}
               positionName={`experience.${index}.position`}
+              customValue={
+                {
+                  departmentName: formikProps.values.experience[index].department,
+                  subCategoryName: formikProps.values.experience[index].sub_category,
+                  positionName: formikProps.values.experience[index].position
+                }
+              }
           />
           <Box 
             display={'flex'} 

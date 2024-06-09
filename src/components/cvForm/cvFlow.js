@@ -73,7 +73,7 @@ function convertSchema(input) {
                   department: exp.department,
                   from_date: exp.from_date,
                   to_date: exp.to_date,
-                  monthly_salary_text: exp.monthly_salary,
+                  monthly_salary_text: exp.monthly_salary_text,
                   position: exp.position,
                   sub_category: exp.sub_category,
                   type: exp.type,
@@ -227,8 +227,8 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
         // deleteFunctionProps={deleteFunctionProps}
         onSubmitFinal={async (values) =>{
           // alert(`end of recruiter flow ${JSON.stringify(values)}`);
-          console.log("values---", values);
-          await handleSubmitForm(convertSchema(values), on_conflict);
+          const convertedValues = convertSchema(values);
+          await handleSubmitForm(convertedValues, on_conflict);
           setTimeout(() => {
             router.push("/users/job-seeker/cv/view");
           }, 1000);

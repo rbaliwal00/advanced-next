@@ -7,9 +7,14 @@ const withGetOne = (Component: FunctionComponent) => {
         const [userId, setUserId] = useState<string | null>(null);
 
         useEffect(() => {
-            const storedUserId = localStorage.getItem('currId');
-            setUserId(storedUserId);
-        }, []);
+            if (props.isPublic) {
+              const userId = props.id;
+              setUserId(userId);
+            } else {
+              const storedUserId = localStorage.getItem("currId");
+              setUserId(storedUserId);
+            }
+          }, [props.isPublic]);
 
         if (!userId) {
             return <div>Loading...</div>; // Or any other loading indicator

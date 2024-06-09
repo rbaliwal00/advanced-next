@@ -11,6 +11,7 @@ const Container = (props) => {
     const {
         user,
         loadingUserData,
+        isPublic
         // router: { push },
     } = props;
 
@@ -21,7 +22,7 @@ const Container = (props) => {
     console.log("check user data on getONe---", user);
 
     if(loadingUserData) return <CircularProgress />
-    return <FilledCard type={'job'} formDetails={user}/>
+    return <FilledCard type={'job'} formDetails={user} isPublic={isPublic}/>
 };
 
 export default compose(withGetOne)(Container);

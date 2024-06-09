@@ -78,9 +78,9 @@ const AwardFormTemplate = ({
               positionName={`awards.${index}.position`}
               customValue={
                 {
-                  department: formikProps.values.award[index].department,
-                  subCategory: formikProps.values.award[index].sub_category,
-                  position: formikProps.values.award[index].position
+                  department: formikProps.values.awards[index].department,
+                  subCategory: formikProps.values.awards[index].sub_category,
+                  position: formikProps.values.awards[index].position
                 }
               }
           />

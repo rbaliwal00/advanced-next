@@ -54,7 +54,7 @@ const SuperTokensWrapper = ({
     });
   }, []);
 
-  if (loading || userLoading) return <></>;
+  // if (loading || userLoading) return <></>;
 
   const childrenWithProps = React.Children.map(children, (child) => {
     // Checking isValidElement is the safe way and avoids a

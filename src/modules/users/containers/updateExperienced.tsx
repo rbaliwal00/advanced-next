@@ -16,10 +16,10 @@ const Container = (props) => {
         //router: { push },
     } = props;
 
-    React.useEffect(() => {
-        console.log("props---+", props);
-        refetchUserData();
-    }, []);
+    // React.useEffect(() => {
+    //     console.log("props---+", props);
+    //     refetchUserData();
+    // }, []);
 
     const router = useRouter()
 

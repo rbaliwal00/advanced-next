@@ -236,7 +236,7 @@ export const transformObject = (obj) => {
         dob: profileData?.dob ?? "",
         education: {
           data: {
-            id: education[0]?.id ?? "",
+            id: education[0]?.id,
             cgpa: education[0]?.cgpa ?? "",
             from_date: education[0]?.from_date ?? "",
             to_date: education[0]?.to_date ?? "",
@@ -249,7 +249,7 @@ export const transformObject = (obj) => {
         },
         experience: {
           data: {
-            id: experience[0]?.id ?? "",
+            id: experience[0]?.id,
             brand_name: experience[0]?.brand_name ?? "",
             department: experience[0]?.department ?? "",
             montly_salary: experience[0]?.montly_salary ?? "",
@@ -265,7 +265,7 @@ export const transformObject = (obj) => {
         image_url: profileData?.image_url ?? "",
         preference: {
           data: {
-            id: preference[0]?.id ?? "",
+            id: preference[0]?.id,
             aadhar: preference[0]?.aadhar ?? "",
             internship: preference[0]?.internship ?? "",
             one_day_job: preference[0]?.one_day_job ?? "",
@@ -288,7 +288,7 @@ export const transformObject = (obj) => {
             company_name: org?.company_name ?? "",
             gst_pan: {
               data: {
-                id: (gst_pan && gst_pan[0]?.id) || "",
+                id: (gst_pan && gst_pan[0]?.id),
                 gst: (gst_pan && gst_pan[0]?.gst) || "",
                 pan: (gst_pan && gst_pan[0]?.pan) || "",
                 status: (gst_pan && gst_pan[0]?.status) || "",
@@ -298,7 +298,7 @@ export const transformObject = (obj) => {
             no_of_employee: org?.no_of_employee ?? "",
             contact: {
               data: {
-                id: (contact && contact[0]?.id) || "",
+                id: (contact && contact[0]?.id),
                 name: (contact && contact[0]?.name) || "",
                 email: (contact && contact[0]?.email) || "",
                 website: (contact && contact[0]?.website) || "",
@@ -309,7 +309,7 @@ export const transformObject = (obj) => {
               data: {
                 location: {
                   data: {
-                    id: location?.id ?? "",
+                    id: location?.id ,
                     area: location?.area ?? "",
                     block_number: location?.block_number ?? "",
                     city: location?.city ?? "",
@@ -321,7 +321,7 @@ export const transformObject = (obj) => {
             },
             suppliers: {
               data: {
-                id: (suppliers && suppliers[0]?.id) || "",
+                id: (suppliers && suppliers[0]?.id),
                 area: (suppliers && suppliers[0]?.area) || "",
                 scale: (suppliers && suppliers[0]?.scale) || "",
                 coverage_area_list:
@@ -520,6 +520,7 @@ export const getUpdateFormValues = (user) => {
 };
 
 export const updateOrgFormValues = (user) => {
+  console.log("check org beforre updatation", user);
   const org = user.organization_auth_map.data.organization.data;
   const formValues = {
     object: {
@@ -615,6 +616,8 @@ export const updateOrgFormValues = (user) => {
       "vc_theme",
     ],
   };
+
+  console.log("Cehcek formValues here", formValues)
 
   return formValues;
 };

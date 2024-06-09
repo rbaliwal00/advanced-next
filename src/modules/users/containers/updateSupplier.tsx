@@ -130,9 +130,9 @@ const Container = (props) => {
     } = props;
     const router = useRouter()
 
-    React.useEffect(() => {
-        refetchUserData();
-    }, []);
+    // React.useEffect(() => {
+    //     refetchUserData();
+    // }, []);
 
     const onSubmit = async (values) => {
         const newFormValues = updateOrgFormValues(values);

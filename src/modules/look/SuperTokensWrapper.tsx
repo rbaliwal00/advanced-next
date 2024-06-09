@@ -5,6 +5,7 @@ import Session from "supertokens-web-js/recipe/session";
 import ITEM from "@modules/users/graphql/item.graphql";
 import { withCreatePost } from "@modules/users/operations";
 import { compose } from "@modules/common";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const SuperTokensWrapper = ({
   children,
@@ -15,7 +16,7 @@ const SuperTokensWrapper = ({
   const router = useRouter();
   const [getUser, { loading: userLoading, data, error }] = useLazyQuery(ITEM);
 
-  console.log("check errors in login---", error);
+  // console.log("check errors in login---", data, error);
   async function executeCheck() {
     const hasSession = await Session.doesSessionExist();
     if (!hasSession && auth == false) return;
@@ -31,6 +32,8 @@ const SuperTokensWrapper = ({
     const res = await getUser({ variables: { id } });
     const user = res.data?.user;
     const profile = user?.profile[0];
+
+    // console.log(user)
 
     if (!user?.profile?.length && !isProfileCreation) {
       router.replace?.("/users/role-selection");
@@ -59,6 +62,8 @@ const SuperTokensWrapper = ({
     }
     return child;
   });
+
+  if (userLoading) return <CircularProgress />
   return <div>{childrenWithProps}</div>;
 };
 

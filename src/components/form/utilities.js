@@ -524,11 +524,12 @@ export const updateOrgFormValues = (user) => {
   const formValues = {
     object: {
       brand_name: org.brand_name ?? "",
-      business_nature: org.business_nature ?? "",
+      nature_of_business: org.nature_of_business ?? "",
       company_name: org.company_name ?? "",
       contact: {
         data: [
           {
+            id: org.contact.data.id,
             email: org.contact.data.email ?? "",
             name: org.contact.data.name ?? "",
             phone_number: org.contact.data.phone_number ?? "",
@@ -552,6 +553,7 @@ export const updateOrgFormValues = (user) => {
       gst_pan: {
         data: [
           {
+            id: org.gst_pan.data.id,
             gst: org.gst_pan.data.gst ?? "",
             pan: org.gst_pan.data.pan ?? "",
             status: org.gst_pan.data.status ?? "",
@@ -578,10 +580,10 @@ export const updateOrgFormValues = (user) => {
         data:
           [
             {
+              id: org.suppliers.data.id,
               area: org.suppliers.data.area ?? "",
               scale: org.suppliers.data.scale ?? "",
-              coverage_area_list:
-                org.suppliers.data.org.suppliers.data.scale ?? "" ?? "",
+              coverage_area_list: org.suppliers.data.coverage_area_list ?? "" ?? "",
             },
           ] ?? [],
         on_conflict: {

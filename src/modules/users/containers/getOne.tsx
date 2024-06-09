@@ -21,7 +21,7 @@ const Container = (props) => {
   console.log("check user data on getONe---", user);
 
   if (loadingUserData) return <CircularProgress />;
-  return <FilledCard type={"job"} formDetails={user} isPublic={isPublic} />;
+  return <FilledCard type={"jobSeeker"} formDetails={user} isPublic={isPublic} />;
 };
 
 export default compose(withGetOne)(Container);

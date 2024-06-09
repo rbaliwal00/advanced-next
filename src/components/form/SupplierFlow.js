@@ -148,11 +148,13 @@ const formConfigs = [
 ];
 
 const SupplierForm = ({ onSubmit, prefillData, user }) => {
+  
   const handleSubmitFinal = (values) => {
     const areaList = values.organization_auth_map.data.organization.data.suppliers.data.coverage_area_list
     if(!Array.isArray(areaList)){
       values.organization_auth_map.data.organization.data.suppliers.data.coverage_area_list = [areaList]
     }
+    console.log("check user here", user, values);
     onSubmit({ id: user.id, phone_number: user.phone_number, ...values })
   };
 

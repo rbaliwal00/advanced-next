@@ -31,7 +31,7 @@ const Container = (props) => {
     };
 
     if (loadingUserData) return <CircularProgress />
-    return <ExperiencedForm prefillData={transformObject(user)} onSubmit={onSubmit} />;
+    return <ExperiencedForm {...props} prefillData={transformObject(user)} onSubmit={onSubmit} />;
 };
 
 export default compose(withInsert, withGetOne)(Container);

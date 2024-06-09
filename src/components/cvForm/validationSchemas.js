@@ -26,7 +26,7 @@ export const experienceValidationSchema = Yup.object().shape({
       position: Yup.string().required("Position is required"),
       from_date: Yup.date().required('From date is required').typeError('Invalid date format'),
       to_date: Yup.date().required('To date is required').typeError('Invalid date format'),
-      monthly_salary_text: Yup.number().required("Monthly Salary is required"),
+      monthly_salary_text: Yup.string().required("Monthly Salary is required"),
       work_experience: Yup.string().required("Work Experience is required"),
     }),
   ),

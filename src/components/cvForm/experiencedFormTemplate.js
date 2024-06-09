@@ -16,6 +16,7 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
 
   const isMobile = useMediaQuery('(max-width:600px)');
 
+  console.log("experience =>", formikProps.values.experience)
 
   return (
     <Accordion 
@@ -114,13 +115,13 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
           >
             <MaterialUIFieldAdapter
               type="date"
-              name={`education.${index}.from_date`}
+              name={`experience.${index}.from_date`}
               label="From"
               fromik={formikProps}
             />
             <MaterialUIFieldAdapter
               type="date"
-              name={`education.${index}.to_date`}
+              name={`experience.${index}.to_date`}
               label="To"
               fromik={formikProps}
             />

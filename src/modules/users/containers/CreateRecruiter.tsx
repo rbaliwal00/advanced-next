@@ -16,14 +16,18 @@ const Container = (props) => {
 
   const onSubmit = async (object) => {
     const result = await createUserProfile(object);
-    if(result.id) {
-        localStorage.setItem("currId", result.id);
-        router.push("/users/getOther");
+    if (result.id) {
+      localStorage.setItem("currId", result.id);
+      router.push("/users/getOther");
     }
   };
 
   return (
-    <SuperTokensWrapper>
+    <SuperTokensWrapper
+      isProfileCreation={true}
+      redirectIfLoggedIn={true}
+      auth={true}
+    >
       <RecruiterForm {...props} onSubmit={onSubmit} />;
     </SuperTokensWrapper>
   );

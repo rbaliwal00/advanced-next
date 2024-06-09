@@ -34,7 +34,7 @@ const Logout = ({ style }) => {
   if (!visible) return <></>;
   return (
     <>
-      <a href="" style={style ?? {}} onClick={onLogout}>
+      <a className={"pointer"} style={style ?? {}} onClick={onLogout}>
         Logout
       </a>
     </>

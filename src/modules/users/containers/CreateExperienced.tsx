@@ -15,14 +15,18 @@ const Container = (props) => {
   const router = useRouter();
 
   const onSubmit = async (object) => {
-    const result = await createUserProfile( object);
+    const result = await createUserProfile(object);
     if (result?.id) {
       localStorage.setItem("currId", result.id);
       router.push("/users/get-one");
     }
   };
   return (
-    <SuperTokensWrapper>
+    <SuperTokensWrapper
+      isProfileCreation={true}
+      redirectIfLoggedIn={true}
+      auth={true}
+    >
       <ExperiencedForm {...props} onSubmit={onSubmit} />
     </SuperTokensWrapper>
   );

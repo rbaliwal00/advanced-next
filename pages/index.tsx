@@ -9,11 +9,10 @@ import { SuperTokensWrapper } from "@modules/look";
 const Page: NextPageWithLayout = () => {
   // return <LanguageSelection languageData={LanguageData} />;
   return (
-    <SuperTokensWrapper>
+    <SuperTokensWrapper redirectIfLoggedIn={true} auth={false}>
       <LanguageSelection languageData={LanguageData} />
     </SuperTokensWrapper>
-  
-  )
+  );
 };
 
 Page.getLayout = function getLayout(page: ReactElement) {

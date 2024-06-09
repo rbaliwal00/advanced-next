@@ -3,50 +3,52 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import Session from "supertokens-web-js/recipe/session";
 import ITEM from "@modules/users/graphql/item.graphql";
+import { withCreatePost } from "@modules/users/operations";
+import { compose } from "@modules/common";
 
 const SuperTokensWrapper = ({
   children,
   auth = true,
   redirectIfLoggedIn = false,
+  isProfileCreation = false,
 }: any) => {
   const router = useRouter();
   const [getUser, { loading: userLoading, data, error }] = useLazyQuery(ITEM);
 
   console.log("check errors in login---", error);
+  async function executeCheck() {
+    const hasSession = await Session.doesSessionExist();
+    if (!hasSession && auth == false) return;
+    if (!hasSession && auth) {
+      router.replace?.("/users/login/mobile-otp");
+      return;
+    }
+    const id = await Session.getUserId();
+    if (!id) {
+      router.replace?.("/");
+      return;
+    }
+    const res = await getUser({ variables: { id } });
+    const user = res.data?.user;
+    const profile = user?.profile[0];
+
+    if (!user?.profile?.length && !isProfileCreation) {
+      router.replace?.("/users/role-selection");
+      return;
+    }
+
+    if (user?.profile?.length && redirectIfLoggedIn) {
+      if (profile?.type?.toUpperCase() == "JOBSEEKER") {
+        router.replace?.("/users/get-one");
+        return;
+      }
+      router.replace?.("/users/getOther");
+      return;
+    }
+  }
 
   useEffect(() => {
-    Session.doesSessionExist().then(async (i) => {
-      console.log(
-        "🚀 ~ Session.doesSessionExist ~ i:",
-        i,
-        auth == false && !redirectIfLoggedIn,
-      );
-      if (auth == false && !redirectIfLoggedIn) {
-        return;
-      }
-      if (!i) {
-        return;
-      }
-      const id = await Session.getUserId();
-      const res = await getUser({ variables: { id } });
-      console.log(res.data?.user?.profile[0]?.id, redirectIfLoggedIn);
-      if (!res.data?.user?.profile[0]?.id && redirectIfLoggedIn) {
-        router.replace?.("/users/role-selection");
-        return;
-      }
-      if (router.pathname === "/" && res.data?.user?.profile[0]?.id) {
-        console.log(
-          "🚀 ~ Session.doesSessionExist ~ router.pathname",
-          router.pathname,
-          res.data?.user?.profile[0],
-        );
-        if (res.data?.user?.profile[0].type === "jobSeeker") {
-          router.replace?.("/users/get-one");
-        } else {
-          router.replace?.("/users/getOther");
-        }
-      }
-    });
+    executeCheck();
   }, []);
 
   const childrenWithProps = React.Children.map(children, (child) => {
@@ -60,4 +62,4 @@ const SuperTokensWrapper = ({
   return <div>{childrenWithProps}</div>;
 };
 
-export default SuperTokensWrapper;
+export default compose(withCreatePost)(SuperTokensWrapper);

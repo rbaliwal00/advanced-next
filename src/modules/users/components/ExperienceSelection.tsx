@@ -48,7 +48,11 @@ const ExperienceSelection = () => {
   }
 
   return (
-    <SuperTokensWrapper>
+    <SuperTokensWrapper
+      isProfileCreation={true}
+      redirectIfLoggedIn={true}
+      auth={true}
+    >
       <div className="text-[#4B5563] min-h-[calc(100vh-64px)]">
         <div className="p-10 px-4 grid justify-center mb-0 sm:mb-10">
           <h2 className="text-center mb-12 text-[30px] sm:text-[33.18px] font-[600]">

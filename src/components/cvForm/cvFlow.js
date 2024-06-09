@@ -13,7 +13,8 @@ import BioForm from './bioForm';
 import {
     awardValidationSchema,
     referenceValidationSchema,
-    educationValidationSchema
+    educationValidationSchema,
+    experienceValidationSchema
   } from "./validationSchemas";
 // import GstPanCardForm from './GstPanCardForm'
 // import { businessValidationSchema, addressValidationSchema, contactValidationSchema, gstPanValidationSchema  } from './validationSchemas';
@@ -186,6 +187,7 @@ const CVForm = ({profile_data, handleSubmitForm, deleteFunctionProps}) => {
         experiences: [],
       },
       key: "experience",
+      validationSchema: experienceValidationSchema,
       deleteFunction: deleteFunctionProps?.deleteExperience,
     },
     {

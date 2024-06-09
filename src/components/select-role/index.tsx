@@ -14,7 +14,7 @@ import { SuperTokensWrapper } from "@modules/look";
 
 const RoleSelection = () => {
   return (
-    <SuperTokensWrapper>
+    <SuperTokensWrapper redirectIfLoggedIn={true} auth={true}>
       <div className={`text-[#4B5563] min-h-[calc(100vh-64px)]`}>
         <div className="grid pt-10 mb-6">
           <div

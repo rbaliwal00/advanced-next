@@ -147,13 +147,17 @@ const Container = (props) => {
   const onSubmit = async (object) => {
     console.log("check create here---", object);
     const result = await createUserProfile(object);
-    if(result?.id){
+    if (result?.id) {
       localStorage.setItem("currId", result.id);
       router.push("/users/get-one");
     }
   };
   return (
-    <SuperTokensWrapper>
+    <SuperTokensWrapper
+      isProfileCreation={true}
+      redirectIfLoggedIn={true}
+      auth={true}
+    >
       <FresherForm {...props} onSubmit={onSubmit} />
     </SuperTokensWrapper>
   );

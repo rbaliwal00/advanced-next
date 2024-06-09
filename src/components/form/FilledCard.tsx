@@ -91,7 +91,7 @@ const FilledCard = ({type, formDetails}) => {
     const router = useRouter()
     console.log("check formdetails here", formDetails);
     const { profile } = formDetails
-    const updateType = formDetails?.profile[profile.length - 1].sub_type;
+    const updateType = formDetails?.profile[profile.length - 1]?.sub_type;
 
     const redirectToDashboard = () => {
         router.push('/users/dashboard/job-seeker')

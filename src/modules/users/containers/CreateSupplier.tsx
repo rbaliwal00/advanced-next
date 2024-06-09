@@ -12,18 +12,22 @@ const Container = (props) => {
     // router: { push },
   } = props;
 
-  const router = useRouter()
+  const router = useRouter();
 
   const onSubmit = async (object) => {
     const result = await createUserProfile(object);
-    if(result?.id){
+    if (result?.id) {
       localStorage.setItem("currId", result.id);
       router.push("/users/getOther");
     }
     // push("/posts");
   };
   return (
-    <SuperTokensWrapper>
+    <SuperTokensWrapper
+      isProfileCreation={true}
+      redirectIfLoggedIn={true}
+      auth={true}
+    >
       <SupplierForm {...props} onSubmit={onSubmit} />;
     </SuperTokensWrapper>
   );

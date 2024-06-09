@@ -635,7 +635,9 @@ export const updateOrgFormValues = (user) => {
             suppliers: {
                 data: [{ 
                         area: org.suppliers.data.area ?? "",
-                        scale: org.suppliers.data.scale ?? ""                  
+                        scale: org.suppliers.data.scale ?? "",
+                        coverage_area_list: org.suppliers.data.org.suppliers.data.scale ?? "" ?? ""
+
                 }] ?? [],
                 on_conflict: {
                     constraint: "supplier_pkey",
@@ -646,73 +648,25 @@ export const updateOrgFormValues = (user) => {
                         "is_active",
                         "organization_id",
                         "scale",
-                        "updated_at"
+                        "updated_at",
+                        "coverage_area_list"
                     ]
                 }
             },
             vc_theme: org.vc_theme ?? ""
         },
-      },
-      gst_pan: {
-        data: [
-          {
-            gst: org.gst_pan.data.gst ?? "",
-            pan: org.gst_pan.data.pan ?? "",
-            status: org.gst_pan.data.status ?? "",
-          },
+        update_columns: [
+          "brand_name",
+          "business_nature",
+          "company_name",
+          "created_at",
+          "id",
+          "image_url",
+          "is_active",
+          "no_of_employee",
+          "updated_at",
+          "vc_theme",
         ],
-        on_conflict: {
-          constraint: "gst_pan_pkey",
-          update_columns: [
-            "created_at",
-            "gst",
-            "id",
-            "is_active",
-            "organization_id",
-            "pan",
-            "status",
-            "updated_at",
-          ],
-        },
-      },
-      id: org.id,
-      image_url: org.image_url ?? "",
-      no_of_employee: org.no_of_employee.toString() ?? "",
-      suppliers: {
-        data:
-          [
-            {
-              area: org.suppliers.data.area ?? "",
-              scale: org.suppliers.data.scale ?? "",
-            },
-          ] ?? [],
-        on_conflict: {
-          constraint: "supplier_pkey",
-          update_columns: [
-            "area",
-            "created_at",
-            "id",
-            "is_active",
-            "organization_id",
-            "scale",
-            "updated_at",
-          ],
-        },
-      },
-      vc_theme: org.vc_theme ?? "",
-    },
-    update_columns: [
-      "brand_name",
-      "business_nature",
-      "company_name",
-      "created_at",
-      "id",
-      "image_url",
-      "is_active",
-      "no_of_employee",
-      "updated_at",
-      "vc_theme",
-    ],
   };
 
   return formValues;

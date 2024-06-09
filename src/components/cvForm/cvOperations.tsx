@@ -37,26 +37,16 @@ const withAddCvInfo = (Component: FunctionComponent) =>
 
 const withGetCvInfo = (Component: FunctionComponent) => {
   return (props: any) => {
-    const [userId, setUserId] = React.useState<string | null>(null);
+    const { user } = props ?? {};
 
-    useEffect(() => {
-      if (props.isPublic) {
-        const userId = props.id;
-        setUserId(userId);
-      } else {
-        const storedUserId = localStorage.getItem("currId");
-        setUserId(storedUserId);
-      }
-    }, [props.isPublic]);
-
-    if (!userId) {
+    if (!(props.isPublic ? props.id : user?.id)) {
       return <div>Loading...</div>; // Or any other loading indicator
     }
 
     const EnhancedComponent = graphql(GET_CV_INFO, {
       options: {
         variables: {
-          id: userId,
+          id: props.isPublic ? props.id : user?.id,
         },
       },
       props: ({ data }) => {

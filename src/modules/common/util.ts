@@ -56,9 +56,4 @@ export const LanguageData = [
     banner: "અ",
     title: "ગુજરતિ",
   },
-  {
-    id: 11,
-    banner: "അ",
-    title: "മലയലമ്",
-  },
 ];

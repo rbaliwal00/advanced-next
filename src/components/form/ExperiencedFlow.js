@@ -12,7 +12,7 @@ import { statusValidationSchema, workExperienceValidationSchema, registrationVal
 const formConfigs = [
     {
         Component: (props) => (
-            <VisitingCardComponent {...props} type={'job'}/>),
+            <VisitingCardComponent {...props} type={'jobSeeker'}/>),
             initialValues: {
                 profile: {
                     data: {
@@ -21,6 +21,7 @@ const formConfigs = [
                         sub_type: 'experienced'
                     },
                 },
+                type: 'jobSeeker'
             },
         validationSchema: ThemeSelectionVaidationSchema,
         key: 'choose theme',

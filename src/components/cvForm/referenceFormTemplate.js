@@ -81,24 +81,10 @@ const ReferenceFormTemplate = ({
             label="Add Email (Optional)"
           />
           <MaterialUIFieldAdapter
-            fromik={formikProps}
-            type="select"
-            name={`references.${index}.department`}
-            label="Referral Department (Optional)"
-            options={[
-              { value: "Department 1", label: "Department 1" },
-              { value: "city2", label: "City 2" },
-            ]} // Populate according to your data
-          />
-          <MaterialUIFieldAdapter
-            fromik={formikProps}
-            type="select"
-            name={`references.${index}.position`}
-            label="Referral Position (Optional)"
-            options={[
-              { value: "Position 1", label: "Position 1" },
-              { value: "city2", label: "City 2" },
-            ]} // Populate according to your data
+              type="categoryAutocomplete"
+              name={`references.${index}.department`}
+              subCategoryName={`references.${index}.sub_category`}
+              positionName={`references.${index}.position`}
           />
         </Box>
       </AccordionDetails>

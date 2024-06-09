@@ -73,24 +73,10 @@ const AwardFormTemplate = ({
             placeholder="Type"
           />
           <MaterialUIFieldAdapter
-            fromik={formikProps}
-            type="select"
-            name={`awards.${index}.department`}
-            label="Department"
-            options={[
-              { value: "Department 1", label: "Department 1" },
-              { value: "city2", label: "City 2" },
-            ]} // Populate according to your data
-          />
-          <MaterialUIFieldAdapter
-            fromik={formikProps}
-            type="select"
-            name={`awards.${index}.position`}
-            label="Position"
-            options={[
-              { value: "Position 1", label: "Position 1" },
-              { value: "city2", label: "City 2" },
-            ]} // Populate according to your data
+              type="categoryAutocomplete"
+              name={`awards.${index}.department`}
+              subCategoryName={`awards.${index}.sub_category`}
+              positionName={`awards.${index}.position`}
           />
         </Box>
       </AccordionDetails>

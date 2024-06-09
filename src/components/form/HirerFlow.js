@@ -24,14 +24,14 @@ const formConfigs = [
                     }
                 }
             },
-            // profile: {
-            //     data: {
-            //         type: "recruiter",
-            //         sub_type: 'recruiter',
-            //         website: 'dummyData.com',
-            //         image_url: 'jbjbjbjbj'
-            //     },
-            // },
+            profile: {
+                data: {
+                    type: "recruiter",
+                    sub_type: 'recruiter',
+                    // website: 'dummyData.com',
+                    // image_url: 'jbjbjbjbj'
+                },
+            },
         },
         validationSchema: SupplierThemeSelectionVaidationSchema,
         key: 'choose theme',
@@ -95,10 +95,10 @@ const formConfigs = [
                                             city: "",
                                             geolocation: {
                                                 data: {
-                                                    "latitude": "12.21",
-                                                    "longitude": "21.12",
+                                                    "latitude": "",
+                                                    "longitude": "",
                                                     "other": {},
-                                                    "type": "Type 1"
+                                                    "type": ""
                                                 }
                                             },
                                             pincode: "",

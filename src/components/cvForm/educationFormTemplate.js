@@ -10,6 +10,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import { useMediaQuery } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { levelOfEducation } from '@components/form/utilities';
 
 
 const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange, onDelete }) => {
@@ -49,21 +50,21 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
       <AccordionDetails>
         <Box>
           <MaterialUIFieldAdapter
-              fromik={formikProps}
+              formik={formikProps}
               name={`education.${index}.institution_name`}
             type="text"
             label="Name of Institution"
             placeholder="Type"
           />
           <MaterialUIFieldAdapter
-              fromik={formikProps}
-              type="select"
+            formik={formikProps}
+            type="select"
             name={`education.${index}.level`}
             label="Level of Education"
-            options={[{ value: 'Field 1', label: 'Field 1' }, { value: 'city2', label: 'City 2' }]} // Populate according to your data
+            options={levelOfEducation.map((item) => { return { value: item, label: item } })} // Populate according to your data
           />
           <MaterialUIFieldAdapter
-              fromik={formikProps}
+              formik={formikProps}
               name={`education.${index}.cgpa`}
             type="text"
             label="Add CGPA/Percentage (Optional)"
@@ -83,13 +84,13 @@ const EducationFormTemplate = ({ index, formikProps, expanded, onAccordionChange
               type="date"
               name={`education.${index}.from_date`}
               label="From"
-              fromik={formikProps}
+              formik={formikProps}
             />
             <MaterialUIFieldAdapter
               type="date"
               name={`education.${index}.to_date`}
               label="To"
-              fromik={formikProps}
+              formik={formikProps}
             />
           </Box>
         </Box>

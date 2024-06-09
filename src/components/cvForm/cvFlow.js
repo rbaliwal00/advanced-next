@@ -10,9 +10,10 @@ import ExperienceForm from './experienceForm';
 import ReferenceForm from './referenceForm';
 import AwardForm from './awardForm';
 import BioForm from './bioForm';
-import educationValidationSchema, {
+import {
     awardValidationSchema,
     referenceValidationSchema,
+    educationValidationSchema
   } from "./validationSchemas";
 // import GstPanCardForm from './GstPanCardForm'
 // import { businessValidationSchema, addressValidationSchema, contactValidationSchema, gstPanValidationSchema  } from './validationSchemas';

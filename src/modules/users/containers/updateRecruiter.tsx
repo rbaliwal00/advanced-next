@@ -136,7 +136,7 @@ const Container = (props) => {
   const onSubmit = async (values) => {
     const newFormValues = updateOrgFormValues(values);
     //console.log("check modified values here---", newFormValues);
-    const result = await insertUserOrganization(newFormValues);
+    const result = await insertUserOrganization(newFormValues.object);
     console.log("check result", result);
     if (result?.id) {
       localStorage.setItem("currId", values.id);

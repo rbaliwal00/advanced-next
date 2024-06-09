@@ -751,7 +751,7 @@ export const responsiveFontSize = {
 };
 
 export const getInitialValue = (value) => {
-    if(value){
+    if(value && value[0]){
      return   Array.isArray(value) && value.length > 0 ? [...value] : [value];
     }return []
 }

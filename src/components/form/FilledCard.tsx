@@ -10,10 +10,10 @@ import { saveAs } from "file-saver";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const ButtonStack = ({ updateType, handleDownloadImage, userId }) => {
+const ButtonStack = ({ updateType, handleDownloadImage, userId, isPublic }) => {
   const nextRoute = (typeof window !== "undefined" ? "https://" + window.location.hostname : "") + "/users/vc/" + userId;
    ;
-  const fullMsg = `Check my VC card here ${nextRoute}`;
+  const fullMsg = `${isPublic ? "Checkout this profile!!" :"Check my VC card here"} ${nextRoute}`;
   const shareOnWatsapp = () => {
     const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(
       fullMsg,
@@ -49,7 +49,7 @@ const ButtonStack = ({ updateType, handleDownloadImage, userId }) => {
         <FileDownloadOutlinedIcon sx={{ color: "black" }} />
       </IconButton>
 
-      <Link href={nextRoute}>
+      {!isPublic && (<Link href={nextRoute}>
         <IconButton
           sx={{
             backgroundColor: "white",
@@ -64,7 +64,7 @@ const ButtonStack = ({ updateType, handleDownloadImage, userId }) => {
         >
           <EditOutlinedIcon sx={{ color: "black" }} />
         </IconButton>
-      </Link>
+      </Link>)}
 
       <IconButton
         sx={{
@@ -144,6 +144,7 @@ const FilledCard = ({ type, formDetails, isPublic }) => {
           updateType={updateType}
           handleDownloadImage={handleDownloadImage}
             userId={formDetails.id}
+        isPublic={isPublic}
         />
       </Box>
       {!isPublic && (

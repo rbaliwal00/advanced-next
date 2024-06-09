@@ -7,6 +7,7 @@ query MyQuery($id: uuid = "") {
     created_at
     updated_at
     profile {
+      id
       first_name
       last_name
       gender
@@ -19,12 +20,14 @@ query MyQuery($id: uuid = "") {
       type
       current_city
       awards {
+        id
         brand_name
         department
         name
         position
       }
       education {
+        id
         cgpa
         from_date
         to_date
@@ -35,6 +38,7 @@ query MyQuery($id: uuid = "") {
         study_field
       }
       experience {
+        id
         brand_name
         department
         from_date
@@ -46,6 +50,7 @@ query MyQuery($id: uuid = "") {
         work_experience
       }
       preference {
+        id
         aadhar
         internship
         one_day_job
@@ -54,6 +59,7 @@ query MyQuery($id: uuid = "") {
         working_city
       }
       references {
+        id
         brand_name
         department
         email
@@ -72,11 +78,13 @@ query MyQuery($id: uuid = "") {
         no_of_employee
         id
         gst_pan {
+          id
           gst
           pan
           status
         }
         contact {
+          id
           name
           email
           website
@@ -84,6 +92,7 @@ query MyQuery($id: uuid = "") {
         }
         organization_location_map {
           location {
+            id
             area
             block_number
             city
@@ -97,6 +106,7 @@ query MyQuery($id: uuid = "") {
           }
         }
         suppliers {
+          id
           area
           scale
           coverage_area_list

@@ -45,7 +45,8 @@ const MaterialUIFieldAdapter = ({
   subCategoryName,
   positionName,
   maxMultipleLength = 5,
-  isDob
+  isDob,
+  customValue
 }) => {
   const { organization_auth_map, profile } = formik.values;
   const profileData = profile?.data || {};
@@ -559,9 +560,10 @@ const MaterialUIFieldAdapter = ({
             positionName={positionName}
             onChange={(values) => {
               formik.setFieldValue(values.departmentName, values.department);
-              formik.setFieldValue(values.subCategoryName, values.subCategory);
+              formik.setFieldValue(values.subCategoryName, values.sub_category);
               formik.setFieldValue(values.positionName, values.position);
             }}
+            {...customValue}
             onBlur={handleBlur}
             maxMultipleLength
             error={touch && Boolean(error)}

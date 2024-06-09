@@ -13,23 +13,23 @@ export const educationValidationSchema = Yup.object().shape({
       //     .required('Passout year is required')
       //     .typeError('Invalid date format'),
       level: Yup.string().required('Level of education is required'),
-      from_date: Yup.date()
-        .max(new Date(), "From date cannot be in the future")
-        .required("From date is required")
-        .typeError("Invalid date format"),
-      to_date: Yup.date()
-        .max(new Date(), "To date cannot be in the future")
-        .required("To date is required")
-        .typeError("Invalid date format")
-        .when("from_date", (from_date, schema) => {
-          const actualDate = from_date[0];
-          // console.log("from_date---", from_date, schema)
-          if(!actualDate){
-            return schema;
-          }
-          return schema.min(actualDate, "To date cannot be before from date");
-        }),
+      from_date: Yup.date().required('From date is required').typeError('Invalid date format'),
+      to_date: Yup.date().required('To date is required').typeError('Invalid date format'),
     })),
+});
+
+export const experienceValidationSchema = Yup.object().shape({
+  experience: Yup.array().of(
+    Yup.object().shape({
+      brand_name: Yup.string().required("Brand Name is required"),
+      department: Yup.string().required("Department is required"),
+      position: Yup.string().required("Position is required"),
+      from_date: Yup.date().required('From date is required').typeError('Invalid date format'),
+      to_date: Yup.date().required('To date is required').typeError('Invalid date format'),
+      monthly_salary_text: Yup.number().required("Monthly Salary is required"),
+      work_experience: Yup.string().required("Work Experience is required"),
+    }),
+  ),
 });
 
 export const awardValidationSchema = Yup.object().shape({

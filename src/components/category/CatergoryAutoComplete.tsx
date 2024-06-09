@@ -17,9 +17,9 @@ const CategoryAutoComplete = (props) => {
     const { data, onChange, departmentName, subCategoryName, positionName, ...rest } = props;
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
-    const [department, setDepartment] = useState('');
-    const [subCategory, setSubCategory] = useState('');
-    const [position, setPosition] = useState('');
+    const [department, setDepartment] = useState(departmentName);
+    const [subCategory, setSubCategory] = useState(subCategoryName);
+    const [position, setPosition] = useState(positionName);
     const [categoryOptions, setCategoryOptions] = useState([]);
     const [currCategory, setCurrCategory] = useState({ subcategories: [], positions: [] })
 
@@ -106,6 +106,7 @@ const CategoryAutoComplete = (props) => {
                     renderInput={(params) => <TextField {...params} />}
                     {...rest}
                     onChange={handleDepartmentChange}
+                    value={department}
                 />
             </Box>
             {currCategory.subcategories.length > 0 && (
@@ -126,6 +127,7 @@ const CategoryAutoComplete = (props) => {
                         renderInput={(params) => <TextField {...params} />}
                         {...rest}
                         onChange={handleSubCategoryChange}
+                        value={subCategory}
                     />
                 </Box>
             )}
@@ -146,6 +148,7 @@ const CategoryAutoComplete = (props) => {
                     renderInput={(params) => <TextField {...params} />}
                     {...rest}
                     onChange={handlePositionChange}
+                    value={position}
                 />
             </Box>
         </Box>

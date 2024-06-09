@@ -13,6 +13,7 @@ const OtpRegistrationFlow = (props) => {
   const handleShowOtp = async (e) => {
     setMobile(e);
     const response = await otpGenerate(e);
+    handleClick();
     if (!response) return false;
     setShowOtp(true);
     return true;
@@ -24,7 +25,6 @@ const OtpRegistrationFlow = (props) => {
   const handleVerify = async (otp) => {
     const response = await otpValidate(otp);
     if (!response) return false;
-    handleClick();
     router.push("/users/role-selection");
     return true;
   };
@@ -34,6 +34,7 @@ const OtpRegistrationFlow = (props) => {
   };
 
   const [open, setOpen] = useState(false);
+
   const handleClick = () => {
     setOpen(true);
   };

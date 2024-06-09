@@ -18,7 +18,7 @@ const validationSchema = Yup.object({
 
 const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
   const [timeLeft, setTimeLeft] = useState(30 / 6);
-  const [resendStatus, setResendStatus] = useState('');
+  const [resendStatus, setResendStatus] = useState("");
 
   const router = useRouter();
 
@@ -58,11 +58,11 @@ const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
         initialValues={{ otp: "" }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting }) => {
-          setResendStatus(false)
+          setResendStatus(false);
           setSubmitting(true);
           // if (values.otp >= 1000 && values.otp <= 9999) {
           callBack(values.otp).then((status) => {
-            if (!status) setResendStatus(true)
+            if (!status) setResendStatus(true);
           });
           // }
           setSubmitting(false);
@@ -79,12 +79,12 @@ const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
                       value={field.value}
                       onChange={(otp) => {
                         setFieldValue("otp", otp);
-                        setResendStatus(false)
+                        setResendStatus(false);
                       }}
+                      inputType="number"
                       numInputs={4}
                       separator={<span>-</span>}
                       shouldAutoFocus
-                      isInputNum
                       renderInput={(props) => <input {...props} />}
                       containerStyle={{ gap: "2rem" }}
                       inputStyle={{
@@ -101,34 +101,6 @@ const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
                             : "1px solid rgba(0,0,0,0.3)",
                       }}
                     />
-                    <Box
-                      disabled={timeLeft > 0}
-                      onClick={() => {
-                        setTimeLeft(60);
-                        resend();
-                      }}
-                      sx={{
-                        textTransform: "none", // Prevent uppercase
-                        display: "flex",
-                        width: "100%",
-                        marginBottom: "30px",
-                        cursor: timeLeft > 0 ? "not-allowed" : "pointer",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          textAlign: "right", // Ensures text is right-aligned
-                          fontSize: "10px", // Sets font size
-                          display: "flex", // Uses flexbox for internal alignment
-                          color: { btnTextColor },
-                          alignItems: "center",
-                          justifyContent: "flex-end",
-                          width: "100%",
-                        }}
-                      >
-                        {btnText}
-                      </Typography>
-                    </Box>
                   </div>
                   {touched.otp && errors.otp && (
                     <FormHelperText

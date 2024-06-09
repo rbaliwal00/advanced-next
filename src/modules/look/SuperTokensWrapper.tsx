@@ -10,7 +10,6 @@ const SuperTokensWrapper = ({
   redirectIfLoggedIn = false,
 }: any) => {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
   const [getUser, { loading: userLoading, data, error }] = useLazyQuery(ITEM);
 
   console.log("check errors in login---", error);
@@ -23,11 +22,9 @@ const SuperTokensWrapper = ({
         auth == false && !redirectIfLoggedIn,
       );
       if (auth == false && !redirectIfLoggedIn) {
-        setLoading(false);
         return;
       }
       if (!i) {
-        setLoading(false);
         return;
       }
       const id = await Session.getUserId();
@@ -35,7 +32,6 @@ const SuperTokensWrapper = ({
       console.log(res.data?.user?.profile[0]?.id, redirectIfLoggedIn);
       if (!res.data?.user?.profile[0]?.id && redirectIfLoggedIn) {
         router.replace?.("/users/role-selection");
-        setLoading(false);
         return;
       }
       if (router.pathname === "/" && res.data?.user?.profile[0]?.id) {
@@ -50,7 +46,6 @@ const SuperTokensWrapper = ({
           router.replace?.("/users/getOther");
         }
       }
-      setLoading(false);
     });
   }, []);
 
@@ -62,7 +57,7 @@ const SuperTokensWrapper = ({
     }
     return child;
   });
-  return <div>{!(loading || userLoading) && childrenWithProps}</div>;
+  return <div>{childrenWithProps}</div>;
 };
 
 export default SuperTokensWrapper;

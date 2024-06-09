@@ -22,14 +22,14 @@ const SuperTokensWrapper = ({
         i,
         auth == false && !redirectIfLoggedIn,
       );
-      // if (auth == false && !redirectIfLoggedIn) {
-      //   setLoading(false);
-      //   return;
-      // }
-      // if (!i) {
-      //   setLoading(false);
-      //   return;
-      // }
+      if (auth == false && !redirectIfLoggedIn) {
+        setLoading(false);
+        return;
+      }
+      if (!i) {
+        setLoading(false);
+        return;
+      }
       // const id = await Session.getUserId();
       // const res = await getUser({ variables: { id } });
       // console.log(res.data?.user?.profile[0]?.id, redirectIfLoggedIn)
@@ -50,7 +50,7 @@ const SuperTokensWrapper = ({
     });
   }, []);
 
-  if (loading || userLoading) return <></>;
+  // if (loading || userLoading) return <></>;
 
   const childrenWithProps = React.Children.map(children, (child) => {
     // Checking isValidElement is the safe way and avoids a

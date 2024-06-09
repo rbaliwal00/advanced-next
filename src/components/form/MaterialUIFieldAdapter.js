@@ -370,9 +370,11 @@ const MaterialUIFieldAdapter = ({
               label={label}
               value={getIn(formik.values, name)}
               onChange={(date) => {
+
+                console.log("check date", date, name, formik.setFieldValue)
                 formik.setFieldValue(
                   name,
-                  date,
+                  date
                 );
               }}
               isDob={isDob}

@@ -77,6 +77,13 @@ const AwardFormTemplate = ({
               name={`awards.${index}.department`}
               subCategoryName={`awards.${index}.sub_category`}
               positionName={`awards.${index}.position`}
+              customValue={
+                {
+                  departmentName: formikProps.values.experience[index].department,
+                  subCategoryName: formikProps.values.experience[index].sub_category,
+                  positionName: formikProps.values.experience[index].position
+                }
+              }
           />
         </Box>
       </AccordionDetails>

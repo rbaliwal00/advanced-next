@@ -85,6 +85,13 @@ const ReferenceFormTemplate = ({
               name={`references.${index}.department`}
               subCategoryName={`references.${index}.sub_category`}
               positionName={`references.${index}.position`}
+              customValue={
+                {
+                  departmentName: formikProps.values.references[index].department,
+                  subCategoryName: formikProps.values.references[index].sub_category,
+                  positionName: formikProps.values.references[index].position
+                }
+              }
           />
         </Box>
       </AccordionDetails>

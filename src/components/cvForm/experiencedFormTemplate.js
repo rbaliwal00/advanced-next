@@ -16,7 +16,6 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
 
   const isMobile = useMediaQuery('(max-width:600px)');
 
-  console.log("experience =>", formikProps.values.experience)
 
   return (
     <Accordion 
@@ -40,12 +39,10 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
             {!formikProps.values.experience[index].from_date ?' From':formikProps.values.experience[index].from_date},
             {!formikProps.values.experience[index].to_date ?' to':formikProps.values.experience[index].to_date},
           </Typography>
-          {
-            !isMobile && 
             <IconButton onClick={() => onDelete(index)}>
               <DeleteOutlineIcon style={{ color: '#8899A8' }} />
             </IconButton>
-          }
+          
           
         </Box>
       </AccordionSummary>
@@ -68,13 +65,14 @@ const ExperiencedFormTemplate = ({ index, formikProps, expanded, onAccordionChan
           <MaterialUIFieldAdapter
               type="categoryAutocomplete"
               name={`experience.${index}.department`}
+              departmentName={`experience.${index}.department`}
               subCategoryName={`experience.${index}.sub_category`}
               positionName={`experience.${index}.position`}
               customValue={
                 {
-                  departmentName: formikProps.values.experience[index].department,
-                  subCategoryName: formikProps.values.experience[index].sub_category,
-                  positionName: formikProps.values.experience[index].position
+                  department: formikProps.values.experience[index].department,
+                  subCategory: formikProps.values.experience[index].sub_category,
+                  position: formikProps.values.experience[index].position
                 }
               }
           />

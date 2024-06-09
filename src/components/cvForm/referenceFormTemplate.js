@@ -46,11 +46,10 @@ const ReferenceFormTemplate = ({
               ? "Reference Name"
               : formikProps.values.references[index].name}
           </Typography>
-          {!isMobile && (
+          
             <IconButton onClick={() => onDelete(index)}>
               <DeleteOutlineIcon style={{ color: "#8899A8" }} />
             </IconButton>
-          )}
         </Box>
       </AccordionSummary>
       <AccordionDetails>
@@ -87,9 +86,9 @@ const ReferenceFormTemplate = ({
               positionName={`references.${index}.position`}
               customValue={
                 {
-                  departmentName: formikProps.values.references[index].department,
-                  subCategoryName: formikProps.values.references[index].sub_category,
-                  positionName: formikProps.values.references[index].position
+                  department: formikProps.values.references[index].department,
+                  subCategory: formikProps.values.references[index].sub_category,
+                  position: formikProps.values.references[index].position
                 }
               }
           />

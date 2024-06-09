@@ -17,9 +17,9 @@ const CategoryAutoComplete = (props) => {
     const { data, onChange, departmentName, subCategoryName, positionName, ...rest } = props;
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
-    const [department, setDepartment] = useState(departmentName);
-    const [subCategory, setSubCategory] = useState(subCategoryName);
-    const [position, setPosition] = useState(positionName);
+    const [department, setDepartment] = useState(props.department);
+    const [subCategory, setSubCategory] = useState(props.subCategory);
+    const [position, setPosition] = useState(props.position);
     const [categoryOptions, setCategoryOptions] = useState([]);
     const [currCategory, setCurrCategory] = useState({ subcategories: [], positions: [] })
 

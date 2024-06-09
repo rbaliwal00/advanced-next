@@ -64,6 +64,14 @@ const WorkExperienceForm = ({ onBack, isLastStep, type, step, ...formikProps }) 
                             name="profile.data.experience.data.department"
                             subCategoryName="profile.data.experience.data.sub_category"
                             positionName="profile.data.experience.data.position"
+                            customValue={
+                                {
+                                  department: formikProps.values.experrience[index].department,
+                                  subCategory: formikProps.values.experrience[index].sub_category,
+                                  position: formikProps.values.experrience[index].position
+                                }
+                              }
+
                         />
                         <Box display="flex" justifyContent="space-between" width="100%" fullWidth>
                             {nextBtn(isLastStep)}

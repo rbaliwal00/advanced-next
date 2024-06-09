@@ -40,15 +40,16 @@ export const DesktopNavbar = ({
 
   return (
     <header>
-      <div className="sm:hidden">
         <Box
           sx={{
             background: "#fff",
             display: "flex",
-            justifyContent: "flex-start",
+            justifyContent: 'space-between',
             px: "16px",
-            py: "10px",
-            maxHeight: "56px",
+            py: '10x',
+            alignItems: 'center',
+            minHeight: "56px",
+            boxShadow: '0 4px 25px rgba(0, 0, 0, 0.07)'
           }}
         >
           <Link href={"/"}>
@@ -65,8 +66,7 @@ export const DesktopNavbar = ({
             style={{ width: "100%", textAlign: "right", alignSelf: "center" }}
           />
         </Box>
-      </div>
-      <Box
+      {/* <Box
         className={`${styles.header} ${mode} xs:hidden`}
         style={{ backgroundColor: backgroundColor, color: color }}
       >
@@ -115,7 +115,7 @@ export const DesktopNavbar = ({
               ))}
           </ul>
         </nav>
-      </Box>
+      </Box> */}
     </header>
   );
 };

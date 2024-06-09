@@ -27,9 +27,10 @@ const renderCard = (type, formDetails) => {
     const { block_number, area, city } = organization_location_map[0]?.location || [];
     const checkIfexperienced = sub_type === 'experienced';
     console.log("check sub type here", sub_type);
+    const isSubTypeJobSeeker = (sub_type === 'fresher' || sub_type == 'experienced')
 
 
-    if (sub_type === 'fresher' || sub_type == 'experienced')
+    if ((type === 'jobSeeker') || isSubTypeJobSeeker)
         return (
             <Card style={{
                 width: '100%',
@@ -87,7 +88,7 @@ const renderCard = (type, formDetails) => {
                                 {first_name + last_name}
                             </Typography>
                             <Typography sx={styles.valueTxt}>
-                                {experience && experience[0]?.work_experience || 'experienced'}
+                                {experience && experience[0]?.work_experience || 'fresher'}
                             </Typography>
                             <Typography sx={styles.label}>
                                 Contact No.

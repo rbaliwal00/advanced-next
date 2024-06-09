@@ -90,7 +90,8 @@ const FilledCard = ({type, formDetails}) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const router = useRouter()
     console.log("check formdetails here", formDetails);
-    const updateType = formDetails?.profile[0].sub_type;
+    const { profile } = formDetails
+    const updateType = formDetails?.profile[profile.length - 1].sub_type;
 
     const redirectToDashboard = () => {
         router.push('/users/dashboard/job-seeker')
@@ -124,9 +125,9 @@ const FilledCard = ({type, formDetails}) => {
                             mt: '32px'
                     }}>
                         <div ref={cardRef}>
-                            <ThemeCard type={type || 'job'} formDetails={formDetails} />
+                            <ThemeCard type={updateType} formDetails={formDetails} />
                         </div>
-                        <ButtonStack updateType={updateType || 'job'} handleDownloadImage={handleDownloadImage}/>
+                        <ButtonStack updateType={updateType} handleDownloadImage={handleDownloadImage}/>
 
             </Box>
                         <Button variant="contained" onClick={redirectToDashboard} sx={{

@@ -24,14 +24,14 @@ const formConfigs = [
                     }
                 }
             },
-            profile: {
-                data: {
-                    type: "recruiter",
-                    sub_type: 'recruiter',
-                    website: 'dummyData.com',
-                    image_url: 'jbjbjbjbj'
-                },
-            },
+            // profile: {
+            //     data: {
+            //         type: "recruiter",
+            //         sub_type: 'recruiter',
+            //         website: 'dummyData.com',
+            //         image_url: 'jbjbjbjbj'
+            //     },
+            // },
         },
         validationSchema: SupplierThemeSelectionVaidationSchema,
         key: 'choose theme',
@@ -47,7 +47,7 @@ const formConfigs = [
                             brand_name: '',
                             company_name: '',
                             image_url: '',
-                            business_nature: '',
+                            nature_of_business: [],
                             no_of_employee: ''
                         }
                     }
@@ -148,6 +148,7 @@ const RecruiterForm = ({prefillData, onSubmit, user}) => {
         // values.profile.data.gender = 'male';
         // values.profile.data.dob = '22/5/1999';
         // values.profile.data.cv_theme = 'theme 1'
+        console.log("cehck user before creating a profile", user);
         onSubmit({ id: user.id, phone_number: user.phone_number, ...values})
     }
 

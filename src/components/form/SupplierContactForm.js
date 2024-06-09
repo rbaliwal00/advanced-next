@@ -10,13 +10,15 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
     
 
     const renderSelect = (typeOfCoverage) => {
+        console.log("check toc here", typeOfCoverage);
+        const fieldName = 'organization_auth_map.data.organization.data.suppliers.data.coverage_area_list'
             if(typeOfCoverage === 'state' || typeOfCoverage === 'city'){
                 if(typeOfCoverage === 'state'){
                     return (
                         <MaterialUIFieldAdapter
                             type="select"
                             options={states.map((item) => { return { value: item, label: item } })}
-                            name="State"
+                            name={fieldName}
                             label="Select a State"
                             placeholder="Select state"
                             formik={formikProps}
@@ -26,7 +28,7 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                     <MaterialUIFieldAdapter
                         formik={formikProps}
                         type="autocomplete"
-                        //name="organization_auth_map.data.organization.data.organization_location_map.data.location.data.city"
+                        name={fieldName}
                         label="City"
                     />
                 )
@@ -34,11 +36,11 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                 if (typeOfCoverage === 'inter_state' ){
                     return (
                         <MaterialUIFieldAdapter
-                            name="State"
+                            name={fieldName}
                             type="multiselect"
                             label=""
                             formik={formikProps}
-                            options={[{ value: 'tech', label: 'Tech' }, { value: 'retail', label: 'Retail' }]}
+                            options={states.map((item) => { return { value: item, label: item } })}
                         />
                     )
                 }else{
@@ -46,7 +48,7 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                         <MaterialUIFieldAdapter
                             formik={formikProps}
                             type="autocomplete"
-                            //name="organization_auth_map.data.organization.data.organization_location_map.data.location.data.city"
+                            name={fieldName}
                             label="City"
                         /> 
                     )
@@ -99,7 +101,7 @@ const ContactForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                                 { label: "Inter-City", value: "inter_city" }
                             ]}
                         />
-                        {renderSelect(formikProps.values.areaOfCoverage)}
+                        {renderSelect(formikProps.values.organization_auth_map.data.organization.data.suppliers.data.area)}
                         <MaterialUIFieldAdapter
                             formik={formikProps}
                             type="radio"

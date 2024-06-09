@@ -12,6 +12,7 @@ export const educationValidationSchema = Yup.object().shape({
       //     .max(new Date(), 'Passout year cannot be in the future')
       //     .required('Passout year is required')
       //     .typeError('Invalid date format'),
+      level: Yup.string().required('Level of education is required'),
       from_date: Yup.date()
         .max(new Date(), "From date cannot be in the future")
         .required("From date is required")

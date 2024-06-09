@@ -132,7 +132,7 @@ const Container = (props) => {
     const onSubmit = async (values) => {
         const newFormValues = updateOrgFormValues(values);
         //console.log("check modified values here---", newFormValues);
-        const result = await insertUserOrganization(newFormValues.object);
+        const result = await insertUserOrganization(newFormValues);
         if (result?.id) {
             localStorage.setItem('currId', values.id);
             
@@ -143,7 +143,7 @@ const Container = (props) => {
 
     if (loadingUserData) return <CircularProgress />
     return  <SuperTokensWrapper>
-                <SupplierForm prefillData={transformObject(user).data} onSubmit={onSubmit} />;
+                <SupplierForm prefillData={transformObject(user)} onSubmit={onSubmit} />;
             </SuperTokensWrapper>
 };
 

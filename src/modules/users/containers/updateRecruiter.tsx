@@ -131,11 +131,12 @@ const Container = (props) => {
   } = props;
 
   const router = useRouter();
+  console.log("check user data here-- update container", user);
 
   const onSubmit = async (values) => {
     const newFormValues = updateOrgFormValues(values);
     //console.log("check modified values here---", newFormValues);
-    const result = await insertUserOrganization(newFormValues.object);
+    const result = await insertUserOrganization(newFormValues);
     console.log("check result", result);
     if (result?.id) {
       localStorage.setItem("currId", values.id);
@@ -150,7 +151,7 @@ const Container = (props) => {
   return (
     <SuperTokensWrapper>
       <RecruiterForm
-        prefillData={transformObject(user).data}
+        prefillData={transformObject(user)}
         onSubmit={onSubmit}
       />
       ;

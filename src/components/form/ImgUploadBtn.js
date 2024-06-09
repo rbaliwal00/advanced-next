@@ -3,7 +3,7 @@ import { Button, Box, Avatar, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import PropTypes from 'prop-types';
 
-function ImageUploadButton({ onFileSelect, label, valueUrl }) {
+function ImageUploadButton({ onFileSelect, label, valueUrl = '' }) {
     console.log("check url", valueUrl);
 
     const [file, setFile] = useState(null); // State to hold the uploaded file

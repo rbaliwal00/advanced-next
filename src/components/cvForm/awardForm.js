@@ -8,7 +8,14 @@ import { nextBtn, renderBackButton } from "../form/utilities";
 import AddItemsButton from "./addItemsButton";
 import AwardFormTemplate from "./awardFormTemplate";
 
-const AwardForm = ({ onBack, isLastStep, type, step, deleteFunction, ...formikProps }) => {
+const AwardForm = ({
+  onBack,
+  isLastStep,
+  type,
+  step,
+  deleteFunction,
+  ...formikProps
+}) => {
   const initialAwards = {
     awardTitle: "",
     brandName: "",
@@ -28,7 +35,7 @@ const AwardForm = ({ onBack, isLastStep, type, step, deleteFunction, ...formikPr
     setExpandedIndex(updatedAwards.length - 1);
   };
 
-  const handleDeleteAward = async(index) => {
+  const handleDeleteAward = async (index) => {
     const id = formikProps.values.awards[index].id;
     const updatedAwards = [...formikProps.values.awards];
     updatedAwards.splice(index, 1);
@@ -38,8 +45,8 @@ const AwardForm = ({ onBack, isLastStep, type, step, deleteFunction, ...formikPr
     } else if (expandedIndex > index) {
       setExpandedIndex(expandedIndex - 1);
     }
-    if(id){
-      await deleteFunction(id)
+    if (id) {
+      await deleteFunction(id);
     }
   };
 
@@ -109,7 +116,21 @@ const AwardForm = ({ onBack, isLastStep, type, step, deleteFunction, ...formikPr
             text={"Add Award"}
           />
         </Box>
-        <Box display="flex" justifyContent="space-between" width="100%">
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          width="100%"
+          // sx={{
+          //   marginX: {
+          //     xs: "20px",
+          //   },
+          //   backgroundColor: "red",
+          //   borderRadius: "8px 8px 0px 0px",
+          //   boxShadow: {
+          //     xs: "0px 4px 15px rgba(0, 0, 0, 0.05)",
+          //   },
+          // }}
+        >
           {nextBtn(isLastStep)}
           {renderBackButton(onBack, step)}
         </Box>

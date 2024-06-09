@@ -21,7 +21,7 @@ import ImageUploadButton from "./ImgUploadBtn";
 import GstInputComponent from "./UploadCard";
 import Image from "next/image";
 import CityAutoComplete from "../cities/CityAutoComplete";
-import { getImgUrl, responsiveFontSize } from "./utilities";
+import { getInitialValue, responsiveFontSize } from "./utilities";
 import CatergoryAutoComplete from "@components/category/CatergoryAutoComplete";
 
 const filePropType =
@@ -49,9 +49,10 @@ const MaterialUIFieldAdapter = ({
 }) => {
   const { organization_auth_map, profile } = formik.values;
   const profileData = profile?.data || {};
-  const { nature_of_business: businessNature, image_url: orgImgUrl, gst_pan }= organization_auth_map?.data.organization?.data || {}
-  const newInitialValue = Array.isArray(businessNature) ? [...businessNature] : [businessNature];
+  const { nature_of_business: businessNature, image_url: orgImgUrl, gst_pan, suppliers }= organization_auth_map?.data.organization?.data || {}
+  const newInitialValue = getInitialValue(businessNature)
   const [ selected, setSelected] = useState(newInitialValue ?? [])
+  const [areaList, setAreaList] = useState(getInitialValue(suppliers?.data?.coverage_area_list) ?? [])
 
   const handleChange = (event) => {
     const value =
@@ -81,8 +82,8 @@ const MaterialUIFieldAdapter = ({
   }
 
   const radioValue = () => {
-    const isValidId = (profileData?.preference.data?.aadhar || profileData?.preference.data?.passport)
-    const aadharValueLength = profileData?.preference.data?.aadhar.length;
+    const isValidId = (profileData?.preference?.data?.aadhar || profileData?.preference?.data?.passport)
+    const aadharValueLength = profileData?.preference?.data?.aadhar.length;
     if (isValidId){
       const tempValue = (aadharValueLength > 0) ? 'aadhar' : 'passport';
       formik.values.idType = tempValue
@@ -91,11 +92,19 @@ const MaterialUIFieldAdapter = ({
   }
 
   const handleMultipleSelect = (event) => {
-    const newValues = event.target.value.filter(value => !selected.includes(value));
-    if (selected.length + newValues.length <= maxMultipleLength) {
-      const updatedSelected = [...selected, ...newValues];
-      setSelected(updatedSelected);
+    console.log("cehck select values here", event.target.value, selected);
+    if (name == 'organization_auth_map.data.organization.data.suppliers.data.coverage_area_list'){
+      const newValues = event.target.value.filter(value => !areaList.includes(value));
+      const updatedSelected = areaList.length > 0 ? [...areaList, ...newValues] : [...newValues];
+      setAreaList(updatedSelected)
       formik.setFieldValue(name, updatedSelected);
+    }else{
+      const newValues = event.target.value.filter(value => !selected.includes(value));
+      if (selected.length + newValues.length <= maxMultipleLength) {
+        const updatedSelected = selected.length > 0 ? [...selected, ...newValues] : [...newValues];
+        setSelected(updatedSelected);
+        formik.setFieldValue(name, updatedSelected);
+      }
     }
   };
 
@@ -315,7 +324,7 @@ const MaterialUIFieldAdapter = ({
               fullWidth
               sx={{ borderRadius: "6px", maxHeight: "48px", overflow: "auto" }}
               name={name}
-              value={selected ?? []} // Ensure the value is an array for multiple selections
+              value={(name === 'organization_auth_map.data.organization.data.suppliers.data.coverage_area_list') ? areaList : selected} // Ensure the value is an array for multiple selections
               onChange={handleMultipleSelect}
               onBlur={handleBlur}
               renderValue={(selected) =>

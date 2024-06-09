@@ -47,7 +47,7 @@ const MobileNumberForm = ({
     onSubmit={(values, { setSubmitting, resetForm }) => {
       setSubmitting(true);
       const status = callback(values.mobileNumber);
-      handleClick();
+
       if (!status) resetForm();
       setSubmitting(false);
     }}

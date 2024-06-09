@@ -11,46 +11,46 @@ const SuperTokensWrapper = ({
 }: any) => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [getUser, { loading: userLoading, data, error,  }] = useLazyQuery(ITEM);
+  const [getUser, { loading: userLoading, data, error }] = useLazyQuery(ITEM);
 
   console.log("check errors in login---", error);
 
   useEffect(() => {
-    Session.doesSessionExist().then(async (i) => {
-      console.log(
-        "🚀 ~ Session.doesSessionExist ~ i:",
-        i,
-        auth == false && !redirectIfLoggedIn,
-      );
-      if (auth == false && !redirectIfLoggedIn) {
-        setLoading(false);
-        return;
-      }
-      if (!i) {
-        setLoading(false);
-        return;
-      }
-      const id = await Session.getUserId();
-      const res = await getUser({ variables: { id } });
-      console.log(res.data?.user?.profile[0]?.id, redirectIfLoggedIn)
-      if (!res.data?.user?.profile[0]?.id && redirectIfLoggedIn) {
-        router.replace?.("/users/role-selection");
-        setLoading(false);
-        return;
-      }
-      if (router.pathname === '/' && res.data?.user?.profile[0]?.id) {
-        console.log("🚀 ~ Session.doesSessionExist ~ router.pathname", router.pathname, res.data?.user?.profile[0])
-        if(res.data?.user?.profile[0].type === 'jobSeeker'){
-          router.replace?.("/users/get-one");
-        }else{
-          router.replace?.("/users/getOther");
-        }
-      }
-      setLoading(false);
-    });
+    // Session.doesSessionExist().then(async (i) => {
+    //   console.log(
+    //     "🚀 ~ Session.doesSessionExist ~ i:",
+    //     i,
+    //     auth == false && !redirectIfLoggedIn,
+    //   );
+    //   if (auth == false && !redirectIfLoggedIn) {
+    //     setLoading(false);
+    //     return;
+    //   }
+    //   if (!i) {
+    //     setLoading(false);
+    //     return;
+    //   }
+    //   const id = await Session.getUserId();
+    //   const res = await getUser({ variables: { id } });
+    //   console.log(res.data?.user?.profile[0]?.id, redirectIfLoggedIn)
+    //   if (!res.data?.user?.profile[0]?.id && redirectIfLoggedIn) {
+    //     router.replace?.("/users/role-selection");
+    //     setLoading(false);
+    //     return;
+    //   }
+    //   if (router.pathname === '/' && res.data?.user?.profile[0]?.id) {
+    //     console.log("🚀 ~ Session.doesSessionExist ~ router.pathname", router.pathname, res.data?.user?.profile[0])
+    //     if(res.data?.user?.profile[0].type === 'jobSeeker'){
+    //       router.replace?.("/users/get-one");
+    //     }else{
+    //       router.replace?.("/users/getOther");
+    //     }
+    //   }
+    //   setLoading(false);
+    // });
   }, []);
 
-  if (loading || userLoading) return <></>;
+  // if (loading || userLoading) return <></>;
 
   const childrenWithProps = React.Children.map(children, (child) => {
     // Checking isValidElement is the safe way and avoids a

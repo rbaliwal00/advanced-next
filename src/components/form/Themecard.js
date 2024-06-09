@@ -23,12 +23,13 @@ const styles = {
 const renderCard = (type, formDetails) => {
     const { phone_number, email, profile, organization_auth_map } = formDetails || {};
     const { education, experience,  preference, image_url, first_name, last_name, sub_type } = profile[0] || [];
-    const { brand_name = '', nature_of_business = [], company_name = '', no_of_employee = '', organization_location_map = '', contact = [], image_url: orgImgUrl } = organization_auth_map[0]?.organization || []
+    const { brand_name = '', nature_of_business = [], company_name = '', no_of_employee = '', organization_location_map = '', contact = [], image_url: orgImgUrl } = organization_auth_map[organization_auth_map.length - 1]?.organization || []
     const { block_number, area, city } = organization_location_map[0]?.location || [];
     const checkIfexperienced = sub_type === 'experienced';
+    console.log("check sub type here", sub_type);
 
 
-    if (type === 'job')
+    if (sub_type === 'fresher' || sub_type == 'experienced')
         return (
             <Card style={{
                 width: '100%',

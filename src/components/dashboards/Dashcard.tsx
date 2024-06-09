@@ -49,6 +49,8 @@ const Dashcard = ({
   const handleClickedLink = (link) => {
     if (link === "/users/cv") {
       router.push(link);
+    } else if (link === "/users/get-one"){
+      router.push(link)
     } else {
       handleClick();
     }

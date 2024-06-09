@@ -26,7 +26,7 @@ export const JobSeekerDashCards = [
     id: "2",
     title: "Visiting Card",
     banner: Vc,
-    link: "/vc",
+    link: "/users/get-one",
     lastUpdated: new Date(),
   },
   {

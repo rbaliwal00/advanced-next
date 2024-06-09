@@ -13,19 +13,12 @@ const Container = (props) => {
     // router: { push },
   } = props;
 
-  useEffect(() => {
-    console.log("props---+", props);
-    props.refetchUserData();
-  }, []);
+    useEffect(() => {
+        props.refetchUserData();
+    }, []);
 
-  console.log("check userData here---", user);
-
-  if (loadingUserData) return <CircularProgress />;
-  return (
-    <SuperTokensWrapper>
-      <FilledCard type={"recruiter"} formDetails={user} />
-    </SuperTokensWrapper>
-  );
+    if (loadingUserData) return <CircularProgress />
+    return <FilledCard type={'recruiter'} formDetails={user} />
 };
 
 export default compose(withGetOne)(Container);

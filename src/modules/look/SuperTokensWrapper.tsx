@@ -30,7 +30,7 @@ const SuperTokensWrapper = ({
         setLoading(false);
         return;
       }
-      // const id = await Session.getUserId();
+      const id = await Session.getUserId();
       // const res = await getUser({ variables: { id } });
       // console.log(res.data?.user?.profile[0]?.id, redirectIfLoggedIn)
       // if (!res.data?.user?.profile[0]?.id && redirectIfLoggedIn) {

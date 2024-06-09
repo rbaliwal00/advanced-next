@@ -127,11 +127,15 @@ const Container = (props) => {
     insertUserOrganization,
     user,
     loadingUserData,
+    refetchUserData
     //router: { push },
   } = props;
 
   const router = useRouter();
-  console.log("check user data here-- update container", user);
+
+  React.useEffect(() => {
+    refetchUserData();
+  }, []);
 
   const onSubmit = async (values) => {
     const newFormValues = updateOrgFormValues(values);
@@ -152,6 +156,7 @@ const Container = (props) => {
       <RecruiterForm
         prefillData={transformObject(user)}
         onSubmit={onSubmit}
+        {...props}
       />
   );
 };

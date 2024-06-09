@@ -198,9 +198,7 @@ const Container = (props) => {
     };
 
     if(loadingUserData) return <CircularProgress />
-    return <SuperTokensWrapper>
-                <FresherForm prefillData={transformObject(user)} onSubmit={onSubmit} />;
-           </SuperTokensWrapper> 
+    return <FresherForm {...props} prefillData={transformObject(user)} onSubmit={onSubmit} />;
         
 };
 

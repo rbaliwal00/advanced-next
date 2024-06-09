@@ -124,10 +124,15 @@ const Container = (props) => {
     const {
         insertUserOrganization,
         user,
-        loadingUserData
+        loadingUserData,
+        refetchUserData
         //router: { push },
     } = props;
     const router = useRouter()
+
+    React.useEffect(() => {
+        refetchUserData();
+    }, []);
 
     const onSubmit = async (values) => {
         const newFormValues = updateOrgFormValues(values);
@@ -142,7 +147,7 @@ const Container = (props) => {
     };
 
     if (loadingUserData) return <CircularProgress />
-    return <SupplierForm prefillData={transformObject(user)} onSubmit={onSubmit} />;
+    return <SupplierForm {...props} prefillData={transformObject(user)} onSubmit={onSubmit} />;
             
 };
 

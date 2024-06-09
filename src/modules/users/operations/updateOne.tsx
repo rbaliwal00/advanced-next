@@ -27,19 +27,6 @@ const     withInsert = (Component: FunctionComponent) =>
                         data: { insert_user_auth_one },
                     } = await mutate({
                         variables: { object, update_coloumns: updatedColoumns },
-                        optimisticResponse: {
-                            __typename: "Mutation",
-                            insert_user_auth_one: {
-                                id: null,
-                                email: object?.email,
-                                profile: {
-                                    id: null,
-                                    first_name: object.profile?.data.first_name,
-                                    __typename: "Profile", // Make sure to include the __typename field for nested objects
-                                },
-                                __typename: "UserAuth",
-                            },
-                        },
                     });
                     console.log("🚀 ~ insertUserAuth: ~ data:", insert_user_auth_one);
                     return insert_user_auth_one;

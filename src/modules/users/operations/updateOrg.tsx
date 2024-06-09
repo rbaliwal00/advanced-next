@@ -25,13 +25,6 @@ const withInsertOrg = (Component) =>
                         data: { insert_user_organization_one },
                     } = await mutate({
                         variables: { object, update_columns: updatedColumns },
-                        optimisticResponse: {
-                            __typename: 'Mutation',
-                            insert_user_organization_one: {
-                                id: null,
-                                __typename: 'UserOrganization',
-                            },
-                        },
                     });
                     console.log('🚀 ~ insertUserOrganization: ~ data:', insert_user_organization_one);
                     return insert_user_organization_one;

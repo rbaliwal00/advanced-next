@@ -16,13 +16,6 @@ const withCreate = (Component: FunctionComponent) =>
               object,
               update_columns: ["email", "id", "type"],
             },
-            optimisticResponse: {
-              __typename: "Mutation",
-              createPost: {
-                object,
-                __typename: "InserUser",
-              },
-            },
           });
           return insert_user_auth_one;
         } catch (e) {

@@ -122,9 +122,6 @@ const ExperiencedForm = ({onSubmit, prefillData, user}) => {
         delete values.profile.email;
         delete values.currentCity;
         //values['phone_number'] = '8919729964';
-        values.profile.data.website = 'google.com';
-        values.profile.data.cv_theme = 'cv theme 1';
-        values.profile.data.experience.data.type =  'type 1';
         //values.profile.data.experience.data.from_date = "02/03/2012"
         // values.profile.data.education.data.cgpa = '6';
         if (values.profile.data.type != 'jobSeeker') {

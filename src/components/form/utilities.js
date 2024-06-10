@@ -706,3 +706,164 @@ export const getInitialValue = (value) => {
   }
   return [];
 };
+
+export const jobThemeColors = [
+  {background: 'linear-gradient(to left, #B34ECC -56%, #F5895C 50%, #F9F5E0 105%)'},
+
+  {background: 'linear-gradient(to left, #CAEFD7 0%, #BFEBF5 50%, #ABC9E9 100%)'},
+
+  {background: 'linear-gradient(to left, #D13F59 -77%, #D497F0 50%, #80E3F1 116%)'},
+
+  {background: 'linear-gradient(to right, #F0BBF9 0%, #7CD5E9 124%)'} 
+]
+
+export const orgThemeColors = [
+{background: 'linear-gradient(to left, #FF94D5 -32%, #D580C9 17%, #A66FB8 34%, #785EA4 59%, #494C8D 89%, #113B73 145%)'},
+{background: 'linear-gradient(to bottom left, #113B73 -13%, #415D9A 10%, #6A82C3 35%, #92AAED 64%, #BCD3FF 85%)'},
+{background: 'linear-gradient(to left, #215DAC -37%, #DDEBEA 51%, #3B8884 112%)'},
+{background: 'linear-gradient(to left, #FFAF7B 0%, #D76D77 51%, #3A1C71 135%)'},
+]
+
+
+export const formDetails = {
+  data: {
+    user_auth: [
+      {
+        id: "8fa531e7-a81b-4073-a327-eea7d1f011de",
+        email: "user@example.com",
+        phone_number: "9999900000",
+        is_active: true,
+        created_at: "2024-05-26T12:36:15.382201+00:00",
+        updated_at: "2024-05-26T12:36:15.382201+00:00",
+        profile: [],
+        organization_auth_map: [],
+      },
+      {
+        id: "ae6da7d4-a02f-4ede-9e7b-be3d93c3c551",
+        email: "user@example.com",
+        phone_number: "9999900001",
+        is_active: true,
+        created_at: "2024-05-26T14:30:15.157117+00:00",
+        updated_at: "2024-05-26T14:30:15.157117+00:00",
+        profile: [
+          {
+            first_name: "Name 1",
+            last_name: "Name 2",
+            gender: "Brocolli",
+            dob: "Today",
+            image_url: "Url 1",
+            website: "example.com",
+            vc_theme: "Vc theme 1",
+            cv_theme: "CV theme 1",
+            sub_type: "Sub type 1",
+            type: "Type 1",
+            awards: [
+              {
+                brand_name: "Brand 1",
+                department: "Department 1",
+                name: "Some name",
+                position: "Position 1",
+              },
+            ],
+            education: [
+              {
+                cgpa: "5.5",
+                from_date: "2023-05-01",
+                to_date: "2024-03-01",
+                institution_city: "City 1",
+                institution_name: "Institution 1",
+                level: "Level 1",
+                passout_year: "2022",
+                study_field: "Field 1",
+              },
+            ],
+            experience: [
+              {
+                brand_name: "Brand 1",
+                department: "Department 1",
+                from_date: "2022-03-03",
+                to_date: "2023-03-04",
+                montly_salary: 100000,
+                position: "Position 1",
+                sub_category: "Sub category 1",
+                type: "Type 1",
+                work_experience: "Experience 1",
+              },
+            ],
+            preference: [
+              {
+                aadhar: "Aadhar 1",
+                internship: false,
+                one_day_job: false,
+                partime_job: false,
+                passport: "Passport 1",
+                working_city: "City 1",
+              },
+            ],
+            references: [
+              {
+                brand_name: "Name 1",
+                department: "Department 1",
+                email: "user@example.com",
+                name: "user",
+                phone_number: "1231231231",
+                position: "Position 1",
+              },
+            ],
+          },
+        ],
+        organization_auth_map: [
+          {
+            organization: {
+              vc_theme: "Vc Theme 2",
+              brand_name: "Brand 1",
+              business_nature: "Nature 1",
+              company_name: "Company 1",
+              image_url: "some_url",
+              no_of_employee: 10,
+              gst_pan: [
+                {
+                  gst: "Gst 1",
+                  pan: "Pan 1",
+                  status: "Pending",
+                },
+              ],
+              contact: [
+                {
+                  name: "Name 1",
+                  email: "user1@example.com",
+                  website: "example.com",
+                  phone_number: "9999900000",
+                },
+              ],
+              organization_location_map: [
+                {
+                  location: {
+                    area: "Area 1",
+                    block_number: "1/02",
+                    city: "City 1",
+                    pincode: 123123,
+                    state: "State 1",
+                    geolocation: [
+                      {
+                        latitude: "12.21",
+                        longitude: "21.12",
+                        type: "Type 1",
+                      },
+                    ],
+                  },
+                },
+              ],
+              suppliers: [
+                {
+                  area: "Area 1",
+                  scale: "large",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
+};

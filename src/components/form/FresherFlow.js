@@ -108,8 +108,6 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
       delete values.profile.email;
 
       delete values.__typename;
-      values.profile.data.website = "google.com";
-      values.profile.data.cv_theme = "cv theme 1";
       // values.profile.data.education.data.cgpa = '6';
       // values.profile.data.education.data.from_date = "2023/05/01";
       // values.profile.data.education.data.to_date = '2024/03/01'

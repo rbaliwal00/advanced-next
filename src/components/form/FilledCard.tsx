@@ -9,6 +9,7 @@ import { toPng } from "html-to-image";
 import { saveAs } from "file-saver";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { jobThemeColors, orgThemeColors } from "./utilities";
 
 const ButtonStack = ({ updateType, handleDownloadImage, userId, isPublic }) => {
   const nextRoute = (typeof window !== "undefined" ? "https://" + window.location.hostname : "") + "/users/vc/" + userId;
@@ -89,11 +90,11 @@ const ButtonStack = ({ updateType, handleDownloadImage, userId, isPublic }) => {
 const FilledCard = ({ type, formDetails, isPublic }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  console.log("check formdetails here", formDetails);
   const { profile } = formDetails;
   const updateType = formDetails?.profile[profile.length - 1].sub_type;
 
-  console.log("check updateType", formDetails)
+  const backgroundIndex = formDetails?.profile[0].vc_theme.split('_')[1]
+  const colorArray = formDetails?.type == 'jobSeeker' ? jobThemeColors : orgThemeColors;
 
   const redirectToDashboard = () => {
     router.push("/users/dashboard/job-seeker");
@@ -139,7 +140,7 @@ const FilledCard = ({ type, formDetails, isPublic }) => {
         }}
       >
         <div ref={cardRef}>
-          <ThemeCard type={updateType} formDetails={formDetails} />
+          <ThemeCard bgColor={colorArray[backgroundIndex].background} type={updateType} formDetails={formDetails} />
         </div>
         <ButtonStack
           updateType={updateType}

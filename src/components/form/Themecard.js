@@ -27,7 +27,7 @@ const renderCard = (type, formDetails, bgColor) => {
     const { block_number, area, city } = organization_location_map[0]?.location || [];
     const checkIfexperienced = sub_type === 'experienced';
     const isSubTypeJobSeeker = (sub_type === 'fresher' || sub_type == 'experienced')
-    const areaOfCoverage = suppliers[0]?.coverage_area_list ?? [];
+    const areaOfCoverage = type === 'supplier' ? (suppliers[0]?.coverage_area_list ?? []) : [];
 
     if ((type === 'jobSeeker') || isSubTypeJobSeeker)
         return (

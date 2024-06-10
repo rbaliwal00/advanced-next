@@ -56,7 +56,6 @@ const MaterialUIFieldAdapter = ({
   const [areaList, setAreaList] = useState(getInitialValue(suppliers?.data?.coverage_area_list) ?? [])
 
   const handleChange = (event) => {
-    console.log("check data", event);
     const value =
       event.target.type === "checkbox"
         ? event.target.checked

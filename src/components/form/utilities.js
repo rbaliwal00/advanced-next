@@ -679,6 +679,37 @@ export const natureOfBusiness = [
   "Coffee Shop",
 ];
 
+export const supplierNatureOfBusiness = [
+"Packaging",
+"Packaging for Bakery",
+"Indian Grocery", 
+"Imported Grocery", 
+"Imported Bakery Grocery", 
+"Housekeeping",
+"Uniform",
+"Laundry",
+"Storage Equipment",
+"Utensils Bar & Kitchen Tools",
+"Furniture",
+"Poultry", 
+"Meat",
+"Fish & Seafood",
+"Billing POS Software",
+"Hardware for Hotel",
+"Dairy Product",
+"Indian Fruit & Vegetable",
+'English Fruit & Vegetable',
+"Bar Equipment",
+"Kitchen Equipment",
+"Bakery Equipment",
+"Crockery ,Cutlery & Glassware",
+"Hotel Services",
+"Non Kitchen Equipment",
+"Beverage Supplier",
+"Liquor Supplier for Hotel",
+"Beer Supplier for Hotel",
+]
+
 export const levelOfEducation = [
   "Undergraduate",
   "Postgraduate",

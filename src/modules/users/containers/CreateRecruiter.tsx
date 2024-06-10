@@ -22,7 +22,13 @@ const Container = (props) => {
     }
   };
 
-  return (<RecruiterForm {...props} onSubmit={onSubmit} />);
+  return (
+    <SuperTokensWrapper isProfileCreation={true}
+      redirectIfLoggedIn={true}
+      auth={true}>
+      <RecruiterForm {...props} onSubmit={onSubmit} />
+    </SuperTokensWrapper>
+  );
 };
 
 export default compose(withCreatePost)(Container);

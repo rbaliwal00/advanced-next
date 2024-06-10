@@ -5,10 +5,11 @@ import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';  // Adjust import
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 import { Persist } from 'formik-persist';
-import { natureOfBusiness, nextBtn, renderBackButton } from './utilities';
+import { natureOfBusiness, nextBtn, supplierNatureOfBusiness } from './utilities';
 
 
 const BusinessForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
+    const orgBusinessNature = formikProps.values.type == 'supplier' ? supplierNatureOfBusiness : natureOfBusiness
     return (
                 <Form {...formikProps}>
                     <Box sx={{
@@ -63,7 +64,7 @@ const BusinessForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
                             type="multiselect"
                             maxMultipleLength={2}
                             label="Nature of Business"
-                            options={natureOfBusiness.map((item) => { return { value: item, label: item } })}
+                            options={orgBusinessNature.map((item) => { return { value: item, label: item } })}
                         />
                         <MaterialUIFieldAdapter
                             formik={formikProps}

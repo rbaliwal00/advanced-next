@@ -3,6 +3,7 @@ query MyQuery($id: uuid = "") {
     id
     email
     phone_number
+    type
     is_active
     created_at
     updated_at

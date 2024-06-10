@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Container, IconButton } from "@mui/material";
 import PropTypes from "prop-types";
-import { nextBtn, renderBackButton } from "./utilities";
+import { nextBtn, renderBackButton, jobThemeColors, formDetails, orgThemeColors } from "./utilities";
 import { Carousel } from "@components/look";
 import { Form, Field } from "formik";
+import ThemeCard from "./Themecard";
 
 const CarouselProps = {
   // data: [{
@@ -28,33 +29,39 @@ const CarouselProps = {
   // centerMode: true
 };
 
-const CarouselComponent = ({ field, form, setFieldValue, name, type }) => {
+const CarouselComponent = ({ field, setFieldValue, name, type, handleColor, color }) => {
+
   const handleFieldValue = (item) => {
-    setFieldValue(name, item);
+    const themeType = type + '_' + item;
+    setFieldValue(name, themeType);
+    handleColor(item)
   };
 
-  const CarouselProps = {
-    data: [
-      {
-        image: "https://picsum.photos/id/237/200/300",
-        title: "theme1",
-      },
-    ],
-    label: "check carousel",
-    heading: "Theme Selection",
-    subheading: "select a card",
-    slideNum: 3,
-    autoplay: false,
-    autoplaySpeed: 3,
-    // centerMode: true
-  };
+  const colorBtns = (color) => {
+    return (
+      <Box sx={{ height: '24px', width: '24px', borderRadius: '12px', background: color, cursor: 'pointer'}}/>
+    )
+  }
+
+  const colors = type == 'jobSeeker' ? jobThemeColors : orgThemeColors;
+
   return (
-    <Carousel
-      {...field}
-      type={type}
-      {...CarouselProps}
-      handleClickItem={(item) => handleFieldValue(item)}
-    />
+    
+    <Box {...field}>
+      <ThemeCard
+        type={type}
+        bgColor={color || '#fff'}
+        formDetails={formDetails.data.user_auth[1]}
+      />
+      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', maxWidth: '328px', m: 'auto', mt: '16px'}}>
+        {colors.map((cl, index) => {
+        return (
+          <Box key={'color_' + index} onClick={() => handleFieldValue(index)}>
+            {colorBtns(cl.background)}
+          </Box>
+        )})}
+      </Box>
+    </Box>
   );
 };
 
@@ -70,6 +77,13 @@ const VisitingCardComponent = ({
       ? "profile.data.vc_theme"
       : "organization_auth_map.data.organization.data.vc_theme";
 
+      const themeColors = type == 'jobSeeker' ? jobThemeColors : orgThemeColors;
+
+      const [color, setColor] = useState('');
+      const handleColorChange = (ind) => {
+        setColor(themeColors[ind].background)
+      }
+
   return (
     <Form {...formikProps}>
       <Box>
@@ -80,6 +94,8 @@ const VisitingCardComponent = ({
               {...fieldProps}
               setFieldValue={formikProps.setFieldValue}
               name={fieldName}
+              handleColor={handleColorChange}
+              color={color}
               type={type}
             />
           )}

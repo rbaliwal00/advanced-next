@@ -11,8 +11,13 @@ const AdsSwiper = ({ width }: any) => {
       autoplay={{ delay: 2000 }}
       loop
       modules={[Navigation, Pagination, Autoplay]}
-      className="center"
-      style={{ textAlign: "center", margin: "auto", width: width }}
+      className="center xs:w-200"
+      style={{
+        textAlign: "center",
+        margin: "auto",
+        width: "100%",
+        maxWidth: width,
+      }}
     >
       {[1, 2, 3].map((el: number) => (
         <SwiperSlide key={el}>

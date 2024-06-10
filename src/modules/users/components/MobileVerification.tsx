@@ -1,4 +1,4 @@
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery, Grid } from "@mui/material";
 import {
   bangalore,
   delhi,
@@ -28,29 +28,36 @@ const MobileVerification = (props) => {
         </div>
       ) : (
         <div>
-          <div className="text-[#4B5563] min-h-[calc(100vh-64px)] grid justify-items-center">
-            <div className="grid grid-cols-[1fr_0rem_1fr] pt-10">
+          <Grid
+            container
+            spacing={2}
+            className="text-[#4B5563]"
+            justifyContent={"center"}
+          >
+            <Grid item xs={5}>
               <Ads />
+            </Grid>
+            <Grid item xs={1}>
               <div className="border-l-2 h-[60vh] mt-8"></div>
-              <div className="mx-auto p-6">
-                <OtpRegistrationFlow {...props} />
-              </div>
-            </div>
-            {!matches && (
-              <Box
-                sx={{
-                  width: {
-                    xs: "100%",
-                    sm: "100%",
-                    md: "75%",
-                  },
-                  margin: "auto",
-                }}
-              >
-                <Cities />
-              </Box>
-            )}
-          </div>
+            </Grid>
+            <Grid item xs={5} sx={{ marginTop: "20px" }}>
+              <OtpRegistrationFlow {...props} />
+            </Grid>
+          </Grid>
+          {!matches && (
+            <Box
+              sx={{
+                width: {
+                  xs: "100%",
+                  sm: "100%",
+                  md: "75%",
+                },
+                margin: "auto",
+              }}
+            >
+              <Cities />
+            </Box>
+          )}
         </div>
       )}
     </div>

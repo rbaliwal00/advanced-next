@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import OtpInput from "react-otp-input";
+import OtpTimer from "otp-timer";
 import * as Yup from "yup";
 import { Box, Typography, Button, FormHelperText } from "@mui/material";
 import { createTimer } from "./utilities";
@@ -20,6 +21,8 @@ const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
   const [timeLeft, setTimeLeft] = useState(30 / 6);
   const [resendStatus, setResendStatus] = useState("");
 
+  const [seconds, setSeconds] = useState(10);
+
   const router = useRouter();
 
   const btnText = timeLeft > 0 ? `Resend OTP in ${timeLeft} sec` : "Resend OTP";
@@ -30,6 +33,18 @@ const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
 
     return () => timer.stop(); // Cleanup function to stop the timer on unmount
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(seconds - 1);
+    }, 1000);
+
+    return () => clearInterval(interval); // Cleanup function
+  }, []);
+
+  const resendOTP = () => {
+    setSeconds(10);
+  };
 
   return (
     <Box
@@ -86,7 +101,7 @@ const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
                       separator={<span>-</span>}
                       shouldAutoFocus
                       renderInput={(props) => <input {...props} />}
-                      containerStyle={{ gap: "2rem" }}
+                      containerStyle={{ gap: "1rem" }}
                       inputStyle={{
                         width: "45px",
                         height: "45px",
@@ -101,6 +116,24 @@ const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
                             : "1px solid rgba(0,0,0,0.3)",
                       }}
                     />
+                    <Box
+                      sx={{
+                        float: "right",
+                        textAlign: "right",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      <OtpTimer
+                        // minutes={0}
+                        textColor="#8899A8"
+                        buttonColor="#8899A8"
+                        background="white"
+                        seconds={10}
+                        text="Resend OTP in "
+                        ButtonText="Resend"
+                        resend={() => console.log("Resending OTP")}
+                      />
+                    </Box>
                   </div>
                   {touched.otp && errors.otp && (
                     <FormHelperText
@@ -122,9 +155,10 @@ const VerifyOTP = ({ subHeader, onBack, callBack, mobile, resend }) => {
                         xs: "block",
                         sm: "none",
                       },
+                      marginTop: "20px",
                     }}
                   >
-                    <AdsSwiper width={280} />
+                    <AdsSwiper width={250} />
                   </Box>
                 </Box>
               )}

@@ -12,10 +12,18 @@ import { useRouter } from "next/router";
 import { jobThemeColors, orgThemeColors } from "./utilities";
 
 const ButtonStack = ({ updateType, handleDownloadImage, userId, isPublic }) => {
-  const nextRoute = (typeof window !== "undefined" ? "https://" + window.location.hostname : "") + "/users/vc/" + userId;
-  
-  const updateRoute = '/users/update' + updateType.charAt(0).toUpperCase() + updateType.slice(1);
-  const fullMsg = `${isPublic ? "Checkout this profile!!" :"Check my VC card here"} ${nextRoute}`;
+  const nextRoute =
+    (typeof window !== "undefined"
+      ? "https://" + window.location.hostname
+      : "") +
+    "/users/vc/" +
+    userId;
+
+  const updateRoute =
+    "/users/update" + updateType.charAt(0).toUpperCase() + updateType.slice(1);
+  const fullMsg = `${
+    isPublic ? "Checkout this profile!!" : "Check my VC card here"
+  } ${nextRoute}`;
   const shareOnWatsapp = () => {
     const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(
       fullMsg,
@@ -51,22 +59,24 @@ const ButtonStack = ({ updateType, handleDownloadImage, userId, isPublic }) => {
         <FileDownloadOutlinedIcon sx={{ color: "black" }} />
       </IconButton>
 
-      {!isPublic && (<Link href={updateRoute}>
-        <IconButton
-          sx={{
-            backgroundColor: "white",
-            boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.05)",
-            marginBottom: "16px",
-            "&:hover": {
+      {!isPublic && (
+        <Link href={updateRoute}>
+          <IconButton
+            sx={{
               backgroundColor: "white",
-            },
-            borderWidth: "1px",
-            borderColor: "#EFEFEF",
-          }}
-        >
-          <EditOutlinedIcon sx={{ color: "black" }} />
-        </IconButton>
-      </Link>)}
+              boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.05)",
+              marginBottom: "16px",
+              "&:hover": {
+                backgroundColor: "white",
+              },
+              borderWidth: "1px",
+              borderColor: "#EFEFEF",
+            }}
+          >
+            <EditOutlinedIcon sx={{ color: "black" }} />
+          </IconButton>
+        </Link>
+      )}
 
       <IconButton
         sx={{
@@ -93,8 +103,14 @@ const FilledCard = ({ type, formDetails, isPublic }) => {
   const { profile } = formDetails;
   const updateType = formDetails?.profile[profile.length - 1].sub_type;
 
-  const backgroundIndex = formDetails?.type == 'jobSeeker' ? formDetails?.profile[0].vc_theme.split('_')[1] : formDetails?.organization_auth_map[0]?.organization?.vc_theme.split('_')[1]
-  const colorArray = formDetails?.type == 'jobSeeker' ? jobThemeColors : orgThemeColors;
+  const backgroundIndex =
+    formDetails?.type == "jobSeeker"
+      ? formDetails?.profile[0].vc_theme.split("_")[1]
+      : formDetails?.organization_auth_map[0]?.organization?.vc_theme.split(
+          "_",
+        )[1];
+  const colorArray =
+    formDetails?.type == "jobSeeker" ? jobThemeColors : orgThemeColors;
 
   const redirectToDashboard = () => {
     router.push("/users/dashboard/job-seeker");
@@ -140,13 +156,17 @@ const FilledCard = ({ type, formDetails, isPublic }) => {
         }}
       >
         <div ref={cardRef}>
-          <ThemeCard bgColor={colorArray[backgroundIndex].background} type={updateType} formDetails={formDetails} />
+          <ThemeCard
+            bgColor={colorArray[backgroundIndex]?.background}
+            type={updateType}
+            formDetails={formDetails}
+          />
         </div>
         <ButtonStack
           updateType={updateType}
           handleDownloadImage={handleDownloadImage}
-            userId={formDetails.id}
-        isPublic={isPublic}
+          userId={formDetails.id}
+          isPublic={isPublic}
         />
       </Box>
       {!isPublic && (

@@ -93,7 +93,7 @@ const FilledCard = ({ type, formDetails, isPublic }) => {
   const { profile } = formDetails;
   const updateType = formDetails?.profile[profile.length - 1].sub_type;
 
-  const backgroundIndex = formDetails?.profile[0].vc_theme.split('_')[1]
+  const backgroundIndex = formDetails?.type == 'jobSeeker' ? formDetails?.profile[0].vc_theme.split('_')[1] : formDetails?.organization_auth_map[0]?.organization?.vc_theme.split('_')[1]
   const colorArray = formDetails?.type == 'jobSeeker' ? jobThemeColors : orgThemeColors;
 
   const redirectToDashboard = () => {

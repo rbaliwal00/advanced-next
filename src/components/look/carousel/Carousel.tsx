@@ -7,6 +7,7 @@ import { useResponsive } from "./useResponsive";
 import { useRef, useState } from "react";
 import { Grid } from "@mui/material";
 import ThemeCard from "@components/form/Themecard";
+import { formDetails } from "@components/form/utilities";
 // import { Box } from "@mui/material";
 
 interface SliderData {
@@ -130,6 +131,7 @@ const Carousel: React.FC<SliderProps> = ({
               <ThemeCard
                 type={type}
                 formDetails={formDetails.data.user_auth[1]}
+                bgColor={'#fff'}
               />
             </div>
           </div>

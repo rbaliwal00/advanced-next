@@ -16,7 +16,6 @@ export const SupplierThemeSelectionVaidationSchema = Yup.object().shape({
             organization: Yup.object().shape({
                 data: Yup.object().shape({
                     vc_theme: Yup.string()
-                        .oneOf(['Vc Theme 1', 'Vc Theme 2'], 'Theme must be "fixedValue"')
                         .required('Theme is required'),
                 })
             })

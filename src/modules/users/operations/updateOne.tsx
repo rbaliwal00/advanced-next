@@ -5,17 +5,8 @@ import UPDATE_ONCE from "../graphql/updateOnce.graphql"; // Make sure to update 
 
 const updatedColoumns = [
     "email",
+    "phone_number",
     "is_active",
-    "first_name",
-    "last_name",
-    "gender",
-    "dob",
-    "image_url",
-    "website",
-    "vc_theme",
-    "cv_theme",
-    "sub_type",
-    "type",
 ]
 
 const     withInsert = (Component: FunctionComponent) =>

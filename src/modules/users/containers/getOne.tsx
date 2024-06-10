@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import { compose } from "@common";
-import ThemeCard from "@components/form/Themecard";
 import { withGetOne } from "../operations";
 import FilledCard from "@components/form/FilledCard";
 import { SuperTokensWrapper } from "@modules/look";

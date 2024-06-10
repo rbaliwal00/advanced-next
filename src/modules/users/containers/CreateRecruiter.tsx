@@ -22,8 +22,7 @@ const Container = (props) => {
     }
   };
 
-  return (<RecruiterForm {...props} onSubmit={onSubmit} />
-  );
+  return (<RecruiterForm {...props} onSubmit={onSubmit} />);
 };
 
 export default compose(withCreatePost)(Container);

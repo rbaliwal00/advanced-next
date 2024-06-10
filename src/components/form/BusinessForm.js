@@ -4,12 +4,12 @@ import { Box, Button } from '@mui/material';
 import MaterialUIFieldAdapter from './MaterialUIFieldAdapter';  // Adjust import path as needed
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
-import { Persist } from 'formik-persist';
-import { natureOfBusiness, nextBtn, supplierNatureOfBusiness } from './utilities';
+import { natureOfBusiness, nextBtn, supplierNatureOfBusiness, renderBackButton } from './utilities';
 
 
 const BusinessForm = ({ onBack, isLastStep, type, step, ...formikProps }) => {
-    const orgBusinessNature = formikProps.values.type == 'supplier' ? supplierNatureOfBusiness : natureOfBusiness
+    console.log("cehck all steps here", isLastStep, step);
+    const orgBusinessNature = (formikProps.values.type == 'supplier') ? supplierNatureOfBusiness : natureOfBusiness
     return (
                 <Form {...formikProps}>
                     <Box sx={{

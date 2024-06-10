@@ -282,6 +282,7 @@ export const transformObject = (obj) => {
       data: {
         organization: {
           data: {
+            id: org?.id,
             vc_theme: org?.vc_theme ?? "",
             brand_name: org?.brand_name ?? "",
             nature_of_business: org?.nature_of_business ?? [],

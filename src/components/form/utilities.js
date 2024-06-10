@@ -224,14 +224,14 @@ export const transformObject = (obj) => {
   const { awards, education, experience, preference, references } = profileData;
 
   const prefillFormData = {
-    email: obj?.email ?? "",
+    email: obj.email ?? "",
     phone_number: obj.phone_number ?? "",
     profile: {
       data: {
         id: profileData?.id ?? null,
         vc_theme: profileData?.vc_theme ?? "",
         type: profileData?.type ?? "",
-        current_city: profileData?.type ?? "",
+        current_city: profileData?.current_city ?? "",
         cv_theme: profileData?.cv_theme ?? "",
         dob: profileData?.dob ?? "",
         education: {
@@ -366,7 +366,7 @@ export const getUpdateFormValues = (user) => {
           cv_theme: profileDataExtracter(user.profile)?.cv_theme ?? "",
           sub_type: profileDataExtracter(user.profile)?.sub_type ?? "",
           type: profileDataExtracter(user.profile)?.type ?? "",
-
+          current_city: profileDataExtracter(user.profile)?.current_city ?? "",
           education: {
             data:
               [

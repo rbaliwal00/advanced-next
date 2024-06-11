@@ -1,0 +1,58 @@
+.vcs {
+  &__left {
+    transform: translate(-120px, -20px);
+    overflow: hidden;
+  }
+
+  &__left-content {
+    transform: translate(130px, 100px);
+  }
+
+  &__img {
+    margin-right: 300px;
+  }
+
+  &__supplier-icon {
+    border-radius: 100%;
+    background-color: #1f2a37;
+    padding: 4px;
+    margin-left: 5px;
+    margin-right: 5px;
+    box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.35);
+  }
+
+  &__supplier-info1 {
+    position: absolute;
+    top: 10px;
+    left: 120px;
+    color: "white";
+  }
+
+  &__supplier-info2 {
+    position: absolute;
+    top: 60px;
+    left: 152px;
+    color: "white";
+  }
+
+  &__supplier-info3 {
+    position: absolute;
+    top: 110px;
+    left: 163px;
+    color: "white";
+  }
+
+  &__supplier-info4 {
+    position: absolute;
+    top: 160px;
+    left: 160px;
+    color: "white";
+  }
+
+  &__supplier-info5 {
+    position: absolute;
+    top: 205px;
+    left: 130px;
+    color: "white";
+  }
+}

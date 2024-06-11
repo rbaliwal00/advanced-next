@@ -1,0 +1,30 @@
+.vcs {
+  position: relative;
+
+  &__hire-right {
+    transform: translateX(160px);
+  }
+
+  &__right-content {
+    transform: translate(10px, 10px);
+  }
+
+  &__hire-icon {
+    border-radius: 100%;
+    background-color: #1f2a37;
+    padding: 4px;
+    margin-right: 5px;
+    box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.35);
+  }
+
+  &__hire-left {
+    position: absolute;
+    top: 20px;
+    width: 155px;
+    text-align: right;
+  }
+
+  &__hire-info1 {
+    margin-top: 14px;
+  }
+}

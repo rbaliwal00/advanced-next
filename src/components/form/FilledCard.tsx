@@ -103,14 +103,16 @@ const FilledCard = ({ type, formDetails, isPublic }) => {
   const { profile } = formDetails;
   const updateType = formDetails?.profile[profile.length - 1].sub_type;
 
+  const userType =
+    formDetails?.type ?? formDetails?.profile[profile.length - 1].type;
+
   const backgroundIndex =
-    formDetails?.type == "jobSeeker"
+    userType == "jobSeeker"
       ? formDetails?.profile[0].vc_theme.split("_")[1]
       : formDetails?.organization_auth_map[0]?.organization?.vc_theme.split(
           "_",
         )[1];
-  const colorArray =
-    formDetails?.type == "jobSeeker" ? jobThemeColors : orgThemeColors;
+  const colorArray = userType == "jobSeeker" ? jobThemeColors : orgThemeColors;
 
   const redirectToDashboard = () => {
     router.push("/users/dashboard/job-seeker");

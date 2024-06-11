@@ -53,7 +53,7 @@ const CarouselComponent = ({ field, setFieldValue, name, type, handleColor, colo
         bgColor={color || '#fff'}
         formDetails={formDetails.data.user_auth[1]}
       />
-      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', maxWidth: '328px', m: 'auto', mt: '16px'}}>
+      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', maxWidth: '328px', m: 'auto', mt: '24px'}}>
         {colors.map((cl, index) => {
         return (
           <Box key={'color_' + index} onClick={() => handleFieldValue(index)}>

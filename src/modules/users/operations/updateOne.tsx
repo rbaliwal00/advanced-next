@@ -7,6 +7,7 @@ const updatedColoumns = [
     "email",
     "phone_number",
     "is_active",
+    "id"
 ]
 
 const     withInsert = (Component: FunctionComponent) =>
@@ -19,7 +20,7 @@ const     withInsert = (Component: FunctionComponent) =>
                     } = await mutate({
                         variables: { object, update_coloumns: updatedColoumns },
                     });
-                    console.log("🚀 ~ insertUserAuth: ~ data:", insert_user_auth_one);
+                    console.log("🚀 ~ insertUserAuth: ~ data:", insert_user_auth_one, updatedColoumns);
                     return insert_user_auth_one;
                 } catch (e) {
                     console.error(e);

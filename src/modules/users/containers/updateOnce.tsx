@@ -185,15 +185,20 @@ const Container = (props) => {
     //     console.log("props---+", props);
     //     refetchUserData();
     // }, []);
-    console.log("cehck user data", user);
+    console.log("check get user data here----", user);
     
     const router = useRouter()
 
     const onSubmit = async (values) => {
         const newFormValues = getUpdateFormValues(values);
-        console.log("check formValues", newFormValues);
-        const result = await insertUserAuth(newFormValues);
-        setTimeout(() => router.push('/users/get-one'), 500);
+        console.log("check formValues before updateFresher here----", newFormValues);
+        try {
+            
+            const result = await insertUserAuth(newFormValues);
+            setTimeout(() => router.push('/users/get-one'), 500);
+        } catch (error) {
+            console.log("check updateFresher error here----", error)
+        }
         //push("/posts"); // Change the path according to your routing structure
     };
 

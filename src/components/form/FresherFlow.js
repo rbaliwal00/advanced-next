@@ -117,7 +117,7 @@ const FresherForm = ({ onSubmit, prefillData, user }) => {
     } catch (e) {
       console.log(e);
     }
-    console.log("🚀 ~ handleSubmitFinal ~ values:", values, user);
+    console.log("🚀 ~ handleSubmitFinal  FresherFlow~ values:", values, user);
     onSubmit({ id: user.id, phone_number: user.phone_number, ...values });
   };
 

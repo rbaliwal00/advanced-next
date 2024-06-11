@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Card, Typography, Grid, CardContent, Container, Avatar } from "@mui/material";
 import PropTypes from 'prop-types';
+import { blobToDataURL } from "./utilities";
 
 const styles = {
     label: {
@@ -28,6 +29,16 @@ const renderCard = (type, formDetails, bgColor) => {
     const checkIfexperienced = sub_type === 'experienced';
     const isSubTypeJobSeeker = (sub_type === 'fresher' || sub_type == 'experienced')
     const areaOfCoverage = type === 'supplier' ? (suppliers[0]?.coverage_area_list ?? []) : [];
+    const imgUrl = image_url || orgImgUrl
+    const [dataUrl, setDataUrl] = useState('')
+
+    useEffect(() => {
+        if (imgUrl) {
+            blobToDataURL(imgUrl, (dataUrl) => {
+                setDataUrl(dataUrl);
+        });
+    }
+    }, [imgUrl])
 
     if ((type === 'jobSeeker') || isSubTypeJobSeeker)
         return (
@@ -81,7 +92,7 @@ const renderCard = (type, formDetails, bgColor) => {
                         <Grid item xs={6} sm={6} style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                             {image_url && <Avatar
                                 alt={first_name + last_name || ''}
-                                src={image_url} // Update with your avatar path
+                                src={dataUrl} // Update with your avatar path
                                 style={{ width: 80, height: 80, marginLeft: 'auto', marginBottom: '10px' }}
                             />}
                             <Typography sx={styles.nameTxt} component="div">

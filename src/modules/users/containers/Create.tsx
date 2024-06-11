@@ -145,7 +145,7 @@ const Container = (props) => {
   const router = useRouter();
 
   const onSubmit = async (object) => {
-    console.log("check create here---", object);
+    console.log("check createFresher object here---", object);
     const result = await createUserProfile(object);
     if (result?.id) {
       localStorage.setItem("currId", result.id);

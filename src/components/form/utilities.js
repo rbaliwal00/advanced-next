@@ -351,11 +351,11 @@ export const getUpdateFormValues = (user) => {
     phone_number: user?.phone_number ?? "",
     email: user?.email ?? "",
     is_active: user?.is_active ?? true,
-
+    type: user?.type ?? profileDataExtracter(user.profile)?.type,
     profile: {
       data: [
         {
-          id: profileDataExtracter(user.profile)?.id ?? "",
+          id: profileDataExtracter(user.profile)?.id,
           first_name: profileDataExtracter(user.profile)?.first_name ?? "",
           last_name: profileDataExtracter(user.profile)?.last_name ?? "",
           gender: profileDataExtracter(user.profile)?.gender ?? "",
@@ -515,7 +515,6 @@ export const getUpdateFormValues = (user) => {
       },
     },
   };
-  console.log("check updated object before api call", formValues);
 
   return formValues;
 };
@@ -899,3 +898,20 @@ export const formDetails = {
     ],
   },
 };
+
+export const blobToDataURL = (blob, callback) => {
+  if (!(blob instanceof Blob)) {
+    console.error('Provided parameter is not a Blob:', blob);
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    callback(e.target.result);
+  };
+  reader.onerror = function (error) {
+    console.error('FileReader error:', error);
+  };
+  reader.readAsDataURL(blob);
+}
+

@@ -3,11 +3,9 @@ import React from "react";
 import GetOne from "@modules/users/containers/getOne";
 
 const index = (props) => {
-    const id = props.router.query.id;
-  if(!props.router.isReady){
-    return (
-        <p>Loading...</p>
-    )
+  const id = props.router.query.id;
+  if (!props.router.isReady) {
+    return <p>Loading...</p>;
   }
 
   console.log("check id on getONe---", id);

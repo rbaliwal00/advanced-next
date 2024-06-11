@@ -22,3 +22,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .pointer {
   cursor: pointer;
 }
+
+@import "../components/vcs/job/vcs.scss";
+@import "../components/vcs/supplier/vcs-supplier.scss";
+@import "../components/vcs/hire/vcs-hire.scss";

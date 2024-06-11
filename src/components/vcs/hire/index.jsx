@@ -47,7 +47,7 @@ const HireVisitingCard1 = () => {
             }}
           >
             <span className="vcs__hire-icon">
-              <CallIcon sx={{ fontSize: "16px", color: "#2BC6D2" }} />
+              <LocationOnIcon sx={{ fontSize: "16px", color: "#2BC6D2" }} />
             </span>
             Address
           </Typography>
@@ -73,7 +73,7 @@ const HireVisitingCard1 = () => {
           <Typography sx={{ fontSize: "10px", fontWeight: 400 }}>
             Contact No.
             <span className="vcs__supplier-icon">
-              <CallIcon sx={{ fontSize: "16px", color: "#BBB631" }} />
+              <CallIcon sx={{ fontSize: "16px", color: "#2BC6D2" }} />
             </span>
           </Typography>
           <Typography
@@ -90,7 +90,7 @@ const HireVisitingCard1 = () => {
           <Typography sx={{ fontSize: "10px", fontWeight: 400 }}>
             Contact Name
             <span className="vcs__supplier-icon">
-              <CallIcon sx={{ fontSize: "16px", color: "#BBB631" }} />
+              <CallIcon sx={{ fontSize: "16px", color: "#2BC6D2" }} />
             </span>
           </Typography>
           <Typography
@@ -107,7 +107,7 @@ const HireVisitingCard1 = () => {
           <Typography sx={{ fontSize: "10px", fontWeight: 400 }}>
             Email
             <span className="vcs__supplier-icon">
-              <CallIcon sx={{ fontSize: "16px", color: "#BBB631" }} />
+              <EmailIcon sx={{ fontSize: "16px", color: "#2BC6D2" }} />
             </span>
           </Typography>
           <Typography
@@ -124,7 +124,7 @@ const HireVisitingCard1 = () => {
           <Typography sx={{ fontSize: "10px", fontWeight: 400 }}>
             Website
             <span className="vcs__supplier-icon">
-              <CallIcon sx={{ fontSize: "16px", color: "#BBB631" }} />
+              <LanguageIcon sx={{ fontSize: "16px", color: "#2BC6D2" }} />
             </span>
           </Typography>
           <Typography
